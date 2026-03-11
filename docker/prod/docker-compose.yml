@@ -1,0 +1,101 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ../..
+      dockerfile: Dockerfile.prod
+    container_name: hotel-prod
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+    env_file:
+      - ../../.env.production
+    networks:
+      - hotel-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: hotel-postgres-prod
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - postgres_prod_data:/var/lib/postgresql/data
+      - ../../backups:/backups
+    networks:
+      - hotel-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: hotel-redis-prod
+    restart: unless-stopped
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - redis_prod_data:/data
+    networks:
+      - hotel-network
+
+  # Nginx reverse proxy + SSL
+  nginx:
+    image: nginx:alpine
+    container_name: hotel-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+      - ../../logs/nginx:/var/log/nginx
+    depends_on:
+      - app
+    networks:
+      - hotel-network
+
+  # Backup automatique
+  backup:
+    image: postgres:15-alpine
+    container_name: hotel-backup
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - postgres_prod_data:/data:ro
+      - ../../backups:/backups
+    command: >
+      sh -c "
+        while true; do
+          pg_dump -h postgres -U ${DB_USER} ${DB_NAME} > /backups/backup_$$(date +%Y%m%d_%H%M%S).sql
+          find /backups -name 'backup_*.sql' -mtime +7 -delete
+          sleep 86400
+        done
+      "
+    networks:
+      - hotel-network
+
+volumes:
+  postgres_prod_data:
+  redis_prod_data:
+
+networks:
+  hotel-network:
+    driver: bridge
