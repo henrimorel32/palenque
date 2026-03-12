@@ -3,18 +3,13 @@ version: '3.8'
 services:
   app:
     build:
-      context: ../..
+      context: ../../
       dockerfile: Dockerfile.dev
     container_name: palenque-dev
     ports:
       - "3002:3000"
     volumes:
-      # Montage pour hot reload
-      - ../../src:/app/src:cached
-      - ../../public:/app/public:cached
-      - ../../package.json:/app/package.json:cached
-      - ../../next.config.js:/app/next.config.js:cached
-      # Volume anonyme pour node_modules (ne pas écraser)
+      - ../../:/app:cached
       - /app/node_modules
       - /app/.next
     environment:

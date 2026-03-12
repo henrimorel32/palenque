@@ -13,7 +13,7 @@ COPY package*.json ./
 RUN npm install
 
 # Exposition du port Next.js dev
-EXPOSE 3000
+EXPOSE 3002
 
 # Commande de développement avec hot reload
 ENV NODE_ENV=development
