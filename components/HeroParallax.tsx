@@ -189,7 +189,6 @@ export default function HeroParallax() {
               <p className="text-lg md:text-xl text-white/90 max-w-2xl mb-8 font-light leading-relaxed">
                 Descubre un santuario donde el tiempo se detiene y cada ola canta tu libertad
               </p>
-
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 {/* <motion.button
                   whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(234,179,8,0.4)" }}
