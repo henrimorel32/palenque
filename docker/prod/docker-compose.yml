@@ -1,4 +1,4 @@
-version: '3.8'
+version: '2.4'
 
 services:
   app:
@@ -12,6 +12,10 @@ services:
     environment:
       - NODE_ENV=production
       - NEXT_TELEMETRY_DISABLED=1
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
     env_file:
       - ../../.env.production
     networks:

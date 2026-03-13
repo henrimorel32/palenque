@@ -6,9 +6,9 @@
 set -e
 
 ENV=${1:-production}
-VPS_HOST=${VPS_HOST:-"your-vps-ip"}
-VPS_USER=${VPS_USER:-"deploy"}
-PROJECT_NAME="hotel-vitrine"
+VPS_HOST=${VPS_HOST:-"51.178.136.181"}
+VPS_USER=${VPS_USER:-"ubuntu"}
+PROJECT_NAME="hotel-palenque"
 DEPLOY_DIR="/opt/${PROJECT_NAME}"
 BACKUP_DIR="/opt/backups"
 
@@ -74,17 +74,15 @@ run_local_tests() {
 prepare_bundle() {
     log_info "Préparation du bundle..."
     
-    # Création du répertoire temporaire
     DEPLOY_TMP=$(mktemp -d)
     
-    # Copie des fichiers nécessaires
-    rsync -av --exclude='node_modules' \
+    rsync -a --exclude='node_modules' \
               --exclude='.git' \
               --exclude='.next' \
               --exclude='*.log' \
               --exclude='.env.local' \
               --exclude='docker/dev' \
-              ./ ${DEPLOY_TMP}/
+              ./ ${DEPLOY_TMP}/ > /dev/null 2>&1
     
     echo "${DEPLOY_TMP}"
 }
@@ -114,6 +112,9 @@ deploy_to_vps() {
         --exclude='node_modules' \
         --exclude='.next' \
         ${bundle_dir}/ ${VPS_USER}@${VPS_HOST}:${DEPLOY_DIR}/
+
+    # AJOUTE CECI : Copier .env.production
+    rsync -avz .env.production ${VPS_USER}@${VPS_HOST}:${DEPLOY_DIR}/.env.production
     
     # Déploiement sur le VPS
     log_info "Build et démarrage des conteneurs..."
@@ -163,7 +164,9 @@ main() {
     check_prerequisites
     run_local_tests
     
-    BUNDLE_DIR=$(prepare_bundle)
+    prepare_bundle > /tmp/bundle.log 2>&1
+    BUNDLE_DIR=$(tail -1 /tmp/bundle.log)
+
     deploy_to_vps ${BUNDLE_DIR}
     
     log_info "🎉 Déploiement terminé avec succès !"

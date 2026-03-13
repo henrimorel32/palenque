@@ -4,12 +4,12 @@ npm-debug.log
 .git
 .env.local
 .env.development
-*.md
+.md
 .gitignore
 README.md
 docker/dev
 logs
-*.log
+.log
 coverage
 .nyc_output
 .DS_Store

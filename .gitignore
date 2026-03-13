@@ -1,0 +1,6 @@
+# Ne pas commit sur GitHub
+node_modules
+.next
+.env.local
+.env.production
+.DS_Store

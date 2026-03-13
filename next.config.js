@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  output: 'standalone', 
   // Important pour Docker : désactive le compression qui peut causer des soucis en dev
   compress: false,
   // Webpack config pour better hot reload dans Docker
