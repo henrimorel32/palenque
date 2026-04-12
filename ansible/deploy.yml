@@ -1,0 +1,161 @@
+---
+# Playbook de déploiement des mises à jour de Palenque
+# Met à jour les sources, rebuild et redémarre les containers
+
+- name: Déploiement des mises à jour Palenque
+  hosts: palenque_server
+  remote_user: henri
+  port: 2222
+  vars:
+    app_name: palenque
+    deploy_dir: /opt/docker/apps/palenque
+    source_dir: /opt/docker/apps/palenque/source
+    git_repo: "{{ vault_git_repo | default('') }}"
+    git_branch: "{{ vault_git_branch | default('main') }}"
+    use_git: "{{ vault_use_git | default(false) }}"
+    # Pour les migrations Prisma (si applicable)
+    run_prisma_migrate: "{{ vault_run_prisma_migrate | default(false) }}"
+    prisma_migrate_command: "npx prisma migrate deploy"
+
+  tasks:
+    - name: Vérifier que le répertoire de déploiement existe
+      stat:
+        path: "{{ deploy_dir }}"
+      register: deploy_dir_stat
+
+    - name: Arrêter si le répertoire de déploiement n'existe pas
+      fail:
+        msg: "Le répertoire {{ deploy_dir }} n'existe pas. Lancez d'abord le playbook install.yml"
+      when: not deploy_dir_stat.stat.exists
+
+    - name: Vérifier que le réseau Traefik existe
+      shell: "docker network inspect edu_proxy"
+      register: network_check
+      ignore_errors: yes
+      changed_when: false
+
+    - name: Arrêter si le réseau Traefik n'existe pas
+      fail:
+        msg: "Le réseau Docker 'edu_proxy' n'existe pas. Vérifiez que Traefik est correctement configuré."
+      when: network_check.rc != 0
+
+    # Option 1 : Déploiement via Git (si configuré)
+    - name: Cloner/Mettre à jour le repository Git
+      git:
+        repo: "{{ git_repo }}"
+        dest: "{{ source_dir }}"
+        version: "{{ git_branch }}"
+        force: yes
+      when: use_git | bool and git_repo != ''
+
+    # Option 2 : Déploiement via fichier local (rsync depuis le poste de développement)
+    - name: Créer le répertoire source si nécessaire (avec sudo)
+      file:
+        path: "{{ source_dir }}"
+        state: directory
+        owner: henri
+        group: henri
+        mode: '0755'
+      when: not (use_git | bool)
+      become: yes
+
+    - name: Message sur la méthode de déploiement
+      debug:
+        msg: "Mode de déploiement : {% if use_git | bool %}Git{% else %}Rsync (fichiers locaux){% endif %}"
+
+    - name: Sauvegarder la base de données avant déploiement
+      shell: |
+        cd {{ deploy_dir }} && \
+        docker compose exec -T postgres pg_dump -U palenque_user palenque_db > \
+        backups/backup_pre_deploy_$(date +%Y%m%d_%H%M%S).sql
+      ignore_errors: yes
+
+    - name: Arrêter l'application pour la mise à jour
+      shell: |
+        cd {{ deploy_dir }} && docker compose stop app
+
+    - name: Supprimer l'ancien container app
+      shell: |
+        cd {{ deploy_dir }} && docker compose rm -f app
+      ignore_errors: yes
+
+    - name: Supprimer l'ancienne image app
+      shell: |
+        docker rmi {{ app_name }}_app:latest 2>/dev/null || true
+      ignore_errors: yes
+
+    - name: Rebuild de l'image Docker
+      shell: |
+        cd {{ deploy_dir }} && docker compose build --no-cache app
+
+    # Exécution des migrations Prisma si activé
+    - name: Démarrer temporairement l'app pour les migrations
+      shell: |
+        cd {{ deploy_dir }} && docker compose up -d app
+      when: run_prisma_migrate | bool
+
+    - name: Attendre que l'application soit prête
+      shell: |
+        cd {{ deploy_dir }} && docker compose exec -T app wget --quiet --tries=1 --spider http://localhost:3000/api/health || sleep 5
+      retries: 10
+      delay: 3
+      ignore_errors: yes
+      when: run_prisma_migrate | bool
+
+    - name: Exécuter les migrations Prisma
+      shell: |
+        cd {{ deploy_dir }} && docker compose exec -T app {{ prisma_migrate_command }}
+      when: run_prisma_migrate | bool
+      ignore_errors: yes
+      register: migrate_result
+
+    - name: Afficher le résultat des migrations
+      debug:
+        var: migrate_result.stdout
+      when: run_prisma_migrate | bool and migrate_result.stdout is defined
+
+    - name: Redémarrer tous les services
+      shell: |
+        cd {{ deploy_dir }} && docker compose up -d
+
+    - name: Attendre que l'application soit accessible
+      uri:
+        url: "http://localhost:3000"
+        status_code: 200
+      register: app_health
+      until: app_health.status == 200
+      retries: 15
+      delay: 5
+      ignore_errors: yes
+
+    - name: Vérifier l'état des services
+      shell: |
+        cd {{ deploy_dir }} && docker compose ps
+      register: compose_status
+      changed_when: false
+
+    - name: Nettoyer les images Docker non utilisées
+      shell: |
+        docker system prune -f
+      ignore_errors: yes
+
+    - name: Afficher le récapitulatif du déploiement
+      debug:
+        msg:
+          - "=========================================="
+          - " Déploiement de Palenque terminé !"
+          - "=========================================="
+          - ""
+          - " Statut des services :"
+          - "{{ compose_status.stdout }}"
+          - ""
+          - "{% if run_prisma_migrate | bool %}"
+          - " Migrations Prisma : {% if migrate_result.rc == 0 %}OK{% else %}ÉCHEC (vérifiez les logs){% endif %}"
+          - "{% endif %}"
+          - ""
+          - " URL : https://palenquerincondelmar.co"
+          - ""
+          - " Commandes utiles :"
+          - "   cd {{ deploy_dir }} && docker compose logs -f app"
+          - "   cd {{ deploy_dir }} && docker compose ps"
+          - "=========================================="

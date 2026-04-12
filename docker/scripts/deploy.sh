@@ -7,10 +7,10 @@ set -e
 
 ENV=${1:-production}
 VPS_HOST=${VPS_HOST:-"51.178.136.181"}
-VPS_USER=${VPS_USER:-"ubuntu"}
+VPS_USER=${VPS_USER:-"henri"}
 PROJECT_NAME="hotel-palenque"
-DEPLOY_DIR="/opt/${PROJECT_NAME}"
-BACKUP_DIR="/opt/backups"
+DEPLOY_DIR="/opt/docker/apps/${PROJECT_NAME}"
+BACKUP_DIR="/opt/backups/${PROJECT_NAME}"
 
 # Couleurs pour les logs
 RED='\033[0;31m'
@@ -76,12 +76,14 @@ prepare_bundle() {
     
     DEPLOY_TMP=$(mktemp -d)
     
-    rsync -a --exclude='node_modules' \
+    rsync -avz -e 'ssh -i ~/.ssh/id_ed25519_vps_web_page -p 2222' \
+              --exclude='node_modules' \
               --exclude='.git' \
               --exclude='.next' \
               --exclude='*.log' \
               --exclude='.env.local' \
               --exclude='docker/dev' \
+                ${bundle_dir}/ ${VPS_USER}@${VPS_HOST}:${DEPLOY_DIR}/
               ./ ${DEPLOY_TMP}/ > /dev/null 2>&1
     
     echo "${DEPLOY_TMP}"
@@ -94,11 +96,11 @@ deploy_to_vps() {
     log_info "Déploiement vers ${VPS_HOST}..."
     
     # Création du répertoire de backup sur le VPS
-    ssh ${VPS_USER}@${VPS_HOST} "mkdir -p ${BACKUP_DIR} ${DEPLOY_DIR}"
+    ssh -i ~/.ssh/id_ed25519_vps_web_page -p 2222 ${VPS_USER}@${VPS_HOST} "mkdir -p ${BACKUP_DIR} ${DEPLOY_DIR}"
     
     # Backup de la version actuelle si elle existe
     log_info "Backup de la version actuelle..."
-    ssh ${VPS_USER}@${VPS_HOST} "
+    ssh -i ~/.ssh/id_ed25519_vps_web_page -p 2222 ${VPS_USER}@${VPS_HOST} "
         if [ -d ${DEPLOY_DIR}/.git ]; then
             cd ${DEPLOY_DIR} && \
             docker-compose -f docker/prod/docker-compose.yml down && \
@@ -111,6 +113,7 @@ deploy_to_vps() {
     rsync -avz --delete \
         --exclude='node_modules' \
         --exclude='.next' \
+        -e "ssh -i ~/.ssh/id_ed25519_vps_web_page -p 2222" \
         ${bundle_dir}/ ${VPS_USER}@${VPS_HOST}:${DEPLOY_DIR}/
 
     # AJOUTE CECI : Copier .env.production
@@ -118,7 +121,7 @@ deploy_to_vps() {
     
     # Déploiement sur le VPS
     log_info "Build et démarrage des conteneurs..."
-    ssh ${VPS_USER}@${VPS_HOST} "
+    ssh -i ~/.ssh/id_ed25519_vps_web_page -p 2222 ${VPS_USER}@${VPS_HOST} "
         cd ${DEPLOY_DIR} && \
         docker-compose -f docker/prod/docker-compose.yml down --remove-orphans && \
         docker-compose -f docker/prod/docker-compose.yml build --no-cache && \
@@ -147,7 +150,7 @@ deploy_to_vps() {
 # Rollback en cas d'échec
 rollback() {
     log_warn "Rollback demandé..."
-    ssh ${VPS_USER}@${VPS_HOST} "
+    ssh -i ~/.ssh/id_ed25519_vps_web_page -p 2222 ${VPS_USER}@${VPS_HOST} "
         cd ${DEPLOY_DIR} && \
         docker-compose -f docker/prod/docker-compose.yml down && \
         # Restauration du dernier backup

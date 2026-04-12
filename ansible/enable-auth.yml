@@ -1,0 +1,51 @@
+---
+# Activer l'authentification basique (.htaccess)
+
+- name: Activer l'authentification basique
+  hosts: palenque_server
+  remote_user: henri
+  port: 2222
+  vars:
+    deploy_dir: /opt/docker/apps/palenque
+    domain: palenquerincondelmar.co
+    htpasswd_login: palenque
+    htpasswd_password: palenque
+
+  tasks:
+    - name: Vérifier que le répertoire existe
+      stat:
+        path: "{{ deploy_dir }}"
+      register: deploy_dir_stat
+
+    - name: Arrêter si le répertoire n'existe pas
+      fail:
+        msg: "Le répertoire {{ deploy_dir }} n'existe pas."
+      when: not deploy_dir_stat.stat.exists
+
+    - name: Créer le fichier .htpasswd
+      shell: |
+        echo "{{ htpasswd_login }}:$(openssl passwd -apr1 {{ htpasswd_password }})" > {{ deploy_dir }}/nginx/.htpasswd
+      become: yes
+
+    - name: Déployer la configuration nginx AVEC authentification
+      template:
+        src: nginx-with-auth.conf.j2
+        dest: "{{ deploy_dir }}/nginx/default.conf"
+        owner: henri
+        group: henri
+        mode: '0644'
+      become: yes
+
+    - name: Recharger nginx
+      shell: |
+        cd {{ deploy_dir }} && docker compose exec nginx nginx -s reload
+      ignore_errors: yes
+
+    - name: Confirmation
+      debug:
+        msg:
+          - "✅ Authentification activée !"
+          - ""
+          - "URL : https://palenquerincondelmar.co"
+          - "Login : {{ htpasswd_login }}"
+          - "Mot de passe : {{ htpasswd_password }}"

@@ -1,0 +1,200 @@
+---
+# Playbook d'installation initiale de Palenque
+# Déployé sur : henri@57.129.104.225:2222
+# Domaine : palenquerincondelmar.co
+
+- name: Installation initiale de Palenque
+  hosts: palenque_server
+  remote_user: henri
+  port: 2222
+  become: yes
+  become_method: sudo
+  vars:
+    app_name: palenque
+    deploy_dir: /opt/docker/apps/palenque
+    domain: palenquerincondelmar.co
+    traefik_network: edu_proxy
+    htpasswd_login: palenque
+    htpasswd_password: palenque
+    db_user: "{{ vault_db_user | default('palenque_user') }}"
+    db_password: "{{ vault_db_password | default('changeme_strong_password') }}"
+    db_name: "{{ vault_db_name | default('palenque_db') }}"
+    redis_password: "{{ vault_redis_password | default('changeme_redis_pass') }}"
+    nextauth_secret: "{{ vault_nextauth_secret | default('changeme_nextauth_secret') }}"
+
+  tasks:
+    - name: Vérifier que le réseau Traefik existe
+      shell: "docker network inspect {{ traefik_network }}"
+      register: network_check
+      ignore_errors: yes
+      changed_when: false
+
+    - name: Arrêter si le réseau Traefik n'existe pas
+      fail:
+        msg: "Le réseau Docker '{{ traefik_network }}' n'existe pas sur le serveur. Vérifiez que Traefik est correctement configuré."
+      when: network_check.rc != 0
+
+    - name: Créer le répertoire de déploiement (avec sudo)
+      file:
+        path: "{{ deploy_dir }}"
+        state: directory
+        owner: henri
+        group: henri
+        mode: '0755'
+      become: yes
+
+    - name: Créer les sous-répertoires (avec sudo)
+      file:
+        path: "{{ deploy_dir }}/{{ item }}"
+        state: directory
+        owner: henri
+        group: henri
+        mode: '0755'
+      loop:
+        - nginx
+        - ssl
+        - backups
+        - logs/nginx
+        - source
+      become: yes
+
+    - name: Créer le fichier .htpasswd pour l'authentification basique (avec openssl)
+      shell: |
+        echo "{{ htpasswd_login }}:$(openssl passwd -apr1 {{ htpasswd_password }})" > {{ deploy_dir }}/nginx/.htpasswd
+      args:
+        creates: "{{ deploy_dir }}/nginx/.htpasswd"
+      become: yes
+
+    - name: Déployer le docker-compose.yml
+      template:
+        src: docker-compose.yml.j2
+        dest: "{{ deploy_dir }}/docker-compose.yml"
+        owner: henri
+        group: henri
+        mode: '0644'
+
+    - name: Déployer la configuration nginx (SANS auth pour certificats SSL)
+      template:
+        src: nginx-no-auth.conf.j2
+        dest: "{{ deploy_dir }}/nginx/default.conf"
+        owner: henri
+        group: henri
+        mode: '0644'
+
+    - name: Déployer le fichier .env.production
+      template:
+        src: env.production.j2
+        dest: "{{ deploy_dir }}/.env.production"
+        owner: henri
+        group: henri
+        mode: '0600'
+
+    - name: Copier les sources de l'application depuis la machine locale
+      synchronize:
+        src: "{{ playbook_dir }}/../"
+        dest: "{{ deploy_dir }}/source/"
+        rsync_opts:
+          - "--exclude=.git"
+          - "--exclude=node_modules"
+          - "--exclude=.next"
+          - "--exclude=ansible"
+          - "--exclude=*.log"
+          - "--exclude=.env.local"
+          - "--exclude=.env.development"
+        delete: yes
+      become: no
+      delegate_to: localhost
+
+    - name: S'assurer que Docker est démarré
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Pull de l'image PostgreSQL
+      shell: "docker pull postgres:15-alpine"
+      changed_when: true
+
+    - name: Pull de l'image Redis
+      shell: "docker pull redis:7-alpine"
+      changed_when: true
+
+    - name: Pull de l'image Nginx
+      shell: "docker pull nginx:alpine"
+      changed_when: true
+
+    - name: Démarrer les services (sans l'app pour l'instant)
+      shell: |
+        cd {{ deploy_dir }} && docker compose up -d postgres redis
+
+    - name: Attendre que PostgreSQL soit prêt
+      shell: |
+        cd {{ deploy_dir }} && docker compose exec -T postgres pg_isready -U {{ db_user }} -d {{ db_name }}
+      register: pg_ready
+      until: pg_ready.rc == 0
+      retries: 10
+      delay: 3
+      ignore_errors: yes
+
+    - name: Construire l'image de l'application
+      shell: |
+        cd {{ deploy_dir }} && docker compose build app
+      args:
+        chdir: "{{ deploy_dir }}"
+
+    - name: Démarrer tous les services (app + nginx)
+      shell: |
+        cd {{ deploy_dir }} && docker compose up -d
+
+    - name: Attendre que l'application soit accessible
+      uri:
+        url: "http://localhost:3000"
+        status_code: 200
+      register: app_health
+      until: app_health.status == 200
+      retries: 15
+      delay: 5
+      ignore_errors: yes
+
+    - name: Pause pour la génération des certificats SSL (30 secondes)
+      pause:
+        seconds: 30
+        prompt: "Attente de la génération des certificats SSL par Traefik..."
+
+    - name: Vérifier que les certificats sont générés
+      shell: |
+        docker logs traefik 2>&1 | grep -i "certificate" | tail -5 || echo "Vérifiez manuellement les certificats"
+      ignore_errors: yes
+      changed_when: false
+
+    - name: Déployer la configuration nginx AVEC authentification basique
+      template:
+        src: nginx-with-auth.conf.j2
+        dest: "{{ deploy_dir }}/nginx/default.conf"
+        owner: henri
+        group: henri
+        mode: '0644'
+
+    - name: Recharger la configuration nginx
+      shell: |
+        cd {{ deploy_dir }} && docker compose exec nginx nginx -s reload
+      ignore_errors: yes
+
+    - name: Afficher le récapitulatif
+      debug:
+        msg:
+          - "=========================================="
+          - " Installation de Palenque terminée !"
+          - "=========================================="
+          - ""
+          - " URL : https://{{ domain }}"
+          - " Login : {{ htpasswd_login }}"
+          - " Mot de passe : {{ htpasswd_password }}"
+          - ""
+          - " Répertoire : {{ deploy_dir }}"
+          - " Réseau Traefik : {{ traefik_network }}"
+          - ""
+          - " Commandes utiles :"
+          - "   cd {{ deploy_dir }} && docker compose ps"
+          - "   cd {{ deploy_dir }} && docker compose logs -f app"
+          - "=========================================="

@@ -1,0 +1,13 @@
+---
+# Inventory pour le déploiement de Palenque
+# Serveur : henri@57.129.104.225:2222
+
+all:
+  children:
+    palenque_server:
+      hosts:
+        57.129.104.225:
+          ansible_user: henri
+          ansible_port: 2222
+          # Ou si vous utilisez un mot de passe SSH :
+          # ansible_ssh_pass: votre_mot_de_passe

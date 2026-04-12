@@ -1,0 +1,25 @@
+---
+# ==========================================
+# Variables de vault - EXEMPLE
+# ==========================================
+# Copiez ce fichier en vault.yml et remplissez vos vraies valeurs
+# Puis chiffrez-le avec : ansible-vault encrypt vault.yml
+
+# Base de données
+vault_db_user: palenque_user
+vault_db_password: "Jp4k8Wq2Nz7rTx5mLc9vHd3sBy6fRu1a"
+vault_db_name: palenque_db
+
+# Redis
+vault_redis_password: "aUMQBKAaik1PLDgiRPxT8lrgeCVNb8cZfY84Bnj4euY="
+
+# NextAuth
+vault_nextauth_secret: "Vzt0GEnXfXDoYNYQqYgudJMLHxQxwve2qMEtXo26ZxmmXH0tabf6g7HlcFrbmd22vfIA/j/4aINZ3Ckn1Wxn1A=="
+
+# Déploiement Git (optionnel)
+vault_use_git: false
+vault_git_repo: "https://github.com/votre-user/palenque.git"
+vault_git_branch: "main"
+
+# Migrations Prisma (désactivé par défaut, activer si vous utilisez Prisma)
+vault_run_prisma_migrate: false

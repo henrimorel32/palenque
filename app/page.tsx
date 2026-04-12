@@ -1,9 +1,27 @@
 // app/page.tsx
+import type { Metadata } from 'next'
 import HeroParallax from '@/components/HeroParallax'
+import { generateMetadata as generateI18nMetadata, generateStructuredData } from '@/lib/i18n/metadata'
+import { Locale } from '@/lib/i18n/translations'
+
+// Métadonnées dynamiques pour SEO
+export async function generateMetadata(): Promise<Metadata> {
+  // Par défaut en espagnol pour la racine
+  return generateI18nMetadata('home', 'es')
+}
 
 export default function InicioPage() {
+  // JSON-LD pour Rich Snippets
+  const structuredData = generateStructuredData('home', 'es')
+  
   return (
     <>
+      {/* Structured Data pour Google Rich Snippets */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      
       <HeroParallax />
       
       <section className="py-20 bg-white">
