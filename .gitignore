@@ -86,3 +86,4 @@ tmp
 *.tmp
 
 *./ansible/group_vars/all/vault.yml.example
+/ansible/group_vars/all/vault.yml
