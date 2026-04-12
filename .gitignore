@@ -90,3 +90,4 @@ tmp
 ansible/group_vars/all/vault.yml.example
 /ansible/templates
 ansible/templates/env.production.j2
+ansible/README.md
