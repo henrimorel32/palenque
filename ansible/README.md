@@ -178,3 +178,4 @@ docker-compose logs postgres
 - Les backups de BDD sont dans `/opt/docker/apps/palenque/backups/`
 - Le `.htpasswd` est généré automatiquement avec `palenque`/`palenque`
 - Pensez à changer le mot de passe en production !
+
