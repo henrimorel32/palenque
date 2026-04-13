@@ -1,8 +1,14 @@
 // app/page.tsx
 import type { Metadata } from 'next'
 import HeroParallax from '@/components/HeroParallax'
+import WelcomeSection from '@/components/WelcomeSection'
+import FeaturesSection from '@/components/FeaturesSection'
+import RoomsSection from '@/components/RoomsSection'
+import ServicesSection from '@/components/ServicesSection'
+import GallerySection from '@/components/GallerySection'
+import TestimonialsSection from '@/components/TestimonialsSection'
+import CTASection from '@/components/CTASection'
 import { generateMetadata as generateI18nMetadata, generateStructuredData } from '@/lib/i18n/metadata'
-import { Locale } from '@/lib/i18n/translations'
 
 // Métadonnées dynamiques pour SEO
 export async function generateMetadata(): Promise<Metadata> {
@@ -22,19 +28,29 @@ export default function InicioPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       
-      <HeroParallax />
+      {/* Hero avec effet parallax */}
+      <HeroParallax locale="es" />
       
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6 text-gray-900">
-            Bienvenido al Paraíso Caribeño
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Descubre la magia de palenque en nuestro Eco hotel. 
-            Playas de arena blanca, aguas cristalinas y el mejor servicio.
-          </p>
-        </div>
-      </section>
+      {/* Section Bienvenue */}
+      <WelcomeSection locale="es" />
+      
+      {/* Section Caractéristiques */}
+      <FeaturesSection locale="es" />
+      
+      {/* Section Chambres */}
+      <RoomsSection locale="es" />
+      
+      {/* Section Services */}
+      <ServicesSection locale="es" />
+      
+      {/* Section Galerie */}
+      <GallerySection locale="es" />
+      
+      {/* Section Témoignages */}
+      <TestimonialsSection locale="es" />
+      
+      {/* Section CTA */}
+      <CTASection locale="es" />
     </>
   )
 }

@@ -21,11 +21,11 @@ export const routeTranslations: Record<string, Record<Locale, string>> = {
     en: 'restaurant',
     fr: 'restaurant',
   },
-  // Spa
-  spa: {
-    es: 'spa',
-    en: 'spa',
-    fr: 'spa',
+  // Como llegar / Directions
+  directions: {
+    es: 'como-llegar',
+    en: 'directions',
+    fr: 'acces',
   },
   // Actividades
   actividades: {
@@ -114,7 +114,7 @@ export const allRoutes = [
   { path: '/', priority: 1.0, changeFreq: 'daily' },
   { path: '/habitaciones', priority: 0.9, changeFreq: 'weekly' },
   { path: '/restaurante', priority: 0.8, changeFreq: 'weekly' },
-  { path: '/spa', priority: 0.8, changeFreq: 'weekly' },
+  { path: '/como-llegar', priority: 0.8, changeFreq: 'monthly' },
   { path: '/actividades', priority: 0.7, changeFreq: 'weekly' },
   { path: '/contacto', priority: 0.6, changeFreq: 'monthly' },
   { path: '/terminos', priority: 0.3, changeFreq: 'yearly' },

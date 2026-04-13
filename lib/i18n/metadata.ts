@@ -4,7 +4,7 @@ import { Locale } from './translations'
 import { getTranslations } from './utils'
 import { generateLocalizedUrl } from './routes'
 
-type MetaPage = 'home' | 'rooms' | 'restaurant' | 'spa' | 'activities' | 'contact'
+type MetaPage = 'home' | 'rooms' | 'restaurant' | 'directions' | 'activities' | 'contact'
 
 const pageMetadata: Record<MetaPage, Record<Locale, { title: string; description: string }>> = {
   home: {
@@ -49,18 +49,18 @@ const pageMetadata: Record<MetaPage, Record<Locale, { title: string; description
       description: 'Dégustez une cuisine caraïbe authentique avec des ingrédients locaux frais. Vue sur la mer, ambiance romantique et les meilleures saveurs de la région.',
     },
   },
-  spa: {
+  directions: {
     es: {
-      title: 'Spa & Bienestar - Palenque Eco Hotel',
-      description: 'Relájate en nuestro spa con tratamientos naturales, masajes terapéuticos y vistas al océano. Un santuario de bienestar en medio de la naturaleza.',
+      title: 'Cómo Llegar - Ubicación | Palenque Eco Hotel',
+      description: 'Encuentra cómo llegar a Palenque Eco Hotel. A 45 minutos de Cartagena, en la costa caribe colombiana. Dirección, coordenadas GPS y opciones de transporte.',
     },
     en: {
-      title: 'Spa & Wellness - Palenque Eco Hotel',
-      description: 'Relax at our spa with natural treatments, therapeutic massages and ocean views. A wellness sanctuary in the heart of nature.',
+      title: 'How to Get There - Location | Palenque Eco Hotel',
+      description: 'Find how to get to Palenque Eco Hotel. 45 minutes from Cartagena, on the Colombian Caribbean coast. Address, GPS coordinates and transport options.',
     },
     fr: {
-      title: 'Spa & Bien-être - Palenque Eco Hotel',
-      description: 'Détendez-vous dans notre spa avec des soins naturels, des massages thérapeutiques et vue sur l\'océan. Un sanctuaire de bien-être au cœur de la nature.',
+      title: 'Comment Arriver - Accès | Palenque Eco Hotel',
+      description: 'Trouvez comment arriver au Palenque Eco Hotel. À 45 minutes de Carthagène, sur la côte caraïbe colombienne. Adresse, coordonnées GPS et options de transport.',
     },
   },
   activities: {

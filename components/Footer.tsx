@@ -4,7 +4,6 @@
 import { usePathname } from 'next/navigation'
 import { 
   MapPin, 
-  Phone, 
   Mail, 
   MessageCircle,
   Waves,
@@ -37,7 +36,7 @@ export default function Footer() {
     { name: t.nav.home, href: generateLocalizedUrl('/', locale) },
     { name: t.nav.rooms, href: generateLocalizedUrl('/habitaciones', locale) },
     { name: t.nav.restaurant, href: generateLocalizedUrl('/restaurante', locale) },
-    { name: t.nav.spa, href: generateLocalizedUrl('/spa', locale) },
+    { name: t.nav.directions, href: `/${locale === 'es' ? 'como-llegar' : locale === 'en' ? 'directions' : 'acces'}` },
     { name: t.nav.activities, href: generateLocalizedUrl('/actividades', locale) },
     { name: t.nav.contact, href: generateLocalizedUrl('/contacto', locale) },
   ]
@@ -160,11 +159,13 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="tel:+5751234567"
-                    className="text-stone-400 hover:text-yellow-400 text-sm transition-colors duration-200 flex items-center gap-3 group"
+                    href="https://wa.me/573147480855"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-stone-400 hover:text-green-400 text-sm transition-colors duration-200 flex items-center gap-3 group"
                   >
-                    <Phone className="w-5 h-5 text-yellow-400 shrink-0" />
-                    +57 5 123 4567
+                    <MessageCircle className="w-5 h-5 text-green-400 shrink-0" />
+                    WhatsApp +57 314 748 0855
                   </a>
                 </li>
                 <li>
@@ -173,18 +174,7 @@ export default function Footer() {
                     className="text-stone-400 hover:text-yellow-400 text-sm transition-colors duration-200 flex items-center gap-3 group"
                   >
                     <Mail className="w-5 h-5 text-yellow-400 shrink-0" />
-                    info@palenquerincondelmar.co
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://wa.me/5751234567"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-stone-400 hover:text-green-400 text-sm transition-colors duration-200 flex items-center gap-3 group"
-                  >
-                    <MessageCircle className="w-5 h-5 text-green-400 shrink-0" />
-                    WhatsApp
+                    info@palenque.co
                   </a>
                 </li>
               </ul>

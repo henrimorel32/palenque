@@ -40,7 +40,7 @@ export default function Navbar() {
     { name: t.nav.home, href: generateLocalizedUrl('/', locale) },
     { name: t.nav.rooms, href: generateLocalizedUrl('/habitaciones', locale) },
     { name: t.nav.restaurant, href: generateLocalizedUrl('/restaurante', locale) },
-    { name: t.nav.spa, href: generateLocalizedUrl('/spa', locale) },
+    { name: t.nav.directions, href: `/${locale === 'es' ? 'como-llegar' : locale === 'en' ? 'directions' : 'acces'}` },
     { name: t.nav.activities, href: generateLocalizedUrl('/actividades', locale) },
     { name: t.nav.contact, href: generateLocalizedUrl('/contacto', locale) },
   ]
@@ -76,9 +76,9 @@ export default function Navbar() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-6 text-yellow-950">
-                <a href="https://wa.me/573001234567" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors font-medium">
+                <a href="https://wa.me/573147480855" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors font-medium">
                   <Phone className="w-4 h-4" />
-                  <span>+57 5 123 4567</span>
+                  <span>+57 314 748 08 55</span>
                 </a>
                 <a 
                   href="https://maps.google.com/?q=9.773722,-75.645361" 
@@ -164,7 +164,7 @@ export default function Navbar() {
             {/* CTA - WhatsApp */}
             <div className="hidden lg:flex items-center">
               <a
-                href="https://wa.me/5751234567"
+                href="https://wa.me/573147480855"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`flex items-center gap-2 px-5 py-3 text-sm font-semibold rounded-xl transition-all duration-300 ${
@@ -252,7 +252,7 @@ export default function Navbar() {
 
             {/* Contact rapide */}
             <div className="px-6 py-4 border-b border-gray-100">
-              <a href="https://wa.me/573001234567" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-700">
+              <a href="https://wa.me/573147480855" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-700">
                 <MessageCircle className="w-5 h-5 text-green-600" />
                 <span className="font-semibold">WhatsApp</span>
               </a>
