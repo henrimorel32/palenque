@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next'
 import { Locale } from '@/lib/i18n/translations'
 import { allRoutes, generateLocalizedUrl } from '@/lib/i18n/routes'
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://palenque.co'
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://palenquerincondelmar.co'
 const locales: Locale[] = ['es', 'en', 'fr']
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -25,9 +25,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(),
         changeFrequency: route.changeFreq as 'daily' | 'weekly' | 'monthly' | 'yearly',
         priority: route.priority,
-        alternates: {
-          languages: alternates,
-        },
       })
     })
   })
