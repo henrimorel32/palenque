@@ -799,6 +799,12 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
   const roomsSectionRef = useRef<HTMLElement>(null);
   const [activeRoomIndex, setActiveRoomIndex] = useState(0);
   const [showNav, setShowNav] = useState(false);
+  const [isSafari, setIsSafari] = useState(false);
+
+  useEffect(() => {
+    const safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    setIsSafari(safari);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -839,21 +845,21 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
       <section className="relative h-[150vh] bg-stone-950">
         <motion.div
           style={{ scale, borderRadius }}
-          className="sticky top-0 h-screen w-full overflow-hidden z-20 will-change-transform shadow-2xl"
+          className={`sticky top-0 h-screen w-full z-20 will-change-transform shadow-2xl flex items-center justify-center ${isSafari ? 'bg-black' : 'overflow-hidden'}`}
         >
           <video
             autoPlay
             muted
             loop
             playsInline
-            className="w-full h-full object-cover"
+            className={`transition-all duration-500 ${isSafari ? 'w-[75%] max-w-[1200px] aspect-video object-cover rounded-2xl' : 'w-full h-full object-cover'}`}
           >
             <source src="/images/output-hero.mp4" type="video/mp4" />
             <source src="/images/output-hero.webm" type="video/webm" />
           </video>
           
           {/* Overlay sombre pour la lisibilité */}
-          <div className="absolute inset-0 bg-black/40" />
+          <div className={`bg-black/40 ${isSafari ? 'absolute inset-[12.5%] xl:inset-x-[calc(50%-600px)] rounded-2xl' : 'absolute inset-0'}`} />
           
           {/* Contenu */}
           <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8">
