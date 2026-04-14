@@ -848,6 +848,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             playsInline
             className="w-full h-full object-cover"
           >
+            <source src="/images/output-hero.mp4" type="video/mp4" />
             <source src="/images/output-hero.webm" type="video/webm" />
           </video>
           
