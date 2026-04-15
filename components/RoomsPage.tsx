@@ -8,6 +8,7 @@ import {
   Phone, Calendar, Sparkles, Heart
 } from 'lucide-react';
 import { Locale } from '@/lib/i18n/translations';
+import VideoLoader from '@/components/VideoLoader';
 
 interface RoomsPageProps {
   locale: Locale;
@@ -15,6 +16,8 @@ interface RoomsPageProps {
 
 export default function RoomsPage({ locale }: RoomsPageProps) {
   const [selectedRoom, setSelectedRoom] = useState<number | null>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const content = {
     es: {
@@ -839,6 +842,17 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
     window.scrollTo({ top: targetY, behavior: 'smooth' });
   };
 
+  useEffect(() => {
+    // Si la vidéo est déjà prête (cache), on cache le loader immédiatement
+    if (videoRef.current && videoRef.current.readyState >= 3) {
+      setVideoLoaded(true);
+      return;
+    }
+    // Timeout de secours pour ne pas bloquer l'UI si l'événement est manqué
+    const timeout = setTimeout(() => setVideoLoaded(true), 2500);
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
     <>
       {/* Hero - Vidéo immersive qui rétrécit au scroll */}
@@ -847,11 +861,16 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
           style={{ scale, borderRadius }}
           className={`sticky top-0 h-screen w-full z-20 will-change-transform shadow-2xl flex items-center justify-center ${isSafari ? 'bg-black' : 'overflow-hidden'}`}
         >
+          <VideoLoader isLoading={!videoLoaded} locale={locale} />
           <video
+            ref={videoRef}
             autoPlay
             muted
             loop
             playsInline
+            preload="auto"
+            onLoadedData={() => setVideoLoaded(true)}
+            onCanPlay={() => setVideoLoaded(true)}
             className={`transition-all duration-500 ${isSafari ? 'w-[75%] max-w-[1200px] aspect-video object-cover rounded-2xl' : 'w-full h-full object-cover'}`}
           >
             <source src="/images/output-hero.mp4" type="video/mp4" />

@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-mot
 import { Locale } from '@/lib/i18n/translations';
 import { getTranslations } from '@/lib/i18n/utils';
 import { usePathname } from 'next/navigation';
+import VideoLoader from './VideoLoader';
 
 interface HeroParallaxProps {
   locale?: Locale;
@@ -39,7 +40,9 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
   const [isScrolling, setIsScrolling] = useState(false);
   const [videoSupported, setVideoSupported] = useState(false);
   const [videoVisible, setVideoVisible] = useState(true);
+  const [videoLoaded, setVideoLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const scrollTimeoutRef = useRef<NodeJS.Timeout>();
   
   const { scrollYProgress } = useScroll({
@@ -61,6 +64,17 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
     
     setVideoSupported(!isMobile && !isSafari && supportsWebm);
   }, []);
+
+  // Timeout de secours pour le loader vidéo
+  useEffect(() => {
+    if (!videoSupported) return;
+    if (videoRef.current && videoRef.current.readyState >= 3) {
+      setVideoLoaded(true);
+      return;
+    }
+    const timeout = setTimeout(() => setVideoLoaded(true), 2500);
+    return () => clearTimeout(timeout);
+  }, [videoSupported]);
 
   // Calcule l'index de l'image basé sur le scroll progress
   const numImages = images.length;
@@ -138,11 +152,16 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
               transition={{ duration: 0.8, ease: "easeInOut" }}
               style={{ pointerEvents: videoVisible ? 'auto' : 'none' }}
             >
+              <VideoLoader isLoading={!videoLoaded} locale={locale} />
               <video
+                ref={videoRef}
                 autoPlay
                 muted
                 playsInline
+                preload="auto"
                 onEnded={() => setVideoVisible(false)}
+                onLoadedData={() => setVideoLoaded(true)}
+                onCanPlay={() => setVideoLoaded(true)}
                 className="absolute inset-0 w-full h-full object-cover"
                 style={{ filter: 'brightness(1.05) saturate(1.1)' }}
               >
