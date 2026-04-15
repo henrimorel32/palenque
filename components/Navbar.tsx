@@ -38,7 +38,7 @@ export default function Navbar() {
   // Génère les liens avec les URLs localisées
   const navLinks = [
     { name: t.nav.home, href: generateLocalizedUrl('/', locale) },
-    { name: t.nav.rooms, href: generateLocalizedUrl('/habitaciones', locale) },
+    { name: t.nav.rooms, href: `/${locale === 'es' ? 'habitaciones' : locale === 'en' ? 'en/rooms' : 'fr/chambres'}` },
     { name: t.nav.restaurant, href: generateLocalizedUrl('/restaurante', locale) },
     { name: t.nav.directions, href: `/${locale === 'es' ? 'como-llegar' : locale === 'en' ? 'directions' : 'acces'}` },
     { name: t.nav.activities, href: generateLocalizedUrl('/actividades', locale) },

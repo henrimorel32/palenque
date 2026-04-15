@@ -37,6 +37,8 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
   
   const [currentImage, setCurrentImage] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [videoSupported, setVideoSupported] = useState(false);
+  const [videoVisible, setVideoVisible] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollTimeoutRef = useRef<NodeJS.Timeout>();
   
@@ -44,6 +46,21 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
     target: containerRef,
     offset: ["start start", "end end"]
   });
+
+  // Détecte si on peut utiliser la vidéo webm
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof navigator === 'undefined') return;
+    
+    const isMobile = /iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                     (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    const video = document.createElement('video');
+    const supportsWebm = video.canPlayType('video/webm; codecs="vp8, vorbis"') !== '' ||
+                         video.canPlayType('video/webm; codecs="vp9"') !== '' ||
+                         video.canPlayType('video/webm') !== '';
+    
+    setVideoSupported(!isMobile && !isSafari && supportsWebm);
+  }, []);
 
   // Calcule l'index de l'image basé sur le scroll progress
   const numImages = images.length;
@@ -112,6 +129,30 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
       <div className="h-[400vh]">
         <div className="sticky top-0 h-screen w-full overflow-hidden bg-gray-900">
           
+          {/* Vidéo de fond */}
+          {videoSupported && (
+            <motion.div
+              className="absolute inset-0 w-full h-full z-20"
+              initial={{ opacity: 1 }}
+              animate={{ opacity: videoVisible ? 1 : 0 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              style={{ pointerEvents: videoVisible ? 'auto' : 'none' }}
+            >
+              <video
+                autoPlay
+                muted
+                playsInline
+                onEnded={() => setVideoVisible(false)}
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{ filter: 'brightness(1.05) saturate(1.1)' }}
+              >
+                <source src="/images/outputHome.webm" type="video/webm" />
+              </video>
+              <div className="absolute inset-0 bg-black/30" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.3)_100%)]" />
+            </motion.div>
+          )}
+
           {/* Images avec transition crossfade */}
           {images.map((img, index) => (
             <motion.div
@@ -141,6 +182,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
           ))}
 
           {/* Progress bar verticale */}
+          {(!videoSupported || !videoVisible) && (
           <div className="absolute right-6 top-1/2 transform -translate-y-1/2 w-1 h-48 bg-white/20 rounded-full overflow-hidden">
             <motion.div 
               className="w-full bg-yellow-400 rounded-full"
@@ -150,8 +192,10 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
               }}
             />
           </div>
+          )}
 
           {/* Navigation latérale numérotée */}
+          {(!videoSupported || !videoVisible) && (
           <div className="absolute right-8 top-1/2 transform -translate-y-1/2 flex flex-col gap-3">
             {images.map((img, index) => (
               <button
@@ -177,6 +221,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
               </button>
             ))}
           </div>
+          )}
 
           {/* Contenu principal */}
           <motion.div 
@@ -244,6 +289,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
           </motion.div>
 
           {/* Compteur */}
+          {(!videoSupported || !videoVisible) && (
           <div className="absolute bottom-8 left-8 flex items-center gap-2 text-white/70 font-mono text-sm">
             <span className="text-yellow-400 font-bold text-xl">
               {String(currentImage + 1).padStart(2, '0')}
@@ -251,6 +297,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
             <span className="text-white/30">/</span>
             <span>{String(numImages).padStart(2, '0')}</span>
           </div>
+          )}
         </div>
       </div>
 

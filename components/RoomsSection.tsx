@@ -142,7 +142,7 @@ export default function RoomsSection({ locale }: RoomsSectionProps) {
           className="text-center mt-12"
         >
           <a
-            href={generateLocalizedUrl('/habitaciones', locale)}
+            href={`/${locale === 'es' ? 'habitaciones' : locale === 'en' ? 'en/rooms' : 'fr/chambres'}`}
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-stone-900 to-stone-800 text-white rounded-full font-semibold hover:from-stone-800 hover:to-stone-700 transition-all duration-300 group shadow-lg shadow-stone-900/20"
           >
             {t.home.rooms.cta}
