@@ -5,21 +5,19 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { 
   Moon, Star, Wind, Waves, Wifi, Coffee, Droplets, Sun,
   BedDouble, Bath, Tv, Snowflake, ChevronRight, CheckCircle2,
-  Phone, Calendar, Sparkles, Heart
+  Phone, Calendar, Sparkles, Heart, Compass, CloudMoon
 } from 'lucide-react';
 import { Locale } from '@/lib/i18n/translations';
 import VideoLoader from '@/components/VideoLoader';
+import RoomImageCarousel from '@/components/RoomImageCarousel';
+import RoomImageLightbox from '@/components/RoomImageLightbox';
+import Image from 'next/image';
 
 interface RoomsPageProps {
   locale: Locale;
 }
 
-export default function RoomsPage({ locale }: RoomsPageProps) {
-  const [selectedRoom, setSelectedRoom] = useState<number | null>(null);
-  const [videoLoaded, setVideoLoaded] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const content = {
+const content = {
     es: {
       hero: {
         badge: 'Descanso Perfecto',
@@ -47,7 +45,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Snowflake, label: 'A/C' }
           ],
           color: 'from-amber-400 to-orange-500',
-          bestFor: 'Luna de miel o escapada romántica'
+          bestFor: 'Luna de miel o escapada romántica',
+          images: ['/images/apu/apu1.webp', '/images/apu/apu2.webp', '/images/apu/apu3.webp', '/images/apu/apu4.webp', '/images/apu/apu5.webp', '/images/apu/apu6.webp'],
+          thumbnail: '/images/apu/apu1.webp'
         },
         {
           id: 2,
@@ -64,7 +64,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Bath, label: 'Tina con vista' }
           ],
           color: 'from-blue-400 to-cyan-500',
-          bestFor: 'Estancias prolongadas'
+          bestFor: 'Estancias prolongadas',
+          images: ['/images/usukulu/usukulu1.webp', '/images/usukulu/usukulu2.webp'],
+          thumbnail: '/images/usukulu/usukulu1.webp'
         },
         {
           id: 3,
@@ -98,7 +100,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Desayuno' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Viajeros conscientes'
+          bestFor: 'Viajeros conscientes',
+          images: ['/images/sambuli/sambuli1.webp', '/images/sambuli/sambuli2.webp', '/images/sambuli/sambuli3.webp', '/images/sambuli/sambuli4.webp'],
+          thumbnail: '/images/sambuli/sambuli1.webp'
         },
         {
           id: 5,
@@ -115,7 +119,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Desayuno' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Viajeros conscientes'
+          bestFor: 'Viajeros conscientes',
+          images: ['/images/kombelisa/kombelisa1.webp', '/images/kombelisa/kombelisa2.webp', '/images/kombelisa/kombelisa3.webp', '/images/kombelisa/kombelisa4.webp'],
+          thumbnail: '/images/kombelisa/kombelisa1.webp'
         },
         {
           id: 6,
@@ -132,7 +138,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Desayuno' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Viajeros conscientes'
+          bestFor: 'Viajeros conscientes',
+          images: ['/images/amalaya/amalaya1.webp', '/images/amalaya/amalaya2.webp'],
+          thumbnail: '/images/amalaya/amalaya1.webp'
         },
         {
           id: 7,
@@ -149,7 +157,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Desayuno' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Viajeros conscientes'
+          bestFor: 'Viajeros conscientes',
+          images: ['/images/pekao/pekao1.webp', '/images/pekao/pekao2.webp', '/images/pekao/pekao3.webp', '/images/pekao/pekao4.webp'],
+          thumbnail: '/images/pekao/pekao1.webp'
         },
         {
           id: 8,
@@ -166,7 +176,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Desayuno' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Viajeros conscientes'
+          bestFor: 'Viajeros conscientes',
+          images: ['/images/kolaso/kolaso1.webp', '/images/kolaso/kolaso2.webp', '/images/kolaso/kolaso3.webp', '/images/kolaso/kolaso4.webp', '/images/kolaso/kolaso5.webp', '/images/kolaso/kolaso6.webp'],
+          thumbnail: '/images/kolaso/kolaso1.webp'
         },
         {
           id: 9,
@@ -183,7 +195,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Desayuno' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Viajeros conscientes'
+          bestFor: 'Viajeros conscientes',
+          images: ['/images/abalenga/abalenga1.webp', '/images/abalenga/abalenga2.webp', '/images/abalenga/abalenga3.webp', '/images/abalenga/abalenga4.webp'],
+          thumbnail: '/images/abalenga/abalenga1.webp'
         },
         {
           id: 10,
@@ -200,7 +214,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Desayuno' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Viajeros conscientes'
+          bestFor: 'Viajeros conscientes',
+          images: ['/images/makunguri/makunguri1.webp', '/images/makunguri/makunguri2.webp', '/images/makunguri/makunguri3.webp', '/images/makunguri/makunguri4.webp'],
+          thumbnail: '/images/makunguri/makunguri1.webp'
         },
         {
           id: 11,
@@ -217,7 +233,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Desayuno' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Viajeros conscientes'
+          bestFor: 'Viajeros conscientes',
+          images: ['/images/eskurana/eskurana1.webp', '/images/eskurana/eskurana2.webp', '/images/eskurana/eskurana3.webp', '/images/eskurana/eskurana4.webp'],
+          thumbnail: '/images/eskurana/eskurana1.webp'
         },
         {
           id: 12,
@@ -234,7 +252,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Desayuno' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Viajeros conscientes'
+          bestFor: 'Viajeros conscientes',
+          images: ['/images/makano/makano1.webp', '/images/makano/makano2.webp', '/images/makano/makano3.webp', '/images/makano/makano4.webp'],
+          thumbnail: '/images/makano/makano1.webp'
         },
         {
           id: 13,
@@ -251,7 +271,8 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Desayuno' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Viajeros conscientes'
+          images: ['/images/asinaria/asinaria1.webp', '/images/asinaria/asinaria2.webp', '/images/asinaria/asinaria3.webp'],
+          thumbnail: '/images/asinaria/asinaria1.webp',
         }
       ],
       features: {
@@ -275,6 +296,16 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
         desc: 'Reserva directamente y obtén el mejor precio garantizado, desayuno incluido y late check-out disponible.',
         button: 'Reservar habitación',
         subtext: 'Cancelación gratuita hasta 48h antes'
+      },
+      sectionViajero: {
+        title: 'Viajero',
+        subtitle: 'Para el alma aventurera que busca experiencias únicas',
+        cta: 'Ver habitaciones Viajero'
+      },
+      sectionReposo: {
+        title: 'Reposo',
+        subtitle: 'Para quien busca descanso profundo y reconexión',
+        cta: 'Ver habitaciones Reposo'
       }
     },
     en: {
@@ -304,7 +335,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Snowflake, label: 'A/C' }
           ],
           color: 'from-amber-400 to-orange-500',
-          bestFor: 'Honeymoon or romantic getaway'
+          bestFor: 'Honeymoon or romantic getaway',
+          images: ['/images/apu/apu1.webp', '/images/apu/apu2.webp', '/images/apu/apu3.webp', '/images/apu/apu4.webp', '/images/apu/apu5.webp', '/images/apu/apu6.webp'],
+          thumbnail: '/images/apu/apu1.webp'
         },
         {
           id: 2,
@@ -321,7 +354,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Bath, label: 'Bathtub with view' }
           ],
           color: 'from-blue-400 to-cyan-500',
-          bestFor: 'Extended stays'
+          bestFor: 'Extended stays',
+          images: ['/images/usukulu/usukulu1.webp', '/images/usukulu/usukulu2.webp'],
+          thumbnail: '/images/usukulu/usukulu1.webp',
         },
         {
           id: 3,
@@ -355,7 +390,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Breakfast' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Conscious travelers'
+          bestFor: 'Conscious travelers',
+          images: ['/images/sambuli/sambuli1.webp', '/images/sambuli/sambuli2.webp', '/images/sambuli/sambuli3.webp', '/images/sambuli/sambuli4.webp'],
+          thumbnail: '/images/sambuli/sambuli1.webp'
         },
         {
           id: 5,
@@ -372,7 +409,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Breakfast' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Conscious travelers'
+          bestFor: 'Conscious travelers',
+          images: ['/images/kombelisa/kombelisa1.webp', '/images/kombelisa/kombelisa2.webp', '/images/kombelisa/kombelisa3.webp', '/images/kombelisa/kombelisa4.webp'],
+          thumbnail: '/images/kombelisa/kombelisa1.webp'
         },
         {
           id: 6,
@@ -389,7 +428,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Breakfast' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Conscious travelers'
+          bestFor: 'Conscious travelers',
+          images: ['/images/amalaya/amalaya1.webp', '/images/amalaya/amalaya2.webp'],
+          thumbnail: '/images/amalaya/amalaya1.webp'
         },
         {
           id: 7,
@@ -406,7 +447,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Breakfast' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Conscious travelers'
+          bestFor: 'Conscious travelers',
+          images: ['/images/pekao/pekao1.webp', '/images/pekao/pekao2.webp', '/images/pekao/pekao3.webp', '/images/pekao/pekao4.webp'],
+          thumbnail: '/images/pekao/pekao1.webp'
         },
         {
           id: 8,
@@ -423,7 +466,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Breakfast' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Conscious travelers'
+          bestFor: 'Conscious travelers',
+          images: ['/images/kolaso/kolaso1.webp', '/images/kolaso/kolaso2.webp', '/images/kolaso/kolaso3.webp', '/images/kolaso/kolaso4.webp', '/images/kolaso/kolaso5.webp', '/images/kolaso/kolaso6.webp'],
+          thumbnail: '/images/kolaso/kolaso1.webp'
         },
         {
           id: 9,
@@ -440,7 +485,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Breakfast' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Conscious travelers'
+          bestFor: 'Conscious travelers',
+          images: ['/images/abalenga/abalenga1.webp', '/images/abalenga/abalenga2.webp', '/images/abalenga/abalenga3.webp', '/images/abalenga/abalenga4.webp'],
+          thumbnail: '/images/abalenga/abalenga1.webp'
         },
         {
           id: 10,
@@ -457,7 +504,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Breakfast' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Conscious travelers'
+          bestFor: 'Conscious travelers',
+          images: ['/images/makunguri/makunguri1.webp', '/images/makunguri/makunguri2.webp', '/images/makunguri/makunguri3.webp', '/images/makunguri/makunguri4.webp'],
+          thumbnail: '/images/makunguri/makunguri1.webp'
         },
         {
           id: 11,
@@ -474,7 +523,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Breakfast' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Conscious travelers'
+          bestFor: 'Conscious travelers',
+          images: ['/images/eskurana/eskurana1.webp', '/images/eskurana/eskurana2.webp', '/images/eskurana/eskurana3.webp', '/images/eskurana/eskurana4.webp'],
+          thumbnail: '/images/eskurana/eskurana1.webp'
         },
         {
           id: 12,
@@ -491,7 +542,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Breakfast' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Conscious travelers'
+          bestFor: 'Conscious travelers',
+          images: ['/images/makano/makano1.webp', '/images/makano/makano2.webp', '/images/makano/makano3.webp', '/images/makano/makano4.webp'],
+          thumbnail: '/images/makano/makano1.webp'
         },
         {
           id: 13,
@@ -508,7 +561,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Breakfast' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Conscious travelers'
+          bestFor: 'Conscious travelers',
+          images: ['/images/asinaria/asinaria1.webp', '/images/asinaria/asinaria2.webp', '/images/asinaria/asinaria3.webp'],
+          thumbnail: '/images/asinaria/asinaria1.webp'
         }
       ],
       features: {
@@ -532,6 +587,16 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
         desc: 'Book directly and get the best guaranteed price, breakfast included and late check-out available.',
         button: 'Book room',
         subtext: 'Free cancellation up to 48h before'
+      },
+      sectionViajero: {
+        title: 'Viajero',
+        subtitle: 'For the adventurous soul seeking unique experiences',
+        cta: 'See Viajero rooms'
+      },
+      sectionReposo: {
+        title: 'Reposo',
+        subtitle: 'For those seeking deep rest and reconnection',
+        cta: 'See Reposo rooms'
       }
     },
     fr: {
@@ -561,7 +626,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Snowflake, label: 'A/C' }
           ],
           color: 'from-amber-400 to-orange-500',
-          bestFor: 'Lune de miel ou escapade romantique'
+          bestFor: 'Lune de miel ou escapade romantique',
+          images: ['/images/apu/apu1.webp', '/images/apu/apu2.webp', '/images/apu/apu3.webp', '/images/apu/apu4.webp', '/images/apu/apu5.webp', '/images/apu/apu6.webp'],
+          thumbnail: '/images/apu/apu1.webp'
         },
         {
           id: 2,
@@ -578,7 +645,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Bath, label: 'Baignoire avec vue' }
           ],
           color: 'from-blue-400 to-cyan-500',
-          bestFor: 'Séjours prolongés'
+          bestFor: 'Séjours prolongés',
+          images: ['/images/usukulu/usukulu1.webp', '/images/usukulu/usukulu2.webp'],
+          thumbnail: '/images/usukulu/usukulu1.webp'
         },
         {
           id: 3,
@@ -612,7 +681,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Petit-déjeuner' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Voyageurs conscients'
+          bestFor: 'Voyageurs conscients',
+          images: ['/images/sambuli/sambuli1.webp', '/images/sambuli/sambuli2.webp', '/images/sambuli/sambuli3.webp', '/images/sambuli/sambuli4.webp'],
+          thumbnail: '/images/sambuli/sambuli1.webp'
         },
         {
           id: 5,
@@ -629,7 +700,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Petit-déjeuner' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Voyageurs conscients'
+          bestFor: 'Voyageurs conscients',
+          images: ['/images/kombelisa/kombelisa1.webp', '/images/kombelisa/kombelisa2.webp', '/images/kombelisa/kombelisa3.webp', '/images/kombelisa/kombelisa4.webp'],
+          thumbnail: '/images/kombelisa/kombelisa1.webp'
         },
         {
           id: 6,
@@ -646,7 +719,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Petit-déjeuner' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Voyageurs conscients'
+          bestFor: 'Voyageurs conscients',
+          images: ['/images/amalaya/amalaya1.webp', '/images/amalaya/amalaya2.webp'],
+          thumbnail: '/images/amalaya/amalaya1.webp'
         },
         {
           id: 7,
@@ -663,7 +738,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Petit-déjeuner' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Voyageurs conscients'
+          bestFor: 'Voyageurs conscients',
+          images: ['/images/pekao/pekao1.webp', '/images/pekao/pekao2.webp', '/images/pekao/pekao3.webp', '/images/pekao/pekao4.webp'],
+          thumbnail: '/images/pekao/pekao1.webp'
         },
         {
           id: 8,
@@ -680,7 +757,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Petit-déjeuner' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Voyageurs conscients'
+          bestFor: 'Voyageurs conscients',
+          images: ['/images/kolaso/kolaso1.webp', '/images/kolaso/kolaso2.webp', '/images/kolaso/kolaso3.webp', '/images/kolaso/kolaso4.webp', '/images/kolaso/kolaso5.webp', '/images/kolaso/kolaso6.webp'],
+          thumbnail: '/images/kolaso/kolaso1.webp'
         },
         {
           id: 9,
@@ -697,7 +776,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Petit-déjeuner' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Voyageurs conscients'
+          bestFor: 'Voyageurs conscients',
+          images: ['/images/abalenga/abalenga1.webp', '/images/abalenga/abalenga2.webp', '/images/abalenga/abalenga3.webp', '/images/abalenga/abalenga4.webp'],
+          thumbnail: '/images/abalenga/abalenga1.webp'
         },
         {
           id: 10,
@@ -714,7 +795,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Petit-déjeuner' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Voyageurs conscients'
+          bestFor: 'Voyageurs conscients',
+          images: ['/images/makunguri/makunguri1.webp', '/images/makunguri/makunguri2.webp', '/images/makunguri/makunguri3.webp', '/images/makunguri/makunguri4.webp'],
+          thumbnail: '/images/makunguri/makunguri1.webp'
         },
         {
           id: 11,
@@ -731,7 +814,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Petit-déjeuner' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Voyageurs conscients'
+          bestFor: 'Voyageurs conscients',
+          images: ['/images/eskurana/eskurana1.webp', '/images/eskurana/eskurana2.webp', '/images/eskurana/eskurana3.webp', '/images/eskurana/eskurana4.webp'],
+          thumbnail: '/images/eskurana/eskurana1.webp'
         },
         {
           id: 12,
@@ -748,7 +833,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Petit-déjeuner' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Voyageurs conscients'
+          bestFor: 'Voyageurs conscients',
+          images: ['/images/makano/makano1.webp', '/images/makano/makano2.webp', '/images/makano/makano3.webp', '/images/makano/makano4.webp'],
+          thumbnail: '/images/makano/makano1.webp'
         },
         {
           id: 13,
@@ -765,7 +852,9 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             { icon: Coffee, label: 'Petit-déjeuner' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Voyageurs conscients'
+          bestFor: 'Voyageurs conscients',
+          images: ['/images/asinaria/asinaria1.webp', '/images/asinaria/asinaria2.webp', '/images/asinaria/asinaria3.webp'],
+          thumbnail: '/images/asinaria/asinaria1.webp'
         }
       ],
       features: {
@@ -789,19 +878,78 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
         desc: 'Réservez directement et obtenez le meilleur prix garanti, petit-déjeuner inclus et late check-out disponible.',
         button: 'Réserver une chambre',
         subtext: 'Annulation gratuite jusqu\'à 48h avant'
+      },
+      sectionViajero: {
+        title: 'Viajero',
+        subtitle: 'Pour l\'âme aventurière en quête d\'expériences uniques',
+        cta: 'Voir les chambres Viajero'
+      },
+      sectionReposo: {
+        title: 'Reposo',
+        subtitle: 'Pour qui cherche le repos profond et la reconnexion',
+        cta: 'Voir les chambres Reposo'
       }
     }
   };
 
+export default function RoomsPage({ locale }: RoomsPageProps) {
   const c = content[locale] || content.es;
+  const [selectedRoom, setSelectedRoom] = useState<number | null>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const [lightboxRoomId, setLightboxRoomId] = useState<number | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const openLightbox = (roomId: number, startIndex = 0) => {
+    setLightboxRoomId(roomId);
+    setLightboxIndex(startIndex);
+  };
+
+  const closeLightbox = () => {
+    setLightboxRoomId(null);
+    setLightboxIndex(0);
+  };
+
+  const goPrev = () => {
+    setLightboxIndex((prev) => {
+      const room = content[locale]?.rooms.find((r: any) => r.id === lightboxRoomId) || content.es.rooms.find((r: any) => r.id === lightboxRoomId);
+      const count = room?.images?.length || 1;
+      return (prev - 1 + count) % count;
+    });
+  };
+
+  const goNext = () => {
+    setLightboxIndex((prev) => {
+      const room = content[locale]?.rooms.find((r: any) => r.id === lightboxRoomId) || content.es.rooms.find((r: any) => r.id === lightboxRoomId);
+      const count = room?.images?.length || 1;
+      return (prev + 1) % count;
+    });
+  };
+
+  const lightboxRoom = lightboxRoomId !== null
+    ? (content[locale]?.rooms.find((r: any) => r.id === lightboxRoomId) || content.es.rooms.find((r: any) => r.id === lightboxRoomId))
+    : undefined;
+  const lightboxImages = lightboxRoom?.images || [];
+  const lightboxRoomName = lightboxRoom?.name || '';
+
 
   const { scrollY } = useScroll();
   const scale = useTransform(scrollY, [0, 400], [1, 0.6]);
   const borderRadius = useTransform(scrollY, [0, 400], ['0px', '48px']);
 
-  const roomsSectionRef = useRef<HTMLElement>(null);
-  const [activeRoomIndex, setActiveRoomIndex] = useState(0);
-  const [showNav, setShowNav] = useState(false);
+  const viajeroIds = [3, 4, 5, 7, 8, 11, 13];
+  const reposoIds = [2, 12, 10, 6, 1, 9];
+
+  const viajeroRooms = viajeroIds.map(id => c.rooms.find((r: any) => r.id === id)).filter(Boolean) as any[];
+  const reposoRooms = reposoIds.map(id => c.rooms.find((r: any) => r.id === id)).filter(Boolean) as any[];
+
+  const viajeroSectionRef = useRef<HTMLElement>(null);
+  const reposoSectionRef = useRef<HTMLElement>(null);
+  const [activeViajeroIndex, setActiveViajeroIndex] = useState(0);
+  const [activeReposoIndex, setActiveReposoIndex] = useState(0);
+  const [showViajeroNav, setShowViajeroNav] = useState(false);
+  const [showReposoNav, setShowReposoNav] = useState(false);
   const [isSafari, setIsSafari] = useState(false);
 
   useEffect(() => {
@@ -810,35 +958,52 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!roomsSectionRef.current) return;
-      const sectionTop = roomsSectionRef.current.offsetTop;
+    const handleScrollViajero = () => {
+      if (!viajeroSectionRef.current) return;
+      const sectionTop = viajeroSectionRef.current.offsetTop;
+      const sectionHeight = viajeroSectionRef.current.offsetHeight;
       const scrollPos = window.scrollY - sectionTop;
       const viewportHeight = window.innerHeight;
       const index = Math.max(0, Math.min(
-        c.rooms.length - 1,
+        viajeroRooms.length - 1,
         Math.floor(scrollPos / viewportHeight + 0.2)
       ));
-      setActiveRoomIndex(index);
+      setActiveViajeroIndex(index);
+      setShowViajeroNav(scrollPos >= -viewportHeight * 0.5 && scrollPos < sectionHeight - viewportHeight * 0.5);
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [c.rooms.length]);
+    window.addEventListener('scroll', handleScrollViajero, { passive: true });
+    handleScrollViajero();
+    return () => window.removeEventListener('scroll', handleScrollViajero);
+  }, [viajeroRooms.length]);
 
   useEffect(() => {
-    if (!roomsSectionRef.current) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setShowNav(entry.isIntersecting),
-      { threshold: 0.05 }
-    );
-    observer.observe(roomsSectionRef.current);
-    return () => observer.disconnect();
-  }, []);
+    const handleScrollReposo = () => {
+      if (!reposoSectionRef.current) return;
+      const sectionTop = reposoSectionRef.current.offsetTop;
+      const sectionHeight = reposoSectionRef.current.offsetHeight;
+      const scrollPos = window.scrollY - sectionTop;
+      const viewportHeight = window.innerHeight;
+      const index = Math.max(0, Math.min(
+        reposoRooms.length - 1,
+        Math.floor(scrollPos / viewportHeight + 0.2)
+      ));
+      setActiveReposoIndex(index);
+      setShowReposoNav(scrollPos >= -viewportHeight * 0.5 && scrollPos < sectionHeight - viewportHeight * 0.5);
+    };
+    window.addEventListener('scroll', handleScrollReposo, { passive: true });
+    handleScrollReposo();
+    return () => window.removeEventListener('scroll', handleScrollReposo);
+  }, [reposoRooms.length]);
 
-  const scrollToRoom = (index: number) => {
-    if (!roomsSectionRef.current) return;
-    const targetY = roomsSectionRef.current.offsetTop + index * window.innerHeight;
+  const scrollToViajeroRoom = (index: number) => {
+    if (!viajeroSectionRef.current) return;
+    const targetY = viajeroSectionRef.current.offsetTop + index * window.innerHeight;
+    window.scrollTo({ top: targetY, behavior: 'smooth' });
+  };
+
+  const scrollToReposoRoom = (index: number) => {
+    if (!reposoSectionRef.current) return;
+    const targetY = reposoSectionRef.current.offsetTop + index * window.innerHeight;
     window.scrollTo({ top: targetY, behavior: 'smooth' });
   };
 
@@ -852,6 +1017,31 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
     const timeout = setTimeout(() => setVideoLoaded(true), 2500);
     return () => clearTimeout(timeout);
   }, []);
+
+  // Préchargement initial de toutes les photos des chambres
+  useEffect(() => {
+    const imagesToPreload = new Set<string>();
+    c.rooms.forEach((room: any) => {
+      if (room.thumbnail) imagesToPreload.add(room.thumbnail);
+      if (room.images && room.images.length > 0) {
+        room.images.forEach((src: string) => imagesToPreload.add(src));
+      }
+    });
+    // Précharger par petits lots pour ne pas saturer le navigateur
+    const srcs = Array.from(imagesToPreload);
+    let index = 0;
+    const batchSize = 6;
+    const loadBatch = () => {
+      for (let i = 0; i < batchSize && index < srcs.length; i++, index++) {
+        const img = new window.Image();
+        img.src = srcs[index];
+      }
+      if (index < srcs.length) {
+        setTimeout(loadBatch, 200);
+      }
+    };
+    loadBatch();
+  }, [locale]);
 
   return (
     <>
@@ -945,32 +1135,77 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
         </div>
       </section>
 
-      {/* Menu latéral de navigation des chambres */}
-      <nav className={`fixed right-2 xl:right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-4 max-h-[88vh] overflow-y-visible no-scrollbar py-2 pr-2 transition-all duration-500 ${showNav ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12 pointer-events-none'}`}>
-        {c.rooms.map((room, idx) => (
+      {/* Quick Navigation Bar */}
+      <section className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-y border-stone-200 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
+            <button
+              onClick={() => viajeroSectionRef.current && viajeroSectionRef.current.scrollIntoView({ behavior: 'smooth' })}
+              className="group relative flex items-center gap-4 p-4 md:p-6 rounded-2xl bg-gradient-to-br from-emerald-50 to-cyan-50 border border-emerald-100 hover:border-cyan-300 hover:shadow-lg hover:shadow-cyan-500/10 transition-all duration-300"
+            >
+              <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                <Compass className="w-6 h-6 md:w-7 md:h-7 text-white" />
+              </div>
+              <div className="text-left">
+                <span className="block text-lg md:text-xl font-bold text-stone-900 group-hover:text-cyan-700 transition-colors">
+                  {c.sectionViajero.title}
+                </span>
+                <span className="hidden md:block text-sm text-stone-500">
+                  {c.sectionViajero.cta}
+                </span>
+              </div>
+              <ChevronRight className="ml-auto w-5 h-5 text-stone-400 group-hover:text-cyan-500 group-hover:translate-x-1 transition-all" />
+            </button>
+
+            <button
+              onClick={() => reposoSectionRef.current && reposoSectionRef.current.scrollIntoView({ behavior: 'smooth' })}
+              className="group relative flex items-center gap-4 p-4 md:p-6 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-100 hover:border-amber-300 hover:shadow-lg hover:shadow-amber-500/10 transition-all duration-300"
+            >
+              <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                <CloudMoon className="w-6 h-6 md:w-7 md:h-7 text-white" />
+              </div>
+              <div className="text-left">
+                <span className="block text-lg md:text-xl font-bold text-stone-900 group-hover:text-amber-700 transition-colors">
+                  {c.sectionReposo.title}
+                </span>
+                <span className="hidden md:block text-sm text-stone-500">
+                  {c.sectionReposo.cta}
+                </span>
+              </div>
+              <ChevronRight className="ml-auto w-5 h-5 text-stone-400 group-hover:text-amber-500 group-hover:translate-x-1 transition-all" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Menu latéral de navigation Viajero */}
+      <nav className={`fixed right-2 xl:right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-4 max-h-[88vh] overflow-y-visible no-scrollbar py-2 pr-2 transition-all duration-500 ${showViajeroNav ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12 pointer-events-none'}`}>
+        {viajeroRooms.map((room: any, idx: number) => (
           <button
             key={room.id}
-            onClick={() => scrollToRoom(idx)}
+            onClick={() => scrollToViajeroRoom(idx)}
             className={`
               group relative flex items-stretch w-[200px] h-[90px] rounded-2xl overflow-hidden transition-all duration-300 shadow-md bg-white
-              ${idx === activeRoomIndex 
-                ? 'ring-[3px] ring-yellow-400 scale-105 shadow-xl shadow-yellow-400/20' 
+              ${idx === activeViajeroIndex 
+                ? 'ring-[3px] ring-cyan-400 scale-105 shadow-xl shadow-cyan-400/20' 
                 : 'ring-1 ring-stone-200 hover:ring-stone-300 hover:scale-105 hover:shadow-lg'}
             `}
             aria-label={`Ver ${room.name}`}
           >
-            {/* Infos à gauche */}
             <div className="w-[110px] px-4 flex items-center justify-center bg-stone-50 border-r border-stone-100">
               <span className="text-[13px] font-semibold text-stone-800 leading-tight line-clamp-2 text-center">
                 {room.name}
               </span>
             </div>
-            {/* Miniature dégradée à droite */}
-            <div className={`flex-1 bg-gradient-to-br ${room.color} flex items-center justify-center`}>
-              <BedDouble className="w-8 h-8 text-white/90" />
-            </div>
-            
-            {/* Tooltip au hover */}
+            {room.thumbnail ? (
+              <div className="flex-1 relative">
+                <Image src={room.thumbnail} alt={room.name} fill className="object-cover" sizes="200px" />
+              </div>
+            ) : (
+              <div className={`flex-1 bg-gradient-to-br ${room.color} flex items-center justify-center`}>
+                <BedDouble className="w-8 h-8 text-white/90" />
+              </div>
+            )}
             <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 whitespace-nowrap text-sm font-medium text-stone-700 bg-white px-3 py-1.5 rounded-lg opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shadow-lg border border-stone-100 pointer-events-none z-50">
               {room.name}
             </span>
@@ -978,16 +1213,81 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
         ))}
       </nav>
 
-      {/* Mobile bottom indicator */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden flex items-center gap-2 bg-stone-900/80 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm shadow-xl">
-        <span className="text-yellow-400 font-bold">{String(activeRoomIndex + 1).padStart(2, '0')}</span>
+      {/* Menu latéral de navigation Reposo */}
+      <nav className={`fixed right-2 xl:right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-4 max-h-[88vh] overflow-y-visible no-scrollbar py-2 pr-2 transition-all duration-500 ${showReposoNav ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12 pointer-events-none'}`}>
+        {reposoRooms.map((room: any, idx: number) => (
+          <button
+            key={room.id}
+            onClick={() => scrollToReposoRoom(idx)}
+            className={`
+              group relative flex items-stretch w-[200px] h-[90px] rounded-2xl overflow-hidden transition-all duration-300 shadow-md bg-white
+              ${idx === activeReposoIndex 
+                ? 'ring-[3px] ring-amber-400 scale-105 shadow-xl shadow-amber-400/20' 
+                : 'ring-1 ring-stone-200 hover:ring-stone-300 hover:scale-105 hover:shadow-lg'}
+            `}
+            aria-label={`Ver ${room.name}`}
+          >
+            <div className="w-[110px] px-4 flex items-center justify-center bg-stone-50 border-r border-stone-100">
+              <span className="text-[13px] font-semibold text-stone-800 leading-tight line-clamp-2 text-center">
+                {room.name}
+              </span>
+            </div>
+            {room.thumbnail ? (
+              <div className="flex-1 relative">
+                <Image src={room.thumbnail} alt={room.name} fill className="object-cover" sizes="200px" />
+              </div>
+            ) : (
+              <div className={`flex-1 bg-gradient-to-br ${room.color} flex items-center justify-center`}>
+                <BedDouble className="w-8 h-8 text-white/90" />
+              </div>
+            )}
+            <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 whitespace-nowrap text-sm font-medium text-stone-700 bg-white px-3 py-1.5 rounded-lg opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shadow-lg border border-stone-100 pointer-events-none z-50">
+              {room.name}
+            </span>
+          </button>
+        ))}
+      </nav>
+
+      {/* Mobile bottom indicator Viajero */}
+      <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden flex items-center gap-2 bg-stone-900/80 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm shadow-xl transition-all duration-300 ${showViajeroNav ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <span className="text-cyan-400 font-bold">{String(activeViajeroIndex + 1).padStart(2, '0')}</span>
         <span className="w-px h-4 bg-white/20" />
-        <span className="max-w-[140px] truncate">{c.rooms[activeRoomIndex]?.name}</span>
+        <span className="max-w-[140px] truncate">{viajeroRooms[activeViajeroIndex]?.name}</span>
       </div>
 
-      {/* Rooms - Effet cartes superposées */}
-      <section ref={roomsSectionRef} className="relative bg-stone-100">
-        {c.rooms.map((room, index) => (
+      {/* Mobile bottom indicator Reposo */}
+      <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden flex items-center gap-2 bg-stone-900/80 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm shadow-xl transition-all duration-300 ${showReposoNav ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <span className="text-amber-400 font-bold">{String(activeReposoIndex + 1).padStart(2, '0')}</span>
+        <span className="w-px h-4 bg-white/20" />
+        <span className="max-w-[140px] truncate">{reposoRooms[activeReposoIndex]?.name}</span>
+      </div>
+
+      {/* Section Hero Viajero */}
+      <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900 overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] bg-[length:24px_24px]" />
+        <div className="relative z-10 text-center px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="inline-flex items-center justify-center w-28 h-28 mb-8 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl shadow-cyan-500/20"
+          >
+            <Compass className="w-14 h-14 text-cyan-300" />
+          </motion.div>
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight">
+            {c.sectionViajero.title}
+          </h2>
+          <p className="text-xl md:text-2xl text-cyan-100/80 max-w-2xl mx-auto">
+            {c.sectionViajero.subtitle}
+          </p>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-stone-100 to-transparent" />
+      </section>
+
+      {/* Rooms Viajero */}
+      <section ref={viajeroSectionRef} className="relative bg-stone-100">
+        {viajeroRooms.map((room: any, index: number) => (
           <div
             key={room.id}
             className="sticky top-0 min-h-screen flex items-center justify-center py-12"
@@ -1007,26 +1307,27 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                   'from-green-50/95 via-white to-emerald-50/90'
                 } border border-white/60 p-8 lg:p-16`}
               >
-                {/* Numéro de chambre en filigrane */}
                 <span className="absolute top-8 right-8 text-8xl lg:text-9xl font-bold text-stone-200/40 select-none pointer-events-none">
                   {String(room.id).padStart(2, '0')}
                 </span>
 
                 <div className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
-                  {/* Image placeholder */}
                   <div className={`relative ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                     <motion.div 
                       whileInView={{ scale: [0.95, 1] }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.6 }}
-                      className={`aspect-[4/3] rounded-3xl bg-gradient-to-br ${room.color} flex items-center justify-center overflow-hidden shadow-2xl`}
+                      className={`aspect-[4/3] rounded-3xl bg-gradient-to-br ${room.color} flex items-center justify-center overflow-hidden shadow-2xl relative`}
                     >
-                      <div className="text-center text-white/90">
-                        <BedDouble className="w-20 h-20 mx-auto mb-4 opacity-60" />
-                        <p className="text-lg font-medium">{room.name}</p>
-                      </div>
+                      {room.images && room.images.length > 0 ? (
+                        <RoomImageCarousel images={room.images} alt={room.name} onClick={() => openLightbox(room.id)} />
+                      ) : (
+                        <div className="text-center text-white/90">
+                          <BedDouble className="w-20 h-20 mx-auto mb-4 opacity-60" />
+                          <p className="text-lg font-medium">{room.name}</p>
+                        </div>
+                      )}
                     </motion.div>
-                    {/* Price badge */}
                     <motion.div 
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
@@ -1039,21 +1340,18 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                     </motion.div>
                   </div>
 
-                  {/* Content */}
                   <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
                     <p className="text-yellow-600 font-medium mb-2">{room.tagline}</p>
                     <h3 className="text-4xl font-bold text-stone-900 mb-4">{room.name}</h3>
                     <p className="text-stone-600 text-lg mb-6 leading-relaxed">{room.description}</p>
                     
-                    {/* Best for */}
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 rounded-full text-sm text-stone-600 mb-8 border border-stone-100">
                       <Heart className="w-4 h-4 text-yellow-500" />
                       {room.bestFor}
                     </div>
 
-                    {/* Amenities */}
                     <div className="grid grid-cols-2 gap-4 mb-8">
-                      {room.amenities.map((amenity, i) => (
+                      {room.amenities.map((amenity: any, i: number) => (
                         <div key={i} className="flex items-center gap-3 text-stone-600">
                           <div className="w-10 h-10 bg-white/80 rounded-lg flex items-center justify-center border border-stone-100">
                             <amenity.icon className="w-5 h-5 text-stone-500" />
@@ -1063,9 +1361,8 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                       ))}
                     </div>
 
-                    {/* Features list */}
                     <div className="flex flex-wrap gap-2 mb-8">
-                      {room.features.map((feature, i) => (
+                      {room.features.map((feature: string, i: number) => (
                         <span key={i} className="px-3 py-1.5 bg-white/60 text-stone-600 text-sm rounded-full border border-stone-200">
                           {feature}
                         </span>
@@ -1089,6 +1386,129 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
         ))}
       </section>
 
+      {/* Section Hero Reposo */}
+      <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-amber-900 via-orange-900 to-rose-900 overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] bg-[length:24px_24px]" />
+        <div className="relative z-10 text-center px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="inline-flex items-center justify-center w-28 h-28 mb-8 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl shadow-amber-500/20"
+          >
+            <CloudMoon className="w-14 h-14 text-amber-300" />
+          </motion.div>
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight">
+            {c.sectionReposo.title}
+          </h2>
+          <p className="text-xl md:text-2xl text-amber-100/80 max-w-2xl mx-auto">
+            {c.sectionReposo.subtitle}
+          </p>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-stone-100 to-transparent" />
+      </section>
+
+      {/* Rooms Reposo */}
+      <section ref={reposoSectionRef} className="relative bg-stone-100">
+        {reposoRooms.map((room: any, index: number) => (
+          <div
+            key={room.id}
+            className="sticky top-0 min-h-screen flex items-center justify-center py-12"
+            style={{ zIndex: index + 1 }}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 80 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className={`w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-72 ${index > 0 ? 'pt-8' : ''}`}
+            >
+              <div 
+                className={`relative rounded-[3rem] shadow-2xl overflow-hidden backdrop-blur-sm bg-gradient-to-br ${
+                  index % 3 === 0 ? 'from-amber-50/95 via-white to-orange-50/90' :
+                  index % 3 === 1 ? 'from-blue-50/95 via-white to-cyan-50/90' :
+                  'from-green-50/95 via-white to-emerald-50/90'
+                } border border-white/60 p-8 lg:p-16`}
+              >
+                <span className="absolute top-8 right-8 text-8xl lg:text-9xl font-bold text-stone-200/40 select-none pointer-events-none">
+                  {String(room.id).padStart(2, '0')}
+                </span>
+
+                <div className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+                  <div className={`relative ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                    <motion.div 
+                      whileInView={{ scale: [0.95, 1] }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6 }}
+                      className={`aspect-[4/3] rounded-3xl bg-gradient-to-br ${room.color} flex items-center justify-center overflow-hidden shadow-2xl relative`}
+                    >
+                      {room.images && room.images.length > 0 ? (
+                        <RoomImageCarousel images={room.images} alt={room.name} onClick={() => openLightbox(room.id)} />
+                      ) : (
+                        <div className="text-center text-white/90">
+                          <BedDouble className="w-20 h-20 mx-auto mb-4 opacity-60" />
+                          <p className="text-lg font-medium">{room.name}</p>
+                        </div>
+                      )}
+                    </motion.div>
+                    <motion.div 
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.2 }}
+                      className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-6 border border-stone-100"
+                    >
+                      <p className="text-3xl font-bold text-stone-900">{room.price}</p>
+                      <p className="text-stone-500 text-sm">{room.period}</p>
+                    </motion.div>
+                  </div>
+
+                  <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                    <p className="text-yellow-600 font-medium mb-2">{room.tagline}</p>
+                    <h3 className="text-4xl font-bold text-stone-900 mb-4">{room.name}</h3>
+                    <p className="text-stone-600 text-lg mb-6 leading-relaxed">{room.description}</p>
+                    
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 rounded-full text-sm text-stone-600 mb-8 border border-stone-100">
+                      <Heart className="w-4 h-4 text-yellow-500" />
+                      {room.bestFor}
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4 mb-8">
+                      {room.amenities.map((amenity: any, i: number) => (
+                        <div key={i} className="flex items-center gap-3 text-stone-600">
+                          <div className="w-10 h-10 bg-white/80 rounded-lg flex items-center justify-center border border-stone-100">
+                            <amenity.icon className="w-5 h-5 text-stone-500" />
+                          </div>
+                          <span className="text-sm">{amenity.label}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {room.features.map((feature: string, i: number) => (
+                        <span key={i} className="px-3 py-1.5 bg-white/60 text-stone-600 text-sm rounded-full border border-stone-200">
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+
+                    <a
+                      href="https://wa.me/573147480855"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-stone-900 text-white rounded-full font-medium hover:bg-stone-800 transition-colors"
+                    >
+                      Reservar esta habitación
+                      <ChevronRight className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        ))}
+      </section>
       {/* Common Features */}
       <section className="py-24 bg-gradient-to-b from-stone-900 to-stone-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1135,6 +1555,17 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
           </motion.div>
         </div>
       </section>
+
+      {/* Lightbox */}
+      <RoomImageLightbox
+        isOpen={lightboxRoomId !== null}
+        onClose={closeLightbox}
+        images={lightboxImages}
+        currentIndex={lightboxIndex}
+        onPrev={goPrev}
+        onNext={goNext}
+        roomName={lightboxRoomName}
+      />
 
       {/* Final CTA */}
       <section className="py-24 bg-gradient-to-br from-yellow-400 via-amber-400 to-orange-400 relative overflow-hidden">
