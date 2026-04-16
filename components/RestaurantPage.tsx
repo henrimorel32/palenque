@@ -1,11 +1,40 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import {
   UtensilsCrossed, Wine, Clock, Phone, ChefHat, Leaf,
   Star, ArrowRight, MapPin, CalendarCheck, Flame, Fish, Citrus, Coffee
 } from 'lucide-react';
 import { Locale } from '@/lib/i18n/translations';
+
+function DishImage({ src, alt }: { src: string; alt: string }) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div className="relative aspect-[4/3] overflow-hidden bg-stone-100">
+      {!loaded && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-stone-200 animate-pulse">
+          <div className="w-16 h-16 rounded-full bg-stone-300/80 flex items-center justify-center mb-3">
+            <UtensilsCrossed className="w-8 h-8 text-stone-400" />
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse" />
+            <span className="text-sm font-medium text-stone-500">Loading...</span>
+          </div>
+        </div>
+      )}
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        onLoad={() => setLoaded(true)}
+        className={`object-cover transition-all duration-700 group-hover:scale-105 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+        sizes="(max-width: 768px) 100vw, 50vw"
+      />
+    </div>
+  );
+}
 
 interface RestaurantPageProps {
   locale: Locale;
@@ -23,6 +52,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
         items: [
           {
             icon: Fish,
+            image: '/images/restaurant/plat1.webp',
             name: 'Pesca del Día',
             desc: 'Pescado fresco capturado por pescadores locales, acompañado de arroz con coco y patacón.',
             price: '$45.000 COP',
@@ -30,6 +60,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
           },
           {
             icon: Flame,
+            image: '/images/restaurant/plat2.webp',
             name: 'Cazuela de Mariscos',
             desc: 'Langostinos, calamares, mejillones y pescado en una rica salsa caribeña con hierbas locales.',
             price: '$58.000 COP',
@@ -37,17 +68,19 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
           },
           {
             icon: Citrus,
+            image: '/images/restaurant/plat3.webp',
             name: 'Ceviche Palenquero',
             desc: 'Ceviche tradicional con limón tahití, cilantro fresco, cebolla morada y maíz tostado.',
             price: '$32.000 COP',
             tag: 'Frescura',
           },
           {
-            icon: Leaf,
-            name: 'Ensalada de la Huerta',
-            desc: 'Vegetales orgánicos de nuestra huerta, aguacate, mango verde y aderezo de maracuyá.',
-            price: '$28.000 COP',
-            tag: 'Vegano',
+            icon: Coffee,
+            image: '/images/restaurant/cafe1.webp',
+            name: 'Café de la Región',
+            desc: 'Café recién preparado de los Andes colombianos, con notas de chocolate y caramelo.',
+            price: '$8.000 COP',
+            tag: 'Esencial',
           },
         ],
       },
@@ -94,6 +127,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
         items: [
           {
             icon: Fish,
+            image: '/images/restaurant/plat1.webp',
             name: 'Catch of the Day',
             desc: 'Fresh fish caught by local fishermen, served with coconut rice and fried plantain.',
             price: '$45,000 COP',
@@ -101,6 +135,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
           },
           {
             icon: Flame,
+            image: '/images/restaurant/plat2.webp',
             name: 'Seafood Casserole',
             desc: 'Prawns, squid, mussels, and fish in a rich Caribbean sauce with local herbs.',
             price: '$58,000 COP',
@@ -108,17 +143,19 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
           },
           {
             icon: Citrus,
+            image: '/images/restaurant/plat3.webp',
             name: 'Palenque Ceviche',
             desc: 'Traditional ceviche with tahitian lime, fresh cilantro, red onion, and toasted corn.',
             price: '$32,000 COP',
             tag: 'Fresh',
           },
           {
-            icon: Leaf,
-            name: 'Garden Salad',
-            desc: 'Organic vegetables from our garden, avocado, green mango, and passion fruit dressing.',
-            price: '$28,000 COP',
-            tag: 'Vegan',
+            icon: Coffee,
+            image: '/images/restaurant/cafe1.webp',
+            name: 'Regional Coffee',
+            desc: 'Freshly brewed coffee from the Colombian Andes, with notes of chocolate and caramel.',
+            price: '$8,000 COP',
+            tag: 'Essential',
           },
         ],
       },
@@ -165,6 +202,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
         items: [
           {
             icon: Fish,
+            image: '/images/restaurant/plat1.webp',
             name: 'Poisson du Jour',
             desc: 'Poisson frais pêché par des pêcheurs locaux, accompagné de riz coco et de patacón.',
             price: '45 000 COP',
@@ -172,6 +210,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
           },
           {
             icon: Flame,
+            image: '/images/restaurant/plat2.webp',
             name: 'Casserole de Fruits de Mer',
             desc: 'Crevettes, calamars, moules et poisson dans une riche sauce caraïbe aux herbes locales.',
             price: '58 000 COP',
@@ -179,17 +218,19 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
           },
           {
             icon: Citrus,
+            image: '/images/restaurant/plat3.webp',
             name: 'Ceviche Palenquero',
             desc: 'Ceviche traditionnel au citron tahitien, coriandre fraîche, oignon rouge et maïs grillé.',
             price: '32 000 COP',
             tag: 'Fraîcheur',
           },
           {
-            icon: Leaf,
-            name: 'Salade du Jardin',
-            desc: 'Légumes bio de notre potager, avocat, mangue verte et vinaigrette au fruit de la passion.',
-            price: '28 000 COP',
-            tag: 'Végétalien',
+            icon: Coffee,
+            image: '/images/restaurant/cafe1.webp',
+            name: 'Café Régional',
+            desc: 'Café fraîchement préparé des Andes colombiennes, aux notes de chocolat et de caramel.',
+            price: '8 000 COP',
+            tag: 'Essentiel',
           },
         ],
       },
@@ -286,22 +327,20 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group bg-gradient-to-br from-stone-50 to-white rounded-3xl p-8 border border-stone-100 hover:border-yellow-200 transition-all hover:shadow-xl"
+                className="group bg-white rounded-3xl overflow-hidden border border-stone-100 hover:border-yellow-200 transition-all hover:shadow-xl"
               >
-                <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-yellow-400/20 group-hover:scale-110 transition-transform">
-                    <item.icon className="w-8 h-8 text-stone-900" />
+                <div className="relative">
+                  <DishImage src={item.image} alt={item.name} />
+                  <div className="absolute top-4 right-4 z-10">
+                    <span className="px-3 py-1 bg-yellow-400 text-stone-900 rounded-full text-xs font-bold shadow-lg">
+                      {item.tag}
+                    </span>
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="px-2.5 py-0.5 bg-yellow-100 text-yellow-700 rounded-full text-xs font-medium">
-                        {item.tag}
-                      </span>
-                    </div>
-                    <h3 className="text-2xl font-bold text-stone-900 mb-2">{item.name}</h3>
-                    <p className="text-stone-600 mb-4 leading-relaxed">{item.desc}</p>
-                    <p className="text-xl font-bold text-stone-900">{item.price}</p>
-                  </div>
+                </div>
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold text-stone-900 mb-2">{item.name}</h3>
+                  <p className="text-stone-600 mb-4 leading-relaxed">{item.desc}</p>
+                  <p className="text-xl font-bold text-stone-900">{item.price}</p>
                 </div>
               </motion.div>
             ))}
