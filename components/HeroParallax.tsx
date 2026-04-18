@@ -41,6 +41,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
   const [videoSupported, setVideoSupported] = useState(false);
   const [videoVisible, setVideoVisible] = useState(true);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoError, setVideoError] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const scrollTimeoutRef = useRef<NodeJS.Timeout>();
@@ -75,6 +76,9 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
     const timeout = setTimeout(() => setVideoLoaded(true), 2500);
     return () => clearTimeout(timeout);
   }, [videoSupported]);
+
+  // Détermine si les images doivent être visibles
+  const showImages = !videoSupported || videoError || (videoLoaded && !videoVisible);
 
   // Calcule l'index de l'image basé sur le scroll progress
   const numImages = images.length;
@@ -162,6 +166,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
                 onEnded={() => setVideoVisible(false)}
                 onLoadedData={() => setVideoLoaded(true)}
                 onCanPlay={() => setVideoLoaded(true)}
+                onError={() => setVideoError(true)}
                 className="absolute inset-0 w-full h-full object-cover"
                 style={{ filter: 'brightness(1.05) saturate(1.1)' }}
               >
@@ -173,6 +178,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
           )}
 
           {/* Images avec transition crossfade */}
+          <div className={`absolute inset-0 w-full h-full transition-opacity duration-700 ${showImages ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
           {images.map((img, index) => (
             <motion.div
               key={index}
@@ -199,9 +205,10 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.3)_100%)]" />
             </motion.div>
           ))}
+          </div>
 
           {/* Progress bar verticale */}
-          {(!videoSupported || !videoVisible) && (
+          {showImages && (
           <div className="absolute right-6 top-1/2 transform -translate-y-1/2 w-1 h-48 bg-white/20 rounded-full overflow-hidden">
             <motion.div 
               className="w-full bg-yellow-400 rounded-full"
@@ -214,7 +221,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
           )}
 
           {/* Navigation latérale numérotée */}
-          {(!videoSupported || !videoVisible) && (
+          {showImages && (
           <div className="absolute right-8 top-1/2 transform -translate-y-1/2 flex flex-col gap-3">
             {images.map((img, index) => (
               <button
@@ -308,7 +315,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
           </motion.div>
 
           {/* Compteur */}
-          {(!videoSupported || !videoVisible) && (
+          {showImages && (
           <div className="absolute bottom-8 left-8 flex items-center gap-2 text-white/70 font-mono text-sm">
             <span className="text-yellow-400 font-bold text-xl">
               {String(currentImage + 1).padStart(2, '0')}
