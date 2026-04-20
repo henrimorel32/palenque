@@ -1,45 +1,117 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Camera, Images } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Images, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Locale } from '@/lib/i18n/translations';
 import { getTranslations } from '@/lib/i18n/utils';
-import { YellowCornerTL, YellowCornerBR, YellowBar, YellowTopLine } from './YellowAccents';
+import {
+  YellowCornerTL,
+  YellowCornerBR,
+  YellowBar,
+  YellowTopLine,
+} from './YellowAccents';
 import { MeshGradient, CirclesPattern } from './BackgroundPatterns';
 
 interface GallerySectionProps {
   locale: Locale;
 }
 
+const galleryImages = [
+  {
+    src: '/images/apu/apu1.webp',
+    alt: 'Cabaña APU',
+    span: 'col-span-2 row-span-2',
+  },
+  {
+    src: '/images/plageChaises.webp',
+    alt: 'Plage',
+    span: 'col-span-2 row-span-1',
+  },
+  {
+    src: '/images/paraiso/paraisso3.webp',
+    alt: 'Paraíso',
+    span: 'col-span-1 row-span-2',
+  },
+  {
+    src: '/images/usukulu/usukulu1.webp',
+    alt: 'Usukulu',
+    span: 'col-span-1 row-span-1',
+  },
+  {
+    src: '/images/cocktail.webp',
+    alt: 'Cocktail',
+    span: 'col-span-1 row-span-1',
+  },
+  {
+    src: '/images/vueAerienne1.webp',
+    alt: 'Vue aérienne',
+    span: 'col-span-2 row-span-2',
+  },
+  {
+    src: '/images/kolaso/kolaso1.webp',
+    alt: 'Kolaso',
+    span: 'col-span-1 row-span-1',
+  },
+  {
+    src: '/images/hamacDansEau.webp',
+    alt: 'Hamac',
+    span: 'col-span-1 row-span-1',
+  },
+  {
+    src: '/images/comida.webp',
+    alt: 'Gastronomía',
+    span: 'col-span-1 row-span-1',
+  },
+  {
+    src: '/images/makano/makano1.webp',
+    alt: 'Makano',
+    span: 'col-span-1 row-span-2',
+  },
+  {
+    src: '/images/plageSoleil.webp',
+    alt: 'Plage au soleil',
+    span: 'col-span-1 row-span-1',
+  },
+  {
+    src: '/images/abalenga/abalenga1.webp',
+    alt: 'Abalenga',
+    span: 'col-span-2 row-span-1',
+  },
+];
+
 export default function GallerySection({ locale }: GallerySectionProps) {
   const t = getTranslations(locale);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Placeholder images - à remplacer par les vraies photos
-  const galleryItems = [
-    { id: 1, label: 'Playa', span: 'col-span-2 row-span-2', color: 'from-blue-400 to-cyan-400' },
-    { id: 2, label: 'Habitación', span: 'col-span-1 row-span-1', color: 'from-yellow-400 to-orange-400' },
-    { id: 3, label: 'Restaurante', span: 'col-span-1 row-span-1', color: 'from-green-400 to-emerald-400' },
-    { id: 4, label: 'Piscina', span: 'col-span-1 row-span-2', color: 'from-purple-400 to-pink-400' },
-    { id: 5, label: 'Spa', span: 'col-span-1 row-span-1', color: 'from-rose-400 to-red-400' },
-    { id: 6, label: 'Atardecer', span: 'col-span-2 row-span-1', color: 'from-orange-400 to-red-500' },
-  ];
+  const openLightbox = (index: number) => {
+    setCurrentIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => setLightboxOpen(false);
+  const goPrev = () =>
+    setCurrentIndex((i) => (i - 1 + galleryImages.length) % galleryImages.length);
+  const goNext = () =>
+    setCurrentIndex((i) => (i + 1) % galleryImages.length);
 
   return (
     <section className="py-24 bg-gradient-to-b from-white via-stone-50 to-white relative overflow-hidden">
       {/* Décors de fond */}
       <MeshGradient />
       <CirclesPattern />
-      
+
       {/* Formes décoratives */}
       <div className="absolute top-40 left-10 w-32 h-32 bg-yellow-200/30 rounded-full blur-2xl" />
       <div className="absolute bottom-40 right-10 w-40 h-40 bg-blue-200/30 rounded-full blur-2xl" />
-      
+
       {/* Accents jaunes */}
       <YellowTopLine />
       <YellowCornerTL />
       <YellowCornerBR />
       <YellowBar side="left" />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
@@ -51,7 +123,7 @@ export default function GallerySection({ locale }: GallerySectionProps) {
         >
           <span className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-pink-100 to-purple-100 text-purple-700 rounded-full text-sm font-medium mb-4">
             <Images className="w-4 h-4" />
-            Fotos
+            {locale === 'es' ? 'Fotos' : locale === 'en' ? 'Photos' : 'Photos'}
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4">
             {t.home.gallery.title}
@@ -61,64 +133,115 @@ export default function GallerySection({ locale }: GallerySectionProps) {
           </p>
         </motion.div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
-          {galleryItems.map((item, index) => (
+        {/* Patchwork Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[160px] md:auto-rows-[200px] grid-flow-dense">
+          {galleryImages.map((item, index) => (
             <motion.div
-              key={item.id}
+              key={item.src}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`${item.span} relative group rounded-2xl overflow-hidden cursor-pointer border-2 border-transparent hover:border-yellow-300 transition-colors`}
+              transition={{ duration: 0.5, delay: index * 0.05 }}
+              className={`${item.span} relative group rounded-2xl overflow-hidden cursor-pointer border-2 border-transparent hover:border-yellow-300 transition-all duration-300 shadow-md hover:shadow-xl`}
+              onClick={() => openLightbox(index)}
             >
-              {/* Gradient Background */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-80`} />
-              
-              {/* Pattern overlay */}
-              <div className="absolute inset-0 opacity-20" style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E")`,
-              }} />
-              
-              {/* Hover gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <img
+                src={item.src}
+                alt={item.alt}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
 
-              {/* Icon */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-white/90">
-                <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
-                  <Camera className="w-8 h-8" />
-                </div>
-                <span className="text-lg font-semibold drop-shadow-lg">{item.label}</span>
-              </div>
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-              {/* Coming Soon Badge */}
-              <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                <span className="text-sm font-medium text-stone-600">
-                  {locale === 'es' ? 'Próximamente' : locale === 'en' ? 'Coming soon' : 'Bientôt'}
+              {/* Label */}
+              <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                <span className="px-3 py-1.5 bg-white/90 backdrop-blur-sm text-stone-800 text-xs font-semibold rounded-full shadow-sm">
+                  {item.alt}
                 </span>
               </div>
 
               {/* Corner decoration */}
-              <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-white/40 rounded-tr-lg opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-white/40 rounded-br-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-white/60 rounded-tr-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-white/60 rounded-br-lg opacity-0 group-hover:opacity-100 transition-opacity" />
             </motion.div>
           ))}
         </div>
-
-        {/* Upload Hint */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center text-stone-400 text-sm mt-8 bg-white/50 backdrop-blur-sm inline-block px-6 py-3 rounded-full mx-auto block w-fit"
-        >
-          {locale === 'es' 
-            ? 'Las fotos reales se añadirán próximamente'
-            : locale === 'en'
-            ? 'Real photos will be added soon'
-            : 'Les vraies photos seront ajoutées bientôt'}
-        </motion.p>
       </div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightboxOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-sm"
+            onClick={closeLightbox}
+          >
+            {/* Close */}
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+              aria-label="Cerrar"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {/* Counter */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-50 text-white/90 text-sm font-medium bg-white/10 px-4 py-2 rounded-full">
+              {currentIndex + 1} / {galleryImages.length}
+            </div>
+
+            {/* Prev */}
+            {galleryImages.length > 1 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goPrev();
+                }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+                aria-label="Anterior"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+            )}
+
+            {/* Next */}
+            {galleryImages.length > 1 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goNext();
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+                aria-label="Siguiente"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            )}
+
+            {/* Image */}
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.2 }}
+              className="relative w-full h-full max-w-6xl max-h-[85vh] mx-4 md:mx-12"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={galleryImages[currentIndex].src}
+                alt={galleryImages[currentIndex].alt}
+                className="absolute inset-0 w-full h-full object-contain"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

@@ -1,18 +1,33 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Award, Heart } from 'lucide-react';
 import { Locale } from '@/lib/i18n/translations';
 import { getTranslations } from '@/lib/i18n/utils';
 import { DotsPattern, BlobShape, CirclesPattern } from './BackgroundPatterns';
 import { YellowGradientTop, YellowCornerTL, YellowCornerBR, YellowBar, YellowDots } from './YellowAccents';
+import RoomImageCarousel from './RoomImageCarousel';
+import RoomImageLightbox from './RoomImageLightbox';
 
 interface WelcomeSectionProps {
   locale: Locale;
 }
 
+const paraisoImages = [
+  '/images/paraiso/paraisso2..webp',
+  '/images/paraiso/paraisso3.webp',
+  '/images/paraiso/paraisso4.webp',
+  '/images/paraiso/paraisso5.webp',
+  '/images/paraiso/paraisso6.webp',
+  '/images/paraiso/paraisso7.webp',
+  '/images/paraiso/paraisso8.webp',
+];
+
 export default function WelcomeSection({ locale }: WelcomeSectionProps) {
   const t = getTranslations(locale);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   const highlights = [
     { icon: MapPin, text: 'Palenque, Bolívar' },
@@ -73,7 +88,7 @@ export default function WelcomeSection({ locale }: WelcomeSectionProps) {
             </div>
           </motion.div>
 
-          {/* Image Placeholder */}
+          {/* Image Carousel */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -81,16 +96,14 @@ export default function WelcomeSection({ locale }: WelcomeSectionProps) {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-stone-200 to-stone-300 flex items-center justify-center overflow-hidden shadow-2xl shadow-stone-200/50 border-2 border-yellow-100">
-              <div className="absolute inset-0 bg-stone-300 animate-pulse" />
-              <div className="relative z-10 text-center text-stone-400">
-                <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-stone-300 flex items-center justify-center shadow-inner">
-                  <span className="text-3xl">🏝️</span>
-                </div>
-                <p className="font-medium">
-                  {locale === 'es' ? 'Foto del hotel' : locale === 'en' ? 'Hotel photo' : 'Photo de l\'hôtel'}
-                </p>
-              </div>
+            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl shadow-stone-200/50 border-2 border-yellow-100 relative">
+              <RoomImageCarousel
+                images={paraisoImages}
+                alt={t.home.welcomeTitle}
+                interval={5000}
+                onClick={() => setLightboxOpen(true)}
+                onImageChange={(idx) => setLightboxIndex(idx)}
+              />
             </div>
 
             {/* Floating Badge avec bordure jaune */}
@@ -99,7 +112,7 @@ export default function WelcomeSection({ locale }: WelcomeSectionProps) {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 border-2 border-yellow-400"
+              className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 border-2 border-yellow-400 z-10"
             >
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
@@ -119,6 +132,16 @@ export default function WelcomeSection({ locale }: WelcomeSectionProps) {
           </motion.div>
         </div>
       </div>
+
+      <RoomImageLightbox
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        images={paraisoImages}
+        currentIndex={lightboxIndex}
+        onPrev={() => setLightboxIndex((prev) => (prev - 1 + paraisoImages.length) % paraisoImages.length)}
+        onNext={() => setLightboxIndex((prev) => (prev + 1) % paraisoImages.length)}
+        roomName="Palenque Eco Hotel"
+      />
     </section>
   );
 }

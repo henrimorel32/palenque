@@ -1,15 +1,16 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { Loader2 } from 'lucide-react';
+import { Camera } from 'lucide-react';
 
 interface RoomImageCarouselProps {
   images: string[];
   alt: string;
   interval?: number;
   onClick?: () => void;
+  onImageChange?: (index: number) => void;
 }
 
 export default function RoomImageCarousel({
@@ -17,19 +18,31 @@ export default function RoomImageCarousel({
   alt,
   interval = 4000,
   onClick,
+  onImageChange,
 }: RoomImageCarouselProps) {
   const [current, setCurrent] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Stabilise onImageChange pour éviter les boucles infinies dans next/useEffect
+  const onImageChangeRef = useRef(onImageChange);
+  useEffect(() => {
+    onImageChangeRef.current = onImageChange;
+  }, [onImageChange]);
+
   const next = useCallback(() => {
-    setCurrent((prev) => (prev + 1) % images.length);
+    setCurrent((prev) => {
+      const nextIdx = (prev + 1) % images.length;
+      onImageChangeRef.current?.(nextIdx);
+      return nextIdx;
+    });
   }, [images.length]);
 
   useEffect(() => {
     if (images.length <= 1) return;
     const timer = setInterval(next, interval);
     return () => clearInterval(timer);
-  }, [next, interval, images.length]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [interval, images.length]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -52,20 +65,26 @@ export default function RoomImageCarousel({
           : undefined
       }
     >
-      {/* Skeleton / loader background */}
+      {/* Loader style hero */}
       {isLoading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-stone-200/50 z-0">
-          <Loader2 className="w-8 h-8 text-stone-400 animate-spin" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-stone-800 z-10">
+          <div className="w-12 h-12 rounded-full bg-stone-700 flex items-center justify-center mb-3 animate-pulse">
+            <Camera className="w-6 h-6 text-yellow-400" />
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
+            <span className="text-xs font-medium text-stone-400">Loading...</span>
+          </div>
         </div>
       )}
 
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         <motion.div
           key={current}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.4 }}
+          initial={{ opacity: 0, filter: 'blur(12px)' }}
+          animate={{ opacity: 1, filter: 'blur(0px)' }}
+          exit={{ opacity: 0, filter: 'blur(12px)' }}
+          transition={{ duration: 0.8, ease: 'easeInOut' }}
           className="absolute inset-0"
         >
           <Image
@@ -101,7 +120,11 @@ export default function RoomImageCarousel({
           {images.map((_, idx) => (
             <button
               key={idx}
-              onClick={() => setCurrent(idx)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setCurrent(idx);
+                onImageChangeRef.current?.(idx);
+              }}
               className={`w-2 h-2 rounded-full transition-all duration-300 ${
                 idx === current
                   ? 'bg-white w-4'

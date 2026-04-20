@@ -42,6 +42,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
   const [videoVisible, setVideoVisible] = useState(true);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
+  const [videoProgress, setVideoProgress] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const scrollTimeoutRef = useRef<NodeJS.Timeout>();
@@ -77,6 +78,21 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
     return () => clearTimeout(timeout);
   }, [videoSupported]);
 
+  // Barre de progression fluide via requestAnimationFrame
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !videoSupported) return;
+    let rafId: number;
+    const tick = () => {
+      if (video.duration) {
+        setVideoProgress(video.currentTime / video.duration);
+      }
+      rafId = requestAnimationFrame(tick);
+    };
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
+  }, [videoSupported]);
+
   // Détermine si les images doivent être visibles
   const showImages = !videoSupported || videoError || (videoLoaded && !videoVisible);
 
@@ -104,12 +120,19 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
     scrollTimeoutRef.current = setTimeout(() => {
       setIsScrolling(false);
     }, 150);
+
+    // Fait disparaître la vidéo progressivement au scroll
+    const shouldShowVideo = latest < 0.08;
+    if (shouldShowVideo !== videoVisible) {
+      setVideoVisible(shouldShowVideo);
+    }
   });
 
   // Transformations fluides
   const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
-  const textY = useTransform(scrollYProgress, [0, 0.15], [0, -80]);
+  // Texte invisible sur la vidéo, visible sur la 1ère image, puis s'efface
+  const textOpacity = useTransform(scrollYProgress, [0, 0.06, 0.15, 0.25], [0, 1, 1, 0]);
+  const textY = useTransform(scrollYProgress, [0, 0.06, 0.15, 0.25], [40, 0, 0, -80]);
   
   // Content translations
   const content = {
@@ -163,7 +186,14 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
                 muted
                 playsInline
                 preload="auto"
-                onEnded={() => setVideoVisible(false)}
+                onEnded={() => {
+                  // Scroll doux vers la première image du parallax
+                  const container = containerRef.current;
+                  if (container && scrollYProgress.get() < 0.05) {
+                    const scrollTarget = 0.1 * (container.scrollHeight - window.innerHeight);
+                    window.scrollTo({ top: scrollTarget, behavior: 'smooth' });
+                  }
+                }}
                 onLoadedData={() => setVideoLoaded(true)}
                 onCanPlay={() => setVideoLoaded(true)}
                 onError={() => setVideoError(true)}
@@ -174,6 +204,36 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
               </video>
               <div className="absolute inset-0 bg-black/30" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.3)_100%)]" />
+
+              {/* Barre de progression vidéo */}
+              <div className="absolute bottom-0 left-0 right-0 h-2 bg-white/10 z-30 overflow-hidden">
+                <div
+                  className="h-full bg-gradient-to-r from-yellow-400 to-orange-400 shadow-[0_0_12px_rgba(250,204,21,0.6)]"
+                  style={{ width: `${videoProgress * 100}%`, transition: 'width 0.05s linear' }}
+                />
+              </div>
+
+              {/* Indicateur scroll flottant à 85% */}
+              {videoProgress > 0.85 && videoVisible && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2"
+                >
+                  <span className="text-xs text-white/80 uppercase tracking-widest font-medium bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full">
+                    {locale === 'es' ? 'Scroll para descubrir' : locale === 'en' ? 'Scroll to discover' : 'Défilez pour découvrir'}
+                  </span>
+                  <motion.div
+                    animate={{ y: [0, 6, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.2, ease: 'easeInOut' }}
+                  >
+                    <svg className="w-5 h-5 text-white/80" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </motion.div>
+                </motion.div>
+              )}
             </motion.div>
           )}
 
@@ -251,7 +311,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
 
           {/* Contenu principal */}
           <motion.div 
-            className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
+            className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-30"
             style={{ opacity: textOpacity, y: textY }}
           >
             {/* Badge */}
