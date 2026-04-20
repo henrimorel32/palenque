@@ -92,3 +92,4 @@ ansible/group_vars/all/vault.yml.example
 ansible/templates/env.production.j2
 ansible/README.md
 public/videos/plongee1.MP4
+public/videos/restaurant/FOOD PALENQUE M4.mp4
