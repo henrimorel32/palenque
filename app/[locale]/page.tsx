@@ -2,6 +2,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import HeroParallax from '@/components/HeroParallax'
+import PreloadHeroAssets from '@/components/PreloadHeroAssets'
 import WelcomeSection from '@/components/WelcomeSection'
 import FeaturesSection from '@/components/FeaturesSection'
 import RoomsSection from '@/components/RoomsSection'
@@ -35,6 +36,9 @@ export default function HomePage({ params }: PageProps) {
   
   return (
     <>
+      {/* Préchargement des assets du hero */}
+      <PreloadHeroAssets />
+
       {/* Structured Data pour Google Rich Snippets */}
       <script
         type="application/ld+json"
@@ -52,7 +56,7 @@ export default function HomePage({ params }: PageProps) {
       
       {/* Section Chambres */}
       <RoomsSection locale={params.locale} />
-      
+  
       {/* Section Services */}
       <ServicesSection locale={params.locale} />
       

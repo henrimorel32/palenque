@@ -12,6 +12,13 @@ interface HeroParallaxProps {
   locale?: Locale;
 }
 
+const images = [
+  { url: '/images/plage.webp', alt: 'Plage paradisiaque' },
+  { url: '/images/plageSoleil.webp', alt: 'Coucher de soleil océan' },
+  { url: '/images/hamacDansEau.webp', alt: 'Bungalow sur l\'eau' },
+  { url: '/images/vueAerienne1.webp', alt: 'Vue aérienne de la propriété' },
+];
+
 export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) {
   const pathname = usePathname();
   
@@ -27,14 +34,6 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
   }, [pathname, propLocale]);
   
   const t = getTranslations(locale);
-  
-  const images = [
-    { url: '/images/plage.webp', alt: 'Plage paradisiaque' },
-    { url: '/images/plageSoleil.webp', alt: 'Coucher de soleil océan' },
-    { url: '/images/plageChaises.webp', alt: 'Eaux turquoise' },
-    { url: '/images/hamacDansEau.webp', alt: 'Bungalow sur l\'eau' },
-    { url: '/images/vueAerienne1.webp', alt: 'Vue aérienne de la propriété' },
-  ];
   
   const [currentImage, setCurrentImage] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
@@ -93,6 +92,29 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
     return () => cancelAnimationFrame(rafId);
   }, [videoSupported]);
 
+  // Préchargement des assets (images + vidéo) pour éviter les lags
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    // Précharge les images en arrière-plan
+    images.forEach((img) => {
+      const image = new Image();
+      image.src = img.url;
+    });
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !videoSupported) return;
+    
+    // Précharge la vidéo en arrière-plan
+    const video = document.createElement('video');
+    video.preload = 'auto';
+    video.muted = true;
+    video.playsInline = true;
+    video.src = '/images/outputHome.webm';
+    video.load();
+  }, [videoSupported]);
+
   // Détermine si les images doivent être visibles
   const showImages = !videoSupported || videoError || (videoLoaded && !videoVisible);
 
@@ -121,8 +143,8 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
       setIsScrolling(false);
     }, 150);
 
-    // Fait disparaître la vidéo progressivement au scroll
-    const shouldShowVideo = latest < 0.08;
+    // Fait disparaître la vidéo très vite au scroll pour ne pas bloquer l'expérience
+    const shouldShowVideo = latest < 0.02;
     if (shouldShowVideo !== videoVisible) {
       setVideoVisible(shouldShowVideo);
     }
@@ -166,9 +188,9 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
 
   return (
     <div ref={containerRef} className="relative">
-      {/* Hauteur du scroll - plus courte pour un scroll plus réactif */}
-      <div className="h-[400vh]">
-        <div className="sticky top-0 h-screen w-full overflow-hidden bg-gray-900">
+      {/* Hauteur du scroll - plus longue pour laisser du temps à chaque image */}
+      <div className="h-[500vh]">
+        <div className="sticky top-0 h-screen w-full overflow-hidden bg-gray-900 z-20">
           
           {/* Vidéo de fond */}
           {videoSupported && (
@@ -287,9 +309,9 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
               <button
                 key={index}
                 onClick={() => {
-                  const targetScroll = (index / (numImages - 1)) * 0.9;
                   const container = containerRef.current;
                   if (container) {
+                    const targetScroll = (index / (numImages - 1));
                     const scrollTarget = targetScroll * (container.scrollHeight - window.innerHeight);
                     window.scrollTo({ 
                       top: scrollTarget,
