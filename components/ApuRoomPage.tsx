@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Waves, Sun, Wind, Snowflake,
-  Heart, ChevronRight, ArrowLeft, BedDouble
+  Heart, ChevronRight, ArrowLeft, BedDouble, Bath
 } from 'lucide-react';
 import { Locale } from '@/lib/i18n/translations';
 import RoomImageCarousel from '@/components/RoomImageCarousel';
@@ -22,23 +22,16 @@ const content = {
     tagline: 'Frente al mar, donde las olas cantan tu sueño',
     description:
       'Nuestra joya de la corona. Una cabaña privada a solo metros del océano, con terraza propia y hamaca bajo las estrellas. Despierta con el sonido de las olas y el aroma del mar.',
-    price: 'Desde $280.000',
-    period: 'por noche',
+    price: 'Desde $160.000',
+    period: 'por persona por noche',
     bestFor: 'Luna de miel o escapada romántica',
     features: [
-      'Vista directa al mar',
-      'Terraza privada',
-      'Hamaca',
-      'Aire acondicionado',
-      'Cama King',
-      'Baño exterior tipo spa',
-      'Mini bar',
+      '1 cama doble',
+      'Baño interior',
     ],
     amenities: [
-      { icon: Waves, label: 'Frente al mar' },
-      { icon: Sun, label: 'Amanecer privado' },
-      { icon: Wind, label: 'Brisa natural' },
-      { icon: Snowflake, label: 'A/C' },
+      { icon: BedDouble, label: '1 cama doble' },
+      { icon: Bath, label: 'Baño interior' },
     ],
     cta: 'Reservar esta habitación',
   },
@@ -49,23 +42,16 @@ const content = {
     tagline: 'Beachfront, where the waves sing you to sleep',
     description:
       'Our crown jewel. A private cabin just meters from the ocean, with its own terrace and hammock under the stars. Wake up to the sound of the waves and the scent of the sea.',
-    price: 'From $280,000',
-    period: 'per night',
+    price: 'From $160,000',
+    period: 'per person per night',
     bestFor: 'Honeymoon or romantic getaway',
     features: [
-      'Direct ocean view',
-      'Private terrace',
-      'Hammock',
-      'Air conditioning',
-      'King bed',
-      'Outdoor spa-style bathroom',
-      'Mini bar',
+      '1 double bed',
+      'Indoor bathroom',
     ],
     amenities: [
-      { icon: Waves, label: 'Beachfront' },
-      { icon: Sun, label: 'Private sunrise' },
-      { icon: Wind, label: 'Natural breeze' },
-      { icon: Snowflake, label: 'A/C' },
+      { icon: BedDouble, label: '1 double bed' },
+      { icon: Bath, label: 'Indoor bathroom' },
     ],
     cta: 'Book this room',
   },
@@ -76,23 +62,16 @@ const content = {
     tagline: 'Front de mer, où les vagues chantent votre sommeil',
     description:
       'Notre joyau. Une cabane privée à quelques mètres de l\'océan, avec sa propre terrasse et son hamac sous les étoiles. Réveillez-vous au son des vagues et à l\'odeur de la mer.',
-    price: 'À partir de 280 000 $',
-    period: 'par nuit',
+    price: 'À partir de 160 000',
+    period: 'par personne par nuit',
     bestFor: 'Lune de miel ou escapade romantique',
     features: [
-      'Vue directe sur la mer',
-      'Terrasse privée',
-      'Hamac',
-      'Climatisation',
-      'Lit King',
-      'Salle de bain extérieure spa',
-      'Mini bar',
+      '1 lit double',
+      'Salle de bain intérieure',
     ],
     amenities: [
-      { icon: Waves, label: 'Front de mer' },
-      { icon: Sun, label: 'Lever de soleil privé' },
-      { icon: Wind, label: 'Brise naturelle' },
-      { icon: Snowflake, label: 'A/C' },
+      { icon: BedDouble, label: '1 lit double' },
+      { icon: Bath, label: 'Salle de bain intérieure' },
     ],
     cta: 'Réserver cette chambre',
   },

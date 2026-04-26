@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Award, Waves, Wind, Snowflake, Sun, Heart, ChevronRight,
-  BedDouble, Wifi, Coffee, Droplets, Star, ArrowRight
+  BedDouble, Wifi, Coffee, Droplets, Star, ArrowRight, Bath
 } from 'lucide-react';
 import { Locale } from '@/lib/i18n/translations';
 import { getTranslations } from '@/lib/i18n/utils';
@@ -54,16 +54,16 @@ export default function RoomsSection({ locale }: RoomsSectionProps) {
           : 'Une cabane privée à quelques mètres de l\'océan, avec sa propre terrasse et son hamac sous les étoiles.',
       price:
         locale === 'es'
-          ? 'Desde $280.000'
+          ? 'Desde $160.000'
           : locale === 'en'
-          ? 'From $280,000'
-          : 'À partir de 280 000 $',
+          ? 'From $160,000'
+          : 'À partir de 160 000 $',
       period:
         locale === 'es'
-          ? 'por noche'
+          ? 'por persona por noche'
           : locale === 'en'
-          ? 'per night'
-          : 'par nuit',
+          ? 'per person per night'
+          : 'par personne par nuit',
       bestFor:
         locale === 'es'
           ? 'Luna de miel'
@@ -72,15 +72,13 @@ export default function RoomsSection({ locale }: RoomsSectionProps) {
           : 'Lune de miel',
       features:
         locale === 'es'
-          ? ['Vista al mar', 'Terraza privada', 'Hamaca', 'A/C', 'Cama King']
+          ? ['1 cama doble', 'Baño interior']
           : locale === 'en'
-          ? ['Ocean view', 'Private terrace', 'Hammock', 'A/C', 'King bed']
-          : ['Vue mer', 'Terrasse privée', 'Hamac', 'A/C', 'Lit King'],
+          ? ['1 double bed', 'Indoor bathroom']
+          : ['1 lit double', 'Salle de bain intérieure'],
       amenities: [
-        { icon: Waves, label: locale === 'es' ? 'Frente al mar' : locale === 'en' ? 'Beachfront' : 'Front de mer' },
-        { icon: Sun, label: locale === 'es' ? 'Amanecer' : locale === 'en' ? 'Sunrise' : 'Lever soleil' },
-        { icon: Wind, label: locale === 'es' ? 'Brisa' : locale === 'en' ? 'Breeze' : 'Brise' },
-        { icon: Snowflake, label: 'A/C' },
+        { icon: BedDouble, label: locale === 'es' ? '1 cama doble' : locale === 'en' ? '1 double bed' : '1 lit double' },
+        { icon: Bath, label: locale === 'es' ? 'Baño interior' : locale === 'en' ? 'Indoor bathroom' : 'Salle de bain intérieure' },
       ],
       images: [
         '/images/apu/apu1.webp',
@@ -121,10 +119,10 @@ export default function RoomsSection({ locale }: RoomsSectionProps) {
           : 'À partir de 180 000 $',
       period:
         locale === 'es'
-          ? 'por noche'
+          ? 'por persona por noche'
           : locale === 'en'
-          ? 'per night'
-          : 'par nuit',
+          ? 'per person per night'
+          : 'par personne par nuit',
       bestFor:
         locale === 'es'
           ? 'Estancias largas'
@@ -175,10 +173,10 @@ export default function RoomsSection({ locale }: RoomsSectionProps) {
           : 'À partir de 250 000 $',
       period:
         locale === 'es'
-          ? 'por noche'
+          ? 'por persona por noche'
           : locale === 'en'
-          ? 'per night'
-          : 'par nuit',
+          ? 'per person per night'
+          : 'par personne par nuit',
       bestFor:
         locale === 'es'
           ? 'Familias'

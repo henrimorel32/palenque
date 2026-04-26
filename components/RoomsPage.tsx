@@ -35,14 +35,12 @@ const content = {
           name: 'Cabaña APU',
           tagline: 'Frente al mar, donde las olas cantan tu sueño',
           description: 'Nuestra joya de la corona. Una cabaña privada a solo metros del océano, con terraza propia y hamaca bajo las estrellas. Despierta con el sonido de las olas y el aroma del mar.',
-          price: 'Desde $280.000',
-          period: 'por noche',
-          features: ['Vista directa al mar', 'Terraza privada', 'Hamaca', 'Aire acondicionado', 'Cama King', 'Baño exterior tipo spa', 'Mini bar'],
+          price: 'Desde $160.000',
+          period: 'por persona por noche',
+          features: ['1 cama doble', 'Baño interior'],
           amenities: [
-            { icon: Waves, label: 'Frente al mar' },
-            { icon: Sun, label: 'Amanecer privado' },
-            { icon: Wind, label: 'Brisa natural' },
-            { icon: Snowflake, label: 'A/C' }
+            { icon: BedDouble, label: '1 cama doble' },
+            { icon: Bath, label: 'Baño interior' }
           ],
           color: 'from-amber-400 to-orange-500',
           bestFor: 'Luna de miel o escapada romántica',
@@ -54,14 +52,12 @@ const content = {
           name: 'Usukulu',
           tagline: 'Elegancia costera con vistas panorámicas',
           description: 'Espaciosa suite con ventanales desde el suelo hasta el techo que enmarcan el océano como una pintura viviente. El equilibrio perfecto entre lujo y naturaleza.',
-          price: 'Desde $180.000',
-          period: 'por noche',
-          features: ['Vista panorámica', 'Balcón privado', 'Sala de estar', 'Cama King', 'Baño con tina', 'Ropa de cama premium'],
+          price: 'Desde $115.000',
+          period: 'por persona por noche',
+          features: ['1 cama doble', '1 cama sencilla', 'Baño privado exterior'],
           amenities: [
-            { icon: Tv, label: 'Smart TV' },
-            { icon: Coffee, label: 'Café de origen' },
-            { icon: Wifi, label: 'WiFi alta velocidad' },
-            { icon: Bath, label: 'Tina con vista' }
+            { icon: BedDouble, label: '1 doble + 1 sencilla' },
+            { icon: Bath, label: 'Baño privado exterior' }
           ],
           color: 'from-blue-400 to-cyan-500',
           bestFor: 'Estancias prolongadas',
@@ -73,14 +69,12 @@ const content = {
           name: 'Habitación Lumbalu',
           tagline: 'Abrazada por la vegetación tropical',
           description: 'Un refugio íntimo rodeado de palmeras y flores tropicales. La naturaleza entra por las ventanas abiertas mientras duermes envuelto en frescura.',
-          price: 'Desde $120.000',
-          period: 'por noche',
-          features: ['Vista al jardín', 'Ventilador natural', 'Cama Queen', 'Baño privado', 'Patio privado', 'Desayuno incluido'],
+          price: 'Desde $110.000',
+          period: 'por persona por noche',
+          features: ['1 cama doble', '1 camarote', 'Baño exterior compartido'],
           amenities: [
-            { icon: Droplets, label: 'Ducha caliente' },
-            { icon: BedDouble, label: 'Cama Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Desayuno' }
+            { icon: BedDouble, label: '1 doble + 1 camarote' },
+            { icon: Bath, label: 'Baño compartido' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Viajeros conscientes'
@@ -90,14 +84,12 @@ const content = {
           name: 'Habitación Sangaria',
           tagline: 'Abrazada por la vegetación tropical',
           description: 'Un refugio íntimo rodeado de palmeras y flores tropicales. La naturaleza entra por las ventanas abiertas mientras duermes envuelto en frescura.',
-          price: 'Desde $120.000',
-          period: 'por noche',
-          features: ['Vista al jardín', 'Ventilador natural', 'Cama Queen', 'Baño privado', 'Patio privado', 'Desayuno incluido'],
+          price: 'Desde $140.000',
+          period: 'por persona por noche',
+          features: ['1 cama doble', 'Baño interior'],
           amenities: [
-            { icon: Droplets, label: 'Ducha caliente' },
-            { icon: BedDouble, label: 'Cama Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Desayuno' }
+            { icon: BedDouble, label: '1 cama doble' },
+            { icon: Bath, label: 'Baño interior' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Viajeros conscientes',
@@ -109,14 +101,12 @@ const content = {
           name: 'Habitación Kombilesa',
           tagline: 'Abrazada por la vegetación tropical',
           description: 'Un refugio íntimo rodeado de palmeras y flores tropicales. La naturaleza entra por las ventanas abiertas mientras duermes envuelto en frescura.',
-          price: 'Desde $120.000',
-          period: 'por noche',
-          features: ['Vista al jardín', 'Ventilador natural', 'Cama Queen', 'Baño privado', 'Patio privado', 'Desayuno incluido'],
+          price: 'Desde $110.000',
+          period: 'por persona por noche',
+          features: ['1 cama doble', '1 camarote', 'Baño interior'],
           amenities: [
-            { icon: Droplets, label: 'Ducha caliente' },
-            { icon: BedDouble, label: 'Cama Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Desayuno' }
+            { icon: BedDouble, label: '1 doble + 1 camarote' },
+            { icon: Bath, label: 'Baño interior' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Viajeros conscientes',
@@ -128,14 +118,12 @@ const content = {
           name: 'Habitación Amalaya',
           tagline: 'Abrazada por la vegetación tropical',
           description: 'Un refugio íntimo rodeado de palmeras y flores tropicales. La naturaleza entra por las ventanas abiertas mientras duermes envuelto en frescura.',
-          price: 'Desde $120.000',
-          period: 'por noche',
-          features: ['Vista al jardín', 'Ventilador natural', 'Cama Queen', 'Baño privado', 'Patio privado', 'Desayuno incluido'],
+          price: 'Desde $130.000',
+          period: 'por persona por noche',
+          features: ['1 cama doble', 'Baño privado exterior'],
           amenities: [
-            { icon: Droplets, label: 'Ducha caliente' },
-            { icon: BedDouble, label: 'Cama Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Desayuno' }
+            { icon: BedDouble, label: '1 cama doble' },
+            { icon: Bath, label: 'Baño privado exterior' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Viajeros conscientes',
@@ -147,14 +135,12 @@ const content = {
           name: 'Habitación Pekao',
           tagline: 'Abrazada por la vegetación tropical',
           description: 'Un refugio íntimo rodeado de palmeras y flores tropicales. La naturaleza entra por las ventanas abiertas mientras duermes envuelto en frescura.',
-          price: 'Desde $120.000',
-          period: 'por noche',
-          features: ['Vista al jardín', 'Ventilador natural', 'Cama Queen', 'Baño privado', 'Patio privado', 'Desayuno incluido'],
+          price: 'Desde $140.000',
+          period: 'por persona por noche',
+          features: ['1 cama doble', 'Baño interior'],
           amenities: [
-            { icon: Droplets, label: 'Ducha caliente' },
-            { icon: BedDouble, label: 'Cama Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Desayuno' }
+            { icon: BedDouble, label: '1 cama doble' },
+            { icon: Bath, label: 'Baño interior' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Viajeros conscientes',
@@ -166,14 +152,12 @@ const content = {
           name: 'Habitación Kolaso',
           tagline: 'Abrazada por la vegetación tropical',
           description: 'Un refugio íntimo rodeado de palmeras y flores tropicales. La naturaleza entra por las ventanas abiertas mientras duermes envuelto en frescura.',
-          price: 'Desde $120.000',
-          period: 'por noche',
-          features: ['Vista al jardín', 'Ventilador natural', 'Cama Queen', 'Baño privado', 'Patio privado', 'Desayuno incluido'],
+          price: 'Desde $150.000',
+          period: 'por persona por noche',
+          features: ['1 cama Queen', '1 cama doble', 'Baño interior'],
           amenities: [
-            { icon: Droplets, label: 'Ducha caliente' },
-            { icon: BedDouble, label: 'Cama Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Desayuno' }
+            { icon: BedDouble, label: '1 Queen + 1 doble' },
+            { icon: Bath, label: 'Baño interior' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Viajeros conscientes',
@@ -185,14 +169,12 @@ const content = {
           name: 'Habitación Abalenga',
           tagline: 'Abrazada por la vegetación tropical',
           description: 'Un refugio íntimo rodeado de palmeras y flores tropicales. La naturaleza entra por las ventanas abiertas mientras duermes envuelto en frescura.',
-          price: 'Desde $120.000',
-          period: 'por noche',
-          features: ['Vista al jardín', 'Ventilador natural', 'Cama Queen', 'Baño privado', 'Patio privado', 'Desayuno incluido'],
+          price: 'Desde $160.000',
+          period: 'por persona por noche',
+          features: ['1 cama doble', 'Baño interior'],
           amenities: [
-            { icon: Droplets, label: 'Ducha caliente' },
-            { icon: BedDouble, label: 'Cama Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Desayuno' }
+            { icon: BedDouble, label: '1 cama doble' },
+            { icon: Bath, label: 'Baño interior' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Viajeros conscientes',
@@ -201,17 +183,15 @@ const content = {
         },
         {
           id: 10,
-          name: 'Habitación Makunguri',
+          name: 'Dormitorio Makunguri',
           tagline: 'Abrazada por la vegetación tropical',
           description: 'Un refugio íntimo rodeado de palmeras y flores tropicales. La naturaleza entra por las ventanas abiertas mientras duermes envuelto en frescura.',
-          price: 'Desde $120.000',
-          period: 'por noche',
-          features: ['Vista al jardín', 'Ventilador natural', 'Cama Queen', 'Baño privado', 'Patio privado', 'Desayuno incluido'],
+          price: 'Desde $95.000',
+          period: 'por persona por noche',
+          features: ['2 camarotes (1 doble + 1 sencilla arriba c/u)', 'Baño interior'],
           amenities: [
-            { icon: Droplets, label: 'Ducha caliente' },
-            { icon: BedDouble, label: 'Cama Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Desayuno' }
+            { icon: BedDouble, label: '2 camarotes' },
+            { icon: Bath, label: 'Baño interior' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Viajeros conscientes',
@@ -224,13 +204,11 @@ const content = {
           tagline: 'Abrazada por la vegetación tropical',
           description: 'Un refugio íntimo rodeado de palmeras y flores tropicales. La naturaleza entra por las ventanas abiertas mientras duermes envuelto en frescura.',
           price: 'Desde $120.000',
-          period: 'por noche',
-          features: ['Vista al jardín', 'Ventilador natural', 'Cama Queen', 'Baño privado', 'Patio privado', 'Desayuno incluido'],
+          period: 'por persona por noche',
+          features: ['1 camarote (1 doble + 1 sencilla arriba)', 'Baño exterior compartido'],
           amenities: [
-            { icon: Droplets, label: 'Ducha caliente' },
-            { icon: BedDouble, label: 'Cama Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Desayuno' }
+            { icon: BedDouble, label: '1 camarote' },
+            { icon: Bath, label: 'Baño compartido' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Viajeros conscientes',
@@ -242,14 +220,12 @@ const content = {
           name: 'Habitación Makano',
           tagline: 'Abrazada por la vegetación tropical',
           description: 'Un refugio íntimo rodeado de palmeras y flores tropicales. La naturaleza entra por las ventanas abiertas mientras duermes envuelto en frescura.',
-          price: 'Desde $120.000',
-          period: 'por noche',
-          features: ['Vista al jardín', 'Ventilador natural', 'Cama Queen', 'Baño privado', 'Patio privado', 'Desayuno incluido'],
+          price: 'Desde $125.000',
+          period: 'por persona por noche',
+          features: ['1 cama doble', '1 camarote', 'Baño interior'],
           amenities: [
-            { icon: Droplets, label: 'Ducha caliente' },
-            { icon: BedDouble, label: 'Cama Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Desayuno' }
+            { icon: BedDouble, label: '1 doble + 1 camarote' },
+            { icon: Bath, label: 'Baño interior' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Viajeros conscientes',
@@ -258,21 +234,20 @@ const content = {
         },
         {
           id: 13,
-          name: 'Habitación Asinaria',
+          name: 'Dormitorio Asinaria',
           tagline: 'Abrazada por la vegetación tropical',
           description: 'Un refugio íntimo rodeado de palmeras y flores tropicales. La naturaleza entra por las ventanas abiertas mientras duermes envuelto en frescura.',
-          price: 'Desde $120.000',
-          period: 'por noche',
-          features: ['Vista al jardín', 'Ventilador natural', 'Cama Queen', 'Baño privado', 'Patio privado', 'Desayuno incluido'],
+          price: 'Desde $90.000',
+          period: 'por persona por noche',
+          features: ['2 camarotes (cama sencilla)', 'Baño exterior'],
           amenities: [
-            { icon: Droplets, label: 'Ducha caliente' },
-            { icon: BedDouble, label: 'Cama Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Desayuno' }
+            { icon: BedDouble, label: '2 camarotes' },
+            { icon: Bath, label: 'Baño exterior' }
           ],
           color: 'from-green-400 to-emerald-500',
+          bestFor: 'Viajeros conscientes',
           images: ['/images/asinaria/asinaria1.webp', '/images/asinaria/asinaria2.webp', '/images/asinaria/asinaria3.webp'],
-          thumbnail: '/images/asinaria/asinaria1.webp',
+          thumbnail: '/images/asinaria/asinaria1.webp'
         }
       ],
       features: {
@@ -297,15 +272,15 @@ const content = {
         button: 'Reservar habitación',
         subtext: 'Cancelación gratuita hasta 48h antes'
       },
-      sectionViajero: {
-        title: 'Viajero',
+      sectionBabor: {
+        title: 'Babor',
         subtitle: 'Para el alma aventurera que busca experiencias únicas',
-        cta: 'Ver habitaciones Viajero'
+        cta: 'Ver habitaciones Babor'
       },
-      sectionReposo: {
-        title: 'Reposo',
+      sectionEstribor: {
+        title: 'Estribor',
         subtitle: 'Para quien busca descanso profundo y reconexión',
-        cta: 'Ver habitaciones Reposo'
+        cta: 'Ver habitaciones Estribor'
       }
     },
     en: {
@@ -325,14 +300,12 @@ const content = {
           name: 'Cabaña APU',
           tagline: 'Oceanfront, where waves sing you to sleep',
           description: 'Our crown jewel. A private cabin just meters from the ocean, with its own terrace and hammock under the stars. Wake up to the sound of waves and the scent of the sea.',
-          price: 'From $280,000',
-          period: 'per night',
-          features: ['Direct ocean view', 'Private terrace', 'Hammock', 'Air conditioning', 'King bed', 'Outdoor spa bathroom', 'Mini bar'],
+          price: 'From $160,000',
+          period: 'per person per night',
+          features: ['1 double bed', 'Indoor bathroom'],
           amenities: [
-            { icon: Waves, label: 'Beachfront' },
-            { icon: Sun, label: 'Private sunrise' },
-            { icon: Wind, label: 'Natural breeze' },
-            { icon: Snowflake, label: 'A/C' }
+            { icon: BedDouble, label: '1 double bed' },
+            { icon: Bath, label: 'Indoor bathroom' }
           ],
           color: 'from-amber-400 to-orange-500',
           bestFor: 'Honeymoon or romantic getaway',
@@ -344,33 +317,29 @@ const content = {
           name: 'Usukulu',
           tagline: 'Coastal elegance with panoramic views',
           description: 'Spacious suite with floor-to-ceiling windows that frame the ocean like a living painting. The perfect balance between luxury and nature.',
-          price: 'From $180,000',
-          period: 'per night',
-          features: ['Panoramic view', 'Private balcony', 'Living room', 'King bed', 'Bathtub', 'Premium bedding'],
+          price: 'From $115,000',
+          period: 'per person per night',
+          features: ['1 double bed', '1 single bed', 'Private outdoor bathroom'],
           amenities: [
-            { icon: Tv, label: 'Smart TV' },
-            { icon: Coffee, label: 'Local coffee' },
-            { icon: Wifi, label: 'High-speed WiFi' },
-            { icon: Bath, label: 'Bathtub with view' }
+            { icon: BedDouble, label: '1 double + 1 single' },
+            { icon: Bath, label: 'Private outdoor bathroom' }
           ],
           color: 'from-blue-400 to-cyan-500',
           bestFor: 'Extended stays',
           images: ['/images/usukulu/usukulu1.webp', '/images/usukulu/usukulu2.webp'],
-          thumbnail: '/images/usukulu/usukulu1.webp',
+          thumbnail: '/images/usukulu/usukulu1.webp'
         },
         {
           id: 3,
           name: 'Habitación Lumbalu',
           tagline: 'Embraced by tropical vegetation',
           description: 'An intimate refuge surrounded by palm trees and tropical flowers. Nature enters through open windows while you sleep wrapped in freshness.',
-          price: 'From $120,000',
-          period: 'per night',
-          features: ['Garden view', 'Natural ventilation', 'Queen bed', 'Private bathroom', 'Private patio', 'Breakfast included'],
+          price: 'From $110,000',
+          period: 'per person per night',
+          features: ['1 double bed', '1 bunk bed', 'Shared outdoor bathroom'],
           amenities: [
-            { icon: Droplets, label: 'Hot shower' },
-            { icon: BedDouble, label: 'Queen bed' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Breakfast' }
+            { icon: BedDouble, label: '1 double + 1 bunk' },
+            { icon: Bath, label: 'Shared bathroom' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Conscious travelers'
@@ -380,14 +349,12 @@ const content = {
           name: 'Habitación Sangaria',
           tagline: 'Embraced by tropical vegetation',
           description: 'An intimate refuge surrounded by palm trees and tropical flowers. Nature enters through open windows while you sleep wrapped in freshness.',
-          price: 'From $120,000',
-          period: 'per night',
-          features: ['Garden view', 'Natural ventilation', 'Queen bed', 'Private bathroom', 'Private patio', 'Breakfast included'],
+          price: 'From $140,000',
+          period: 'per person per night',
+          features: ['1 double bed', 'Indoor bathroom'],
           amenities: [
-            { icon: Droplets, label: 'Hot shower' },
-            { icon: BedDouble, label: 'Queen bed' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Breakfast' }
+            { icon: BedDouble, label: '1 double bed' },
+            { icon: Bath, label: 'Indoor bathroom' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Conscious travelers',
@@ -399,14 +366,12 @@ const content = {
           name: 'Habitación Kombilesa',
           tagline: 'Embraced by tropical vegetation',
           description: 'An intimate refuge surrounded by palm trees and tropical flowers. Nature enters through open windows while you sleep wrapped in freshness.',
-          price: 'From $120,000',
-          period: 'per night',
-          features: ['Garden view', 'Natural ventilation', 'Queen bed', 'Private bathroom', 'Private patio', 'Breakfast included'],
+          price: 'From $110,000',
+          period: 'per person per night',
+          features: ['1 double bed', '1 bunk bed', 'Indoor bathroom'],
           amenities: [
-            { icon: Droplets, label: 'Hot shower' },
-            { icon: BedDouble, label: 'Queen bed' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Breakfast' }
+            { icon: BedDouble, label: '1 double + 1 bunk' },
+            { icon: Bath, label: 'Indoor bathroom' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Conscious travelers',
@@ -418,14 +383,12 @@ const content = {
           name: 'Habitación Amalaya',
           tagline: 'Embraced by tropical vegetation',
           description: 'An intimate refuge surrounded by palm trees and tropical flowers. Nature enters through open windows while you sleep wrapped in freshness.',
-          price: 'From $120,000',
-          period: 'per night',
-          features: ['Garden view', 'Natural ventilation', 'Queen bed', 'Private bathroom', 'Private patio', 'Breakfast included'],
+          price: 'From $130,000',
+          period: 'per person per night',
+          features: ['1 double bed', 'Private outdoor bathroom'],
           amenities: [
-            { icon: Droplets, label: 'Hot shower' },
-            { icon: BedDouble, label: 'Queen bed' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Breakfast' }
+            { icon: BedDouble, label: '1 double bed' },
+            { icon: Bath, label: 'Private outdoor bathroom' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Conscious travelers',
@@ -437,14 +400,12 @@ const content = {
           name: 'Habitación Pekao',
           tagline: 'Embraced by tropical vegetation',
           description: 'An intimate refuge surrounded by palm trees and tropical flowers. Nature enters through open windows while you sleep wrapped in freshness.',
-          price: 'From $120,000',
-          period: 'per night',
-          features: ['Garden view', 'Natural ventilation', 'Queen bed', 'Private bathroom', 'Private patio', 'Breakfast included'],
+          price: 'From $140,000',
+          period: 'per person per night',
+          features: ['1 double bed', 'Indoor bathroom'],
           amenities: [
-            { icon: Droplets, label: 'Hot shower' },
-            { icon: BedDouble, label: 'Queen bed' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Breakfast' }
+            { icon: BedDouble, label: '1 double bed' },
+            { icon: Bath, label: 'Indoor bathroom' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Conscious travelers',
@@ -456,14 +417,12 @@ const content = {
           name: 'Habitación Kolaso',
           tagline: 'Embraced by tropical vegetation',
           description: 'An intimate refuge surrounded by palm trees and tropical flowers. Nature enters through open windows while you sleep wrapped in freshness.',
-          price: 'From $120,000',
-          period: 'per night',
-          features: ['Garden view', 'Natural ventilation', 'Queen bed', 'Private bathroom', 'Private patio', 'Breakfast included'],
+          price: 'From $150,000',
+          period: 'per person per night',
+          features: ['1 Queen bed', '1 double bed', 'Indoor bathroom'],
           amenities: [
-            { icon: Droplets, label: 'Hot shower' },
-            { icon: BedDouble, label: 'Queen bed' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Breakfast' }
+            { icon: BedDouble, label: '1 Queen + 1 double' },
+            { icon: Bath, label: 'Indoor bathroom' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Conscious travelers',
@@ -475,14 +434,12 @@ const content = {
           name: 'Habitación Abalenga',
           tagline: 'Embraced by tropical vegetation',
           description: 'An intimate refuge surrounded by palm trees and tropical flowers. Nature enters through open windows while you sleep wrapped in freshness.',
-          price: 'From $120,000',
-          period: 'per night',
-          features: ['Garden view', 'Natural ventilation', 'Queen bed', 'Private bathroom', 'Private patio', 'Breakfast included'],
+          price: 'From $160,000',
+          period: 'per person per night',
+          features: ['1 double bed', 'Indoor bathroom'],
           amenities: [
-            { icon: Droplets, label: 'Hot shower' },
-            { icon: BedDouble, label: 'Queen bed' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Breakfast' }
+            { icon: BedDouble, label: '1 double bed' },
+            { icon: Bath, label: 'Indoor bathroom' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Conscious travelers',
@@ -491,17 +448,15 @@ const content = {
         },
         {
           id: 10,
-          name: 'Habitación Makunguri',
+          name: 'Dormitory Makunguri',
           tagline: 'Embraced by tropical vegetation',
           description: 'An intimate refuge surrounded by palm trees and tropical flowers. Nature enters through open windows while you sleep wrapped in freshness.',
-          price: 'From $120,000',
-          period: 'per night',
-          features: ['Garden view', 'Natural ventilation', 'Queen bed', 'Private bathroom', 'Private patio', 'Breakfast included'],
+          price: 'From $95,000',
+          period: 'per person per night',
+          features: ['2 bunk beds (1 double + 1 single on top each)', 'Indoor bathroom'],
           amenities: [
-            { icon: Droplets, label: 'Hot shower' },
-            { icon: BedDouble, label: 'Queen bed' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Breakfast' }
+            { icon: BedDouble, label: '2 bunk beds' },
+            { icon: Bath, label: 'Indoor bathroom' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Conscious travelers',
@@ -514,13 +469,11 @@ const content = {
           tagline: 'Embraced by tropical vegetation',
           description: 'An intimate refuge surrounded by palm trees and tropical flowers. Nature enters through open windows while you sleep wrapped in freshness.',
           price: 'From $120,000',
-          period: 'per night',
-          features: ['Garden view', 'Natural ventilation', 'Queen bed', 'Private bathroom', 'Private patio', 'Breakfast included'],
+          period: 'per person per night',
+          features: ['1 bunk bed (1 double + 1 single on top)', 'Shared outdoor bathroom'],
           amenities: [
-            { icon: Droplets, label: 'Hot shower' },
-            { icon: BedDouble, label: 'Queen bed' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Breakfast' }
+            { icon: BedDouble, label: '1 bunk bed' },
+            { icon: Bath, label: 'Shared bathroom' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Conscious travelers',
@@ -532,14 +485,12 @@ const content = {
           name: 'Habitación Makano',
           tagline: 'Embraced by tropical vegetation',
           description: 'An intimate refuge surrounded by palm trees and tropical flowers. Nature enters through open windows while you sleep wrapped in freshness.',
-          price: 'From $120,000',
-          period: 'per night',
-          features: ['Garden view', 'Natural ventilation', 'Queen bed', 'Private bathroom', 'Private patio', 'Breakfast included'],
+          price: 'From $125,000',
+          period: 'per person per night',
+          features: ['1 double bed', '1 bunk bed', 'Indoor bathroom'],
           amenities: [
-            { icon: Droplets, label: 'Hot shower' },
-            { icon: BedDouble, label: 'Queen bed' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Breakfast' }
+            { icon: BedDouble, label: '1 double + 1 bunk' },
+            { icon: Bath, label: 'Indoor bathroom' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Conscious travelers',
@@ -548,17 +499,15 @@ const content = {
         },
         {
           id: 13,
-          name: 'Habitación Asinaria',
+          name: 'Dormitory Asinaria',
           tagline: 'Embraced by tropical vegetation',
           description: 'An intimate refuge surrounded by palm trees and tropical flowers. Nature enters through open windows while you sleep wrapped in freshness.',
-          price: 'From $120,000',
-          period: 'per night',
-          features: ['Garden view', 'Natural ventilation', 'Queen bed', 'Private bathroom', 'Private patio', 'Breakfast included'],
+          price: 'From $90,000',
+          period: 'per person per night',
+          features: ['2 bunk beds (single)', 'Outdoor bathroom'],
           amenities: [
-            { icon: Droplets, label: 'Hot shower' },
-            { icon: BedDouble, label: 'Queen bed' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Breakfast' }
+            { icon: BedDouble, label: '2 bunk beds' },
+            { icon: Bath, label: 'Outdoor bathroom' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Conscious travelers',
@@ -588,15 +537,15 @@ const content = {
         button: 'Book room',
         subtext: 'Free cancellation up to 48h before'
       },
-      sectionViajero: {
-        title: 'Viajero',
+      sectionBabor: {
+        title: 'Babor',
         subtitle: 'For the adventurous soul seeking unique experiences',
-        cta: 'See Viajero rooms'
+        cta: 'See Babor rooms'
       },
-      sectionReposo: {
-        title: 'Reposo',
+      sectionEstribor: {
+        title: 'Estribor',
         subtitle: 'For those seeking deep rest and reconnection',
-        cta: 'See Reposo rooms'
+        cta: 'See Estribor rooms'
       }
     },
     fr: {
@@ -616,14 +565,12 @@ const content = {
           name: 'Cabaña APU',
           tagline: 'Face à la mer, où les vagues vous bercent',
           description: 'Notre joyau. Une cabane privée à quelques mètres de l\'océan, avec sa propre terrasse et hamac sous les étoiles. Réveillez-vous au son des vagues et à l\'odeur de la mer.',
-          price: 'À partir de 280 000',
-          period: 'par nuit',
-          features: ['Vue directe sur la mer', 'Terrasse privée', 'Hamac', 'Climatisation', 'Lit King', 'Salle de bain extérieure spa', 'Mini bar'],
+          price: 'À partir de 160 000',
+          period: 'par personne par nuit',
+          features: ['1 lit double', 'Salle de bain intérieure'],
           amenities: [
-            { icon: Waves, label: 'Front de mer' },
-            { icon: Sun, label: 'Lever de soleil privé' },
-            { icon: Wind, label: 'Brise naturelle' },
-            { icon: Snowflake, label: 'A/C' }
+            { icon: BedDouble, label: '1 lit double' },
+            { icon: Bath, label: 'Salle de bain intérieure' }
           ],
           color: 'from-amber-400 to-orange-500',
           bestFor: 'Lune de miel ou escapade romantique',
@@ -635,14 +582,12 @@ const content = {
           name: 'Usukulu',
           tagline: 'Élégance côtière avec vues panoramiques',
           description: 'Suite spacieuse avec des fenêtres du sol au plafond qui encadrent l\'océan comme un tableau vivant. L\'équilibre parfait entre luxe et nature.',
-          price: 'À partir de 180 000',
-          period: 'par nuit',
-          features: ['Vue panoramique', 'Balcon privé', 'Salon', 'Lit King', 'Baignoire', 'Linge de lit premium'],
+          price: 'À partir de 115 000',
+          period: 'par personne par nuit',
+          features: ['1 lit double', '1 lit simple', 'Salle de bain privée extérieure'],
           amenities: [
-            { icon: Tv, label: 'Smart TV' },
-            { icon: Coffee, label: 'Café local' },
-            { icon: Wifi, label: 'WiFi haut débit' },
-            { icon: Bath, label: 'Baignoire avec vue' }
+            { icon: BedDouble, label: '1 double + 1 simple' },
+            { icon: Bath, label: 'Salle de bain privée ext.' }
           ],
           color: 'from-blue-400 to-cyan-500',
           bestFor: 'Séjours prolongés',
@@ -654,14 +599,12 @@ const content = {
           name: 'Habitación Lumbalu',
           tagline: 'Enlacée par la végétation tropicale',
           description: 'Un refuge intime entouré de palmiers et de fleurs tropicales. La nature entre par les fenêtres ouvertes pendant que vous dormez enveloppé de fraîcheur.',
-          price: 'À partir de 120 000',
-          period: 'par nuit',
-          features: ['Vue sur le jardin', 'Ventilation naturelle', 'Lit Queen', 'Salle de bain privée', 'Patio privé', 'Petit-déjeuner inclus'],
+          price: 'À partir de 110 000',
+          period: 'par personne par nuit',
+          features: ['1 lit double', '1 lit superposé', 'Salle de bain ext. partagée'],
           amenities: [
-            { icon: Droplets, label: 'Douche chaude' },
-            { icon: BedDouble, label: 'Lit Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Petit-déjeuner' }
+            { icon: BedDouble, label: '1 double + 1 superposé' },
+            { icon: Bath, label: 'Salle de bain partagée' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Voyageurs conscients'
@@ -671,14 +614,12 @@ const content = {
           name: 'Habitación Sangaria',
           tagline: 'Enlacée par la végétation tropicale',
           description: 'Un refuge intime entouré de palmiers et de fleurs tropicales. La nature entre par les fenêtres ouvertes pendant que vous dormez enveloppé de fraîcheur.',
-          price: 'À partir de 120 000',
-          period: 'par nuit',
-          features: ['Vue sur le jardin', 'Ventilation naturelle', 'Lit Queen', 'Salle de bain privée', 'Patio privé', 'Petit-déjeuner inclus'],
+          price: 'À partir de 140 000',
+          period: 'par personne par nuit',
+          features: ['1 lit double', 'Salle de bain intérieure'],
           amenities: [
-            { icon: Droplets, label: 'Douche chaude' },
-            { icon: BedDouble, label: 'Lit Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Petit-déjeuner' }
+            { icon: BedDouble, label: '1 lit double' },
+            { icon: Bath, label: 'Salle de bain intérieure' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Voyageurs conscients',
@@ -690,14 +631,12 @@ const content = {
           name: 'Habitación Kombilesa',
           tagline: 'Enlacée par la végétation tropicale',
           description: 'Un refuge intime entouré de palmiers et de fleurs tropicales. La nature entre par les fenêtres ouvertes pendant que vous dormez enveloppé de fraîcheur.',
-          price: 'À partir de 120 000',
-          period: 'par nuit',
-          features: ['Vue sur le jardin', 'Ventilation naturelle', 'Lit Queen', 'Salle de bain privée', 'Patio privé', 'Petit-déjeuner inclus'],
+          price: 'À partir de 110 000',
+          period: 'par personne par nuit',
+          features: ['1 lit double', '1 lit superposé', 'Salle de bain intérieure'],
           amenities: [
-            { icon: Droplets, label: 'Douche chaude' },
-            { icon: BedDouble, label: 'Lit Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Petit-déjeuner' }
+            { icon: BedDouble, label: '1 double + 1 superposé' },
+            { icon: Bath, label: 'Salle de bain intérieure' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Voyageurs conscients',
@@ -709,14 +648,12 @@ const content = {
           name: 'Habitación Amalaya',
           tagline: 'Enlacée par la végétation tropicale',
           description: 'Un refuge intime entouré de palmiers et de fleurs tropicales. La nature entre par les fenêtres ouvertes pendant que vous dormez enveloppé de fraîcheur.',
-          price: 'À partir de 120 000',
-          period: 'par nuit',
-          features: ['Vue sur le jardin', 'Ventilation naturelle', 'Lit Queen', 'Salle de bain privée', 'Patio privé', 'Petit-déjeuner inclus'],
+          price: 'À partir de 130 000',
+          period: 'par personne par nuit',
+          features: ['1 lit double', 'Salle de bain privée extérieure'],
           amenities: [
-            { icon: Droplets, label: 'Douche chaude' },
-            { icon: BedDouble, label: 'Lit Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Petit-déjeuner' }
+            { icon: BedDouble, label: '1 lit double' },
+            { icon: Bath, label: 'Salle de bain privée ext.' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Voyageurs conscients',
@@ -728,14 +665,12 @@ const content = {
           name: 'Habitación Pekao',
           tagline: 'Enlacée par la végétation tropicale',
           description: 'Un refuge intime entouré de palmiers et de fleurs tropicales. La nature entre par les fenêtres ouvertes pendant que vous dormez enveloppé de fraîcheur.',
-          price: 'À partir de 120 000',
-          period: 'par nuit',
-          features: ['Vue sur le jardin', 'Ventilation naturelle', 'Lit Queen', 'Salle de bain privée', 'Patio privé', 'Petit-déjeuner inclus'],
+          price: 'À partir de 140 000',
+          period: 'par personne par nuit',
+          features: ['1 lit double', 'Salle de bain intérieure'],
           amenities: [
-            { icon: Droplets, label: 'Douche chaude' },
-            { icon: BedDouble, label: 'Lit Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Petit-déjeuner' }
+            { icon: BedDouble, label: '1 lit double' },
+            { icon: Bath, label: 'Salle de bain intérieure' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Voyageurs conscients',
@@ -747,14 +682,12 @@ const content = {
           name: 'Habitación Kolaso',
           tagline: 'Enlacée par la végétation tropicale',
           description: 'Un refuge intime entouré de palmiers et de fleurs tropicales. La nature entre par les fenêtres ouvertes pendant que vous dormez enveloppé de fraîcheur.',
-          price: 'À partir de 120 000',
-          period: 'par nuit',
-          features: ['Vue sur le jardin', 'Ventilation naturelle', 'Lit Queen', 'Salle de bain privée', 'Patio privé', 'Petit-déjeuner inclus'],
+          price: 'À partir de 150 000',
+          period: 'par personne par nuit',
+          features: ['1 lit Queen', '1 lit double', 'Salle de bain intérieure'],
           amenities: [
-            { icon: Droplets, label: 'Douche chaude' },
-            { icon: BedDouble, label: 'Lit Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Petit-déjeuner' }
+            { icon: BedDouble, label: '1 Queen + 1 double' },
+            { icon: Bath, label: 'Salle de bain intérieure' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Voyageurs conscients',
@@ -766,14 +699,12 @@ const content = {
           name: 'Habitación Abalenga',
           tagline: 'Enlacée par la végétation tropicale',
           description: 'Un refuge intime entouré de palmiers et de fleurs tropicales. La nature entre par les fenêtres ouvertes pendant que vous dormez enveloppé de fraîcheur.',
-          price: 'À partir de 120 000',
-          period: 'par nuit',
-          features: ['Vue sur le jardin', 'Ventilation naturelle', 'Lit Queen', 'Salle de bain privée', 'Patio privé', 'Petit-déjeuner inclus'],
+          price: 'À partir de 160 000',
+          period: 'par personne par nuit',
+          features: ['1 lit double', 'Salle de bain intérieure'],
           amenities: [
-            { icon: Droplets, label: 'Douche chaude' },
-            { icon: BedDouble, label: 'Lit Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Petit-déjeuner' }
+            { icon: BedDouble, label: '1 lit double' },
+            { icon: Bath, label: 'Salle de bain intérieure' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Voyageurs conscients',
@@ -782,17 +713,15 @@ const content = {
         },
         {
           id: 10,
-          name: 'Habitación Makunguri',
+          name: 'Dortoir Makunguri',
           tagline: 'Enlacée par la végétation tropicale',
           description: 'Un refuge intime entouré de palmiers et de fleurs tropicales. La nature entre par les fenêtres ouvertes pendant que vous dormez enveloppé de fraîcheur.',
-          price: 'À partir de 120 000',
-          period: 'par nuit',
-          features: ['Vue sur le jardin', 'Ventilation naturelle', 'Lit Queen', 'Salle de bain privée', 'Patio privé', 'Petit-déjeuner inclus'],
+          price: 'À partir de 95 000',
+          period: 'par personne par nuit',
+          features: ['2 lits superposés (1 double + 1 simple en haut chacun)', 'Salle de bain intérieure'],
           amenities: [
-            { icon: Droplets, label: 'Douche chaude' },
-            { icon: BedDouble, label: 'Lit Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Petit-déjeuner' }
+            { icon: BedDouble, label: '2 lits superposés' },
+            { icon: Bath, label: 'Salle de bain intérieure' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Voyageurs conscients',
@@ -805,13 +734,11 @@ const content = {
           tagline: 'Enlacée par la végétation tropicale',
           description: 'Un refuge intime entouré de palmiers et de fleurs tropicales. La nature entre par les fenêtres ouvertes pendant que vous dormez enveloppé de fraîcheur.',
           price: 'À partir de 120 000',
-          period: 'par nuit',
-          features: ['Vue sur le jardin', 'Ventilation naturelle', 'Lit Queen', 'Salle de bain privée', 'Patio privé', 'Petit-déjeuner inclus'],
+          period: 'par personne par nuit',
+          features: ['1 lit superposé (1 double + 1 simple en haut)', 'Salle de bain ext. partagée'],
           amenities: [
-            { icon: Droplets, label: 'Douche chaude' },
-            { icon: BedDouble, label: 'Lit Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Petit-déjeuner' }
+            { icon: BedDouble, label: '1 lit superposé' },
+            { icon: Bath, label: 'Salle de bain partagée' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Voyageurs conscients',
@@ -823,14 +750,12 @@ const content = {
           name: 'Habitación Makano',
           tagline: 'Enlacée par la végétation tropicale',
           description: 'Un refuge intime entouré de palmiers et de fleurs tropicales. La nature entre par les fenêtres ouvertes pendant que vous dormez enveloppé de fraîcheur.',
-          price: 'À partir de 120 000',
-          period: 'par nuit',
-          features: ['Vue sur le jardin', 'Ventilation naturelle', 'Lit Queen', 'Salle de bain privée', 'Patio privé', 'Petit-déjeuner inclus'],
+          price: 'À partir de 125 000',
+          period: 'par personne par nuit',
+          features: ['1 lit double', '1 lit superposé', 'Salle de bain intérieure'],
           amenities: [
-            { icon: Droplets, label: 'Douche chaude' },
-            { icon: BedDouble, label: 'Lit Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Petit-déjeuner' }
+            { icon: BedDouble, label: '1 double + 1 superposé' },
+            { icon: Bath, label: 'Salle de bain intérieure' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Voyageurs conscients',
@@ -839,17 +764,15 @@ const content = {
         },
         {
           id: 13,
-          name: 'Habitación Asinaria',
+          name: 'Dortoir Asinaria',
           tagline: 'Enlacée par la végétation tropicale',
           description: 'Un refuge intime entouré de palmiers et de fleurs tropicales. La nature entre par les fenêtres ouvertes pendant que vous dormez enveloppé de fraîcheur.',
-          price: 'À partir de 120 000',
-          period: 'par nuit',
-          features: ['Vue sur le jardin', 'Ventilation naturelle', 'Lit Queen', 'Salle de bain privée', 'Patio privé', 'Petit-déjeuner inclus'],
+          price: 'À partir de 90 000',
+          period: 'par personne par nuit',
+          features: ['2 lits superposés (lit simple)', 'Salle de bain extérieure'],
           amenities: [
-            { icon: Droplets, label: 'Douche chaude' },
-            { icon: BedDouble, label: 'Lit Queen' },
-            { icon: Wifi, label: 'WiFi' },
-            { icon: Coffee, label: 'Petit-déjeuner' }
+            { icon: BedDouble, label: '2 lits superposés' },
+            { icon: Bath, label: 'Salle de bain extérieure' }
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Voyageurs conscients',
@@ -879,15 +802,15 @@ const content = {
         button: 'Réserver une chambre',
         subtext: 'Annulation gratuite jusqu\'à 48h avant'
       },
-      sectionViajero: {
-        title: 'Viajero',
+      sectionBabor: {
+        title: 'Babor',
         subtitle: 'Pour l\'âme aventurière en quête d\'expériences uniques',
-        cta: 'Voir les chambres Viajero'
+        cta: 'Voir les chambres Babor'
       },
-      sectionReposo: {
-        title: 'Reposo',
+      sectionEstribor: {
+        title: 'Estribor',
         subtitle: 'Pour qui cherche le repos profond et la reconnexion',
-        cta: 'Voir les chambres Reposo'
+        cta: 'Voir les chambres Estribor'
       }
     }
   };
@@ -938,18 +861,18 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
   const scale = useTransform(scrollY, [0, 400], [1, 0.6]);
   const borderRadius = useTransform(scrollY, [0, 400], ['0px', '48px']);
 
-  const viajeroIds = [3, 4, 5, 7, 8, 11, 13];
-  const reposoIds = [2, 12, 10, 6, 1, 9];
+  const baborIds = [3, 4, 5, 7, 8, 11, 13];
+  const estriborIds = [2, 12, 10, 6, 1, 9];
 
-  const viajeroRooms = viajeroIds.map(id => c.rooms.find((r: any) => r.id === id)).filter(Boolean) as any[];
-  const reposoRooms = reposoIds.map(id => c.rooms.find((r: any) => r.id === id)).filter(Boolean) as any[];
+  const baborRooms = baborIds.map(id => c.rooms.find((r: any) => r.id === id)).filter(Boolean) as any[];
+  const estriborRooms = estriborIds.map(id => c.rooms.find((r: any) => r.id === id)).filter(Boolean) as any[];
 
-  const viajeroSectionRef = useRef<HTMLElement>(null);
-  const reposoSectionRef = useRef<HTMLElement>(null);
-  const [activeViajeroIndex, setActiveViajeroIndex] = useState(0);
-  const [activeReposoIndex, setActiveReposoIndex] = useState(0);
-  const [showViajeroNav, setShowViajeroNav] = useState(false);
-  const [showReposoNav, setShowReposoNav] = useState(false);
+  const baborSectionRef = useRef<HTMLElement>(null);
+  const estriborSectionRef = useRef<HTMLElement>(null);
+  const [activeBaborIndex, setActiveBaborIndex] = useState(0);
+  const [activeEstriborIndex, setActiveEstriborIndex] = useState(0);
+  const [showBaborNav, setShowBaborNav] = useState(false);
+  const [showEstriborNav, setShowEstriborNav] = useState(false);
   const [isSafari, setIsSafari] = useState(false);
 
   useEffect(() => {
@@ -958,52 +881,52 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
   }, []);
 
   useEffect(() => {
-    const handleScrollViajero = () => {
-      if (!viajeroSectionRef.current) return;
-      const sectionTop = viajeroSectionRef.current.offsetTop;
-      const sectionHeight = viajeroSectionRef.current.offsetHeight;
+    const handleScrollBabor = () => {
+      if (!baborSectionRef.current) return;
+      const sectionTop = baborSectionRef.current.offsetTop;
+      const sectionHeight = baborSectionRef.current.offsetHeight;
       const scrollPos = window.scrollY - sectionTop;
       const viewportHeight = window.innerHeight;
       const index = Math.max(0, Math.min(
-        viajeroRooms.length - 1,
+        baborRooms.length - 1,
         Math.floor(scrollPos / viewportHeight + 0.2)
       ));
-      setActiveViajeroIndex(index);
-      setShowViajeroNav(scrollPos >= -viewportHeight * 0.5 && scrollPos < sectionHeight - viewportHeight * 0.5);
+      setActiveBaborIndex(index);
+      setShowBaborNav(scrollPos >= -viewportHeight * 0.5 && scrollPos < sectionHeight - viewportHeight * 0.5);
     };
-    window.addEventListener('scroll', handleScrollViajero, { passive: true });
-    handleScrollViajero();
-    return () => window.removeEventListener('scroll', handleScrollViajero);
-  }, [viajeroRooms.length]);
+    window.addEventListener('scroll', handleScrollBabor, { passive: true });
+    handleScrollBabor();
+    return () => window.removeEventListener('scroll', handleScrollBabor);
+  }, [baborRooms.length]);
 
   useEffect(() => {
-    const handleScrollReposo = () => {
-      if (!reposoSectionRef.current) return;
-      const sectionTop = reposoSectionRef.current.offsetTop;
-      const sectionHeight = reposoSectionRef.current.offsetHeight;
+    const handleScrollEstribor = () => {
+      if (!estriborSectionRef.current) return;
+      const sectionTop = estriborSectionRef.current.offsetTop;
+      const sectionHeight = estriborSectionRef.current.offsetHeight;
       const scrollPos = window.scrollY - sectionTop;
       const viewportHeight = window.innerHeight;
       const index = Math.max(0, Math.min(
-        reposoRooms.length - 1,
+        estriborRooms.length - 1,
         Math.floor(scrollPos / viewportHeight + 0.2)
       ));
-      setActiveReposoIndex(index);
-      setShowReposoNav(scrollPos >= -viewportHeight * 0.5 && scrollPos < sectionHeight - viewportHeight * 0.5);
+      setActiveEstriborIndex(index);
+      setShowEstriborNav(scrollPos >= -viewportHeight * 0.5 && scrollPos < sectionHeight - viewportHeight * 0.5);
     };
-    window.addEventListener('scroll', handleScrollReposo, { passive: true });
-    handleScrollReposo();
-    return () => window.removeEventListener('scroll', handleScrollReposo);
-  }, [reposoRooms.length]);
+    window.addEventListener('scroll', handleScrollEstribor, { passive: true });
+    handleScrollEstribor();
+    return () => window.removeEventListener('scroll', handleScrollEstribor);
+  }, [estriborRooms.length]);
 
-  const scrollToViajeroRoom = (index: number) => {
-    if (!viajeroSectionRef.current) return;
-    const targetY = viajeroSectionRef.current.offsetTop + index * window.innerHeight;
+  const scrollToBaborRoom = (index: number) => {
+    if (!baborSectionRef.current) return;
+    const targetY = baborSectionRef.current.offsetTop + index * window.innerHeight;
     window.scrollTo({ top: targetY, behavior: 'smooth' });
   };
 
-  const scrollToReposoRoom = (index: number) => {
-    if (!reposoSectionRef.current) return;
-    const targetY = reposoSectionRef.current.offsetTop + index * window.innerHeight;
+  const scrollToEstriborRoom = (index: number) => {
+    if (!estriborSectionRef.current) return;
+    const targetY = estriborSectionRef.current.offsetTop + index * window.innerHeight;
     window.scrollTo({ top: targetY, behavior: 'smooth' });
   };
 
@@ -1140,7 +1063,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
             <button
-              onClick={() => viajeroSectionRef.current && viajeroSectionRef.current.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => baborSectionRef.current && baborSectionRef.current.scrollIntoView({ behavior: 'smooth' })}
               className="group relative flex items-center gap-4 p-4 md:p-6 rounded-2xl bg-gradient-to-br from-emerald-50 to-cyan-50 border border-emerald-100 hover:border-cyan-300 hover:shadow-lg hover:shadow-cyan-500/10 transition-all duration-300"
             >
               <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
@@ -1148,17 +1071,17 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
               </div>
               <div className="text-left">
                 <span className="block text-lg md:text-xl font-bold text-stone-900 group-hover:text-cyan-700 transition-colors">
-                  {c.sectionViajero.title}
+                  {c.sectionBabor.title}
                 </span>
                 <span className="hidden md:block text-sm text-stone-500">
-                  {c.sectionViajero.cta}
+                  {c.sectionBabor.cta}
                 </span>
               </div>
               <ChevronRight className="ml-auto w-5 h-5 text-stone-400 group-hover:text-cyan-500 group-hover:translate-x-1 transition-all" />
             </button>
 
             <button
-              onClick={() => reposoSectionRef.current && reposoSectionRef.current.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => estriborSectionRef.current && estriborSectionRef.current.scrollIntoView({ behavior: 'smooth' })}
               className="group relative flex items-center gap-4 p-4 md:p-6 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-100 hover:border-amber-300 hover:shadow-lg hover:shadow-amber-500/10 transition-all duration-300"
             >
               <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
@@ -1166,10 +1089,10 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
               </div>
               <div className="text-left">
                 <span className="block text-lg md:text-xl font-bold text-stone-900 group-hover:text-amber-700 transition-colors">
-                  {c.sectionReposo.title}
+                  {c.sectionEstribor.title}
                 </span>
                 <span className="hidden md:block text-sm text-stone-500">
-                  {c.sectionReposo.cta}
+                  {c.sectionEstribor.cta}
                 </span>
               </div>
               <ChevronRight className="ml-auto w-5 h-5 text-stone-400 group-hover:text-amber-500 group-hover:translate-x-1 transition-all" />
@@ -1178,15 +1101,15 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
         </div>
       </section>
 
-      {/* Menu latéral de navigation Viajero */}
-      <nav className={`fixed right-2 xl:right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-4 max-h-[88vh] overflow-y-visible no-scrollbar py-2 pr-2 transition-all duration-500 ${showViajeroNav ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12 pointer-events-none'}`}>
-        {viajeroRooms.map((room: any, idx: number) => (
+      {/* Menu latéral de navigation Babor */}
+      <nav className={`fixed right-2 xl:right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-4 max-h-[88vh] overflow-y-visible no-scrollbar py-2 pr-2 transition-all duration-500 ${showBaborNav ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12 pointer-events-none'}`}>
+        {baborRooms.map((room: any, idx: number) => (
           <button
             key={room.id}
-            onClick={() => scrollToViajeroRoom(idx)}
+            onClick={() => scrollToBaborRoom(idx)}
             className={`
               group relative flex items-stretch w-[200px] h-[90px] rounded-2xl overflow-hidden transition-all duration-300 shadow-md bg-white
-              ${idx === activeViajeroIndex 
+              ${idx === activeBaborIndex 
                 ? 'ring-[3px] ring-cyan-400 scale-105 shadow-xl shadow-cyan-400/20' 
                 : 'ring-1 ring-stone-200 hover:ring-stone-300 hover:scale-105 hover:shadow-lg'}
             `}
@@ -1213,15 +1136,15 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
         ))}
       </nav>
 
-      {/* Menu latéral de navigation Reposo */}
-      <nav className={`fixed right-2 xl:right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-4 max-h-[88vh] overflow-y-visible no-scrollbar py-2 pr-2 transition-all duration-500 ${showReposoNav ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12 pointer-events-none'}`}>
-        {reposoRooms.map((room: any, idx: number) => (
+      {/* Menu latéral de navigation Estribor */}
+      <nav className={`fixed right-2 xl:right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-4 max-h-[88vh] overflow-y-visible no-scrollbar py-2 pr-2 transition-all duration-500 ${showEstriborNav ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12 pointer-events-none'}`}>
+        {estriborRooms.map((room: any, idx: number) => (
           <button
             key={room.id}
-            onClick={() => scrollToReposoRoom(idx)}
+            onClick={() => scrollToEstriborRoom(idx)}
             className={`
               group relative flex items-stretch w-[200px] h-[90px] rounded-2xl overflow-hidden transition-all duration-300 shadow-md bg-white
-              ${idx === activeReposoIndex 
+              ${idx === activeEstriborIndex 
                 ? 'ring-[3px] ring-amber-400 scale-105 shadow-xl shadow-amber-400/20' 
                 : 'ring-1 ring-stone-200 hover:ring-stone-300 hover:scale-105 hover:shadow-lg'}
             `}
@@ -1248,21 +1171,21 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
         ))}
       </nav>
 
-      {/* Mobile bottom indicator Viajero */}
-      <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden flex items-center gap-2 bg-stone-900/80 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm shadow-xl transition-all duration-300 ${showViajeroNav ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-        <span className="text-cyan-400 font-bold">{String(activeViajeroIndex + 1).padStart(2, '0')}</span>
+      {/* Mobile bottom indicator Babor */}
+      <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden flex items-center gap-2 bg-stone-900/80 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm shadow-xl transition-all duration-300 ${showBaborNav ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <span className="text-cyan-400 font-bold">{String(activeBaborIndex + 1).padStart(2, '0')}</span>
         <span className="w-px h-4 bg-white/20" />
-        <span className="max-w-[140px] truncate">{viajeroRooms[activeViajeroIndex]?.name}</span>
+        <span className="max-w-[140px] truncate">{baborRooms[activeBaborIndex]?.name}</span>
       </div>
 
-      {/* Mobile bottom indicator Reposo */}
-      <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden flex items-center gap-2 bg-stone-900/80 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm shadow-xl transition-all duration-300 ${showReposoNav ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-        <span className="text-amber-400 font-bold">{String(activeReposoIndex + 1).padStart(2, '0')}</span>
+      {/* Mobile bottom indicator Estribor */}
+      <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden flex items-center gap-2 bg-stone-900/80 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm shadow-xl transition-all duration-300 ${showEstriborNav ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <span className="text-amber-400 font-bold">{String(activeEstriborIndex + 1).padStart(2, '0')}</span>
         <span className="w-px h-4 bg-white/20" />
-        <span className="max-w-[140px] truncate">{reposoRooms[activeReposoIndex]?.name}</span>
+        <span className="max-w-[140px] truncate">{estriborRooms[activeEstriborIndex]?.name}</span>
       </div>
 
-      {/* Section Hero Viajero */}
+      {/* Section Hero Babor */}
       <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900 overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] bg-[length:24px_24px]" />
         <div className="relative z-10 text-center px-4">
@@ -1276,18 +1199,18 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             <Compass className="w-14 h-14 text-cyan-300" />
           </motion.div>
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight">
-            {c.sectionViajero.title}
+            {c.sectionBabor.title}
           </h2>
           <p className="text-xl md:text-2xl text-cyan-100/80 max-w-2xl mx-auto">
-            {c.sectionViajero.subtitle}
+            {c.sectionBabor.subtitle}
           </p>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-stone-100 to-transparent" />
       </section>
 
-      {/* Rooms Viajero */}
-      <section ref={viajeroSectionRef} className="relative bg-stone-100">
-        {viajeroRooms.map((room: any, index: number) => (
+      {/* Rooms Babor */}
+      <section ref={baborSectionRef} className="relative bg-stone-100">
+        {baborRooms.map((room: any, index: number) => (
           <div
             key={room.id}
             className="sticky top-0 min-h-screen flex items-center justify-center py-12"
@@ -1335,7 +1258,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                       transition={{ delay: 0.2 }}
                       className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-6 border border-stone-100"
                     >
-                      <p className="text-3xl font-bold text-stone-900">{room.price}</p>
+                      <p className="text-sm font-medium text-stone-900">{room.price}</p>
                       <p className="text-stone-500 text-sm">{room.period}</p>
                     </motion.div>
                   </div>
@@ -1386,7 +1309,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
         ))}
       </section>
 
-      {/* Section Hero Reposo */}
+      {/* Section Hero Estribor */}
       <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-amber-900 via-orange-900 to-rose-900 overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] bg-[length:24px_24px]" />
         <div className="relative z-10 text-center px-4">
@@ -1400,18 +1323,18 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             <CloudMoon className="w-14 h-14 text-amber-300" />
           </motion.div>
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight">
-            {c.sectionReposo.title}
+            {c.sectionEstribor.title}
           </h2>
           <p className="text-xl md:text-2xl text-amber-100/80 max-w-2xl mx-auto">
-            {c.sectionReposo.subtitle}
+            {c.sectionEstribor.subtitle}
           </p>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-stone-100 to-transparent" />
       </section>
 
-      {/* Rooms Reposo */}
-      <section ref={reposoSectionRef} className="relative bg-stone-100">
-        {reposoRooms.map((room: any, index: number) => (
+      {/* Rooms Estribor */}
+      <section ref={estriborSectionRef} className="relative bg-stone-100">
+        {estriborRooms.map((room: any, index: number) => (
           <div
             key={room.id}
             className="sticky top-0 min-h-screen flex items-center justify-center py-12"
@@ -1459,7 +1382,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                       transition={{ delay: 0.2 }}
                       className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-6 border border-stone-100"
                     >
-                      <p className="text-3xl font-bold text-stone-900">{room.price}</p>
+                      <p className="text-sm font-medium text-stone-900">{room.price}</p>
                       <p className="text-stone-500 text-sm">{room.period}</p>
                     </motion.div>
                   </div>
