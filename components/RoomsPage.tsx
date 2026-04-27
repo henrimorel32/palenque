@@ -974,24 +974,36 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
           style={{ scale, borderRadius }}
           className={`sticky top-0 h-screen w-full z-20 will-change-transform shadow-2xl flex items-center justify-center ${isSafari ? 'bg-black' : 'overflow-hidden'}`}
         >
-          <VideoLoader isLoading={!videoLoaded} locale={locale} />
-          <video
-            ref={videoRef}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            onLoadedData={() => setVideoLoaded(true)}
-            onCanPlay={() => setVideoLoaded(true)}
-            className={`transition-all duration-500 ${isSafari ? 'w-[75%] max-w-[1200px] aspect-video object-cover rounded-2xl' : 'w-full h-full object-cover'}`}
-          >
-            <source src="/images/output-hero.mp4" type="video/mp4" />
-            <source src="/images/output-hero.webm" type="video/webm" />
-          </video>
+          {/* Desktop video */}
+          <div className="hidden md:block absolute inset-0">
+            <VideoLoader isLoading={!videoLoaded} locale={locale} />
+            <video
+              ref={videoRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              onLoadedData={() => setVideoLoaded(true)}
+              onCanPlay={() => setVideoLoaded(true)}
+              className={`transition-all duration-500 ${isSafari ? 'w-[75%] max-w-[1200px] aspect-video object-cover rounded-2xl' : 'w-full h-full object-cover'}`}
+            >
+              <source src="/images/output-hero.mp4" type="video/mp4" />
+              <source src="/images/output-hero.webm" type="video/webm" />
+            </video>
+          </div>
+
+          {/* Mobile fallback image */}
+          <div className="block md:hidden absolute inset-0">
+            <img
+              src="/images/hamacDansEau.webp"
+              alt="Palenque"
+              className="w-full h-full object-cover"
+            />
+          </div>
           
           {/* Overlay sombre pour la lisibilité */}
-          <div className={`bg-black/40 ${isSafari ? 'absolute inset-[12.5%] xl:inset-x-[calc(50%-600px)] rounded-2xl' : 'absolute inset-0'}`} />
+          <div className={`bg-black/40 absolute inset-0 ${isSafari ? 'md:absolute md:inset-[12.5%] md:xl:inset-x-[calc(50%-600px)] md:rounded-2xl' : ''}`} />
           
           {/* Contenu */}
           <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8">
@@ -1070,7 +1082,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                 <Compass className="w-6 h-6 md:w-7 md:h-7 text-white" />
               </div>
               <div className="text-left">
-                <span className="block text-lg md:text-xl font-bold text-stone-900 group-hover:text-cyan-700 transition-colors">
+                <span className={`block transition-colors ${showBaborNav ? 'text-lg md:text-xl font-bold text-stone-900' : 'text-sm font-medium text-stone-400'} group-hover:text-cyan-700`}>
                   {c.sectionBabor.title}
                 </span>
                 <span className="hidden md:block text-sm text-stone-500">
@@ -1088,7 +1100,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                 <CloudMoon className="w-6 h-6 md:w-7 md:h-7 text-white" />
               </div>
               <div className="text-left">
-                <span className="block text-lg md:text-xl font-bold text-stone-900 group-hover:text-amber-700 transition-colors">
+                <span className={`block transition-colors ${showEstriborNav ? 'text-lg md:text-xl font-bold text-stone-900' : 'text-sm font-medium text-stone-400'} group-hover:text-amber-700`}>
                   {c.sectionEstribor.title}
                 </span>
                 <span className="hidden md:block text-sm text-stone-500">
@@ -1171,18 +1183,25 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
         ))}
       </nav>
 
-      {/* Mobile bottom indicator Babor */}
-      <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden flex items-center gap-2 bg-stone-900/80 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm shadow-xl transition-all duration-300 ${showBaborNav ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-        <span className="text-cyan-400 font-bold">{String(activeBaborIndex + 1).padStart(2, '0')}</span>
-        <span className="w-px h-4 bg-white/20" />
-        <span className="max-w-[140px] truncate">{baborRooms[activeBaborIndex]?.name}</span>
-      </div>
-
-      {/* Mobile bottom indicator Estribor */}
-      <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden flex items-center gap-2 bg-stone-900/80 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm shadow-xl transition-all duration-300 ${showEstriborNav ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-        <span className="text-amber-400 font-bold">{String(activeEstriborIndex + 1).padStart(2, '0')}</span>
-        <span className="w-px h-4 bg-white/20" />
-        <span className="max-w-[140px] truncate">{estriborRooms[activeEstriborIndex]?.name}</span>
+      {/* Mobile bottom indicator */}
+      <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden flex items-center gap-2 bg-stone-900/80 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm shadow-xl transition-all duration-300 ${showBaborNav || showEstriborNav ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        {showBaborNav ? (
+          <>
+            <span className="text-cyan-400 font-bold">{c.sectionBabor.title}</span>
+            <span className="w-px h-4 bg-white/20" />
+            <span className="text-cyan-400 font-bold">{String(activeBaborIndex + 1).padStart(2, '0')}</span>
+            <span className="w-px h-4 bg-white/20" />
+            <span className="max-w-[140px] truncate">{baborRooms[activeBaborIndex]?.name}</span>
+          </>
+        ) : showEstriborNav ? (
+          <>
+            <span className="text-amber-400 font-bold">{c.sectionEstribor.title}</span>
+            <span className="w-px h-4 bg-white/20" />
+            <span className="text-amber-400 font-bold">{String(activeEstriborIndex + 1).padStart(2, '0')}</span>
+            <span className="w-px h-4 bg-white/20" />
+            <span className="max-w-[140px] truncate">{estriborRooms[activeEstriborIndex]?.name}</span>
+          </>
+        ) : null}
       </div>
 
       {/* Section Hero Babor */}
@@ -1209,7 +1228,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
       </section>
 
       {/* Rooms Babor */}
-      <section ref={baborSectionRef} className="relative bg-stone-100">
+      <section ref={baborSectionRef} className="relative bg-cyan-50/60 md:bg-stone-100">
         {baborRooms.map((room: any, index: number) => (
           <div
             key={room.id}
@@ -1333,7 +1352,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
       </section>
 
       {/* Rooms Estribor */}
-      <section ref={estriborSectionRef} className="relative bg-stone-100">
+      <section ref={estriborSectionRef} className="relative bg-amber-50/60 md:bg-stone-100">
         {estriborRooms.map((room: any, index: number) => (
           <div
             key={room.id}
