@@ -77,43 +77,22 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
     return () => clearTimeout(timeout);
   }, [videoSupported]);
 
-  // Barre de progression fluide via requestAnimationFrame
-  useEffect(() => {
+  // Barre de progression via onTimeUpdate (évite RAF + setState à 60fps)
+  const handleTimeUpdate = () => {
     const video = videoRef.current;
-    if (!video || !videoSupported) return;
-    let rafId: number;
-    const tick = () => {
-      if (video.duration) {
-        setVideoProgress(video.currentTime / video.duration);
-      }
-      rafId = requestAnimationFrame(tick);
-    };
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-  }, [videoSupported]);
+    if (video && video.duration) {
+      setVideoProgress(video.currentTime / video.duration);
+    }
+  };
 
-  // Préchargement des assets (images + vidéo) pour éviter les lags
+  // Préchargement léger des images
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    
-    // Précharge les images en arrière-plan
     images.forEach((img) => {
       const image = new Image();
       image.src = img.url;
     });
   }, []);
-
-  useEffect(() => {
-    if (typeof window === 'undefined' || !videoSupported) return;
-    
-    // Précharge la vidéo en arrière-plan
-    const video = document.createElement('video');
-    video.preload = 'auto';
-    video.muted = true;
-    video.playsInline = true;
-    video.src = '/images/outputHome.webm';
-    video.load();
-  }, [videoSupported]);
 
   // Détermine si les images doivent être visibles
   const showImages = !videoSupported || videoError || (videoLoaded && !videoVisible);
@@ -207,7 +186,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
                 autoPlay
                 muted
                 playsInline
-                preload="auto"
+                preload="metadata"
                 onEnded={() => {
                   // Scroll doux vers la première image du parallax
                   const container = containerRef.current;
@@ -219,6 +198,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
                 onLoadedData={() => setVideoLoaded(true)}
                 onCanPlay={() => setVideoLoaded(true)}
                 onError={() => setVideoError(true)}
+                onTimeUpdate={handleTimeUpdate}
                 className="absolute inset-0 w-full h-full object-cover"
                 style={{ filter: 'brightness(1.05) saturate(1.1)' }}
               >
@@ -274,7 +254,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
                 opacity: { duration: 0.8, ease: "easeInOut" },
                 scale: { duration: 6, ease: "linear" }
               }}
-              style={{ y: currentImage === index ? y : 0 }}
+              style={{ y: currentImage === index ? y : 0, willChange: 'transform, opacity' }}
             >
               <div 
                 className="absolute inset-0 bg-cover bg-center"
@@ -334,7 +314,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
           {/* Contenu principal */}
           <motion.div 
             className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-30"
-            style={{ opacity: textOpacity, y: textY }}
+            style={{ opacity: textOpacity, y: textY, willChange: 'transform, opacity' }}
           >
             {/* Badge */}
             <motion.div

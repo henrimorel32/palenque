@@ -11,6 +11,7 @@ import { Locale } from '@/lib/i18n/translations';
 import VideoLoader from '@/components/VideoLoader';
 import RoomImageCarousel from '@/components/RoomImageCarousel';
 import RoomImageLightbox from '@/components/RoomImageLightbox';
+import ScrollToTop from '@/components/ScrollToTop';
 import Image from 'next/image';
 
 interface RoomsPageProps {
@@ -941,30 +942,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
     return () => clearTimeout(timeout);
   }, []);
 
-  // Préchargement initial de toutes les photos des chambres
-  useEffect(() => {
-    const imagesToPreload = new Set<string>();
-    c.rooms.forEach((room: any) => {
-      if (room.thumbnail) imagesToPreload.add(room.thumbnail);
-      if (room.images && room.images.length > 0) {
-        room.images.forEach((src: string) => imagesToPreload.add(src));
-      }
-    });
-    // Précharger par petits lots pour ne pas saturer le navigateur
-    const srcs = Array.from(imagesToPreload);
-    let index = 0;
-    const batchSize = 6;
-    const loadBatch = () => {
-      for (let i = 0; i < batchSize && index < srcs.length; i++, index++) {
-        const img = new window.Image();
-        img.src = srcs[index];
-      }
-      if (index < srcs.length) {
-        setTimeout(loadBatch, 200);
-      }
-    };
-    loadBatch();
-  }, [locale]);
+  // Pas de préchargement global des images — chargement paresseux par le navigateur
 
   return (
     <>
@@ -983,7 +961,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
               muted
               loop
               playsInline
-              preload="auto"
+              preload="metadata"
               onLoadedData={() => setVideoLoaded(true)}
               onCanPlay={() => setVideoLoaded(true)}
               className={`transition-all duration-500 ${isSafari ? 'w-[75%] max-w-[1200px] aspect-video object-cover rounded-2xl' : 'w-full h-full object-cover'}`}
@@ -995,10 +973,13 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
 
           {/* Mobile fallback image */}
           <div className="block md:hidden absolute inset-0">
-            <img
+            <Image
               src="/images/hamacDansEau.webp"
               alt="Palenque"
-              className="w-full h-full object-cover"
+              fill
+              sizes="100vw"
+              priority
+              className="object-cover"
             />
           </div>
           
@@ -1530,6 +1511,8 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
           <p className="text-stone-700 text-sm">{c.cta.subtext}</p>
         </div>
       </section>
+
+      <ScrollToTop locale={locale} />
     </>
   );
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import {
   Sparkles, Ship, Trees, Moon, Sun, Clock, CheckCircle2,
@@ -27,44 +28,92 @@ export default function ActivitiesPage({ locale }: ActivitiesPageProps) {
   const content = {
     es: {
       badge: 'Rincón del Mar',
-      title: 'Actividades & Excursiones',
-      subtitle: 'Descubre la magia del Caribe colombiano',
-      description: 'Explora experiencias únicas diseñadas para conectar con la naturaleza, la cultura local y la belleza del archipiélago de San Bernardo.',
+      title: 'Tours Palenque Beach House',
+      subtitle: 'Experiencias que solo existen en Rincón del Mar, Sucre – Colombia',
+      description: 'En Palenque Beach House no solo duermes frente al mar… vives el Caribe en su estado más puro. Cada tour ha sido diseñado para que descubras la magia natural, cultural y ancestral de este rincón único del planeta.',
       activities: [
         {
-          id: 'plancton',
-          title: 'Plancton Tour',
-          tag: 'Experiencia nocturna',
-          desc: 'Avistamiento de aves al atardecer en Isla Pájaros y bioluminiscencia en el archipiélago de San Bernardo.',
-          schedule: 'Todos los días: 5:30 - 8:00 pm',
-          price: '$50.000',
+          id: 'manglar',
+          title: 'Tour Manglar',
+          tag: 'Ecoturismo',
+          desc: 'Sumérgete en un ecosistema vivo donde el mar y el bosque se abrazan. Navegarás por los manglares de Rincón del Mar mientras conoces sus diferentes especies y las iniciativas locales que los protegen.',
+          schedule: 'Salidas: 8:00am / 10:00am / 4:00pm • Duración: 1 hora',
+          price: '$40.000',
           unit: 'por persona',
-          features: ['Avistamiento de aves', 'Nado con bioluminiscencia', 'Experiencia nocturna única'],
-          image: '/images/activites/couchesoleil.webp',
+          features: ['Avistamiento de osos perezosos, iguanas, mapaches', 'Aves tropicales', 'Navegación por manglares'],
+          image: '/images/activites/hamac.webp',
           cta: 'Reservar ahora',
         },
         {
-          id: 'islands',
-          title: 'Islands Tour',
+          id: 'islas-san-bernardo',
+          title: 'Tour Islas – Archipiélago de San Bernardo',
           tag: 'Tour de islas',
-          desc: 'Paseo en lancha por las islas del archipiélago de San Bernardo.',
-          schedule: 'Todos los días: 8:30 am - 2:30 pm',
+          desc: 'Un viaje en lancha por uno de los archipiélagos más hermosos del Caribe colombiano.',
+          schedule: 'Salida: 8:45am • Duración: 6 horas',
           price: '$70.000',
           unit: 'por persona',
-          features: ['Isla Tintinpán', 'Isla Palma', 'Isla Mucura'],
+          features: ['Isla Palma, recorrido panorámico', 'Islote de Santa Cruz, la isla más densamente poblada del mundo (ingreso opcional $10.000 COP)', 'Isla Múcura – 2 horas de playa paradisíaca', 'Isla Tintipán – 1 hora de playa + opción de almuerzo'],
           image: '/images/activites/jeuBallon.webp',
           cta: 'Reservar ahora',
         },
         {
-          id: 'manglar',
-          title: 'Manglar Ecotour',
-          tag: 'Ecoturismo',
-          desc: 'Paseo en canoa por el manglar y caminata por el bosque tropical.',
-          schedule: 'Todos los días: 8 - 10 am / 4 - 6 pm',
-          price: '$40.000',
+          id: 'islas-palenque',
+          title: 'Tour Islas Palenque',
+          tag: 'Tour premium',
+          desc: 'La versión premium del tour de islas. Incluye todo el recorrido anterior (excepto el Islote) y suma una parada en la isla Ceycén, un paraíso escondido donde podrás nadar entre corales y peces de colores.',
+          schedule: 'Salida: 8:45am • Duración: 6.5 horas',
+          price: '$90.000',
           unit: 'por persona',
-          features: ['Avistamiento de aves', 'Osos perezosos', 'Caminata guiada'],
+          features: ['Todas las islas del tour estándar (excepto Islote)', 'Isla Ceycén – paraíso escondido', 'Snorkel entre corales y peces de colores'],
+          image: '/images/activites/couchesoleil.webp',
+          cta: 'Reservar ahora',
+        },
+        {
+          id: 'plancton',
+          title: 'Tour de Plancton Bioluminiscente',
+          tag: 'Experiencia nocturna',
+          desc: 'Una experiencia que parece magia. Primero navegarás hacia Isla Cabruna para disfrutar un atardecer inolvidable con avistamiento de aves. Luego te adentrarás en los manglares del archipiélago para presenciar el espectáculo natural del plancton bioluminiscente, donde cada movimiento en el agua se convierte en destellos de luz.',
+          schedule: 'Salida: 5:30pm • Duración: 2.5 horas',
+          price: '$50.000',
+          unit: 'por persona',
+          features: ['Atardecer en Isla Cabruna con avistamiento de aves', 'Plancton bioluminiscente en manglares', 'Recuerdo inolvidable'],
+          image: '/images/activites/couchesoleil.webp',
+          cta: 'Reservar ahora',
+        },
+        {
+          id: 'cabalgata',
+          title: 'Cabalgata al Atardecer',
+          tag: 'Experiencia romántica',
+          desc: 'Recorre senderos de bosque tropical y la orilla del mar montando caballo mientras el sol cae sobre Rincón del Mar. Una experiencia tranquila, romántica y profundamente caribeña.',
+          schedule: 'Salida: 4:30pm • Duración: 1 hora',
+          price: '$120.000',
+          unit: 'por persona',
+          features: ['Senderos de bosque tropical', 'Orilla del mar a caballo', 'Atardecer sobre Rincón del Mar'],
           image: '/images/activites/hamac.webp',
+          cta: 'Reservar ahora',
+        },
+        {
+          id: 'pesca-artesanal',
+          title: 'Pesca Artesanal + Snorkel + Almuerzo',
+          tag: 'Experiencia cultural',
+          desc: 'Vive un día como un pescador local. Saldrás en bote a realizar pesca artesanal, luego harás snorkel frente a Isla Tintipán, y más tarde llegarás a Isla Mangle, donde prepararás tu propio almuerzo con la pesca del día, acompañado de patacón y ensalada.',
+          schedule: 'Salidas: 7:00am / 8:00am / 9:00am • Duración: 6 horas',
+          price: '$130.000',
+          unit: 'por persona (mínimo 2 personas)',
+          features: ['Pesca artesanal en bote', 'Snorkel frente a Isla Tintipán', 'Almuerzo en Isla Mangle con la pesca del día', 'Patacón y ensalada incluidos'],
+          image: '/images/activites/jeuBallon.webp',
+          cta: 'Reservar ahora',
+        },
+        {
+          id: 'fantasy-island',
+          title: 'Fantasy Island Tour – Experiencia Exclusiva',
+          tag: 'Experiencia exclusiva',
+          desc: 'Nuestro tour estrella. Comienza con una visita al Bioparque de Isla Palma, hogar de flamencos, monos, venados y otras especies. Luego disfrutarás de una playa privada en Isla Ceycén, con cóctel de bienvenida y almuerzo incluido. La tarde será para nadar, hacer snorkel entre corales y relajarte en los famosos jacuzzis de mar, un fenómeno natural donde burbujas emergen desde el fondo del océano.',
+          schedule: 'Salida: 8:30am • Duración: 7 horas',
+          price: '$230.000',
+          unit: 'por persona (mínimo 4 personas)',
+          features: ['Bioparque de Isla Palma', 'Playa privada en Isla Ceycén', 'Cóctel de bienvenida y almuerzo incluido', 'Snorkel entre corales', 'Jacuzzis de mar – fenómeno natural'],
+          image: '/images/activites/couchesoleil.webp',
           cta: 'Reservar ahora',
         },
       ],
@@ -86,44 +135,92 @@ export default function ActivitiesPage({ locale }: ActivitiesPageProps) {
     },
     en: {
       badge: 'Rincón del Mar',
-      title: 'Activities & Excursions',
-      subtitle: 'Discover the magic of the Colombian Caribbean',
-      description: 'Explore unique experiences designed to connect with nature, local culture, and the beauty of the San Bernardo archipelago.',
+      title: 'Tours Palenque Beach House',
+      subtitle: 'Experiences that only exist in Rincón del Mar, Sucre – Colombia',
+      description: 'At Palenque Beach House you don\'t just sleep in front of the sea… you live the Caribbean in its purest state. Each tour is designed for you to discover the natural, cultural and ancestral magic of this unique corner of the planet.',
       activities: [
         {
-          id: 'plancton',
-          title: 'Plancton Tour',
-          tag: 'Night experience',
-          desc: 'Bird watching at sunset on Bird Island and bioluminescence in the San Bernardo archipelago.',
-          schedule: 'Daily: 5:30 - 8:00 pm',
-          price: '$50,000',
+          id: 'manglar',
+          title: 'Mangrove Tour',
+          tag: 'Ecotourism',
+          desc: 'Immerse yourself in a living ecosystem where the sea and the forest embrace. You will navigate through the mangroves of Rincón del Mar while learning about its different species and the local initiatives that protect them.',
+          schedule: 'Departures: 8:00am / 10:00am / 4:00pm • Duration: 1 hour',
+          price: '$40,000',
           unit: 'per person',
-          features: ['Bird watching', 'Bioluminescence swim', 'Unique night experience'],
-          image: '/images/activites/couchesoleil.webp',
+          features: ['Sloths, iguanas, raccoons', 'Tropical birds', 'Mangrove navigation'],
+          image: '/images/activites/hamac.webp',
           cta: 'Book now',
         },
         {
-          id: 'islands',
-          title: 'Islands Tour',
-          tag: 'Island hopping',
-          desc: 'Boat ride through the islands of the San Bernardo archipelago.',
-          schedule: 'Daily: 8:30 am - 2:30 pm',
+          id: 'islas-san-bernardo',
+          title: 'Islands Tour – San Bernardo Archipelago',
+          tag: 'Island tour',
+          desc: 'A boat trip through one of the most beautiful archipelagos in the Colombian Caribbean.',
+          schedule: 'Departure: 8:45am • Duration: 6 hours',
           price: '$70,000',
           unit: 'per person',
-          features: ['Tintinpán Island', 'Palma Island', 'Mucura Island'],
+          features: ['Palma Island, panoramic tour', 'Santa Cruz Islet, the most densely populated island in the world (optional entry $10,000 COP)', 'Múcura Island – 2 hours of paradise beach', 'Tintipán Island – 1 hour of beach + lunch option'],
           image: '/images/activites/jeuBallon.webp',
           cta: 'Book now',
         },
         {
-          id: 'manglar',
-          title: 'Manglar Ecotour',
-          tag: 'Ecotourism',
-          desc: 'Canoe ride through the mangrove and walk through the tropical forest.',
-          schedule: 'Daily: 8 - 10 am / 4 - 6 pm',
-          price: '$40,000',
+          id: 'islas-palenque',
+          title: 'Palenque Islands Tour',
+          tag: 'Premium tour',
+          desc: 'The premium version of the islands tour. Includes the entire previous route (except the Islet) and adds a stop at Ceycén Island, a hidden paradise where you can swim among corals and colorful fish.',
+          schedule: 'Departure: 8:45am • Duration: 6.5 hours',
+          price: '$90,000',
           unit: 'per person',
-          features: ['Bird watching', 'Sloths', 'Guided walk'],
+          features: ['All islands from the standard tour (except Islet)', 'Ceycén Island – hidden paradise', 'Snorkel among corals and colorful fish'],
+          image: '/images/activites/couchesoleil.webp',
+          cta: 'Book now',
+        },
+        {
+          id: 'plancton',
+          title: 'Bioluminescent Plankton Tour',
+          tag: 'Night experience',
+          desc: 'An experience that seems like magic. First you will sail to Cabruna Island to enjoy an unforgettable sunset with bird watching. Then you will enter the mangroves of the archipelago to witness the natural spectacle of bioluminescent plankton, where every movement in the water becomes flashes of light.',
+          schedule: 'Departure: 5:30pm • Duration: 2.5 hours',
+          price: '$50,000',
+          unit: 'per person',
+          features: ['Sunset at Cabruna Island with bird watching', 'Bioluminescent plankton in mangroves', 'Unforgettable memory'],
+          image: '/images/activites/couchesoleil.webp',
+          cta: 'Book now',
+        },
+        {
+          id: 'cabalgata',
+          title: 'Sunset Horseback Ride',
+          tag: 'Romantic experience',
+          desc: 'Ride through tropical forest trails and along the seashore on horseback as the sun sets over Rincón del Mar. A quiet, romantic and deeply Caribbean experience.',
+          schedule: 'Departure: 4:30pm • Duration: 1 hour',
+          price: '$120,000',
+          unit: 'per person',
+          features: ['Tropical forest trails', 'Seashore on horseback', 'Sunset over Rincón del Mar'],
           image: '/images/activites/hamac.webp',
+          cta: 'Book now',
+        },
+        {
+          id: 'pesca-artesanal',
+          title: 'Artisanal Fishing + Snorkel + Lunch',
+          tag: 'Cultural experience',
+          desc: 'Live a day like a local fisherman. You will go out on a boat for artisanal fishing, then snorkel off Tintipán Island, and later arrive at Mangle Island, where you will prepare your own lunch with the day\'s catch, accompanied by patacón and salad.',
+          schedule: 'Departures: 7:00am / 8:00am / 9:00am • Duration: 6 hours',
+          price: '$130,000',
+          unit: 'per person (minimum 2 people)',
+          features: ['Artisanal fishing by boat', 'Snorkel off Tintipán Island', 'Lunch at Mangle Island with the day\'s catch', 'Patacón and salad included'],
+          image: '/images/activites/jeuBallon.webp',
+          cta: 'Book now',
+        },
+        {
+          id: 'fantasy-island',
+          title: 'Fantasy Island Tour – Exclusive Experience',
+          tag: 'Exclusive experience',
+          desc: 'Our star tour. It begins with a visit to the Biopark of Palma Island, home to flamingos, monkeys, deer and other species. Then you will enjoy a private beach on Ceycén Island, with a welcome cocktail and lunch included. The afternoon will be for swimming, snorkeling among corals and relaxing in the famous sea jacuzzis, a natural phenomenon where bubbles emerge from the bottom of the ocean.',
+          schedule: 'Departure: 8:30am • Duration: 7 hours',
+          price: '$230,000',
+          unit: 'per person (minimum 4 people)',
+          features: ['Biopark of Palma Island', 'Private beach on Ceycén Island', 'Welcome cocktail and lunch included', 'Snorkel among corals', 'Sea jacuzzis – natural phenomenon'],
+          image: '/images/activites/couchesoleil.webp',
           cta: 'Book now',
         },
       ],
@@ -145,44 +242,92 @@ export default function ActivitiesPage({ locale }: ActivitiesPageProps) {
     },
     fr: {
       badge: 'Rincón del Mar',
-      title: 'Activités & Excursions',
-      subtitle: 'Découvrez la magie de la Caraïbe colombienne',
-      description: 'Explorez des expériences uniques conçues pour vous connecter avec la nature, la culture locale et la beauté de l\'archipel de San Bernardo.',
+      title: 'Tours Palenque Beach House',
+      subtitle: 'Des expériences qui n\'existent qu\'à Rincón del Mar, Sucre – Colombie',
+      description: 'À Palenque Beach House, vous ne dormez pas seulement face à la mer… vous vivez les Caraïbes dans leur état le plus pur. Chaque tour a été conçu pour vous faire découvrir la magie naturelle, culturelle et ancestrale de ce coin unique de la planète.',
       activities: [
         {
-          id: 'plancton',
-          title: 'Plancton Tour',
-          tag: 'Expérience nocturne',
-          desc: 'Observation des oiseaux au coucher du soleil sur l\'île des Oiseaux et bioluminescence dans l\'archipel de San Bernardo.',
-          schedule: 'Tous les jours : 17h30 - 20h',
-          price: '50 000',
+          id: 'manglar',
+          title: 'Tour Mangrove',
+          tag: 'Écotourisme',
+          desc: 'Plongez dans un écosystème vivant où la mer et la forêt s\'étreignent. Vous naviguerez dans les mangroves de Rincón del Mar tout en découvrant leurs différentes espèces et les initiatives locales qui les protègent.',
+          schedule: 'Départs : 8h00 / 10h00 / 16h00 • Durée : 1 heure',
+          price: '40 000',
           unit: 'par personne',
-          features: ['Observation des oiseaux', 'Baignade bioluminescente', 'Expérience nocturne unique'],
-          image: '/images/activites/couchesoleil.webp',
+          features: ['Paresseux, iguanes, ratons laveurs', 'Oiseaux tropicaux', 'Navigation en mangrove'],
+          image: '/images/activites/hamac.webp',
           cta: 'Réserver maintenant',
         },
         {
-          id: 'islands',
-          title: 'Islands Tour',
+          id: 'islas-san-bernardo',
+          title: 'Tour Îles – Archipel de San Bernardo',
           tag: 'Tour des îles',
-          desc: 'Promenade en bateau dans les îles de l\'archipel de San Bernardo.',
-          schedule: 'Tous les jours : 8h30 - 14h30',
+          desc: 'Un voyage en bateau dans l\'un des plus beaux archipels des Caraïbes colombiennes.',
+          schedule: 'Départ : 8h45 • Durée : 6 heures',
           price: '70 000',
           unit: 'par personne',
-          features: ['Île Tintinpán', 'Île Palma', 'Île Mucura'],
+          features: ['Île Palma, visite panoramique', 'Îlot Santa Cruz, l\'île la plus densément peuplée au monde (entrée optionnelle 10 000 COP)', 'Île Múcura – 2 heures de plage paradisiaque', 'Île Tintipán – 1 heure de plage + option déjeuner'],
           image: '/images/activites/jeuBallon.webp',
           cta: 'Réserver maintenant',
         },
         {
-          id: 'manglar',
-          title: 'Manglar Ecotour',
-          tag: 'Écotourisme',
-          desc: 'Promenade en pirogue dans la mangrove et randonnée dans la forêt tropicale.',
-          schedule: 'Tous les jours : 8h - 10h / 16h - 18h',
-          price: '40 000',
+          id: 'islas-palenque',
+          title: 'Tour Îles Palenque',
+          tag: 'Tour premium',
+          desc: 'La version premium du tour des îles. Inclut tout le parcours précédent (sauf l\'Îlot) et ajoute un arrêt sur l\'île Ceycén, un paradis caché où vous pourrez nager parmi les coraux et les poissons colorés.',
+          schedule: 'Départ : 8h45 • Durée : 6,5 heures',
+          price: '90 000',
           unit: 'par personne',
-          features: ['Observation des oiseaux', 'Paresseux', 'Randonnée guidée'],
+          features: ['Toutes les îles du tour standard (sauf l\'Îlot)', 'Île Ceycén – paradis caché', 'Snorkeling parmi les coraux et poissons colorés'],
+          image: '/images/activites/couchesoleil.webp',
+          cta: 'Réserver maintenant',
+        },
+        {
+          id: 'plancton',
+          title: 'Tour du Plancton Bioluminescent',
+          tag: 'Expérience nocturne',
+          desc: 'Une expérience qui semble magique. Vous naviguerez d\'abord vers l\'île Cabruna pour profiter d\'un coucher de soleil inoubliable avec l\'observation des oiseaux. Puis vous pénétrerez dans les mangroves de l\'archipel pour assister au spectacle naturel du plancton bioluminescent, où chaque mouvement dans l\'eau se transforme en éclats de lumière.',
+          schedule: 'Départ : 17h30 • Durée : 2,5 heures',
+          price: '50 000',
+          unit: 'par personne',
+          features: ['Coucher de soleil à l\'île Cabruna avec observation des oiseaux', 'Plancton bioluminescent dans les mangroves', 'Souvenir inoubliable'],
+          image: '/images/activites/couchesoleil.webp',
+          cta: 'Réserver maintenant',
+        },
+        {
+          id: 'cabalgata',
+          title: 'Balade à Cheval au Coucher du Soleil',
+          tag: 'Expérience romantique',
+          desc: 'Parcourez les sentiers de la forêt tropicale et le bord de la mer à cheval pendant que le soleil se couche sur Rincón del Mar. Une expérience tranquille, romantique et profondément caribéenne.',
+          schedule: 'Départ : 16h30 • Durée : 1 heure',
+          price: '120 000',
+          unit: 'par personne',
+          features: ['Sentiers de forêt tropicale', 'Bord de mer à cheval', 'Coucher de soleil sur Rincón del Mar'],
           image: '/images/activites/hamac.webp',
+          cta: 'Réserver maintenant',
+        },
+        {
+          id: 'pesca-artesanal',
+          title: 'Pêche Artisanale + Snorkeling + Déjeuner',
+          tag: 'Expérience culturelle',
+          desc: 'Vivez une journée comme un pêcheur local. Vous partirez en bateau pour faire de la pêche artisanale, puis vous ferez du snorkeling face à l\'île Tintipán, et plus tard vous arriverez à l\'île Mangle, où vous préparerez votre propre déjeuner avec la pêche du jour, accompagné de patacón et de salade.',
+          schedule: 'Départs : 7h00 / 8h00 / 9h00 • Durée : 6 heures',
+          price: '130 000',
+          unit: 'par personne (minimum 2 personnes)',
+          features: ['Pêche artisanale en bateau', 'Snorkeling face à l\'île Tintipán', 'Déjeuner à l\'île Mangle avec la pêche du jour', 'Patacón et salade inclus'],
+          image: '/images/activites/jeuBallon.webp',
+          cta: 'Réserver maintenant',
+        },
+        {
+          id: 'fantasy-island',
+          title: 'Fantasy Island Tour – Expérience Exclusive',
+          tag: 'Expérience exclusive',
+          desc: 'Notre tour phare. Commencez par une visite au Bioparc de l\'île Palma, refuge de flamants roses, singes, cerfs et autres espèces. Puis profitez d\'une plage privée sur l\'île Ceycén, avec cocktail de bienvenue et déjeuner inclus. L\'après-midi sera consacrée à la baignade, au snorkeling parmi les coraux et à la détente dans les célèbres jacuzzis de mer, un phénomène naturel où des bulles émergent du fond de l\'océan.',
+          schedule: 'Départ : 8h30 • Durée : 7 heures',
+          price: '230 000',
+          unit: 'par personne (minimum 4 personnes)',
+          features: ['Bioparc de l\'île Palma', 'Plage privée sur l\'île Ceycén', 'Cocktail de bienvenue et déjeuner inclus', 'Snorkeling parmi les coraux', 'Jacuzzis de mer – phénomène naturel'],
+          image: '/images/activites/couchesoleil.webp',
           cta: 'Réserver maintenant',
         },
       ],
@@ -208,6 +353,36 @@ export default function ActivitiesPage({ locale }: ActivitiesPageProps) {
 
   const getActivityStyle = (id: string) => {
     switch (id) {
+      case 'manglar':
+        return {
+          bg: 'bg-gradient-to-br from-emerald-950 via-stone-900 to-emerald-950',
+          border: 'border-emerald-500/20',
+          accent: 'text-emerald-300',
+          accentBg: 'bg-emerald-500',
+          badge: 'bg-emerald-500/20 text-emerald-300',
+          price: 'text-emerald-300',
+          icon: Trees,
+        };
+      case 'islas-san-bernardo':
+        return {
+          bg: 'bg-gradient-to-br from-cyan-950 via-slate-900 to-cyan-950',
+          border: 'border-cyan-500/20',
+          accent: 'text-cyan-300',
+          accentBg: 'bg-cyan-500',
+          badge: 'bg-cyan-500/20 text-cyan-300',
+          price: 'text-cyan-300',
+          icon: Ship,
+        };
+      case 'islas-palenque':
+        return {
+          bg: 'bg-gradient-to-br from-teal-950 via-slate-900 to-teal-950',
+          border: 'border-teal-500/20',
+          accent: 'text-teal-300',
+          accentBg: 'bg-teal-500',
+          badge: 'bg-teal-500/20 text-teal-300',
+          price: 'text-teal-300',
+          icon: Sun,
+        };
       case 'plancton':
         return {
           bg: 'bg-gradient-to-br from-indigo-950 via-slate-900 to-indigo-950',
@@ -218,25 +393,35 @@ export default function ActivitiesPage({ locale }: ActivitiesPageProps) {
           price: 'text-indigo-300',
           icon: Sparkles,
         };
-      case 'islands':
+      case 'cabalgata':
         return {
-          bg: 'bg-gradient-to-br from-cyan-950 via-slate-900 to-cyan-950',
-          border: 'border-cyan-500/20',
-          accent: 'text-cyan-300',
-          accentBg: 'bg-cyan-500',
-          badge: 'bg-cyan-500/20 text-cyan-300',
-          price: 'text-cyan-300',
-          icon: Ship,
+          bg: 'bg-gradient-to-br from-amber-950 via-stone-900 to-amber-950',
+          border: 'border-amber-500/20',
+          accent: 'text-amber-300',
+          accentBg: 'bg-amber-500',
+          badge: 'bg-amber-500/20 text-amber-300',
+          price: 'text-amber-300',
+          icon: Heart,
         };
-      case 'manglar':
+      case 'pesca-artesanal':
         return {
-          bg: 'bg-gradient-to-br from-emerald-950 via-stone-900 to-emerald-950',
-          border: 'border-emerald-500/20',
-          accent: 'text-emerald-300',
-          accentBg: 'bg-emerald-500',
-          badge: 'bg-emerald-500/20 text-emerald-300',
-          price: 'text-emerald-300',
-          icon: Trees,
+          bg: 'bg-gradient-to-br from-blue-950 via-slate-900 to-blue-950',
+          border: 'border-blue-500/20',
+          accent: 'text-blue-300',
+          accentBg: 'bg-blue-500',
+          badge: 'bg-blue-500/20 text-blue-300',
+          price: 'text-blue-300',
+          icon: Star,
+        };
+      case 'fantasy-island':
+        return {
+          bg: 'bg-gradient-to-br from-purple-950 via-slate-900 to-purple-950',
+          border: 'border-purple-500/20',
+          accent: 'text-purple-300',
+          accentBg: 'bg-purple-500',
+          badge: 'bg-purple-500/20 text-purple-300',
+          price: 'text-purple-300',
+          icon: Moon,
         };
       default:
         return {
@@ -264,7 +449,7 @@ export default function ActivitiesPage({ locale }: ActivitiesPageProps) {
             muted
             loop
             playsInline
-            preload="auto"
+            preload="metadata"
             onLoadedData={() => setVideoLoaded(true)}
             onCanPlay={() => setVideoLoaded(true)}
             className="absolute inset-0 w-full h-full object-cover"
@@ -311,7 +496,7 @@ export default function ActivitiesPage({ locale }: ActivitiesPageProps) {
       {/* Activities Grid */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {c.activities.map((activity, i) => {
               const style = getActivityStyle(activity.id);
               const Icon = style.icon;
@@ -332,10 +517,12 @@ export default function ActivitiesPage({ locale }: ActivitiesPageProps) {
 
                   {/* Activity image */}
                   <div className="relative h-48 w-full overflow-hidden">
-                    <img
+                    <Image
                       src={activity.image}
                       alt={activity.title}
-                      className="absolute inset-0 w-full h-full object-cover"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   </div>

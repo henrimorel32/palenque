@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { Images, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Locale } from '@/lib/i18n/translations';
 import { getTranslations } from '@/lib/i18n/utils';
@@ -145,11 +146,12 @@ export default function GallerySection({ locale }: GallerySectionProps) {
               className={`${item.span} relative group rounded-2xl overflow-hidden cursor-pointer border-2 border-transparent hover:border-yellow-300 transition-all duration-300 shadow-md hover:shadow-xl`}
               onClick={() => openLightbox(index)}
             >
-              <img
+              <Image
                 src={item.src}
                 alt={item.alt}
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                fill
+                sizes={item.span.includes('col-span-2') ? '(max-width: 768px) 100vw, 50vw' : '(max-width: 768px) 50vw, 25vw'}
+                className="object-cover group-hover:scale-110 transition-transform duration-700"
               />
 
               {/* Overlay */}
@@ -233,10 +235,12 @@ export default function GallerySection({ locale }: GallerySectionProps) {
               className="relative w-full h-full max-w-6xl max-h-[85vh] mx-4 md:mx-12"
               onClick={(e) => e.stopPropagation()}
             >
-              <img
+              <Image
                 src={galleryImages[currentIndex].src}
                 alt={galleryImages[currentIndex].alt}
-                className="absolute inset-0 w-full h-full object-contain"
+                fill
+                sizes="100vw"
+                className="object-contain"
               />
             </motion.div>
           </motion.div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import {
   Waves, Sun, Wind, Snowflake,
@@ -236,11 +237,12 @@ export default function ApuRoomPage({ locale }: ApuRoomPageProps) {
                     }}
                     className="relative aspect-square rounded-2xl overflow-hidden group shadow-md border border-stone-100"
                   >
-                    <img
+                    <Image
                       src={src}
                       alt={`${c.title} ${idx + 1}`}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      loading="lazy"
+                      fill
+                      sizes="(max-width: 768px) 33vw, 15vw"
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
                   </button>

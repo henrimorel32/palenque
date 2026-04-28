@@ -3,6 +3,7 @@
 import { useEffect, useCallback, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+import Image from 'next/image';
 import { X, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
 
 interface RoomImageLightboxProps {
@@ -40,7 +41,7 @@ export default function RoomImageLightbox({
     };
     preload((currentIndex + 1) % images.length);
     preload((currentIndex - 1 + images.length) % images.length);
-  }, [currentIndex, isOpen, images.length]);
+  }, [currentIndex, isOpen, images]);
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -141,11 +142,13 @@ export default function RoomImageLightbox({
                 <Loader2 className="w-10 h-10 text-white/80 animate-spin" />
               </div>
             )}
-            <img
+            <Image
               src={images[currentIndex]}
               alt={`${roomName} - ${currentIndex + 1}`}
-              className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
-              onLoad={() => setIsLoading(false)}
+              fill
+              sizes="100vw"
+              className={`object-contain transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+              onLoadingComplete={() => setIsLoading(false)}
             />
           </motion.div>
         </motion.div>
