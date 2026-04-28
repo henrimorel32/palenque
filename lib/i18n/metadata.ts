@@ -65,16 +65,16 @@ const pageMetadata: Record<MetaPage, Record<Locale, { title: string; description
   },
   activities: {
     es: {
-      title: 'Actividades & Excursiones - Palenque Eco Hotel',
-      description: 'Explora Palenque con nuestras excursiones guiadas: playas vírgenes, cultura afrocolombiana, senderismo ecológico y más aventuras.',
+      title: 'Tours y Excursiones en Rincón del Mar | Palenque Beach House',
+      description: 'Descubre los mejores tours en Rincón del Mar, Sucre: tour islas San Bernardo, plancton bioluminiscente, manglar, pesca artesanal, cabalgata al atardecer y Fantasy Island. Reserva tu experiencia caribeña.',
     },
     en: {
-      title: 'Activities & Excursions - Palenque Eco Hotel',
-      description: 'Explore Palenque with our guided excursions: pristine beaches, Afro-Colombian culture, eco-hiking and more adventures.',
+      title: 'Tours and Excursions in Rincón del Mar | Palenque Beach House',
+      description: 'Discover the best tours in Rincón del Mar, Sucre: San Bernardo islands tour, bioluminescent plankton, mangrove, artisanal fishing, sunset horseback riding and Fantasy Island. Book your Caribbean experience.',
     },
     fr: {
-      title: 'Activités & Excursions - Palenque Eco Hotel',
-      description: 'Explorez Palenque avec nos excursions guidées : plages vierges, culture afro-colombienne, randonnée écologique et plus d\'aventures.',
+      title: 'Excursions et Tours à Rincón del Mar | Palenque Beach House',
+      description: 'Découvrez les meilleures excursions à Rincón del Mar, Sucre : tour îles San Bernardo, plancton bioluminescent, mangrove, pêche artisanale, balade à cheval au coucher du soleil et Fantasy Island. Réservez votre expérience caribéenne.',
     },
   },
   contact: {
@@ -145,7 +145,7 @@ export function generateMetadata(
       type: 'website',
       images: [
         {
-          url: `${baseUrl}/images/og-image.jpg`,
+          url: `${baseUrl}/images/activites/couchesoleil.webp`,
           width: 1200,
           height: 630,
           alt: t.meta.title,
@@ -156,7 +156,7 @@ export function generateMetadata(
       card: 'summary_large_image',
       title: meta.title,
       description: meta.description,
-      images: [`${baseUrl}/images/og-image.jpg`],
+      images: [`${baseUrl}/images/activites/couchesoleil.webp`],
     },
     robots: {
       index: true,
@@ -172,6 +172,37 @@ export function generateMetadata(
   }
 }
 
+// Données des tours pour JSON-LD
+const toursData: Record<Locale, Array<{ name: string; description: string; price: string; priceCurrency: string }>> = {
+  es: [
+    { name: 'Tour Manglar', description: 'Navegación por los manglares de Rincón del Mar con avistamiento de fauna.', price: '40000', priceCurrency: 'COP' },
+    { name: 'Tour Islas – Archipiélago de San Bernardo', description: 'Viaje en lancha por Isla Palma, Múcura y Tintipán.', price: '70000', priceCurrency: 'COP' },
+    { name: 'Tour Islas Palenque', description: 'Tour premium con visita a Isla Saycén y snorkel.', price: '90000', priceCurrency: 'COP' },
+    { name: 'Tour de Plancton Bioluminiscente', description: 'Atardecer en Isla Cabruna y plancton bioluminiscente en manglares.', price: '50000', priceCurrency: 'COP' },
+    { name: 'Cabalgata al Atardecer', description: 'Paseo a caballo por senderos de bosque tropical y orilla del mar.', price: '120000', priceCurrency: 'COP' },
+    { name: 'Pesca Artesanal + Snorkel + Almuerzo', description: 'Experiencia de pesca local, snorkel y almuerzo en Isla Mangle.', price: '130000', priceCurrency: 'COP' },
+    { name: 'Fantasy Island Tour', description: 'Bioparque, playa privada, snorkel y jacuzzis de mar.', price: '230000', priceCurrency: 'COP' },
+  ],
+  en: [
+    { name: 'Mangrove Tour', description: 'Mangrove navigation in Rincón del Mar with wildlife spotting.', price: '40000', priceCurrency: 'COP' },
+    { name: 'Islands Tour – San Bernardo Archipelago', description: 'Boat trip to Palma, Múcura and Tintipán islands.', price: '70000', priceCurrency: 'COP' },
+    { name: 'Palenque Islands Tour', description: 'Premium tour with Saycén Island visit and snorkel.', price: '90000', priceCurrency: 'COP' },
+    { name: 'Bioluminescent Plankton Tour', description: 'Sunset at Cabruna Island and bioluminescent plankton.', price: '50000', priceCurrency: 'COP' },
+    { name: 'Sunset Horseback Ride', description: 'Horseback ride through tropical forest and seashore.', price: '120000', priceCurrency: 'COP' },
+    { name: 'Artisanal Fishing + Snorkel + Lunch', description: 'Local fishing experience, snorkel and lunch at Mangle Island.', price: '130000', priceCurrency: 'COP' },
+    { name: 'Fantasy Island Tour', description: 'Biopark, private beach, snorkel and sea jacuzzis.', price: '230000', priceCurrency: 'COP' },
+  ],
+  fr: [
+    { name: 'Tour Mangrove', description: 'Navigation en mangrove à Rincón del Mar avec observation de la faune.', price: '40000', priceCurrency: 'COP' },
+    { name: 'Tour Îles – Archipel de San Bernardo', description: 'Excursion en bateau vers les îles Palma, Múcura et Tintipán.', price: '70000', priceCurrency: 'COP' },
+    { name: 'Tour Îles Palenque', description: 'Tour premium avec visite de l\'île Saycén et snorkeling.', price: '90000', priceCurrency: 'COP' },
+    { name: 'Tour du Plancton Bioluminescent', description: 'Coucher de soleil à l\'île Cabruna et plancton bioluminescent.', price: '50000', priceCurrency: 'COP' },
+    { name: 'Balade à Cheval au Coucher du Soleil', description: 'Promenade à cheval dans la forêt tropicale et le bord de mer.', price: '120000', priceCurrency: 'COP' },
+    { name: 'Pêche Artisanale + Snorkeling + Déjeuner', description: 'Expérience de pêche locale, snorkeling et déjeuner.', price: '130000', priceCurrency: 'COP' },
+    { name: 'Fantasy Island Tour', description: 'Bioparc, plage privée, snorkeling et jacuzzis de mer.', price: '230000', priceCurrency: 'COP' },
+  ],
+}
+
 // JSON-LD structured data pour Rich Snippets
 export function generateStructuredData(
   page: MetaPage,
@@ -182,6 +213,34 @@ export function generateStructuredData(
     page === 'home' ? '/' : `/${page}`,
     locale
   )
+
+  if (page === 'activities') {
+    const tours = toursData[locale] || toursData.es
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: pageMetadata.activities[locale].title,
+      description: pageMetadata.activities[locale].description,
+      url: `${baseUrl}${url}`,
+      inLanguage: locale,
+      itemListElement: tours.map((tour, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'TouristAttraction',
+          name: tour.name,
+          description: tour.description,
+          url: `${baseUrl}${url}`,
+          offers: {
+            '@type': 'Offer',
+            price: tour.price,
+            priceCurrency: tour.priceCurrency,
+            availability: 'https://schema.org/InStock',
+          },
+        },
+      })),
+    }
+  }
   
   const hotelSchema = {
     '@context': 'https://schema.org',
