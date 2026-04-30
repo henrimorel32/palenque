@@ -101,6 +101,7 @@ export default function WelcomeSection({ locale }: WelcomeSectionProps) {
                 images={paraisoImages}
                 alt={t.home.welcomeTitle}
                 interval={5000}
+                locale={locale}
                 onClick={() => setLightboxOpen(true)}
                 onImageChange={(idx) => setLightboxIndex(idx)}
               />

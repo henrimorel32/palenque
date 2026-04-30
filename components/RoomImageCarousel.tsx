@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { Camera } from 'lucide-react';
+import { Locale } from '@/lib/i18n/translations';
 
 interface RoomImageCarouselProps {
   images: string[];
@@ -11,7 +12,14 @@ interface RoomImageCarouselProps {
   interval?: number;
   onClick?: () => void;
   onImageChange?: (index: number) => void;
+  locale?: Locale;
 }
+
+const loadingText: Record<Locale, string> = {
+  es: 'Cargando imagen...',
+  en: 'Loading image...',
+  fr: 'Chargement de l\'image...',
+};
 
 export default function RoomImageCarousel({
   images,
@@ -19,6 +27,7 @@ export default function RoomImageCarousel({
   interval = 4000,
   onClick,
   onImageChange,
+  locale = 'es',
 }: RoomImageCarouselProps) {
   const [current, setCurrent] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -73,7 +82,7 @@ export default function RoomImageCarousel({
           </div>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
-            <span className="text-xs font-medium text-stone-400">Loading...</span>
+            <span className="text-xs font-medium text-stone-400">{loadingText[locale] || loadingText.es}</span>
           </div>
         </div>
       )}

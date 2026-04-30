@@ -112,6 +112,7 @@ export default function ApuRoomPage({ locale }: ApuRoomPageProps) {
           <RoomImageCarousel
             images={images}
             alt={c.title}
+            locale={locale}
             onClick={openLightbox}
             onImageChange={(idx) => setLightboxIndex(idx)}
           />

@@ -38,10 +38,13 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
   const [currentImage, setCurrentImage] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   const [videoSupported, setVideoSupported] = useState(false);
+  const [supportChecked, setSupportChecked] = useState(false);
   const [videoVisible, setVideoVisible] = useState(true);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoPlaying, setVideoPlaying] = useState(false);
   const [videoError, setVideoError] = useState(false);
   const [videoProgress, setVideoProgress] = useState(0);
+  const [loadingProgress, setLoadingProgress] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const scrollTimeoutRef = useRef<NodeJS.Timeout>();
@@ -63,17 +66,25 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
                          video.canPlayType('video/webm; codecs="vp9"') !== '' ||
                          video.canPlayType('video/webm') !== '';
     
-    setVideoSupported(!isMobile && !isSafari && supportsWebm);
+    const supported = !isMobile && !isSafari && supportsWebm;
+    setVideoSupported(supported);
+    setSupportChecked(true);
+    if (!supported) {
+      setVideoLoaded(true);
+    }
   }, []);
 
-  // Timeout de secours pour le loader vidéo
+  // Timeout de secours pour le loader vidéo (12s pour les connexions lentes)
   useEffect(() => {
     if (!videoSupported) return;
     if (videoRef.current && videoRef.current.readyState >= 3) {
       setVideoLoaded(true);
       return;
     }
-    const timeout = setTimeout(() => setVideoLoaded(true), 2500);
+    const timeout = setTimeout(() => {
+      setVideoLoaded(true);
+      setVideoPlaying(true);
+    }, 12000);
     return () => clearTimeout(timeout);
   }, [videoSupported]);
 
@@ -83,6 +94,22 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
     if (video && video.duration) {
       setVideoProgress(video.currentTime / video.duration);
     }
+  };
+
+  // Suivi du buffering pour la barre de progression du loader
+  const handleProgress = () => {
+    const video = videoRef.current;
+    if (video && video.buffered.length > 0 && video.duration) {
+      const bufferedEnd = video.buffered.end(video.buffered.length - 1);
+      const progress = (bufferedEnd / video.duration) * 100;
+      setLoadingProgress(progress);
+    }
+  };
+
+  // Confirme que la vidéo joue vraiment
+  const handlePlaying = () => {
+    setVideoLoaded(true);
+    setVideoPlaying(true);
   };
 
   // Préchargement léger des images
@@ -170,6 +197,12 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
       {/* Hauteur du scroll - plus longue pour laisser du temps à chaque image */}
       <div className="h-[500vh]">
         <div className="sticky top-0 h-screen w-full overflow-hidden bg-gray-900 z-20">
+          {/* Loader global — visible immédiatement dès l'arrivée */}
+          <VideoLoader 
+            isLoading={!supportChecked || (videoSupported && !videoPlaying && !videoError)} 
+            locale={locale} 
+            progress={loadingProgress}
+          />
           
           {/* Vidéo de fond */}
           {videoSupported && (
@@ -180,13 +213,12 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
               transition={{ duration: 0.8, ease: "easeInOut" }}
               style={{ pointerEvents: videoVisible ? 'auto' : 'none' }}
             >
-              <VideoLoader isLoading={!videoLoaded} locale={locale} />
               <video
                 ref={videoRef}
                 autoPlay
                 muted
                 playsInline
-                preload="metadata"
+                preload="auto"
                 onEnded={() => {
                   // Scroll doux vers la première image du parallax
                   const container = containerRef.current;
@@ -197,8 +229,10 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
                 }}
                 onLoadedData={() => setVideoLoaded(true)}
                 onCanPlay={() => setVideoLoaded(true)}
+                onPlaying={handlePlaying}
                 onError={() => setVideoError(true)}
                 onTimeUpdate={handleTimeUpdate}
+                onProgress={handleProgress}
                 className="absolute inset-0 w-full h-full object-cover"
                 style={{ filter: 'brightness(1.05) saturate(1.1)' }}
               >
@@ -319,7 +353,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={{ opacity: (videoLoaded || !videoSupported) ? 1 : 0, y: (videoLoaded || !videoSupported) ? 0 : -20 }}
               transition={{ delay: 0.3, duration: 0.6 }}
               className="mb-8"
             >
@@ -332,7 +366,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
             {/* Titre principal */}
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={{ opacity: (videoLoaded || !videoSupported) ? 1 : 0, y: (videoLoaded || !videoSupported) ? 0 : 30 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 md:p-12 max-w-4xl border border-white/10 shadow-2xl"
             >

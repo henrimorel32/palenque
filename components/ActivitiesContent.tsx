@@ -8,6 +8,7 @@ import {
   ArrowRight, Phone, Star, Shield, Wallet, Heart
 } from 'lucide-react';
 import { Locale } from '@/lib/i18n/translations';
+import VideoLoader from '@/components/VideoLoader';
 
 
 interface ActivitiesPageProps {
@@ -16,13 +17,30 @@ interface ActivitiesPageProps {
 
 export default function ActivitiesContent({ locale }: ActivitiesPageProps) {
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoPlaying, setVideoPlaying] = useState(false);
+  const [videoError, setVideoError] = useState(false);
+  const [supportChecked, setSupportChecked] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const isMobile = /iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                       (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+      setSupportChecked(true);
+      if (isMobile) {
+        setVideoLoaded(true);
+        setVideoPlaying(true);
+      }
+    }
     if (videoRef.current && videoRef.current.readyState >= 3) {
       setVideoLoaded(true);
+      setVideoPlaying(true);
     }
-    const timeout = setTimeout(() => setVideoLoaded(true), 3000);
+    const timeout = setTimeout(() => {
+      setVideoLoaded(true);
+      setVideoPlaying(true);
+    }, 12000);
     return () => clearTimeout(timeout);
   }, []);
   const content = {
@@ -442,21 +460,33 @@ export default function ActivitiesContent({ locale }: ActivitiesPageProps) {
       <section className="relative min-h-[70vh] bg-stone-900 overflow-hidden">
         {/* Background video */}
         <div className="absolute inset-0 z-0">
-          {!videoLoaded && (
-            <div className="absolute inset-0 z-30 flex items-center justify-center bg-stone-900/80 backdrop-blur-sm">
-              <div className="w-10 h-10 border-4 border-yellow-400/20 border-t-yellow-400 rounded-full animate-spin" />
-            </div>
-          )}
+          <VideoLoader
+            isLoading={!supportChecked || (!videoPlaying && !videoError)}
+            locale={locale}
+            progress={loadingProgress}
+          />
           <video
             ref={videoRef}
             autoPlay
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
             poster="/images/activites/video-poster.jpg"
             onLoadedData={() => setVideoLoaded(true)}
             onCanPlay={() => setVideoLoaded(true)}
+            onPlaying={() => {
+              setVideoLoaded(true);
+              setVideoPlaying(true);
+            }}
+            onError={() => setVideoError(true)}
+            onProgress={() => {
+              const video = videoRef.current;
+              if (video && video.buffered.length > 0 && video.duration) {
+                const bufferedEnd = video.buffered.end(video.buffered.length - 1);
+                setLoadingProgress((bufferedEnd / video.duration) * 100);
+              }
+            }}
             className="absolute inset-0 w-full h-full object-cover"
             style={{ filter: 'brightness(1.05) saturate(1.1)' }}
           >

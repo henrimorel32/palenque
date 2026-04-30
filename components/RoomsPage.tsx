@@ -820,6 +820,10 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
   const c = content[locale] || content.es;
   const [selectedRoom, setSelectedRoom] = useState<number | null>(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoPlaying, setVideoPlaying] = useState(false);
+  const [videoError, setVideoError] = useState(false);
+  const [supportChecked, setSupportChecked] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const [lightboxRoomId, setLightboxRoomId] = useState<number | null>(null);
@@ -932,13 +936,29 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
   };
 
   useEffect(() => {
+    // Détection synchrone du support vidéo desktop
+    if (typeof window !== 'undefined') {
+      const isMobile = /iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                       (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+      const supported = !isMobile;
+      setSupportChecked(true);
+      if (!supported) {
+        setVideoLoaded(true);
+        setVideoPlaying(true);
+      }
+    }
+    
     // Si la vidéo est déjà prête (cache), on cache le loader immédiatement
     if (videoRef.current && videoRef.current.readyState >= 3) {
       setVideoLoaded(true);
+      setVideoPlaying(true);
       return;
     }
-    // Timeout de secours pour ne pas bloquer l'UI si l'événement est manqué
-    const timeout = setTimeout(() => setVideoLoaded(true), 2500);
+    // Timeout de secours pour ne pas bloquer l'UI si l'événement est manqué (12s)
+    const timeout = setTimeout(() => {
+      setVideoLoaded(true);
+      setVideoPlaying(true);
+    }, 12000);
     return () => clearTimeout(timeout);
   }, []);
 
@@ -954,16 +974,32 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
         >
           {/* Desktop video */}
           <div className="hidden md:block absolute inset-0">
-            <VideoLoader isLoading={!videoLoaded} locale={locale} />
+            <VideoLoader 
+              isLoading={!supportChecked || (!videoPlaying && !videoError)} 
+              locale={locale} 
+              progress={loadingProgress}
+            />
             <video
               ref={videoRef}
               autoPlay
               muted
               loop
               playsInline
-              preload="metadata"
+              preload="auto"
               onLoadedData={() => setVideoLoaded(true)}
               onCanPlay={() => setVideoLoaded(true)}
+              onPlaying={() => {
+                setVideoLoaded(true);
+                setVideoPlaying(true);
+              }}
+              onError={() => setVideoError(true)}
+              onProgress={() => {
+                const video = videoRef.current;
+                if (video && video.buffered.length > 0 && video.duration) {
+                  const bufferedEnd = video.buffered.end(video.buffered.length - 1);
+                  setLoadingProgress((bufferedEnd / video.duration) * 100);
+                }
+              }}
               className={`transition-all duration-500 ${isSafari ? 'w-[75%] max-w-[1200px] aspect-video object-cover rounded-2xl' : 'w-full h-full object-cover'}`}
             >
               <source src="/images/output-hero.mp4" type="video/mp4" />
@@ -1243,7 +1279,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                       className={`aspect-[4/3] rounded-3xl bg-gradient-to-br ${room.color} flex items-center justify-center overflow-hidden shadow-2xl relative`}
                     >
                       {room.images && room.images.length > 0 ? (
-                        <RoomImageCarousel images={room.images} alt={room.name} onClick={() => openLightbox(room.id)} />
+                        <RoomImageCarousel images={room.images} alt={room.name} onClick={() => openLightbox(room.id)} locale={locale} />
                       ) : (
                         <div className="text-center text-white/90">
                           <BedDouble className="w-20 h-20 mx-auto mb-4 opacity-60" />
@@ -1367,7 +1403,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                       className={`aspect-[4/3] rounded-3xl bg-gradient-to-br ${room.color} flex items-center justify-center overflow-hidden shadow-2xl relative`}
                     >
                       {room.images && room.images.length > 0 ? (
-                        <RoomImageCarousel images={room.images} alt={room.name} onClick={() => openLightbox(room.id)} />
+                        <RoomImageCarousel images={room.images} alt={room.name} onClick={() => openLightbox(room.id)} locale={locale} />
                       ) : (
                         <div className="text-center text-white/90">
                           <BedDouble className="w-20 h-20 mx-auto mb-4 opacity-60" />

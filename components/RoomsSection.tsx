@@ -270,6 +270,7 @@ export default function RoomsSection({ locale }: RoomsSectionProps) {
                   images={room.images}
                   alt={room.title}
                   interval={5000}
+                  locale={locale}
                   onClick={() => openLightbox(index)}
                   onImageChange={(idx) => setLightboxImageIdx(idx)}
                 />
