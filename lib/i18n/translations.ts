@@ -140,7 +140,7 @@ export const translations = {
       activities: 'Activities',
       contact: 'Contact',
       phone: 'Contact Us',
-      location: 'Palenque, Bolivar, Colombia',
+      location: 'Palenque, Sucre, Colombia',
     },
     hero: {
       badge: 'Palenque Eco Hotel',
@@ -244,7 +244,7 @@ export const translations = {
     footer: {
       title: 'Palenque Eco Hotel',
       address: 'Carrera 1 # 23-58',
-      city: 'Palenque, Bolivar, Colombia',
+      city: 'Palenque, Sucre, Colombia',
       contact: 'Contact',
       quickLinks: 'Quick Links',
       terms: 'Terms & Conditions',
