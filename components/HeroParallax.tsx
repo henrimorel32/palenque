@@ -236,7 +236,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
                 className="absolute inset-0 w-full h-full object-cover"
                 style={{ filter: 'brightness(1.05) saturate(1.1)' }}
               >
-                <source src="/images/outputHome.webm" type="video/webm" />
+                <source src="/videos/light/video-palenque-light.mp4" type="video/webm" />
               </video>
               <div className="absolute inset-0 bg-black/30" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.3)_100%)]" />

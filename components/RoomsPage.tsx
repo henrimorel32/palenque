@@ -1002,8 +1002,8 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
               }}
               className={`transition-all duration-500 ${isSafari ? 'w-[75%] max-w-[1200px] aspect-video object-cover rounded-2xl' : 'w-full h-full object-cover'}`}
             >
-              <source src="/images/output-hero.mp4" type="video/mp4" />
-              <source src="/images/output-hero.webm" type="video/webm" />
+              <source src="/videos/small/video-apu-small.mp4" type="video/mp4" />
+              {/* <source src="/images/output-hero.webm" type="video/webm" /> */}
             </video>
           </div>
 
