@@ -11,7 +11,7 @@ export const translations = {
       activities: 'Actividades',
       contact: 'Contacto',
       phone: 'Contactar',
-      location: 'Palenque, Bolívar, Colombia',
+      location: 'Rincón del mar, Sucre, Colombia',
     },
     hero: {
       badge: 'Palenque Eco Hotel',
@@ -114,8 +114,8 @@ export const translations = {
     },
     footer: {
       title: 'Palenque Eco Hotel',
-      address: 'Carrera 1 # 23-58',
-      city: 'Palenque, Bolívar, Colombia',
+      address: 'Rincón del mar',
+      city: 'Rincón del mar, Sucre, Colombia',
       contact: 'Contacto',
       quickLinks: 'Enlaces rápidos',
       terms: 'Términos y condiciones',
@@ -140,7 +140,7 @@ export const translations = {
       activities: 'Activities',
       contact: 'Contact',
       phone: 'Contact Us',
-      location: 'Palenque, Sucre, Colombia',
+      location: 'Rincón del mar, Sucre, Colombia',
     },
     hero: {
       badge: 'Palenque Eco Hotel',
@@ -243,8 +243,8 @@ export const translations = {
     },
     footer: {
       title: 'Palenque Eco Hotel',
-      address: 'Carrera 1 # 23-58',
-      city: 'Palenque, Sucre, Colombia',
+      address: 'Rincón del mar',
+      city: 'Rincón del mar, Sucre, Colombia',
       contact: 'Contact',
       quickLinks: 'Quick Links',
       terms: 'Terms & Conditions',
@@ -269,7 +269,7 @@ export const translations = {
       activities: 'Activités',
       contact: 'Contact',
       phone: 'Nous contacter',
-      location: 'Palenque, Bolívar, Colombie',
+      location: 'Rincón del mar, Sucre, Colombie',
     },
     hero: {
       badge: 'Palenque Eco Hotel',
@@ -372,8 +372,8 @@ export const translations = {
     },
     footer: {
       title: 'Palenque Eco Hotel',
-      address: 'Carrera 1 # 23-58',
-      city: 'Palenque, Bolívar, Colombie',
+      address: 'Rincón del mar',
+      city: 'Rincón del mar, Sucre, Colombie',
       contact: 'Contact',
       quickLinks: 'Liens rapides',
       terms: 'Conditions générales',
