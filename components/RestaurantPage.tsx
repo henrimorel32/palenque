@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import { Locale } from '@/lib/i18n/translations';
 
-function DishImage({ src, alt }: { src: string; alt: string }) {
+function DishImage({ src, alt, priority }: { src: string; alt: string; priority?: boolean }) {
   const [loaded, setLoaded] = useState(false);
   return (
     <div className="relative aspect-[4/3] overflow-hidden bg-stone-100">
@@ -29,6 +29,7 @@ function DishImage({ src, alt }: { src: string; alt: string }) {
         src={src}
         alt={alt}
         fill
+        priority={priority}
         onLoad={() => setLoaded(true)}
         className={`object-cover transition-all duration-700 group-hover:scale-105 ${loaded ? 'opacity-100' : 'opacity-0'}`}
         sizes="(max-width: 768px) 100vw, 50vw"
@@ -175,7 +176,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
         items: [
           {
             icon: Fish,
-            image: '/images/restaurant/plat1.webp',
+            image: '/images/restaurant/plat1_optimized.webp',
             name: 'Pesca del Día',
             desc: 'Pescado fresco capturado por pescadores locales, acompañado de arroz con coco y patacón.',
             price: '$45.000 COP',
@@ -183,7 +184,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
           },
           {
             icon: Flame,
-            image: '/images/restaurant/plat2.webp',
+            image: '/images/restaurant/plat2_optimized.webp',
             name: 'Cazuela de Mariscos',
             desc: 'Langostinos, calamares, mejillones y pescado en una rica salsa caribeña con hierbas locales.',
             price: '$58.000 COP',
@@ -191,7 +192,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
           },
           {
             icon: Citrus,
-            image: '/images/restaurant/plat3.webp',
+            image: '/images/restaurant/plat3_optimized.webp',
             name: 'Ceviche Palenquero',
             desc: 'Ceviche tradicional con limón tahití, cilantro fresco, cebolla morada y maíz tostado.',
             price: '$32.000 COP',
@@ -199,7 +200,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
           },
           {
             icon: Coffee,
-            image: '/images/restaurant/cafe1.webp',
+            image: '/images/restaurant/cafe_optimized.webp',
             name: 'Café de la Región',
             desc: 'Café recién preparado de los Andes colombianos, con notas de chocolate y caramelo.',
             price: '$8.000 COP',
@@ -480,7 +481,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
                 className="group bg-white rounded-3xl overflow-hidden border border-stone-100 hover:border-yellow-200 transition-all hover:shadow-xl"
               >
                 <div className="relative">
-                  <DishImage src={item.image} alt={item.name} />
+                  <DishImage src={item.image} alt={item.name} priority />
                   <div className="absolute top-4 right-4 z-10">
                     <span className="px-3 py-1 bg-yellow-400 text-stone-900 rounded-full text-xs font-bold shadow-lg">
                       {item.tag}
