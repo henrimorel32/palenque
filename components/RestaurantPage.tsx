@@ -108,7 +108,7 @@ function VideoHero({ locale }: VideoHeroProps) {
             videoLoaded ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <source src="/videos/restaurant/output2.mp4" type="video/mp4" />
+          <source src="/videos/restaurant/hero-output3.mp4" type="video/mp4" />
         </video>
       )}
 
