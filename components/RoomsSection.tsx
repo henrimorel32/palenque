@@ -30,13 +30,13 @@ export default function RoomsSection({ locale }: RoomsSectionProps) {
       key: 'apu',
       badge:
         locale === 'es'
-          ? 'Nuestra Joya'
+          ? ''
           : locale === 'en'
           ? 'Our Crown Jewel'
           : 'Notre Joyau',
       title:
         locale === 'es'
-          ? 'Cabaña APU'
+          ? 'APU'
           : locale === 'en'
           ? 'APU Cabin'
           : 'Cabane APU',
@@ -48,7 +48,7 @@ export default function RoomsSection({ locale }: RoomsSectionProps) {
           : 'Front de mer, où les vagues chantent votre sommeil',
       description:
         locale === 'es'
-          ? 'Una cabaña privada a solo metros del océano, con terraza propia y hamaca bajo las estrellas.'
+          ? ''
           : locale === 'en'
           ? 'A private cabin just meters from the ocean, with its own terrace and hammock under the stars.'
           : 'Une cabane privée à quelques mètres de l\'océan, avec sa propre terrasse et son hamac sous les étoiles.',
@@ -139,7 +139,7 @@ export default function RoomsSection({ locale }: RoomsSectionProps) {
         { icon: Star, label: 'Smart TV' },
         { icon: Coffee, label: locale === 'es' ? 'Café' : locale === 'en' ? 'Coffee' : 'Café' },
         { icon: Wifi, label: 'WiFi' },
-        { icon: Droplets, label: locale === 'es' ? 'Tina' : locale === 'en' ? 'Tub' : 'Baignoire' },
+        { icon: Droplets, label: locale === 'es' ? '' : locale === 'en' ? 'Tub' : 'Baignoire' },
       ],
       images: ['/images/chambre1..webp'],
       color: 'from-blue-400 to-cyan-500',
@@ -148,7 +148,7 @@ export default function RoomsSection({ locale }: RoomsSectionProps) {
       key: 'bungalow',
       badge:
         locale === 'es'
-          ? 'Villa Privada'
+          ? ''
           : locale === 'en'
           ? 'Private Villa'
           : 'Villa Privée',
@@ -161,7 +161,7 @@ export default function RoomsSection({ locale }: RoomsSectionProps) {
           : 'Votre refuge au bord de la mer',
       description:
         locale === 'es'
-          ? 'Villa privada con terraza, hamaca, A/C y acceso directo a la playa.'
+          ? ''
           : locale === 'en'
           ? 'Private villa with terrace, hammock, A/C and direct beach access.'
           : 'Villa privée avec terrasse, hamac, A/C et accès direct à la plage.',
@@ -326,7 +326,7 @@ export default function RoomsSection({ locale }: RoomsSectionProps) {
                 </div>
 
                 <a
-                  href="https://wa.me/573147480855"
+                  href="https://wa.me/573105270542"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-stone-900 text-white rounded-full text-sm font-semibold hover:bg-stone-800 transition-colors w-full"

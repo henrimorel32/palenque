@@ -66,13 +66,10 @@ export default function WelcomeSection({ locale }: WelcomeSectionProps) {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-stone-900 mb-6 leading-tight">
               {t.home.welcomeTitle}
             </h2>
-            <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-200 rounded-full mb-6" />
-            <p className="text-xl text-stone-600 mb-6">
-              {t.home.welcomeSubtitle}
+            <p className="text-lg text-stone-700 leading-relaxed mb-6">
+              {t.home.welcomeDescription}
             </p>
-            <p className="text-stone-500 leading-relaxed mb-8">
-              {t.home.welcomeText}
-            </p>
+            <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-200 rounded-full mb-8" />
 
             {/* Highlights */}
             <div className="flex flex-wrap gap-3">

@@ -1,7 +1,7 @@
 // components/Navbar.tsx
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Waves, Phone, MapPin, MessageCircle } from 'lucide-react'
 import LanguageSwitcher from './LanguageSwitcher'
@@ -24,16 +24,7 @@ export default function Navbar() {
   
   const t = getTranslations(locale)
   
-  const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   // Génère les liens avec les URLs localisées
   const navLinks = [
@@ -43,6 +34,7 @@ export default function Navbar() {
     { name: t.nav.directions, href: `/${locale === 'es' ? 'como-llegar' : locale === 'en' ? 'directions' : 'acces'}` },
     { name: t.nav.activities, href: generateLocalizedUrl('/actividades', locale) },
     { name: t.nav.contact, href: generateLocalizedUrl('/contacto', locale) },
+    { name: t.nav.gallery, href: `${generateLocalizedUrl('/', locale)}#galeria` },
   ]
 
   // Vérifie si un lien est actif
@@ -64,21 +56,15 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Top bar - disparaît au scroll - SEUL endroit avec le sélecteur de langue */}
-      <div
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled 
-            ? 'opacity-0 -translate-y-full' 
-            : 'opacity-100 translate-y-0'
-        }`}
-      >
+      {/* Top bar - fixe */}
+      <div className="fixed top-0 left-0 right-0 z-50">
         <div className="bg-yellow-400 py-2.5">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-6 text-yellow-950">
-                <a href="https://wa.me/573147480855" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors font-medium">
+                <a href="https://wa.me/573105270542" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors font-medium">
                   <Phone className="w-4 h-4" />
-                  <span>+57 314 748 08 55</span>
+                  <span>+57 310 527 05 42</span>
                 </a>
                 <a 
                   href="https://maps.google.com/?q=9.773722,-75.645361" 
@@ -91,45 +77,26 @@ export default function Navbar() {
                   <span>{t.nav.location}</span>
                 </a>
               </div>
-              {/* Language Switcher UNIQUEMENT ici dans le top bar */}
               <LanguageSwitcher variant="topbar" />
             </div>
           </div>
         </div>
       </div>
 
-      {/* Navigation principale - SANS sélecteur de langue */}
-      <nav
-        className={`fixed left-0 right-0 z-40 transition-all duration-500 ${
-          isScrolled
-            ? 'top-0 bg-white/95 backdrop-blur-md shadow-xl'
-            : 'top-12 bg-gradient-to-b from-black/50 via-black/30 to-transparent'
-        }`}
-      >
+      {/* Navigation principale - fixe et non dynamique */}
+      <nav className="fixed top-14 left-0 right-0 z-40 bg-white/95 backdrop-blur-md shadow-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`flex justify-between items-center transition-all duration-300 ${
-            isScrolled ? 'h-20' : 'h-24'
-          }`}>
+          <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <a href={generateLocalizedUrl('/', locale)} className="flex items-center gap-3 group">
-              <div className={`p-3 rounded-2xl transition-all duration-300 ${
-                isScrolled 
-                  ? 'bg-yellow-400 shadow-lg shadow-yellow-400/30' 
-                  : 'bg-white/20 backdrop-blur-md'
-              }`}>
-                <Waves className={`w-8 h-8 transition-colors duration-300 ${
-                  isScrolled ? 'text-yellow-950' : 'text-white'
-                }`} />
+              <div className="p-3 rounded-2xl bg-yellow-400 shadow-lg shadow-yellow-400/30">
+                <Waves className="w-8 h-8 text-yellow-950" />
               </div>
               <div className="flex flex-col">
-                <span className={`text-2xl font-bold tracking-tight transition-colors duration-300 ${
-                  isScrolled ? 'text-gray-900' : 'text-white'
-                }`}>
+                <span className="text-2xl font-bold tracking-tight text-[#5489a0]">
                   Palenque
                 </span>
-                <span className={`text-xs uppercase tracking-[0.3em] -mt-1 transition-colors duration-300 ${
-                  isScrolled ? 'text-yellow-600' : 'text-yellow-300'
-                }`}>
+                <span className="text-xs uppercase tracking-[0.3em] -mt-1 text-yellow-600">
                   Eco Hotel
                 </span>
               </div>
@@ -143,12 +110,8 @@ export default function Navbar() {
                   href={link.href}
                   className={`relative px-5 py-3 text-sm font-semibold uppercase tracking-wider transition-all duration-300 rounded-lg group ${
                     isActive(link.href)
-                      ? isScrolled
-                        ? 'text-yellow-600 bg-yellow-50'
-                        : 'text-yellow-300 bg-white/10'
-                      : isScrolled
-                        ? 'text-gray-700 hover:text-yellow-600 hover:bg-yellow-50'
-                        : 'text-white/90 hover:text-yellow-300 hover:bg-white/10'
+                      ? 'text-yellow-600 bg-yellow-50'
+                      : 'text-gray-700 hover:text-yellow-600 hover:bg-yellow-50'
                   }`}
                 >
                   {link.name}
@@ -156,7 +119,7 @@ export default function Navbar() {
                     isActive(link.href)
                       ? 'w-1/2'
                       : ''
-                  } ${isScrolled ? 'bg-yellow-500' : 'bg-yellow-400'}`} />
+                  } bg-yellow-500`} />
                 </a>
               ))}
             </div>
@@ -164,14 +127,10 @@ export default function Navbar() {
             {/* CTA - WhatsApp */}
             <div className="hidden lg:flex items-center">
               <a
-                href="https://wa.me/573147480855"
+                href="https://wa.me/573105270542"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`flex items-center gap-2 px-5 py-3 text-sm font-semibold rounded-xl transition-all duration-300 ${
-                  isScrolled
-                    ? 'text-green-700 bg-green-100 hover:bg-green-200'
-                    : 'text-green-400 bg-white/10 backdrop-blur-sm hover:bg-white/20'
-                }`}
+                className="flex items-center gap-2 px-5 py-3 text-sm font-semibold rounded-xl text-green-700 bg-green-100 hover:bg-green-200 transition-all duration-300"
               >
                 <MessageCircle className="w-4 h-4" />
                 <span>WhatsApp</span>
@@ -181,11 +140,7 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`xl:hidden p-3 rounded-xl transition-all duration-300 ${
-                isScrolled
-                  ? 'text-gray-800 hover:bg-yellow-100'
-                  : 'text-white hover:bg-white/10'
-              }`}
+              className="xl:hidden p-3 rounded-xl text-gray-800 hover:bg-yellow-100 transition-all duration-300"
             >
               {isMobileMenuOpen ? (
                 <X className="w-7 h-7" />
@@ -197,11 +152,7 @@ export default function Navbar() {
         </div>
 
         {/* Bordure inférieure subtile */}
-        <div className={`h-px transition-all duration-500 ${
-          isScrolled 
-            ? 'bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-100' 
-            : 'bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-50'
-        }`} />
+        <div className="h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-100" />
       </nav>
 
       {/* Mobile Menu Overlay */}
@@ -230,7 +181,7 @@ export default function Navbar() {
                   <Waves className="w-6 h-6 text-yellow-400" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xl font-bold text-yellow-950">Palenque</span>
+                  <span className="text-xl font-bold text-[#5489a0]">Palenque</span>
                   <span className="text-[10px] uppercase tracking-[0.2em] text-yellow-800">Eco Hotel</span>
                 </div>
               </a>
@@ -252,7 +203,7 @@ export default function Navbar() {
 
             {/* Contact rapide */}
             <div className="px-6 py-4 border-b border-gray-100">
-              <a href="https://wa.me/573147480855" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-700">
+              <a href="https://wa.me/573105270542" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-700">
                 <MessageCircle className="w-5 h-5 text-green-600" />
                 <span className="font-semibold">WhatsApp</span>
               </a>

@@ -230,12 +230,12 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
         subtitle: 'Déjanos preparar una experiencia gastronómica inolvidable para ti.',
         button: 'Reservar por WhatsApp',
         or: 'o llámanos al',
-        phone: '+57 314 748 0855',
+        phone: '+57 310 527 0542',
       },
       trust: {
         title: '¿Por qué comer con nosotros?',
         items: [
-          { icon: Leaf, title: 'Ingredientes Locales', desc: 'Trabajamos directamente con pescadores y agricultores de Palenque.' },
+          { icon: Leaf, title: 'Ingredientes Locales', desc: 'Trabajamos directamente con pescadores y agricultores de la región' },
           { icon: Star, title: 'Cocina de Origen', desc: 'Recetas auténticas que honran la tradición afrocolombiana.' },
           { icon: Coffee, title: 'Atención Cálida', desc: 'Un servicio cercano que te hace sentir como en casa.' },
         ],
@@ -321,7 +321,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
         subtitle: 'Let us prepare an unforgettable dining experience for you.',
         button: 'Book via WhatsApp',
         or: 'or call us at',
-        phone: '+57 314 748 0855',
+        phone: '+57 310 527 0542',
       },
       trust: {
         title: 'Why dine with us?',
@@ -412,7 +412,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
         subtitle: 'Laissez-nous préparer une expérience gastronomique inoubliable pour vous.',
         button: 'Réserver par WhatsApp',
         or: 'ou appelez-nous au',
-        phone: '+57 314 748 0855',
+        phone: '+57 310 527 0542',
       },
       trust: {
         title: 'Pourquoi dîner chez nous ?',
@@ -491,7 +491,6 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
                 <div className="p-8">
                   <h3 className="text-2xl font-bold text-stone-900 mb-2">{item.name}</h3>
                   <p className="text-stone-600 mb-4 leading-relaxed">{item.desc}</p>
-                  <p className="text-xl font-bold text-stone-900">{item.price}</p>
                 </div>
               </motion.div>
             ))}
@@ -670,7 +669,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="https://wa.me/573147480855"
+              href="https://wa.me/573105270542"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-stone-900 text-white rounded-full font-bold hover:bg-stone-800 transition-colors shadow-xl"
@@ -679,7 +678,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
               {c.cta.button}
             </a>
             <span className="text-stone-700 font-medium">{c.cta.or}</span>
-            <a href="tel:+573147480855" className="text-stone-900 font-bold text-xl hover:underline">
+            <a href="tel:+573105270542" className="text-stone-900 font-bold text-xl hover:underline">
               {c.cta.phone}
             </a>
           </div>

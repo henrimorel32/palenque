@@ -51,8 +51,8 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
         badge: 'Más cómodo',
         title: 'Transporte Privado',
         subtitle: 'Te recogemos en el aeropuerto',
-        desc: 'Servicio puerta a puerta con vehículo climatizado. El conductor te esperará en la salida con un cartel con tu nombre.',
-        features: ['WiFi a bordo', 'Aire acondicionado', 'Agua incluida', 'Sin paradas'],
+        desc: '',
+        features: ['', 'Aire acondicionado', '', ''],
         price: '$80.000 - $120.000 COP',
         cta: 'Reservar transporte',
       },
@@ -60,7 +60,7 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
         badge: 'Independencia',
         title: 'Alquiler de Vehículo',
         subtitle: 'Explora a tu ritmo',
-        desc: 'Conduce por una de las carreteras costeras más hermosas de Colombia. Estacionamiento gratuito en el hotel.',
+        desc: '',
         steps: [
           { icon: Navigation, title: 'Salida', desc: 'Aeropuerto SMR → Vía al Mar' },
           { icon: Clock3, title: 'Tiempo', desc: '45 min hasta el peaje' },
@@ -87,7 +87,7 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
         desc: 'Nuestro equipo te orienta paso a paso. También coordinamos tu recogida personalizada.',
         cta: 'Contactar por WhatsApp',
         or: 'o llámanos al',
-        phone: '+57 314 748 0855'
+        phone: '+57 310 527 0542'
       },
       location: {
         title: 'Ubicación Exacta',
@@ -95,14 +95,7 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
         coords: '9.773722, -75.645361',
         copy: 'Copiar coordenadas',
       },
-      trust: {
-        title: '¿Por qué elegirnos?',
-        items: [
-          { icon: Shield, title: 'Seguro incluido', desc: 'Todos nuestros transportes están asegurados' },
-          { icon: Clock, title: 'Puntualidad', desc: 'Valoramos tu tiempo. Siempre a tiempo.' },
-          { icon: Wallet, title: 'Mejor precio', desc: 'Sin intermediarios. Precio directo.' },
-        ]
-      }
+
     },
     en: {
       title: 'How to Get There',
@@ -154,7 +147,7 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
         desc: 'Our team guides you step by step. We also coordinate your personalized pickup.',
         cta: 'Contact via WhatsApp',
         or: 'or call us at',
-        phone: '+57 314 748 0855'
+        phone: '+57 310 527 0542'
       },
       location: {
         title: 'Exact Location',
@@ -162,14 +155,7 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
         coords: '9.773722, -75.645361',
         copy: 'Copy coordinates',
       },
-      trust: {
-        title: 'Why choose us?',
-        items: [
-          { icon: Shield, title: 'Insurance included', desc: 'All our transports are insured' },
-          { icon: Clock, title: 'Punctuality', desc: 'We value your time. Always on time.' },
-          { icon: Wallet, title: 'Best price', desc: 'No intermediaries. Direct price.' },
-        ]
-      }
+
     },
     fr: {
       title: 'Comment Arriver',
@@ -221,7 +207,7 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
         desc: 'Notre équipe vous guide pas à pas. Nous coordonnons aussi votre prise en charge personnalisée.',
         cta: 'Contacter par WhatsApp',
         or: 'ou appelez-nous au',
-        phone: '+57 314 748 0855'
+        phone: '+57 310 527 0542'
       },
       location: {
         title: 'Emplacement Exact',
@@ -229,14 +215,7 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
         coords: '9.773722, -75.645361',
         copy: 'Copier coordonnées',
       },
-      trust: {
-        title: 'Pourquoi nous choisir ?',
-        items: [
-          { icon: Shield, title: 'Assurance incluse', desc: 'Tous nos transports sont assurés' },
-          { icon: Clock, title: 'Ponctualité', desc: 'Nous valorisons votre temps. Toujours à l\'heure.' },
-          { icon: Wallet, title: 'Meilleur prix', desc: 'Sans intermédiaires. Prix direct.' },
-        ]
-      }
+
     },
   };
 
@@ -254,7 +233,7 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
         <div className="absolute top-1/4 left-0 w-px h-48 bg-gradient-to-b from-yellow-400/50 to-transparent" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-yellow-400/5 rounded-full blur-3xl" />
         
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[160px] pb-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -355,7 +334,7 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
                   <h3 className="text-xl font-bold text-white mb-2">{c.byPlane.cta}</h3>
                   <p className="text-stone-400 text-sm mb-6">Confirmación inmediata</p>
                   <a
-                    href="https://wa.me/573147480855"
+                    href="https://wa.me/573105270542"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 w-full px-6 py-4 bg-yellow-400 hover:bg-yellow-300 text-stone-900 rounded-xl font-bold transition-colors"
@@ -459,31 +438,6 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
         </div>
       </section>
 
-      {/* Trust Section */}
-      <section className="py-16 bg-stone-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h3 className="text-center text-2xl font-bold text-stone-900 mb-12">{c.trust.title}</h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            {c.trust.items.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="text-center"
-              >
-                <div className="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center mx-auto mb-4">
-                  <item.icon className="w-8 h-8 text-yellow-500" />
-                </div>
-                <h4 className="font-bold text-stone-900 mb-2">{item.title}</h4>
-                <p className="text-stone-600 text-sm">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Location Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -537,7 +491,7 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="https://wa.me/573147480855"
+              href="https://wa.me/573105270542"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-stone-900 text-white rounded-full font-bold hover:bg-stone-800 transition-colors shadow-xl"
@@ -546,7 +500,7 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
               {c.contact.cta}
             </a>
             <span className="text-stone-700 font-medium">{c.contact.or}</span>
-            <a href="tel:+573147480855" className="text-stone-900 font-bold text-xl hover:underline">
+            <a href="tel:+573105270542" className="text-stone-900 font-bold text-xl hover:underline">
               {c.contact.phone}
             </a>
           </div>

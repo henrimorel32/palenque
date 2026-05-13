@@ -10,7 +10,7 @@ const pageMetadata: Record<MetaPage, Record<Locale, { title: string; description
   home: {
     es: {
       title: 'Palenque Eco Hotel - Paraíso en la Costa Caribe Colombiana',
-      description: 'Descubre la magia de Palenque en nuestro Eco Hotel. Playas de arena blanca, aguas cristalinas, spa de lujo y gastronomía local. Reserva tu escapada paradisíaca.',
+      description: 'Descubre la magia de Palenque en nuestro Eco Hotel. Playas de arena blanca, aguas cristalinas, y gastronomía local. Reserva tu escapada paradisíaca.',
     },
     en: {
       title: 'Palenque Eco Hotel - Paradise on the Colombian Caribbean Coast',

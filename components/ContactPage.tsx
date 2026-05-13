@@ -63,7 +63,7 @@ export default function ContactPage({ locale }: ContactPageProps) {
           title: 'WhatsApp',
           desc: 'La forma más rápida de contactarnos. Respuesta inmediata.',
           cta: 'Escríbenos',
-          value: '+57 314 748 0855',
+          value: '+57 310 527 0542',
         },
         email: {
           title: 'Correo electrónico',
@@ -75,7 +75,7 @@ export default function ContactPage({ locale }: ContactPageProps) {
           title: 'Teléfono',
           desc: 'Llámanos directamente para resolver tus dudas.',
           cta: 'Llamar ahora',
-          value: '+57 314 748 0855',
+          value: '+57 310 527 0542',
         },
         address: {
           title: 'Dirección',
@@ -122,7 +122,7 @@ export default function ContactPage({ locale }: ContactPageProps) {
         subtitle: 'Nuestro equipo está listo para atenderte por WhatsApp y hacer realidad tu escapada al paraíso.',
         button: 'Contactar por WhatsApp',
         or: 'o llámanos al',
-        phone: '+57 314 748 0855',
+        phone: '+57 310 527 0542',
       },
     },
     en: {
@@ -141,7 +141,7 @@ export default function ContactPage({ locale }: ContactPageProps) {
           title: 'WhatsApp',
           desc: 'The fastest way to reach us. Immediate response.',
           cta: 'Message us',
-          value: '+57 314 748 0855',
+          value: '+57 310 527 0542',
         },
         email: {
           title: 'Email',
@@ -153,7 +153,7 @@ export default function ContactPage({ locale }: ContactPageProps) {
           title: 'Phone',
           desc: 'Call us directly to resolve your questions.',
           cta: 'Call now',
-          value: '+57 314 748 0855',
+          value: '+57 310 527 0542',
         },
         address: {
           title: 'Address',
@@ -200,7 +200,7 @@ export default function ContactPage({ locale }: ContactPageProps) {
         subtitle: 'Our team is ready to assist you on WhatsApp and make your paradise getaway a reality.',
         button: 'Contact us on WhatsApp',
         or: 'or call us at',
-        phone: '+57 314 748 0855',
+        phone: '+57 310 527 0542',
       },
     },
     fr: {
@@ -219,7 +219,7 @@ export default function ContactPage({ locale }: ContactPageProps) {
           title: 'WhatsApp',
           desc: 'Le moyen le plus rapide de nous contacter. Réponse immédiate.',
           cta: 'Nous écrire',
-          value: '+57 314 748 0855',
+          value: '+57 310 527 0542',
         },
         email: {
           title: 'Email',
@@ -231,7 +231,7 @@ export default function ContactPage({ locale }: ContactPageProps) {
           title: 'Téléphone',
           desc: 'Appelez-nous directement pour résoudre vos questions.',
           cta: 'Appeler maintenant',
-          value: '+57 314 748 0855',
+          value: '+57 310 527 0542',
         },
         address: {
           title: 'Adresse',
@@ -278,7 +278,7 @@ export default function ContactPage({ locale }: ContactPageProps) {
         subtitle: 'Notre équipe est prête à vous assister sur WhatsApp et à faire de votre escapade au paradis une réalité.',
         button: 'Nous contacter sur WhatsApp',
         or: 'ou appelez-nous au',
-        phone: '+57 314 748 0855',
+        phone: '+57 310 527 0542',
       },
     },
   };
@@ -293,7 +293,7 @@ export default function ContactPage({ locale }: ContactPageProps) {
       lightColor: 'bg-green-50',
       textColor: 'text-green-600',
       borderColor: 'border-green-100',
-      href: 'https://wa.me/573147480855',
+      href: 'https://wa.me/573105270542',
       external: true,
     },
     {
@@ -313,7 +313,7 @@ export default function ContactPage({ locale }: ContactPageProps) {
       lightColor: 'bg-orange-50',
       textColor: 'text-orange-600',
       borderColor: 'border-orange-100',
-      href: 'tel:+573147480855',
+      href: 'tel:+573105270542',
       external: false,
     },
     {
@@ -339,7 +339,7 @@ export default function ContactPage({ locale }: ContactPageProps) {
         <YellowCornerTL className="opacity-60" />
         <YellowCornerBR className="opacity-40" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[160px] pb-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -629,7 +629,7 @@ export default function ContactPage({ locale }: ContactPageProps) {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="https://wa.me/573147480855"
+                href="https://wa.me/573105270542"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-stone-900 text-white rounded-full font-bold hover:bg-stone-800 transition-colors shadow-xl"
@@ -638,7 +638,7 @@ export default function ContactPage({ locale }: ContactPageProps) {
                 {c.cta.button}
               </a>
               <span className="text-stone-700 font-medium">{c.cta.or}</span>
-              <a href="tel:+573147480855" className="text-stone-900 font-bold text-xl hover:underline">
+              <a href="tel:+573105270542" className="text-stone-900 font-bold text-xl hover:underline">
                 {c.cta.phone}
               </a>
             </div>

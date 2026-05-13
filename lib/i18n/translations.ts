@@ -10,32 +10,32 @@ export const translations = {
       directions: 'Cómo llegar',
       activities: 'Actividades',
       contact: 'Contacto',
+      gallery: 'Galería de fotos',
       phone: 'Contactar',
       location: 'Rincón del mar, Sucre, Colombia',
     },
     hero: {
       badge: 'Palenque Eco Hotel',
-      title: 'La evasión comienza Aquí',
-      subtitle: 'Descubre un santuario donde el tiempo se detiene y cada ola canta tu libertad',
+      title: 'TU NUEVA HISTORIA COMIENZA AQUI',
+      subtitle: '',
       cta: 'Ver habitaciones',
     },
     home: {
       welcomeTitle: 'Bienvenido al Paraíso',
-      welcomeSubtitle: 'Un refugio sostenible donde la naturaleza caribeña se encuentra con el lujo consciente',
-      welcomeText: 'En Palenque Eco Hotel, cada amanecer trae una nueva oportunidad de conectar con lo esencial. Nuestro compromiso con el medio ambiente y tu confort crean una experiencia única e inolvidable.',
+      welcomeDescription: 'Estamos ubicados en el sector La Punta sin duda, un sector privilegiado por estar entre el mar y la ciénaga con sus hermosos manglares, con unas extensas playas de arena blanca en la que encontrarás espacios solitarios para disfrutar del sol, el suave oleaje del mar y la deliciosa brisa.',
       features: {
         title: '¿Por qué elegirnos?',
         beach: {
           title: 'Frente al Mar',
-          desc: 'Acceso directo a playas de arena blanca y aguas cristalinas del Caribe colombiano',
+          desc: 'Acceso directo a playas de arena blanca cambiar por; una ubicación privilegiada en primera línea de mar sin acceso vehicular.',
         },
         eco: {
           title: 'Eco-Friendly',
-          desc: 'Energía solar, agua reciclada y arquitectura sostenible en armonía con la naturaleza',
+          desc: 'Uso de agua lluvia y agua de mar y una arquitectura sostenible en armonía con la naturaleza',
         },
         comfort: {
-          title: 'Confort Único',
-          desc: 'Habitaciones diseñadas para el descanso con vistas panorámicas al océano',
+          title: '',
+          desc: 'Habitaciones diseñadas para el descanso con vistas panorámicas al mar',
         },
         cuisine: {
           title: 'Gastronomía Local',
@@ -56,8 +56,8 @@ export const translations = {
           price: 'Desde $180/noche',
         },
         bungalow: {
-          title: 'Bungalow Frente al Mar',
-          desc: 'Villa privada con terraza, hamaca, A/C y acceso directo a la playa',
+          title: '',
+          desc: '',
           price: 'Desde $250/noche',
         },
         cta: 'Ver todas las habitaciones',
@@ -100,7 +100,7 @@ export const translations = {
           from: 'París, Francia',
         },
         review3: {
-          text: 'Experiencia inolvidable. El bungalow frente al mar superó todas nuestras expectativas.',
+          text: 'Experiencia inolvidable. Superó todas nuestras expectativas.',
           author: 'Carlos M.',
           from: 'Bogotá, Colombia',
         },
@@ -115,7 +115,7 @@ export const translations = {
     footer: {
       title: 'Palenque Eco Hotel',
       address: 'Rincón del mar',
-      city: 'Rincón del mar, Sucre, Colombia',
+      city: 'Rincón dle mar, Sucre, Colombia',
       contact: 'Contacto',
       quickLinks: 'Enlaces rápidos',
       terms: 'Términos y condiciones',
@@ -128,7 +128,7 @@ export const translations = {
     },
     meta: {
       title: 'Palenque Eco Hotel - Paraíso en la Costa Caribe',
-      description: 'Descubre la magia de Palenque en nuestro Eco Hotel. Playas de arena blanca, aguas cristalinas y el mejor servicio.',
+      description: 'Descubre la magia de Palenque en nuestro Eco Hotel. Playas de arena blanca, aguas cristalinas, y gastronomía local. Reserva tu escapada paradisíaca.',
     },
   },
   en: {
@@ -139,6 +139,7 @@ export const translations = {
       directions: 'How to get there',
       activities: 'Activities',
       contact: 'Contact',
+      gallery: 'Photo gallery',
       phone: 'Contact Us',
       location: 'Rincón del mar, Sucre, Colombia',
     },
@@ -150,8 +151,7 @@ export const translations = {
     },
     home: {
       welcomeTitle: 'Welcome to Paradise',
-      welcomeSubtitle: 'A sustainable refuge where Caribbean nature meets conscious luxury',
-      welcomeText: 'At Palenque Eco Hotel, every dawn brings a new opportunity to connect with what matters. Our commitment to the environment and your comfort create a unique and unforgettable experience.',
+      welcomeDescription: 'We are located in the La Punta area, undoubtedly a privileged area for being between the sea and the lagoon with its beautiful mangroves, with extensive white sand beaches where you will find solitary spaces to enjoy the sun, the gentle waves of the sea and the delicious breeze.',
       features: {
         title: 'Why Choose Us?',
         beach: {
@@ -268,6 +268,7 @@ export const translations = {
       directions: 'Comment arriver',
       activities: 'Activités',
       contact: 'Contact',
+      gallery: 'Galerie photos',
       phone: 'Nous contacter',
       location: 'Rincón del mar, Sucre, Colombie',
     },
@@ -279,8 +280,7 @@ export const translations = {
     },
     home: {
       welcomeTitle: 'Bienvenue au Paradis',
-      welcomeSubtitle: 'Un refuge durable où la nature caraïbe rencontre le luxe conscient',
-      welcomeText: 'Au Palenque Eco Hotel, chaque aube apporte une nouvelle opportunité de se connecter à l\'essentiel. Notre engagement envers l\'environnement et votre confort créent une expérience unique et inoubliable.',
+      welcomeDescription: 'Nous sommes situés dans le secteur de La Punta, sans doute un secteur privilégié pour être entre la mer et la lagune avec ses magnifiques mangroves, avec de vastes plages de sable blanc où vous trouverez des espaces solitaires pour profiter du soleil, des douces vagues de la mer et de la délicieuse brise.',
       features: {
         title: 'Pourquoi nous choisir ?',
         beach: {

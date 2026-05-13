@@ -21,9 +21,9 @@ interface RoomsPageProps {
 const content = {
     es: {
       hero: {
-        badge: 'Descanso Perfecto',
+        badge: '',
         title: 'Nuestras Habitaciones',
-        subtitle: 'Santuarios de paz donde cada detalle está pensado para tu descanso',
+        subtitle: 'Palenque Eco Hostel es un espacio construido con materiales locales, respetuoso con el entorno en el cual está ubicado, entre manglar y mar. Cuenta con 14 habitaciones, y unas zonas comunes para disfrutar cómoda y tranquilamente del lugar.\n\nZona de playa exclusiva, durante el día tenemos disponible nuestra estación Ñipi Ñipi (estación de Café), zona de hamacas, sala de estar (segunda planta), comedor, restaurante, bar, servicio de Wifi.',
         cta: 'Reservar ahora'
       },
       intro: {
@@ -67,7 +67,7 @@ const content = {
         },
         {
           id: 3,
-          name: 'Habitación Lumbalu',
+          name: 'Lumbalu',
           tagline: 'Abrazada por la vegetación tropical',
           description: 'Un refugio íntimo rodeado de palmeras y flores tropicales. La naturaleza entra por las ventanas abiertas mientras duermes envuelto en frescura.',
           price: 'Desde $110.000',
@@ -82,7 +82,7 @@ const content = {
         },
         {
           id: 4,
-          name: 'Habitación Sangaria',
+          name: 'Sangaria',
           tagline: 'Abrazada por la vegetación tropical',
           description: 'Un refugio íntimo rodeado de palmeras y flores tropicales. La naturaleza entra por las ventanas abiertas mientras duermes envuelto en frescura.',
           price: 'Desde $140.000',
@@ -99,7 +99,7 @@ const content = {
         },
         {
           id: 5,
-          name: 'Habitación Kombilesa',
+          name: 'Kombilesa',
           tagline: 'Abrazada por la vegetación tropical',
           description: 'Un refugio íntimo rodeado de palmeras y flores tropicales. La naturaleza entra por las ventanas abiertas mientras duermes envuelto en frescura.',
           price: 'Desde $110.000',
@@ -116,7 +116,7 @@ const content = {
         },
         {
           id: 6,
-          name: 'Habitación Amalaya',
+          name: 'Amalaya',
           tagline: 'Abrazada por la vegetación tropical',
           description: 'Un refugio íntimo rodeado de palmeras y flores tropicales. La naturaleza entra por las ventanas abiertas mientras duermes envuelto en frescura.',
           price: 'Desde $130.000',
@@ -133,7 +133,7 @@ const content = {
         },
         {
           id: 7,
-          name: 'Habitación Pekao',
+          name: 'Pekao',
           tagline: 'Abrazada por la vegetación tropical',
           description: 'Un refugio íntimo rodeado de palmeras y flores tropicales. La naturaleza entra por las ventanas abiertas mientras duermes envuelto en frescura.',
           price: 'Desde $140.000',
@@ -150,7 +150,7 @@ const content = {
         },
         {
           id: 8,
-          name: 'Habitación Kolaso',
+          name: 'Kolaso',
           tagline: 'Abrazada por la vegetación tropical',
           description: 'Un refugio íntimo rodeado de palmeras y flores tropicales. La naturaleza entra por las ventanas abiertas mientras duermes envuelto en frescura.',
           price: 'Desde $150.000',
@@ -167,7 +167,7 @@ const content = {
         },
         {
           id: 9,
-          name: 'Habitación Abalenga',
+          name: 'Abalenga',
           tagline: 'Abrazada por la vegetación tropical',
           description: 'Un refugio íntimo rodeado de palmeras y flores tropicales. La naturaleza entra por las ventanas abiertas mientras duermes envuelto en frescura.',
           price: 'Desde $160.000',
@@ -201,7 +201,7 @@ const content = {
         },
         {
           id: 11,
-          name: 'Habitación Eskurana',
+          name: 'Eskurana',
           tagline: 'Abrazada por la vegetación tropical',
           description: 'Un refugio íntimo rodeado de palmeras y flores tropicales. La naturaleza entra por las ventanas abiertas mientras duermes envuelto en frescura.',
           price: 'Desde $120.000',
@@ -218,7 +218,7 @@ const content = {
         },
         {
           id: 12,
-          name: 'Habitación Makano',
+          name: 'Makano',
           tagline: 'Abrazada por la vegetación tropical',
           description: 'Un refugio íntimo rodeado de palmeras y flores tropicales. La naturaleza entra por las ventanas abiertas mientras duermes envuelto en frescura.',
           price: 'Desde $125.000',
@@ -286,9 +286,9 @@ const content = {
     },
     en: {
       hero: {
-        badge: 'Perfect Rest',
+        badge: '',
         title: 'Our Rooms',
-        subtitle: 'Sanctuaries of peace where every detail is designed for your rest',
+        subtitle: 'Palenque Eco Hostel is a space built with local materials, respectful of the environment in which it is located, between mangrove and sea. It has 14 rooms and common areas to comfortably and peacefully enjoy the place.\n\nExclusive beach area, during the day we have our Ñipi Ñipi station (Coffee station) available, hammock area, living room (second floor), dining room, restaurant, bar, WiFi service.',
         cta: 'Book now'
       },
       intro: {
@@ -332,7 +332,7 @@ const content = {
         },
         {
           id: 3,
-          name: 'Habitación Lumbalu',
+          name: 'Lumbalu',
           tagline: 'Embraced by tropical vegetation',
           description: 'An intimate refuge surrounded by palm trees and tropical flowers. Nature enters through open windows while you sleep wrapped in freshness.',
           price: 'From $110,000',
@@ -347,7 +347,7 @@ const content = {
         },
         {
           id: 4,
-          name: 'Habitación Sangaria',
+          name: 'Sangaria',
           tagline: 'Embraced by tropical vegetation',
           description: 'An intimate refuge surrounded by palm trees and tropical flowers. Nature enters through open windows while you sleep wrapped in freshness.',
           price: 'From $140,000',
@@ -364,7 +364,7 @@ const content = {
         },
         {
           id: 5,
-          name: 'Habitación Kombilesa',
+          name: 'Kombilesa',
           tagline: 'Embraced by tropical vegetation',
           description: 'An intimate refuge surrounded by palm trees and tropical flowers. Nature enters through open windows while you sleep wrapped in freshness.',
           price: 'From $110,000',
@@ -381,7 +381,7 @@ const content = {
         },
         {
           id: 6,
-          name: 'Habitación Amalaya',
+          name: 'Amalaya',
           tagline: 'Embraced by tropical vegetation',
           description: 'An intimate refuge surrounded by palm trees and tropical flowers. Nature enters through open windows while you sleep wrapped in freshness.',
           price: 'From $130,000',
@@ -398,7 +398,7 @@ const content = {
         },
         {
           id: 7,
-          name: 'Habitación Pekao',
+          name: 'Pekao',
           tagline: 'Embraced by tropical vegetation',
           description: 'An intimate refuge surrounded by palm trees and tropical flowers. Nature enters through open windows while you sleep wrapped in freshness.',
           price: 'From $140,000',
@@ -415,7 +415,7 @@ const content = {
         },
         {
           id: 8,
-          name: 'Habitación Kolaso',
+          name: 'Kolaso',
           tagline: 'Embraced by tropical vegetation',
           description: 'An intimate refuge surrounded by palm trees and tropical flowers. Nature enters through open windows while you sleep wrapped in freshness.',
           price: 'From $150,000',
@@ -432,7 +432,7 @@ const content = {
         },
         {
           id: 9,
-          name: 'Habitación Abalenga',
+          name: 'Abalenga',
           tagline: 'Embraced by tropical vegetation',
           description: 'An intimate refuge surrounded by palm trees and tropical flowers. Nature enters through open windows while you sleep wrapped in freshness.',
           price: 'From $160,000',
@@ -466,7 +466,7 @@ const content = {
         },
         {
           id: 11,
-          name: 'Habitación Eskurana',
+          name: 'Eskurana',
           tagline: 'Embraced by tropical vegetation',
           description: 'An intimate refuge surrounded by palm trees and tropical flowers. Nature enters through open windows while you sleep wrapped in freshness.',
           price: 'From $120,000',
@@ -483,7 +483,7 @@ const content = {
         },
         {
           id: 12,
-          name: 'Habitación Makano',
+          name: 'Makano',
           tagline: 'Embraced by tropical vegetation',
           description: 'An intimate refuge surrounded by palm trees and tropical flowers. Nature enters through open windows while you sleep wrapped in freshness.',
           price: 'From $125,000',
@@ -551,9 +551,9 @@ const content = {
     },
     fr: {
       hero: {
-        badge: 'Repos Parfait',
+        badge: '',
         title: 'Nos Chambres',
-        subtitle: 'Sanctuaires de paix où chaque détail est pensé pour votre repos',
+        subtitle: 'Palenque Eco Hostel est un espace construit avec des matériaux locaux, respectueux de l\'environnement dans lequel il est situé, entre mangrove et mer. Il compte 14 chambres et des espaces communs pour profiter confortablement et tranquillement du lieu.\n\nZone de plage exclusive, pendant la journée nous avons notre station Ñipi Ñipi (station de Café) disponible, zone de hamacs, salon (deuxième étage), salle à manger, restaurant, bar, service WiFi.',
         cta: 'Réserver maintenant'
       },
       intro: {
@@ -597,7 +597,7 @@ const content = {
         },
         {
           id: 3,
-          name: 'Habitación Lumbalu',
+          name: 'Lumbalu',
           tagline: 'Enlacée par la végétation tropicale',
           description: 'Un refuge intime entouré de palmiers et de fleurs tropicales. La nature entre par les fenêtres ouvertes pendant que vous dormez enveloppé de fraîcheur.',
           price: 'À partir de 110 000',
@@ -612,7 +612,7 @@ const content = {
         },
         {
           id: 4,
-          name: 'Habitación Sangaria',
+          name: 'Sangaria',
           tagline: 'Enlacée par la végétation tropicale',
           description: 'Un refuge intime entouré de palmiers et de fleurs tropicales. La nature entre par les fenêtres ouvertes pendant que vous dormez enveloppé de fraîcheur.',
           price: 'À partir de 140 000',
@@ -629,7 +629,7 @@ const content = {
         },
         {
           id: 5,
-          name: 'Habitación Kombilesa',
+          name: 'Kombilesa',
           tagline: 'Enlacée par la végétation tropicale',
           description: 'Un refuge intime entouré de palmiers et de fleurs tropicales. La nature entre par les fenêtres ouvertes pendant que vous dormez enveloppé de fraîcheur.',
           price: 'À partir de 110 000',
@@ -646,7 +646,7 @@ const content = {
         },
         {
           id: 6,
-          name: 'Habitación Amalaya',
+          name: 'Amalaya',
           tagline: 'Enlacée par la végétation tropicale',
           description: 'Un refuge intime entouré de palmiers et de fleurs tropicales. La nature entre par les fenêtres ouvertes pendant que vous dormez enveloppé de fraîcheur.',
           price: 'À partir de 130 000',
@@ -663,7 +663,7 @@ const content = {
         },
         {
           id: 7,
-          name: 'Habitación Pekao',
+          name: 'Pekao',
           tagline: 'Enlacée par la végétation tropicale',
           description: 'Un refuge intime entouré de palmiers et de fleurs tropicales. La nature entre par les fenêtres ouvertes pendant que vous dormez enveloppé de fraîcheur.',
           price: 'À partir de 140 000',
@@ -680,7 +680,7 @@ const content = {
         },
         {
           id: 8,
-          name: 'Habitación Kolaso',
+          name: 'Kolaso',
           tagline: 'Enlacée par la végétation tropicale',
           description: 'Un refuge intime entouré de palmiers et de fleurs tropicales. La nature entre par les fenêtres ouvertes pendant que vous dormez enveloppé de fraîcheur.',
           price: 'À partir de 150 000',
@@ -697,7 +697,7 @@ const content = {
         },
         {
           id: 9,
-          name: 'Habitación Abalenga',
+          name: 'Abalenga',
           tagline: 'Enlacée par la végétation tropicale',
           description: 'Un refuge intime entouré de palmiers et de fleurs tropicales. La nature entre par les fenêtres ouvertes pendant que vous dormez enveloppé de fraîcheur.',
           price: 'À partir de 160 000',
@@ -731,7 +731,7 @@ const content = {
         },
         {
           id: 11,
-          name: 'Habitación Eskurana',
+          name: 'Eskurana',
           tagline: 'Enlacée par la végétation tropicale',
           description: 'Un refuge intime entouré de palmiers et de fleurs tropicales. La nature entre par les fenêtres ouvertes pendant que vous dormez enveloppé de fraîcheur.',
           price: 'À partir de 120 000',
@@ -748,7 +748,7 @@ const content = {
         },
         {
           id: 12,
-          name: 'Habitación Makano',
+          name: 'Makano',
           tagline: 'Enlacée par la végétation tropicale',
           description: 'Un refuge intime entouré de palmiers et de fleurs tropicales. La nature entre par les fenêtres ouvertes pendant que vous dormez enveloppé de fraîcheur.',
           price: 'À partir de 125 000',
@@ -867,7 +867,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
   const borderRadius = useTransform(scrollY, [0, 400], ['0px', '48px']);
 
   const baborIds = [3, 4, 5, 7, 8, 11, 13];
-  const estriborIds = [2, 12, 10, 6, 1, 9];
+  const estriborIds = [1, 9, 2, 12, 10, 6];
 
   const baborRooms = baborIds.map(id => c.rooms.find((r: any) => r.id === id)).filter(Boolean) as any[];
   const estriborRooms = estriborIds.map(id => c.rooms.find((r: any) => r.id === id)).filter(Boolean) as any[];
@@ -923,15 +923,17 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
     return () => window.removeEventListener('scroll', handleScrollEstribor);
   }, [estriborRooms.length]);
 
+  const NAVBAR_OFFSET = 140;
+
   const scrollToBaborRoom = (index: number) => {
     if (!baborSectionRef.current) return;
-    const targetY = baborSectionRef.current.offsetTop + index * window.innerHeight;
+    const targetY = baborSectionRef.current.offsetTop + index * window.innerHeight - NAVBAR_OFFSET;
     window.scrollTo({ top: targetY, behavior: 'smooth' });
   };
 
   const scrollToEstriborRoom = (index: number) => {
     if (!estriborSectionRef.current) return;
-    const targetY = estriborSectionRef.current.offsetTop + index * window.innerHeight;
+    const targetY = estriborSectionRef.current.offsetTop + index * window.innerHeight - NAVBAR_OFFSET;
     window.scrollTo({ top: targetY, behavior: 'smooth' });
   };
 
@@ -966,107 +968,91 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
 
   return (
     <>
-      {/* Hero - Vidéo immersive qui rétrécit au scroll */}
-      <section className="relative h-[150vh] bg-stone-950">
-        <motion.div
-          style={{ scale, borderRadius }}
-          className={`sticky top-0 h-screen w-full z-20 will-change-transform shadow-2xl flex items-center justify-center ${isSafari ? 'bg-black' : 'overflow-hidden'}`}
-        >
-          {/* Desktop video */}
-          <div className="hidden md:block absolute inset-0">
-            <VideoLoader 
-              isLoading={!supportChecked || (!videoPlaying && !videoError)} 
-              locale={locale} 
-              progress={loadingProgress}
-            />
-            <video
-              ref={videoRef}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              onLoadedData={() => setVideoLoaded(true)}
-              onCanPlay={() => setVideoLoaded(true)}
-              onPlaying={() => {
-                setVideoLoaded(true);
-                setVideoPlaying(true);
-              }}
-              onError={() => setVideoError(true)}
-              onProgress={() => {
-                const video = videoRef.current;
-                if (video && video.buffered.length > 0 && video.duration) {
-                  const bufferedEnd = video.buffered.end(video.buffered.length - 1);
-                  setLoadingProgress((bufferedEnd / video.duration) * 100);
-                }
-              }}
-              className={`transition-all duration-500 ${isSafari ? 'w-[75%] max-w-[1200px] aspect-video object-cover rounded-2xl' : 'w-full h-full object-cover'}`}
-            >
-              <source src="/videos/small/video-apu-small.mp4" type="video/mp4" />
-              {/* <source src="/images/output-hero.webm" type="video/webm" /> */}
-            </video>
-          </div>
-
-          {/* Mobile fallback image */}
-          <div className="block md:hidden absolute inset-0">
-            <Image
-              src="/images/hamacDansEau.webp"
-              alt="Palenque"
-              fill
-              sizes="100vw"
-              priority
-              className="object-cover"
-            />
-          </div>
-          
-          {/* Overlay sombre pour la lisibilité */}
-          <div className={`bg-black/40 absolute inset-0 ${isSafari ? 'md:absolute md:inset-[12.5%] md:xl:inset-x-[calc(50%-600px)] md:rounded-2xl' : ''}`} />
-          
-          {/* Contenu */}
-          <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full text-yellow-300 text-sm font-medium mb-8 backdrop-blur-sm">
-                <Moon className="w-4 h-4" />
-                {c.hero.badge}
-              </span>
-              
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
-                {c.hero.title}
-              </h1>
-              <p className="text-xl md:text-2xl text-stone-200 max-w-2xl mx-auto mb-12 drop-shadow-md">
-                {c.hero.subtitle}
-              </p>
-              
-              <motion.a
-                href="https://wa.me/573147480855"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 to-amber-500 text-stone-900 rounded-full font-bold text-lg shadow-xl shadow-yellow-500/20"
+      {/* Hero - Split vidéo / texte */}
+      <section className="relative min-h-[70vh] md:min-h-[80vh] bg-stone-950 flex items-center pt-[140px] md:pt-[160px]">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+            
+            {/* Texte - moitié gauche */}
+            <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left order-2 md:order-1">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
               >
-                <Calendar className="w-5 h-5" />
-                {c.hero.cta}
-              </motion.a>
-            </motion.div>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
+                  {c.hero.title}
+                </h1>
+                <div className="text-base md:text-lg text-stone-300 max-w-2xl mb-8 drop-shadow-md space-y-4">
+                  {c.hero.subtitle.split('\n\n').map((paragraph, i) => (
+                    <p key={i}>{paragraph}</p>
+                  ))}
+                </div>
+                
+                <motion.a
+                  href="https://wa.me/573105270542"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 to-amber-500 text-stone-900 rounded-full font-bold text-lg shadow-xl shadow-yellow-500/20"
+                >
+                  <Calendar className="w-5 h-5" />
+                  {c.hero.cta}
+                </motion.a>
+              </motion.div>
+            </div>
 
-            {/* Scroll indicator */}
-            <motion.div 
-              className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <span className="text-stone-300 text-sm drop-shadow">Descubre</span>
-              <div className="w-6 h-10 border-2 border-stone-400 rounded-full flex justify-center pt-2">
-                <div className="w-1 h-2 bg-yellow-400 rounded-full" />
+            {/* Vidéo - moitié droite */}
+            <div className="relative w-full aspect-video md:aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl order-1 md:order-2">
+              {/* Desktop video */}
+              <div className="hidden md:block absolute inset-0">
+                <VideoLoader 
+                  isLoading={!supportChecked || (!videoPlaying && !videoError)} 
+                  locale={locale} 
+                  progress={loadingProgress}
+                />
+                <video
+                  ref={videoRef}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  onLoadedData={() => setVideoLoaded(true)}
+                  onCanPlay={() => setVideoLoaded(true)}
+                  onPlaying={() => {
+                    setVideoLoaded(true);
+                    setVideoPlaying(true);
+                  }}
+                  onError={() => setVideoError(true)}
+                  onProgress={() => {
+                    const video = videoRef.current;
+                    if (video && video.buffered.length > 0 && video.duration) {
+                      const bufferedEnd = video.buffered.end(video.buffered.length - 1);
+                      setLoadingProgress((bufferedEnd / video.duration) * 100);
+                    }
+                  }}
+                  className="w-full h-full object-cover"
+                >
+                  <source src="/videos/small/video-apu-small.mp4" type="video/mp4" />
+                </video>
               </div>
-            </motion.div>
+
+              {/* Mobile fallback image */}
+              <div className="block md:hidden absolute inset-0">
+                <Image
+                  src="/images/hamacDansEau.webp"
+                  alt="Palenque"
+                  fill
+                  sizes="100vw"
+                  priority
+                  className="object-cover"
+                />
+              </div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Intro Section */}
@@ -1080,35 +1066,71 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-6">
               {c.intro.title}
             </h2>
-            <p className="text-lg text-stone-600 leading-relaxed">
+            <p className="text-lg text-stone-600 leading-relaxed mb-10">
               {c.intro.desc}
             </p>
+
+            {/* Aviso ecológico */}
+            <div className="bg-amber-50/80 border border-amber-200 rounded-2xl p-6 md:p-8 text-left">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
+                  <svg className="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div className="text-stone-700 text-sm md:text-base leading-relaxed space-y-2">
+                  <p>
+                    {locale === 'es'
+                      ? 'Al estar ubicados en una zona remota y natural, el servicio de energía puede presentar interrupciones ocasionales.'
+                      : locale === 'en'
+                      ? 'As we are located in a remote and natural area, the electricity service may experience occasional interruptions.'
+                      : 'Étant situés dans une zone reculée et naturelle, le service d\'électricité peut connaître des interruptions occasionnelles.'}
+                  </p>
+                  <p>
+                    {locale === 'es'
+                      ? 'El agua es un recurso valioso y limitado. Te agradecemos hacer un uso responsable del agua durante tu estadía.'
+                      : locale === 'en'
+                      ? 'Water is a valuable and limited resource. We thank you for using water responsibly during your stay.'
+                      : 'L\'eau est une ressource précieuse et limitée. Nous vous remercions d\'utiliser l\'eau de manière responsable pendant votre séjour.'}
+                  </p>
+                  <p>
+                    {locale === 'es'
+                      ? 'En este paraíso natural, cada gota cuenta. El agua debe utilizarse con moderación. Promovemos un turismo sostenible.'
+                      : locale === 'en'
+                      ? 'In this natural paradise, every drop counts. Water should be used in moderation. We promote sustainable tourism.'
+                      : 'Dans ce paradis naturel, chaque goutte compte. L\'eau doit être utilisée avec modération. Nous promouvons un tourisme durable.'}
+                  </p>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
+      {/* Amenities communes */}
+      <section className="py-8 bg-stone-50 border-y border-stone-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap justify-center gap-4">
+            <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-white rounded-full text-stone-700 font-medium shadow-sm border border-stone-200">
+              <Wind className="w-4 h-4 text-cyan-500" />
+              {locale === 'es' ? 'TOLDILLOS Y VENTILADOR' : locale === 'en' ? 'MOSQUITO NETS AND FAN' : 'MOUSTIQUAIRES ET VENTILATEUR'}
+            </span>
+            <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-white rounded-full text-stone-700 font-medium shadow-sm border border-stone-200">
+              <Coffee className="w-4 h-4 text-amber-500" />
+              {locale === 'es' ? 'ESTACION DE CAFÉ – ESTACION ÑIPI ÑIPI' : locale === 'en' ? 'COFFEE STATION – ÑIPI ÑIPI STATION' : 'STATION CAFÉ – STATION ÑIPI ÑIPI'}
+            </span>
+            <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-white rounded-full text-stone-700 font-medium shadow-sm border border-stone-200">
+              <Sparkles className="w-4 h-4 text-emerald-500" />
+              {locale === 'es' ? 'LIMPIEZA DIARIA - A solicitud del huésped' : locale === 'en' ? 'DAILY CLEANING - Upon guest request' : 'MÉNAGE QUOTIDIEN - Sur demande de l\'hôte'}
+            </span>
+          </div>
+        </div>
+      </section>
+
       {/* Quick Navigation Bar */}
-      <section className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-y border-stone-200 shadow-sm">
+      <section className="sticky top-[140px] z-40 bg-white/90 backdrop-blur-md border-y border-stone-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
-            <button
-              onClick={() => baborSectionRef.current && baborSectionRef.current.scrollIntoView({ behavior: 'smooth' })}
-              className="group relative flex items-center gap-4 p-4 md:p-6 rounded-2xl bg-gradient-to-br from-emerald-50 to-cyan-50 border border-emerald-100 hover:border-cyan-300 hover:shadow-lg hover:shadow-cyan-500/10 transition-all duration-300"
-            >
-              <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
-                <Compass className="w-6 h-6 md:w-7 md:h-7 text-white" />
-              </div>
-              <div className="text-left">
-                <span className={`block transition-colors ${showBaborNav ? 'text-lg md:text-xl font-bold text-stone-900' : 'text-sm font-medium text-stone-400'} group-hover:text-cyan-700`}>
-                  {c.sectionBabor.title}
-                </span>
-                <span className="hidden md:block text-sm text-stone-500">
-                  {c.sectionBabor.cta}
-                </span>
-              </div>
-              <ChevronRight className="ml-auto w-5 h-5 text-stone-400 group-hover:text-cyan-500 group-hover:translate-x-1 transition-all" />
-            </button>
-
             <button
               onClick={() => estriborSectionRef.current && estriborSectionRef.current.scrollIntoView({ behavior: 'smooth' })}
               className="group relative flex items-center gap-4 p-4 md:p-6 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-100 hover:border-amber-300 hover:shadow-lg hover:shadow-amber-500/10 transition-all duration-300"
@@ -1125,6 +1147,24 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                 </span>
               </div>
               <ChevronRight className="ml-auto w-5 h-5 text-stone-400 group-hover:text-amber-500 group-hover:translate-x-1 transition-all" />
+            </button>
+
+            <button
+              onClick={() => baborSectionRef.current && baborSectionRef.current.scrollIntoView({ behavior: 'smooth' })}
+              className="group relative flex items-center gap-4 p-4 md:p-6 rounded-2xl bg-gradient-to-br from-emerald-50 to-cyan-50 border border-emerald-100 hover:border-cyan-300 hover:shadow-lg hover:shadow-cyan-500/10 transition-all duration-300"
+            >
+              <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                <Compass className="w-6 h-6 md:w-7 md:h-7 text-white" />
+              </div>
+              <div className="text-left">
+                <span className={`block transition-colors ${showBaborNav ? 'text-lg md:text-xl font-bold text-stone-900' : 'text-sm font-medium text-stone-400'} group-hover:text-cyan-700`}>
+                  {c.sectionBabor.title}
+                </span>
+                <span className="hidden md:block text-sm text-stone-500">
+                  {c.sectionBabor.cta}
+                </span>
+              </div>
+              <ChevronRight className="ml-auto w-5 h-5 text-stone-400 group-hover:text-cyan-500 group-hover:translate-x-1 transition-all" />
             </button>
           </div>
         </div>
@@ -1221,132 +1261,8 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
         ) : null}
       </div>
 
-      {/* Section Hero Babor */}
-      <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900 overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] bg-[length:24px_24px]" />
-        <div className="relative z-10 text-center px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="inline-flex items-center justify-center w-28 h-28 mb-8 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl shadow-cyan-500/20"
-          >
-            <Compass className="w-14 h-14 text-cyan-300" />
-          </motion.div>
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight">
-            {c.sectionBabor.title}
-          </h2>
-          <p className="text-xl md:text-2xl text-cyan-100/80 max-w-2xl mx-auto">
-            {c.sectionBabor.subtitle}
-          </p>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-stone-100 to-transparent" />
-      </section>
-
-      {/* Rooms Babor */}
-      <section ref={baborSectionRef} className="relative bg-cyan-50/60 md:bg-stone-100">
-        {baborRooms.map((room: any, index: number) => (
-          <div
-            key={room.id}
-            className="sticky top-0 min-h-screen flex items-center justify-center py-12"
-            style={{ zIndex: index + 1 }}
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 80 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className={`w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-72 ${index > 0 ? 'pt-8' : ''}`}
-            >
-              <div 
-                className={`relative rounded-[3rem] shadow-2xl overflow-hidden backdrop-blur-sm bg-gradient-to-br ${
-                  index % 3 === 0 ? 'from-amber-50/95 via-white to-orange-50/90' :
-                  index % 3 === 1 ? 'from-blue-50/95 via-white to-cyan-50/90' :
-                  'from-green-50/95 via-white to-emerald-50/90'
-                } border border-white/60 p-8 lg:p-16`}
-              >
-                <span className="absolute top-8 right-8 text-8xl lg:text-9xl font-bold text-stone-200/40 select-none pointer-events-none">
-                  {String(room.id).padStart(2, '0')}
-                </span>
-
-                <div className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
-                  <div className={`relative ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                    <motion.div 
-                      whileInView={{ scale: [0.95, 1] }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6 }}
-                      className={`aspect-[4/3] rounded-3xl bg-gradient-to-br ${room.color} flex items-center justify-center overflow-hidden shadow-2xl relative`}
-                    >
-                      {room.images && room.images.length > 0 ? (
-                        <RoomImageCarousel images={room.images} alt={room.name} onClick={() => openLightbox(room.id)} locale={locale} />
-                      ) : (
-                        <div className="text-center text-white/90">
-                          <BedDouble className="w-20 h-20 mx-auto mb-4 opacity-60" />
-                          <p className="text-lg font-medium">{room.name}</p>
-                        </div>
-                      )}
-                    </motion.div>
-                    <motion.div 
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.2 }}
-                      className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-6 border border-stone-100"
-                    >
-                      <p className="text-sm font-medium text-stone-900">{room.price}</p>
-                      <p className="text-stone-500 text-sm">{room.period}</p>
-                    </motion.div>
-                  </div>
-
-                  <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                    <p className="text-yellow-600 font-medium mb-2">{room.tagline}</p>
-                    <h3 className="text-4xl font-bold text-stone-900 mb-4">{room.name}</h3>
-                    <p className="text-stone-600 text-lg mb-6 leading-relaxed">{room.description}</p>
-                    
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 rounded-full text-sm text-stone-600 mb-8 border border-stone-100">
-                      <Heart className="w-4 h-4 text-yellow-500" />
-                      {room.bestFor}
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-4 mb-8">
-                      {room.amenities.map((amenity: any, i: number) => (
-                        <div key={i} className="flex items-center gap-3 text-stone-600">
-                          <div className="w-10 h-10 bg-white/80 rounded-lg flex items-center justify-center border border-stone-100">
-                            <amenity.icon className="w-5 h-5 text-stone-500" />
-                          </div>
-                          <span className="text-sm">{amenity.label}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="flex flex-wrap gap-2 mb-8">
-                      {room.features.map((feature: string, i: number) => (
-                        <span key={i} className="px-3 py-1.5 bg-white/60 text-stone-600 text-sm rounded-full border border-stone-200">
-                          {feature}
-                        </span>
-                      ))}
-                    </div>
-
-                    <a
-                      href="https://wa.me/573147480855"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-stone-900 text-white rounded-full font-medium hover:bg-stone-800 transition-colors"
-                    >
-                      Reservar esta habitación
-                      <ChevronRight className="w-4 h-4" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        ))}
-      </section>
-
       {/* Section Hero Estribor */}
-      <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-amber-900 via-orange-900 to-rose-900 overflow-hidden">
+      <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-amber-900 via-orange-900 to-rose-900 overflow-hidden scroll-mt-[140px]">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] bg-[length:24px_24px]" />
         <div className="relative z-10 text-center px-4">
           <motion.div
@@ -1369,11 +1285,11 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
       </section>
 
       {/* Rooms Estribor */}
-      <section ref={estriborSectionRef} className="relative bg-amber-50/60 md:bg-stone-100">
+      <section ref={estriborSectionRef} className="relative bg-amber-50/60 md:bg-stone-100 scroll-mt-[140px]">
         {estriborRooms.map((room: any, index: number) => (
           <div
             key={room.id}
-            className="sticky top-0 min-h-screen flex items-center justify-center py-12"
+            className="sticky top-[140px] min-h-[calc(100vh-140px)] flex items-center justify-center py-12"
             style={{ zIndex: index + 1 }}
           >
             <motion.div
@@ -1453,7 +1369,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                     </div>
 
                     <a
-                      href="https://wa.me/573147480855"
+                      href="https://wa.me/573105270542"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-6 py-3 bg-stone-900 text-white rounded-full font-medium hover:bg-stone-800 transition-colors"
@@ -1468,6 +1384,130 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
           </div>
         ))}
       </section>
+      {/* Section Hero Babor */}
+      <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900 overflow-hidden scroll-mt-[140px]">
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] bg-[length:24px_24px]" />
+        <div className="relative z-10 text-center px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="inline-flex items-center justify-center w-28 h-28 mb-8 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl shadow-cyan-500/20"
+          >
+            <Compass className="w-14 h-14 text-cyan-300" />
+          </motion.div>
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight">
+            {c.sectionBabor.title}
+          </h2>
+          <p className="text-xl md:text-2xl text-cyan-100/80 max-w-2xl mx-auto">
+            {c.sectionBabor.subtitle}
+          </p>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-stone-100 to-transparent" />
+      </section>
+
+      {/* Rooms Babor */}
+      <section ref={baborSectionRef} className="relative bg-cyan-50/60 md:bg-stone-100 scroll-mt-[140px]">
+        {baborRooms.map((room: any, index: number) => (
+          <div
+            key={room.id}
+            className="sticky top-[140px] min-h-[calc(100vh-140px)] flex items-center justify-center py-12"
+            style={{ zIndex: index + 1 }}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 80 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className={`w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-72 ${index > 0 ? 'pt-8' : ''}`}
+            >
+              <div 
+                className={`relative rounded-[3rem] shadow-2xl overflow-hidden backdrop-blur-sm bg-gradient-to-br ${
+                  index % 3 === 0 ? 'from-amber-50/95 via-white to-orange-50/90' :
+                  index % 3 === 1 ? 'from-blue-50/95 via-white to-cyan-50/90' :
+                  'from-green-50/95 via-white to-emerald-50/90'
+                } border border-white/60 p-8 lg:p-16`}
+              >
+                <span className="absolute top-8 right-8 text-8xl lg:text-9xl font-bold text-stone-200/40 select-none pointer-events-none">
+                  {String(room.id).padStart(2, '0')}
+                </span>
+
+                <div className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+                  <div className={`relative ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                    <motion.div 
+                      whileInView={{ scale: [0.95, 1] }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6 }}
+                      className={`aspect-[4/3] rounded-3xl bg-gradient-to-br ${room.color} flex items-center justify-center overflow-hidden shadow-2xl relative`}
+                    >
+                      {room.images && room.images.length > 0 ? (
+                        <RoomImageCarousel images={room.images} alt={room.name} onClick={() => openLightbox(room.id)} locale={locale} />
+                      ) : (
+                        <div className="text-center text-white/90">
+                          <BedDouble className="w-20 h-20 mx-auto mb-4 opacity-60" />
+                          <p className="text-lg font-medium">{room.name}</p>
+                        </div>
+                      )}
+                    </motion.div>
+                    <motion.div 
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.2 }}
+                      className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-6 border border-stone-100"
+                    >
+                      <p className="text-sm font-medium text-stone-900">{room.price}</p>
+                      <p className="text-stone-500 text-sm">{room.period}</p>
+                    </motion.div>
+                  </div>
+
+                  <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                    <p className="text-yellow-600 font-medium mb-2">{room.tagline}</p>
+                    <h3 className="text-4xl font-bold text-stone-900 mb-4">{room.name}</h3>
+                    <p className="text-stone-600 text-lg mb-6 leading-relaxed">{room.description}</p>
+                    
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 rounded-full text-sm text-stone-600 mb-8 border border-stone-100">
+                      <Heart className="w-4 h-4 text-yellow-500" />
+                      {room.bestFor}
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4 mb-8">
+                      {room.amenities.map((amenity: any, i: number) => (
+                        <div key={i} className="flex items-center gap-3 text-stone-600">
+                          <div className="w-10 h-10 bg-white/80 rounded-lg flex items-center justify-center border border-stone-100">
+                            <amenity.icon className="w-5 h-5 text-stone-500" />
+                          </div>
+                          <span className="text-sm">{amenity.label}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {room.features.map((feature: string, i: number) => (
+                        <span key={i} className="px-3 py-1.5 bg-white/60 text-stone-600 text-sm rounded-full border border-stone-200">
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+
+                    <a
+                      href="https://wa.me/573105270542"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-stone-900 text-white rounded-full font-medium hover:bg-stone-800 transition-colors"
+                    >
+                      Reservar esta habitación
+                      <ChevronRight className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        ))}
+      </section>
+
       {/* Common Features */}
       <section className="py-24 bg-gradient-to-b from-stone-900 to-stone-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1535,7 +1575,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
           <p className="text-xl text-stone-800 mb-8">{c.cta.desc}</p>
           
           <a
-            href="https://wa.me/573147480855"
+            href="https://wa.me/573105270542"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-8 py-4 bg-stone-900 text-white rounded-full font-bold text-lg hover:bg-stone-800 transition-colors shadow-xl mb-4"

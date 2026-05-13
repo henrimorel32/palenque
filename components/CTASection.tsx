@@ -81,7 +81,7 @@ export default function CTASection({ locale }: CTASectionProps) {
 
             {/* WhatsApp Button */}
             <motion.a
-              href="https://wa.me/573147480855"
+              href="https://wa.me/573105270542"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}

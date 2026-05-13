@@ -63,7 +63,7 @@ export default function Footer() {
                   <Waves className="w-7 h-7 text-stone-900" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xl font-bold text-white tracking-tight">Palenque</span>
+                  <span className="text-xl font-bold text-[#5489a0] tracking-tight">Palenque</span>
                   <span className="text-xs uppercase tracking-[0.25em] text-yellow-400 -mt-0.5">Eco Hotel</span>
                 </div>
               </a>
@@ -159,13 +159,13 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="https://wa.me/573147480855"
+                    href="https://wa.me/573105270542"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-stone-400 hover:text-green-400 text-sm transition-colors duration-200 flex items-center gap-3 group"
                   >
                     <MessageCircle className="w-5 h-5 text-green-400 shrink-0" />
-                    WhatsApp +57 314 748 0855
+                    WhatsApp +57 310 527 0542
                   </a>
                 </li>
                 <li>

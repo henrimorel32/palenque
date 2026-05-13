@@ -49,7 +49,7 @@ export default function HabitacionesPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       
-      <section className="pt-32 pb-20 bg-gray-50 min-h-screen">
+      <section className="pt-[160px] pb-20 bg-gray-50 min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-5xl font-bold text-gray-900 mb-4">{c.title}</h1>

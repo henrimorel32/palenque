@@ -98,7 +98,7 @@ export default function GallerySection({ locale }: GallerySectionProps) {
     setCurrentIndex((i) => (i + 1) % galleryImages.length);
 
   return (
-    <section className="py-24 bg-gradient-to-b from-white via-stone-50 to-white relative overflow-hidden">
+    <section id="galeria" className="py-24 bg-gradient-to-b from-white via-stone-50 to-white relative overflow-hidden">
       {/* Décors de fond */}
       <MeshGradient />
       <CirclesPattern />

@@ -166,16 +166,16 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
   const content = {
     es: {
       badge: 'Palenque Eco Hotel',
-      line1: 'La evasión',
-      line2Highlight: 'comienza Aquí',
-      subtitle: 'Descubre un santuario donde el tiempo se detiene y cada ola canta tu libertad',
+      line1: 'Tu nueva historia comienza aquí',
+      line2Highlight: 'En Palenque - Rincón del Mar, frente al mar Colombiano.',
+      subtitle: '',
       cta: 'Ver habitaciones',
       scroll: 'Scroll'
     },
     en: {
       badge: 'Palenque Eco Hotel',
       line1: 'Escape',
-      line2Highlight: 'Begins Here',
+      line2Highlight: 'begins here',
       subtitle: 'Discover a sanctuary where time stops and every wave sings your freedom',
       cta: 'View Rooms',
       scroll: 'Scroll'
@@ -183,7 +183,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
     fr: {
       badge: 'Palenque Eco Hotel',
       line1: 'L\'évasion',
-      line2Highlight: 'commence Ici',
+      line2Highlight: 'commence ici',
       subtitle: 'Découvrez un sanctuaire où le temps s\'arrête et chaque vague chante votre liberté',
       cta: 'Voir les chambres',
       scroll: 'Défiler'
@@ -355,7 +355,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: (videoLoaded || !videoSupported) ? 1 : 0, y: (videoLoaded || !videoSupported) ? 0 : -20 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="mb-8"
+              className="mb-4"
             >
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full text-white/90 text-sm font-medium border border-white/20">
                 <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
@@ -368,9 +368,9 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: (videoLoaded || !videoSupported) ? 1 : 0, y: (videoLoaded || !videoSupported) ? 0 : 30 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 md:p-12 max-w-4xl border border-white/10 shadow-2xl"
+              className="bg-white/5 backdrop-blur-xl rounded-3xl p-6 md:p-8 max-w-3xl border border-white/10 shadow-2xl"
             >
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-snug">
                 {c.line1}
                 <br />
                 <span className="text-yellow-300">
@@ -378,16 +378,9 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
                 </span>
               </h1>
               
-              <p className="text-lg md:text-xl text-white/80 max-w-2xl mb-8 font-light leading-relaxed">
+              <p className="text-base md:text-lg text-white/80 max-w-2xl font-light leading-relaxed">
                 {c.subtitle}
               </p>
-              
-              <a
-                href="#rooms"
-                className="inline-flex items-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white rounded-full text-lg font-semibold transition-all backdrop-blur-sm border border-white/30 hover:scale-105"
-              >
-                {c.cta}
-              </a>
             </motion.div>
           </motion.div>
 

@@ -9,7 +9,7 @@ import { generateMetadata as generateI18nMetadata, generateStructuredData } from
 // Lazy-load des sections below-the-fold pour réduire le JS initial
 const WelcomeSection = dynamic(() => import('@/components/WelcomeSection'), { ssr: true })
 const FeaturesSection = dynamic(() => import('@/components/FeaturesSection'), { ssr: true })
-const RoomsSection = dynamic(() => import('@/components/RoomsSection'), { ssr: true })
+// const RoomsSection = dynamic(() => import('@/components/RoomsSection'), { ssr: true })
 const ServicesSection = dynamic(() => import('@/components/ServicesSection'), { ssr: true })
 const GallerySection = dynamic(() => import('@/components/GallerySection'), { ssr: true })
 const TestimonialsSection = dynamic(() => import('@/components/TestimonialsSection'), { ssr: true })
@@ -53,9 +53,10 @@ export default function InicioPage() {
         <FeaturesSection locale="es" />
       </Suspense>
 
-      <Suspense fallback={<SectionFallback />}>
+      {/* RoomsSection - caché temporairement */}
+      {/* <Suspense fallback={<SectionFallback />}>
         <RoomsSection locale="es" />
-      </Suspense>
+      </Suspense> */}
 
       <Suspense fallback={<SectionFallback />}>
         <ServicesSection locale="es" />

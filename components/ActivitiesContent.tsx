@@ -75,14 +75,14 @@ export default function ActivitiesContent({ locale }: ActivitiesPageProps) {
           cta: 'Reservar ahora',
         },
         {
-          id: 'islas-palenque',
-          title: 'Tour Islas Palenque',
-          tag: 'Tour premium',
-          desc: 'La versión premium del tour de islas. Incluye todo el recorrido anterior (excepto el Islote) y suma una parada en la isla Ceycén, un paraíso escondido donde podrás nadar entre corales y peces de colores.',
-          schedule: 'Salida: 8:45am • Duración: 6.5 horas',
-          price: '$90.000',
+          id: 'buceo',
+          title: 'Experiencia Buceo',
+          tag: 'Buceo',
+          desc: 'Descubre la magia del buceo en las aguas cristalinas de Rincón del Mar. Explora arrecifes coloridos, vida marina exuberante y paisajes submarinos únicos en el Caribe colombiano. Sumérgete en aguas turquesa donde peces tropicales y corales te esperan. Una experiencia inolvidable para aventureros, amantes del mar y exploradores del Caribe.',
+          schedule: 'Salidas: 9:00am / 11:00am / 2:00pm • Duración: 2 horas',
+          price: '$80.000',
           unit: 'por persona',
-          features: ['Todas las islas del tour estándar (excepto Islote)', 'Isla Ceycén – paraíso escondido', 'Snorkel entre corales y peces de colores'],
+          features: ['Arrecifes de coral', 'Vida marina tropical', 'Aguas cristalinas', 'Paisajes submarinos únicos'],
           image: '/images/activites/couchesoleil.webp',
           cta: 'Reservar ahora',
         },
@@ -138,8 +138,8 @@ export default function ActivitiesContent({ locale }: ActivitiesPageProps) {
       trust: {
         title: '¿Por qué reservar con nosotros?',
         items: [
-          { icon: Shield, title: 'Seguro incluido', desc: 'Todas nuestras excursiones cuentan con seguro de viaje' },
-          { icon: Star, title: 'Guía local experto', desc: 'Conoce cada rincón con guías bilingües certificados' },
+          { icon: Shield, title: '', desc: '' },
+          { icon: Star, title: 'Guía local experto', desc: '' },
           { icon: Wallet, title: 'Mejor precio directo', desc: 'Sin intermediarios. Precio justo para viajeros' },
         ],
       },
@@ -148,7 +148,7 @@ export default function ActivitiesContent({ locale }: ActivitiesPageProps) {
         desc: 'Reserva tu excursión favorita con nosotros. Te ayudamos a planificar cada detalle de tu experiencia.',
         cta: 'Contactar por WhatsApp',
         or: 'o llámanos al',
-        phone: '+57 314 748 0855',
+        phone: '#ERROR!',
       },
     },
     en: {
@@ -182,14 +182,14 @@ export default function ActivitiesContent({ locale }: ActivitiesPageProps) {
           cta: 'Book now',
         },
         {
-          id: 'islas-palenque',
-          title: 'Palenque Islands Tour',
-          tag: 'Premium tour',
-          desc: 'The premium version of the islands tour. Includes the entire previous route (except the Islet) and adds a stop at Ceycén Island, a hidden paradise where you can swim among corals and colorful fish.',
-          schedule: 'Departure: 8:45am • Duration: 6.5 hours',
-          price: '$90,000',
+          id: 'buceo',
+          title: 'Diving Experience',
+          tag: 'Diving',
+          desc: 'Discover the magic of diving in the crystal clear waters of Rincón del Mar. Explore colorful reefs, abundant marine life and unique underwater landscapes in the Colombian Caribbean. Immerse yourself in turquoise waters where tropical fish and corals await you. An unforgettable experience for adventurers, sea lovers and Caribbean explorers.',
+          schedule: 'Departures: 9:00am / 11:00am / 2:00pm • Duration: 2 hours',
+          price: '$80,000',
           unit: 'per person',
-          features: ['All islands from the standard tour (except Islet)', 'Ceycén Island – hidden paradise', 'Snorkel among corals and colorful fish'],
+          features: ['Coral reefs', 'Tropical marine life', 'Crystal clear waters', 'Unique underwater landscapes'],
           image: '/images/activites/couchesoleil.webp',
           cta: 'Book now',
         },
@@ -255,7 +255,7 @@ export default function ActivitiesContent({ locale }: ActivitiesPageProps) {
         desc: 'Book your favorite excursion with us. We help you plan every detail of your experience.',
         cta: 'Contact via WhatsApp',
         or: 'or call us at',
-        phone: '+57 314 748 0855',
+        phone: '+57 310 527 0542',
       },
     },
     fr: {
@@ -289,14 +289,14 @@ export default function ActivitiesContent({ locale }: ActivitiesPageProps) {
           cta: 'Réserver maintenant',
         },
         {
-          id: 'islas-palenque',
-          title: 'Tour Îles Palenque',
-          tag: 'Tour premium',
-          desc: 'La version premium du tour des îles. Inclut tout le parcours précédent (sauf l\'Îlot) et ajoute un arrêt sur l\'île Ceycén, un paradis caché où vous pourrez nager parmi les coraux et les poissons colorés.',
-          schedule: 'Départ : 8h45 • Durée : 6,5 heures',
-          price: '90 000',
+          id: 'buceo',
+          title: 'Expérience Plongée',
+          tag: 'Plongée',
+          desc: 'Découvrez la magie de la plongée dans les eaux cristallines de Rincón del Mar. Explorez des récifs colorés, une vie marine exubérante et des paysages sous-marins uniques dans les Caraïbes colombiennes. Plongez dans des eaux turquoise où poissons tropicaux et coraux vous attendent. Une expérience inoubliable pour aventuriers, amoureux de la mer et explorateurs des Caraïbes.',
+          schedule: 'Départs : 9h00 / 11h00 / 14h00 • Durée : 2 heures',
+          price: '80 000',
           unit: 'par personne',
-          features: ['Toutes les îles du tour standard (sauf l\'Îlot)', 'Île Ceycén – paradis caché', 'Snorkeling parmi les coraux et poissons colorés'],
+          features: ['Récifs de corail', 'Vie marine tropicale', 'Eaux cristallines', 'Paysages sous-marins uniques'],
           image: '/images/activites/couchesoleil.webp',
           cta: 'Réserver maintenant',
         },
@@ -362,7 +362,7 @@ export default function ActivitiesContent({ locale }: ActivitiesPageProps) {
         desc: 'Réservez votre excursion favorite avec nous. Nous vous aidons à planifier chaque détail de votre expérience.',
         cta: 'Contacter par WhatsApp',
         or: 'ou appelez-nous au',
-        phone: '+57 314 748 0855',
+        phone: '+57 310 527 0542',
       },
     },
   };
@@ -391,7 +391,7 @@ export default function ActivitiesContent({ locale }: ActivitiesPageProps) {
           price: 'text-cyan-300',
           icon: Ship,
         };
-      case 'islas-palenque':
+      case 'buceo':
         return {
           bg: 'bg-gradient-to-br from-teal-950 via-slate-900 to-teal-950',
           border: 'border-teal-500/20',
@@ -500,7 +500,7 @@ export default function ActivitiesContent({ locale }: ActivitiesPageProps) {
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent z-10" />
         <div className="absolute top-1/4 right-0 w-px h-48 bg-gradient-to-b from-yellow-400/50 to-transparent z-10" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[160px] pb-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -605,7 +605,7 @@ export default function ActivitiesContent({ locale }: ActivitiesPageProps) {
 
                     {/* CTA */}
                     <a
-                      href="https://wa.me/573147480855"
+                      href="https://wa.me/573105270542"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-2 w-full px-6 py-4 bg-yellow-400 hover:bg-yellow-300 text-stone-900 rounded-xl font-bold transition-colors"
@@ -657,7 +657,7 @@ export default function ActivitiesContent({ locale }: ActivitiesPageProps) {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="https://wa.me/573147480855"
+              href="https://wa.me/573105270542"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-stone-900 text-white rounded-full font-bold hover:bg-stone-800 transition-colors shadow-xl"
@@ -666,7 +666,7 @@ export default function ActivitiesContent({ locale }: ActivitiesPageProps) {
               {c.contact.cta}
             </a>
             <span className="text-stone-700 font-medium">{c.contact.or}</span>
-            <a href="tel:+573147480855" className="text-stone-900 font-bold text-xl hover:underline">
+            <a href="tel:+573105270542" className="text-stone-900 font-bold text-xl hover:underline">
               {c.contact.phone}
             </a>
           </div>

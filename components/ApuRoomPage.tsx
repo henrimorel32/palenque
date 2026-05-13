@@ -18,11 +18,11 @@ interface ApuRoomPageProps {
 const content = {
   es: {
     back: 'Volver a habitaciones',
-    badge: 'Nuestra joya de la corona',
+    badge: '',
     title: 'Cabaña APU',
     tagline: 'Frente al mar, donde las olas cantan tu sueño',
     description:
-      'Nuestra joya de la corona. Una cabaña privada a solo metros del océano, con terraza propia y hamaca bajo las estrellas. Despierta con el sonido de las olas y el aroma del mar.',
+      '',
     price: 'Desde $160.000',
     period: 'por persona por noche',
     bestFor: 'Luna de miel o escapada romántica',
@@ -183,7 +183,7 @@ export default function ApuRoomPage({ locale }: ApuRoomPageProps) {
               </div>
 
               <a
-                href="https://wa.me/573147480855"
+                href="https://wa.me/573105270542"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-stone-900 text-white rounded-full font-semibold hover:bg-stone-800 transition-colors shadow-lg shadow-stone-900/20"
@@ -218,7 +218,7 @@ export default function ApuRoomPage({ locale }: ApuRoomPageProps) {
                 </div>
 
                 <a
-                  href="https://wa.me/573147480855"
+                  href="https://wa.me/573105270542"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full text-center px-6 py-3.5 bg-stone-900 text-white rounded-full font-medium hover:bg-stone-800 transition-colors"
