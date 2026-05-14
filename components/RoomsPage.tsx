@@ -1035,7 +1035,8 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                   }}
                   className="w-full h-full object-cover"
                 >
-                  <source src="/videos/small/video-apu-small.mp4" type="video/mp4" />
+                  {/* <source src="/videos/small/video-apu-small.mp4" type="video/mp4" /> */}
+                  <source src="/videos/videoChambre.mp4" type="video/mp4" />
                 </video>
               </div>
 
