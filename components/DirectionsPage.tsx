@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { 
   MapPin, Plane, Car, Bus, Clock, Phone, Navigation,
   ArrowRight, CheckCircle2, AlertCircle, Info, Copy,
@@ -11,6 +12,47 @@ import { Locale } from '@/lib/i18n/translations';
 
 interface DirectionsPageProps {
   locale: Locale;
+}
+
+const heroImages = [
+  '/images/vueAerienne.webp',
+  '/images/vueAerienne1_opt.webp',
+  '/images/vueAerienne2.webp',
+];
+
+function HeroCarousel() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="absolute inset-0">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={current}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: 'easeInOut' }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={heroImages[current]}
+            alt="Vue aérienne"
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority={current === 0}
+          />
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
 }
 
 function CopyButton({ text, label, locale }: { text: string; label: string; locale: Locale }) {
@@ -27,7 +69,7 @@ function CopyButton({ text, label, locale }: { text: string; label: string; loca
   return (
     <button 
       onClick={handleCopy}
-      className="inline-flex items-center gap-1.5 text-yellow-600 hover:text-yellow-700 font-medium text-sm transition-colors"
+      className="inline-flex items-center gap-1.5 text-[#5489a0] hover:text-[#5489a0] font-medium text-sm transition-colors"
     >
       <Copy className="w-3.5 h-3.5" />
       {copied ? copiedText : label}
@@ -64,7 +106,7 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
         steps: [
           { icon: Navigation, title: 'Salida', desc: 'Aeropuerto SMR → Vía al Mar' },
           { icon: Clock3, title: 'Tiempo', desc: '45 min hasta el peaje' },
-          { icon: MapPin, title: 'Destino', desc: 'Palenque, Bolívar' },
+          { icon: MapPin, title: 'Destino', desc: 'Rincón del Mar, Sucre' },
         ],
         tip: 'Últimos 2 km son de terracería. Cualquier vehículo puede transitar.',
       },
@@ -91,7 +133,7 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
       },
       location: {
         title: 'Ubicación Exacta',
-        address: 'Carrera 1 # 23-58, Palenque',
+        address: 'Rincón del Mar, Sucre, Colombia',
         coords: '9.773722, -75.645361',
         copy: 'Copiar coordenadas',
       },
@@ -124,7 +166,7 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
         steps: [
           { icon: Navigation, title: 'Departure', desc: 'SMR Airport → Vía al Mar' },
           { icon: Clock3, title: 'Time', desc: '45 min to toll' },
-          { icon: MapPin, title: 'Destination', desc: 'Palenque, Bolívar' },
+          { icon: MapPin, title: 'Destination', desc: 'Rincón del Mar, Sucre' },
         ],
         tip: 'Last 2 km are dirt road. Any vehicle can pass.',
       },
@@ -184,7 +226,7 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
         steps: [
           { icon: Navigation, title: 'Départ', desc: 'Aéroport SMR → Vía al Mar' },
           { icon: Clock3, title: 'Temps', desc: '45 min jusqu\'au péage' },
-          { icon: MapPin, title: 'Destination', desc: 'Palenque, Bolívar' },
+          { icon: MapPin, title: 'Destination', desc: 'Rincón del Mar, Sucre' },
         ],
         tip: '2 derniers km en route de terre. Tout véhicule peut passer.',
       },
@@ -225,8 +267,11 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
     <>
       {/* Hero Section */}
       <section className="relative min-h-[70vh] bg-stone-900 overflow-hidden">
-        {/* Background with overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900" />
+        {/* Background carousel */}
+        <HeroCarousel />
+        
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-900/20 via-stone-900/30 to-stone-900/60" />
         
         {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent" />
@@ -241,7 +286,7 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
             className="text-center"
           >
             {/* Badge */}
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full text-yellow-400 text-sm font-medium mb-6">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full text-[#5489a0] text-sm font-medium mb-6">
               <MapPin className="w-4 h-4" />
               {c.from}
             </span>
@@ -250,7 +295,7 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
               {c.title}
             </h1>
             <p className="text-xl md:text-2xl text-stone-400 mb-2">{c.subtitle}</p>
-            <p className="text-yellow-400 font-medium text-lg">{c.airport}</p>
+            <p className="text-[#5489a0] font-medium text-lg">{c.airport}</p>
 
             {/* Stats Cards */}
             <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
@@ -302,19 +347,19 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
             <div className="grid md:grid-cols-2 gap-8 p-8 md:p-12">
               {/* Left content */}
               <div className="text-white">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-yellow-400/20 text-yellow-400 rounded-full text-xs font-medium mb-4">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-yellow-400/20 text-[#5489a0] rounded-full text-xs font-medium mb-4">
                   <Star className="w-3 h-3" />
                   {c.byPlane.badge}
                 </span>
                 <h2 className="text-3xl md:text-4xl font-bold mb-2">{c.byPlane.title}</h2>
-                <p className="text-xl text-yellow-400 mb-4">{c.byPlane.subtitle}</p>
+                <p className="text-xl text-[#5489a0] mb-4">{c.byPlane.subtitle}</p>
                 <p className="text-stone-300 mb-6 leading-relaxed">{c.byPlane.desc}</p>
                 
                 {/* Features */}
                 <div className="grid grid-cols-2 gap-3 mb-8">
                   {c.byPlane.features.map((feature, i) => (
                     <div key={i} className="flex items-center gap-2 text-sm text-stone-300">
-                      <CheckCircle2 className="w-4 h-4 text-yellow-400" />
+                      <CheckCircle2 className="w-4 h-4 text-[#5489a0]" />
                       {feature}
                     </div>
                   ))}
@@ -429,7 +474,6 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
 
               <div className="flex items-center justify-between pt-4 border-t border-green-100">
                 <div>
-                  <p className="text-2xl font-bold text-green-600">{c.byBus.price}</p>
                   <p className="text-stone-400 text-xs">{c.byBus.time}</p>
                 </div>
               </div>
@@ -443,17 +487,19 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-br from-stone-900 to-stone-800 rounded-3xl overflow-hidden shadow-2xl">
             <div className="grid md:grid-cols-2">
-              {/* Map placeholder */}
-              <div className="h-64 md:h-auto bg-gradient-to-br from-stone-700 to-stone-800 flex items-center justify-center relative">
-                <div className="text-center">
-                  <MapPin className="w-16 h-16 text-yellow-400 mx-auto mb-4" />
-                  <p className="text-stone-300">Google Maps</p>
-                </div>
-                {/* Yellow corner accent */}
-                <div className="absolute top-0 left-0 w-20 h-20">
-                  <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-yellow-400 to-transparent" />
-                  <div className="absolute top-0 left-0 w-0.5 h-full bg-gradient-to-b from-yellow-400 to-transparent" />
-                </div>
+              {/* Google Maps */}
+              <div className="h-64 md:h-auto min-h-[320px] relative">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.0!2d-75.645361!3d9.773722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwNDYnMjUuNCJOIDc1wrAzOCc0My4zIlc!5e0!3m2!1ses!2sco!4v1609459200000!5m2!1ses!2sco"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, minHeight: '320px' }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Palenque Eco Hotel Location"
+                  className="absolute inset-0"
+                />
               </div>
               
               {/* Info */}
@@ -462,12 +508,12 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
                 <div className="space-y-6">
                   <div>
                     <p className="text-stone-400 text-sm mb-1">{c.location.address}</p>
-                    <p className="text-lg font-medium">Carrera 1 # 23-58</p>
-                    <p className="text-stone-300">Palenque, Bolívar, Colombia</p>
+                    <p className="text-lg font-medium">Rincón del Mar</p>
+                    <p className="text-stone-300">Sucre, Colombia</p>
                   </div>
                   <div className="bg-white/5 rounded-xl p-4 border border-white/10">
                     <p className="text-stone-400 text-sm mb-2">{c.location.coords}</p>
-                    <code className="text-yellow-400 font-mono text-lg">9.773722, -75.645361</code>
+                    <code className="text-[#5489a0] font-mono text-lg">9.773722, -75.645361</code>
                     <div className="mt-3">
                       <CopyButton text="9.773722, -75.645361" label={c.location.copy} locale={locale} />
                     </div>

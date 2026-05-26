@@ -54,7 +54,7 @@ export default function CTASection({ locale }: CTASectionProps) {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-yellow-400 text-sm font-medium mb-6 border border-white/10"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-[#5489a0] text-sm font-medium mb-6 border border-white/10"
           >
             <Sparkles className="w-4 h-4" />
             {locale === 'es' ? 'Reserva hoy' : locale === 'en' ? 'Book today' : 'Réservez aujourd\'hui'}

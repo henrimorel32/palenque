@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import {
   MessageCircle,
   Mail,
@@ -24,6 +25,48 @@ interface ContactPageProps {
   locale: Locale;
 }
 
+const contactHeroImages = [
+  '/images/plageSoleil_opt.webp',
+  '/images/hamacDansEau_opt.webp',
+  '/images/vueAerienne1_opt.webp',
+];
+
+function ContactHeroCarousel() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % contactHeroImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="absolute inset-0">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={current}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: 'easeInOut' }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={contactHeroImages[current]}
+            alt="Palenque"
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority={current === 0}
+            unoptimized
+          />
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export default function ContactPage({ locale }: ContactPageProps) {
   const [formData, setFormData] = useState({
     name: '',
@@ -31,19 +74,107 @@ export default function ContactPage({ locale }: ContactPageProps) {
     subject: '',
     message: '',
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitMessage, setSubmitMessage] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const [turnstileLoaded, setTurnstileLoaded] = useState<boolean | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    // Clear error when user types
+    if (fieldErrors[e.target.name]) {
+      setFieldErrors((prev) => { const copy = { ...prev }; delete copy[e.target.name]; return copy; });
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Load Turnstile script + detect blocking
+  useEffect(() => {
+    // Global callback used by data-callback attribute
+    (window as any).turnstileCallback = (token: string) => setTurnstileToken(token);
+    (window as any).turnstileExpired = () => setTurnstileToken('');
+
+    if (document.getElementById('turnstile-script')) {
+      setTurnstileLoaded(true);
+      return;
+    }
+    const script = document.createElement('script');
+    script.id = 'turnstile-script';
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+    script.async = true;
+    script.defer = true;
+    script.onload = () => setTurnstileLoaded(true);
+    script.onerror = () => setTurnstileLoaded(false);
+    document.head.appendChild(script);
+
+    // Timeout de secours si le script est bloqué (adblock, Brave, etc.)
+    const timeout = setTimeout(() => {
+      setTurnstileLoaded((prev) => (prev === null ? false : prev));
+    }, 6000);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  const validate = () => {
+    const errors: Record<string, string> = {};
+    if (!formData.name.trim() || formData.name.trim().length < 2) {
+      errors.name = locale === 'es' ? 'El nombre es obligatorio (mín. 2 caracteres).' : locale === 'en' ? 'Name is required (min. 2 characters).' : 'Le nom est requis (min. 2 caractères).';
+    }
+    if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errors.email = locale === 'es' ? 'Correo electrónico inválido.' : locale === 'en' ? 'Invalid email address.' : 'Adresse email invalide.';
+    }
+    if (!formData.subject.trim()) {
+      errors.subject = locale === 'es' ? 'Selecciona un asunto.' : locale === 'en' ? 'Please select a subject.' : 'Veuillez sélectionner un sujet.';
+    }
+    if (!formData.message.trim() || formData.message.trim().length < 10) {
+      errors.message = locale === 'es' ? 'El mensaje es obligatorio (mín. 10 caracteres).' : locale === 'en' ? 'Message is required (min. 10 characters).' : 'Le message est requis (min. 10 caractères).';
+    }
+    if (!turnstileToken) {
+      errors.turnstile = locale === 'es' ? 'Por favor completa la verificación de seguridad.' : locale === 'en' ? 'Please complete the security check.' : 'Veuillez compléter la vérification de sécurité.';
+    }
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const { name, email, subject, message } = formData;
-    const body = `Nombre: ${name}%0D%0AEmail: ${email}%0D%0AAsunto: ${subject}%0D%0AMensaje:%0D%0A${message}`;
-    window.location.href = `mailto:info@palenque.co?subject=${encodeURIComponent(subject)}&body=${body}`;
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+    setSubmitStatus('idle');
+    setSubmitMessage('');
+
+    if (!validate()) return;
+
+    setIsSubmitting(true);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, turnstileToken }),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setSubmitStatus('success');
+        setSubmitMessage(c.form.successMessage);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTurnstileToken('');
+        // Reset Turnstile widget
+        if ((window as any).turnstile) {
+          (window as any).turnstile.reset();
+        }
+      } else {
+        setSubmitStatus('error');
+        setSubmitMessage(data.error || 'Error');
+      }
+    } catch {
+      setSubmitStatus('error');
+      setSubmitMessage(
+        locale === 'es' ? 'Error de conexión. Inténtalo de nuevo.' :
+        locale === 'en' ? 'Connection error. Please try again.' :
+        'Erreur de connexion. Veuillez réessayer.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const content = {
@@ -79,9 +210,9 @@ export default function ContactPage({ locale }: ContactPageProps) {
         },
         address: {
           title: 'Dirección',
-          desc: 'Carrera 1 # 23-58, Palenque, Bolívar, Colombia',
+          desc: 'Rincón del Mar, Sucre, Colombia',
           cta: 'Ver en mapa',
-          value: 'Palenque, Bolívar',
+          value: 'Rincón del Mar, Sucre',
         },
       },
       form: {
@@ -103,10 +234,11 @@ export default function ContactPage({ locale }: ContactPageProps) {
         submit: 'Enviar mensaje',
         sending: 'Enviando...',
         sent: '¡Mensaje enviado!',
+        successMessage: '¡Mensaje enviado con éxito! Te responderemos lo antes posible.',
       },
       map: {
         title: 'Nuestra ubicación',
-        subtitle: 'Carrera 1 # 23-58, Palenque, Bolívar, Colombia',
+        subtitle: 'Rincón del Mar, Sucre, Colombia',
       },
       info: {
         title: 'Información práctica',
@@ -157,9 +289,9 @@ export default function ContactPage({ locale }: ContactPageProps) {
         },
         address: {
           title: 'Address',
-          desc: 'Carrera 1 # 23-58, Palenque, Bolívar, Colombia',
+          desc: 'Rincón del Mar, Sucre, Colombia',
           cta: 'View on map',
-          value: 'Palenque, Bolívar',
+          value: 'Rincón del Mar, Sucre',
         },
       },
       form: {
@@ -181,10 +313,11 @@ export default function ContactPage({ locale }: ContactPageProps) {
         submit: 'Send message',
         sending: 'Sending...',
         sent: 'Message sent!',
+        successMessage: 'Message sent successfully! We will get back to you as soon as possible.',
       },
       map: {
         title: 'Our location',
-        subtitle: 'Carrera 1 # 23-58, Palenque, Bolívar, Colombia',
+        subtitle: 'Rincón del Mar, Sucre, Colombia',
       },
       info: {
         title: 'Practical information',
@@ -235,9 +368,9 @@ export default function ContactPage({ locale }: ContactPageProps) {
         },
         address: {
           title: 'Adresse',
-          desc: 'Carrera 1 # 23-58, Palenque, Bolívar, Colombie',
+          desc: 'Rincón del Mar, Sucre, Colombie',
           cta: 'Voir sur la carte',
-          value: 'Palenque, Bolívar',
+          value: 'Rincón del Mar, Sucre',
         },
       },
       form: {
@@ -259,10 +392,11 @@ export default function ContactPage({ locale }: ContactPageProps) {
         submit: 'Envoyer le message',
         sending: 'Envoi...',
         sent: 'Message envoyé !',
+        successMessage: 'Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.',
       },
       map: {
         title: 'Notre emplacement',
-        subtitle: 'Carrera 1 # 23-58, Palenque, Bolívar, Colombie',
+        subtitle: 'Rincón del Mar, Sucre, Colombie',
       },
       info: {
         title: 'Informations pratiques',
@@ -332,7 +466,10 @@ export default function ContactPage({ locale }: ContactPageProps) {
     <>
       {/* Hero Section */}
       <section className="relative min-h-[65vh] bg-stone-900 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900" />
+        {/* Background carousel */}
+        <ContactHeroCarousel />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-900/20 via-stone-900/30 to-stone-900/60" />
         <YellowTopLine />
         <div className="absolute top-1/4 left-0 w-px h-48 bg-gradient-to-b from-yellow-400/50 to-transparent" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-yellow-400/5 rounded-full blur-3xl" />
@@ -346,7 +483,7 @@ export default function ContactPage({ locale }: ContactPageProps) {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full text-yellow-400 text-sm font-medium mb-6">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full text-[#5489a0] text-sm font-medium mb-6">
               <Headphones className="w-4 h-4" />
               {c.hero.badge}
             </span>
@@ -441,7 +578,8 @@ export default function ContactPage({ locale }: ContactPageProps) {
                 <p className="text-stone-500">{c.form.subtitle}</p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+                {/* Name */}
                 <div>
                   <label htmlFor="name" className="block text-sm font-semibold text-stone-700 mb-2">
                     {c.form.name}
@@ -450,13 +588,14 @@ export default function ContactPage({ locale }: ContactPageProps) {
                     type="text"
                     id="name"
                     name="name"
-                    required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
+                    className={`w-full px-4 py-3 rounded-xl border bg-stone-50 text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all ${fieldErrors.name ? 'border-red-400' : 'border-stone-200'}`}
                   />
+                  {fieldErrors.name && <p className="mt-1 text-sm text-red-500">{fieldErrors.name}</p>}
                 </div>
 
+                {/* Email */}
                 <div>
                   <label htmlFor="email" className="block text-sm font-semibold text-stone-700 mb-2">
                     {c.form.email}
@@ -465,13 +604,14 @@ export default function ContactPage({ locale }: ContactPageProps) {
                     type="email"
                     id="email"
                     name="email"
-                    required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
+                    className={`w-full px-4 py-3 rounded-xl border bg-stone-50 text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all ${fieldErrors.email ? 'border-red-400' : 'border-stone-200'}`}
                   />
+                  {fieldErrors.email && <p className="mt-1 text-sm text-red-500">{fieldErrors.email}</p>}
                 </div>
 
+                {/* Subject */}
                 <div>
                   <label htmlFor="subject" className="block text-sm font-semibold text-stone-700 mb-2">
                     {c.form.subject}
@@ -479,10 +619,9 @@ export default function ContactPage({ locale }: ContactPageProps) {
                   <select
                     id="subject"
                     name="subject"
-                    required
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all appearance-none"
+                    className={`w-full px-4 py-3 rounded-xl border bg-stone-50 text-stone-900 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all appearance-none ${fieldErrors.subject ? 'border-red-400' : 'border-stone-200'}`}
                   >
                     <option value="" disabled>
                       —
@@ -493,8 +632,10 @@ export default function ContactPage({ locale }: ContactPageProps) {
                       </option>
                     ))}
                   </select>
+                  {fieldErrors.subject && <p className="mt-1 text-sm text-red-500">{fieldErrors.subject}</p>}
                 </div>
 
+                {/* Message */}
                 <div>
                   <label htmlFor="message" className="block text-sm font-semibold text-stone-700 mb-2">
                     {c.form.message}
@@ -503,27 +644,76 @@ export default function ContactPage({ locale }: ContactPageProps) {
                     id="message"
                     name="message"
                     rows={5}
-                    required
                     value={formData.message}
                     onChange={handleChange}
                     placeholder={c.form.messagePlaceholder}
-                    className="w-full px-4 py-3 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all resize-none"
+                    className={`w-full px-4 py-3 rounded-xl border bg-stone-50 text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all resize-none ${fieldErrors.message ? 'border-red-400' : 'border-stone-200'}`}
                   />
+                  {fieldErrors.message && <p className="mt-1 text-sm text-red-500">{fieldErrors.message}</p>}
                 </div>
 
+                {/* Cloudflare Turnstile Widget */}
+                <div className="bg-stone-100 rounded-xl p-3 border border-stone-200">
+                  {turnstileLoaded === false && (
+                    <div className="rounded-lg px-3 py-2 text-sm font-medium bg-amber-50 text-amber-700 border border-amber-200 mb-2">
+                      {locale === 'es'
+                        ? '🔒 Parece que tu bloqueador de anuncios impide cargar el captcha. Desactívalo momentáneamente para este sitio o contáctanos por WhatsApp.'
+                        : locale === 'en'
+                        ? '🔒 It looks like your ad blocker is preventing the captcha from loading. Please disable it temporarily for this site, or contact us via WhatsApp.'
+                        : '🔒 Il semble que votre bloqueur de publicités empêche le captcha de se charger. Veuillez le désactiver temporairement pour ce site, ou contactez-nous par WhatsApp.'}
+                    </div>
+                  )}
+                  <div
+                    className="cf-turnstile flex justify-center"
+                    data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA'}
+                    data-callback="turnstileCallback"
+                    data-expired-callback="turnstileExpired"
+                    data-theme="light"
+                  />
+                  {fieldErrors.turnstile && turnstileLoaded !== false && (
+                    <p className="mt-2 text-sm text-red-500 text-center">{fieldErrors.turnstile}</p>
+                  )}
+                </div>
+
+                {/* Status message */}
+                <AnimatePresence>
+                  {submitStatus !== 'idle' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className={`rounded-xl px-4 py-3 text-sm font-medium ${
+                        submitStatus === 'success'
+                          ? 'bg-green-50 text-green-700 border border-green-200'
+                          : 'bg-red-50 text-red-700 border border-red-200'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        {submitStatus === 'success' ? (
+                          <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+                        ) : (
+                          <span className="w-5 h-5 flex-shrink-0 rounded-full bg-red-200 text-red-700 flex items-center justify-center text-xs font-bold">!</span>
+                        )}
+                        {submitMessage}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Submit */}
                 <button
                   type="submit"
-                  disabled={submitted}
+                  disabled={isSubmitting}
                   className={`inline-flex items-center justify-center gap-2 w-full px-6 py-4 rounded-xl font-bold transition-all duration-300 ${
-                    submitted
-                      ? 'bg-green-500 text-white'
+                    isSubmitting
+                      ? 'bg-stone-300 text-stone-500 cursor-not-allowed'
                       : 'bg-yellow-400 hover:bg-yellow-300 text-stone-900 shadow-lg shadow-yellow-400/20'
                   }`}
                 >
-                  {submitted ? (
+                  {isSubmitting ? (
                     <>
-                      <CheckCircle2 className="w-5 h-5" />
-                      {c.form.sent}
+                      <span className="w-5 h-5 border-2 border-stone-500 border-t-transparent rounded-full animate-spin" />
+                      {c.form.sending}
                     </>
                   ) : (
                     <>

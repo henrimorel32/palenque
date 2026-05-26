@@ -241,7 +241,7 @@ export default function RoomsSection({ locale }: RoomsSectionProps) {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-100 text-yellow-700 rounded-full text-sm font-medium mb-4 border border-yellow-200">
+          <span className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-100 text-[#5489a0] rounded-full text-sm font-medium mb-4 border border-yellow-200">
             <Star className="w-4 h-4" />
             {locale === 'es' ? 'Alojamiento' : locale === 'en' ? 'Accommodation' : 'Hébergement'}
           </span>
@@ -307,7 +307,7 @@ export default function RoomsSection({ locale }: RoomsSectionProps) {
                 </span>
 
                 <h3 className="text-xl font-bold text-stone-900 mb-1">{room.title}</h3>
-                <p className="text-yellow-600 text-xs font-medium mb-3">{room.tagline}</p>
+                <p className="text-[#5489a0] text-xs font-medium mb-3">{room.tagline}</p>
 
                 <p className="text-stone-500 text-sm leading-relaxed mb-4 flex-1">
                   {room.description}

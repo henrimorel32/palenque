@@ -134,7 +134,7 @@ export default function ApuRoomPage({ locale }: ApuRoomPageProps) {
 
         {/* Title overlay */}
         <div className="absolute bottom-6 left-6 z-20 text-white">
-          <span className="inline-block px-3 py-1 bg-yellow-500/90 text-yellow-950 text-xs font-bold rounded-full mb-2 uppercase tracking-wider">
+          <span className="inline-block px-3 py-1 bg-yellow-500/90 text-[#5489a0] text-xs font-bold rounded-full mb-2 uppercase tracking-wider">
             {c.badge}
           </span>
           <h1 className="text-3xl md:text-5xl font-bold drop-shadow-lg">{c.title}</h1>
@@ -152,11 +152,11 @@ export default function ApuRoomPage({ locale }: ApuRoomPageProps) {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <p className="text-yellow-600 font-medium mb-2">{c.tagline}</p>
+              <p className="text-[#5489a0] font-medium mb-2">{c.tagline}</p>
               <p className="text-stone-600 text-lg leading-relaxed mb-8">{c.description}</p>
 
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full text-sm text-stone-600 mb-8 border border-stone-200 shadow-sm">
-                <Heart className="w-4 h-4 text-yellow-500" />
+                <Heart className="w-4 h-4 text-[#5489a0]" />
                 {c.bestFor}
               </div>
 
@@ -211,7 +211,7 @@ export default function ApuRoomPage({ locale }: ApuRoomPageProps) {
                 <div className="space-y-3 mb-8">
                   {c.features.slice(0, 5).map((feature, i) => (
                     <div key={i} className="flex items-center gap-3 text-stone-600">
-                      <BedDouble className="w-4 h-4 text-yellow-500" />
+                      <BedDouble className="w-4 h-4 text-[#5489a0]" />
                       <span className="text-sm">{feature}</span>
                     </div>
                   ))}

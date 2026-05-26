@@ -15,6 +15,12 @@ import { Locale } from '@/lib/i18n/translations'
 import { getTranslations } from '@/lib/i18n/utils'
 import { generateLocalizedUrl } from '@/lib/i18n/routes'
 
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+  </svg>
+)
+
 export default function Footer() {
   const pathname = usePathname()
   
@@ -43,8 +49,9 @@ export default function Footer() {
 
   // Social links
   const socialLinks = [
-    { icon: Globe, href: 'https://instagram.com/palenqueecohotel', label: 'Instagram' },
-    { icon: Share2, href: 'https://facebook.com/palenqueecohotel', label: 'Facebook' },
+    { icon: TikTokIcon, href: 'https://www.tiktok.com/@palenquerincondelmar', label: 'TikTok' },
+    { icon: Globe, href: 'https://www.instagram.com/palenquerincondelmar/', label: 'Instagram' },
+    { icon: Share2, href: 'https://www.facebook.com/profile.php?id=61551764957161&locale=es_LA', label: 'Facebook' },
   ]
 
   return (
@@ -64,7 +71,7 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xl font-bold text-[#5489a0] tracking-tight">Palenque</span>
-                  <span className="text-xs uppercase tracking-[0.25em] text-yellow-400 -mt-0.5">Eco Hotel</span>
+                  <span className="text-xs uppercase tracking-[0.25em] text-[#5489a0] -mt-0.5">Eco Hotel</span>
                 </div>
               </a>
               <p className="text-stone-400 text-sm leading-relaxed mb-6">
@@ -79,7 +86,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="p-2.5 rounded-lg bg-stone-800/50 text-stone-400 hover:text-yellow-400 hover:bg-stone-800 transition-all duration-300"
+                    className="p-2.5 rounded-lg bg-stone-800/50 text-stone-400 hover:text-[#5489a0] hover:bg-stone-800 transition-all duration-300"
                   >
                     <social.icon className="w-5 h-5" />
                   </a>
@@ -98,7 +105,7 @@ export default function Footer() {
                   <li key={link.name}>
                     <a
                       href={link.href}
-                      className="text-stone-400 hover:text-yellow-400 text-sm transition-colors duration-200 flex items-center gap-2 group"
+                      className="text-stone-400 hover:text-[#5489a0] text-sm transition-colors duration-200 flex items-center gap-2 group"
                     >
                       <span className="w-0 group-hover:w-2 h-px bg-yellow-400 transition-all duration-200" />
                       {link.name}
@@ -118,7 +125,7 @@ export default function Footer() {
                 <li>
                   <a
                     href={generateLocalizedUrl('/terminos', locale)}
-                    className="text-stone-400 hover:text-yellow-400 text-sm transition-colors duration-200 flex items-center gap-2 group"
+                    className="text-stone-400 hover:text-[#5489a0] text-sm transition-colors duration-200 flex items-center gap-2 group"
                   >
                     <span className="w-0 group-hover:w-2 h-px bg-yellow-400 transition-all duration-200" />
                     {t.footer.terms}
@@ -127,7 +134,7 @@ export default function Footer() {
                 <li>
                   <a
                     href={generateLocalizedUrl('/privacidad', locale)}
-                    className="text-stone-400 hover:text-yellow-400 text-sm transition-colors duration-200 flex items-center gap-2 group"
+                    className="text-stone-400 hover:text-[#5489a0] text-sm transition-colors duration-200 flex items-center gap-2 group"
                   >
                     <span className="w-0 group-hover:w-2 h-px bg-yellow-400 transition-all duration-200" />
                     {t.footer.privacy}
@@ -148,9 +155,9 @@ export default function Footer() {
                     href="https://maps.google.com/?q=9.773722,-75.645361"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-stone-400 hover:text-yellow-400 text-sm transition-colors duration-200 flex items-start gap-3 group"
+                    className="text-stone-400 hover:text-[#5489a0] text-sm transition-colors duration-200 flex items-start gap-3 group"
                   >
-                    <MapPin className="w-5 h-5 text-yellow-400 shrink-0 mt-0.5" />
+                    <MapPin className="w-5 h-5 text-[#5489a0] shrink-0 mt-0.5" />
                     <span>
                       {t.footer.address}<br />
                       <span className="text-stone-500">{t.footer.city}</span>
@@ -170,11 +177,11 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="mailto:info@palenque.co"
-                    className="text-stone-400 hover:text-yellow-400 text-sm transition-colors duration-200 flex items-center gap-3 group"
+                    href="mailto:info@palenquerincondelmar.co"
+                    className="text-stone-400 hover:text-[#5489a0] text-sm transition-colors duration-200 flex items-center gap-3 group"
                   >
-                    <Mail className="w-5 h-5 text-yellow-400 shrink-0" />
-                    info@palenque.co
+                    <Mail className="w-5 h-5 text-[#5489a0] shrink-0" />
+                    info@palenquerincondelmar.co
                   </a>
                 </li>
               </ul>
@@ -201,7 +208,7 @@ export default function Footer() {
                 aria-label={`${t.footer.webDeveloper} - ${t.footer.webDevDescription}`}
                 title={`${t.footer.webDeveloper} - ${t.footer.webDevDescription}`}
               >
-                <span className="text-yellow-400 font-medium text-xs group-hover:text-yellow-300 transition-colors">
+                <span className="text-[#5489a0] font-medium text-xs group-hover:text-[#5489a0] transition-colors">
                   henrimorel.com
                 </span>
                 <ExternalLink className="w-3 h-3 text-stone-500 group-hover:text-stone-400 transition-colors" />

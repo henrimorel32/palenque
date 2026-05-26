@@ -61,7 +61,7 @@ export default function Navbar() {
         <div className="bg-yellow-400 py-2.5">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center">
-              <div className="flex items-center gap-6 text-yellow-950">
+              <div className="flex items-center gap-6 text-[#5489a0]">
                 <a href="https://wa.me/573105270542" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors font-medium">
                   <Phone className="w-4 h-4" />
                   <span>+57 310 527 05 42</span>
@@ -90,13 +90,13 @@ export default function Navbar() {
             {/* Logo */}
             <a href={generateLocalizedUrl('/', locale)} className="flex items-center gap-3 group">
               <div className="p-3 rounded-2xl bg-yellow-400 shadow-lg shadow-yellow-400/30">
-                <Waves className="w-8 h-8 text-yellow-950" />
+                <Waves className="w-8 h-8 text-[#5489a0]" />
               </div>
               <div className="flex flex-col">
                 <span className="text-2xl font-bold tracking-tight text-[#5489a0]">
                   Palenque
                 </span>
-                <span className="text-xs uppercase tracking-[0.3em] -mt-1 text-yellow-600">
+                <span className="text-xs uppercase tracking-[0.3em] -mt-1 text-[#5489a0]">
                   Eco Hotel
                 </span>
               </div>
@@ -110,8 +110,8 @@ export default function Navbar() {
                   href={link.href}
                   className={`relative px-5 py-3 text-sm font-semibold uppercase tracking-wider transition-all duration-300 rounded-lg group ${
                     isActive(link.href)
-                      ? 'text-yellow-600 bg-yellow-50'
-                      : 'text-gray-700 hover:text-yellow-600 hover:bg-yellow-50'
+                      ? 'text-[#5489a0] bg-yellow-50'
+                      : 'text-gray-700 hover:text-[#5489a0] hover:bg-yellow-50'
                   }`}
                 >
                   {link.name}
@@ -178,16 +178,16 @@ export default function Navbar() {
             <div className="flex items-center justify-between p-6 bg-yellow-400">
               <a href={generateLocalizedUrl('/', locale)} className="flex items-center gap-3">
                 <div className="p-2 rounded-xl bg-yellow-950">
-                  <Waves className="w-6 h-6 text-yellow-400" />
+                  <Waves className="w-6 h-6 text-[#5489a0]" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xl font-bold text-[#5489a0]">Palenque</span>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-yellow-800">Eco Hotel</span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-[#5489a0]">Eco Hotel</span>
                 </div>
               </a>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2 rounded-xl text-yellow-950 hover:bg-yellow-500 transition-colors"
+                className="p-2 rounded-xl text-[#5489a0] hover:bg-yellow-500 transition-colors"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -196,7 +196,7 @@ export default function Navbar() {
             {/* Language Switcher dans le menu mobile */}
             <div className="px-6 py-4 bg-yellow-50 border-b border-yellow-200">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-yellow-800 font-medium">Idioma / Language / Langue</span>
+                <span className="text-sm text-[#5489a0] font-medium">Idioma / Language / Langue</span>
                 <LanguageSwitcher variant="topbar" />
               </div>
             </div>
@@ -219,13 +219,13 @@ export default function Navbar() {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`flex items-center px-4 py-4 rounded-xl transition-all duration-200 group ${
                       isActive(link.href)
-                        ? 'text-yellow-700 bg-yellow-50'
-                        : 'text-gray-800 hover:text-yellow-700 hover:bg-yellow-50'
+                        ? 'text-[#5489a0] bg-yellow-50'
+                        : 'text-gray-800 hover:text-[#5489a0] hover:bg-yellow-50'
                     }`}
                   >
                     <span className="text-base font-semibold uppercase tracking-wider">{link.name}</span>
                     <svg
-                      className="w-5 h-5 ml-auto opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200 text-yellow-500"
+                      className="w-5 h-5 ml-auto opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200 text-[#5489a0]"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -243,7 +243,7 @@ export default function Navbar() {
               href="https://maps.google.com/?q=9.773722,-75.645361" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 text-sm text-gray-600 hover:text-yellow-700 transition-colors"
+              className="flex items-center justify-center gap-2 text-sm text-gray-600 hover:text-[#5489a0] transition-colors"
             >
                 <MapPin className="w-4 h-4" />
                 <span>{t.nav.location}</span>

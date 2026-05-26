@@ -20,7 +20,8 @@ fi
 
 echo ""
 echo "[1/4] Synchronisation des fichiers source..."
-rsync -avz --delete \
+# Synchronisation avec checksum pour forcer le transfert des fichiers binaires modifiés (images)
+rsync -avzc --delete \
     --exclude 'node_modules' \
     --exclude '.next' \
     --exclude '.git' \
@@ -29,7 +30,7 @@ rsync -avz --delete \
     --exclude '.env.development' \
     -e "ssh -p $PORT" \
     ../source/ $SERVER:$REMOTE_DIR/ 2>/dev/null || \
-rsync -avz --delete \
+rsync -avzc --delete \
     --exclude 'node_modules' \
     --exclude '.next' \
     --exclude '.git' \

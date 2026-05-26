@@ -78,7 +78,7 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm text-yellow-400 rounded-full text-sm font-medium mb-4 border border-white/10">
+          <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm text-[#5489a0] rounded-full text-sm font-medium mb-4 border border-white/10">
             <Sparkles className="w-4 h-4" />
             Experiencias
           </span>
@@ -118,7 +118,7 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
               </div>
 
               {/* Content */}
-              <h3 className="text-xl font-bold mb-3 group-hover:text-yellow-400 transition-colors relative z-10">
+              <h3 className="text-xl font-bold mb-3 group-hover:text-[#5489a0] transition-colors relative z-10">
                 {/* eslint-disable-next-line */}
                 {(t.home.services as any)[service.key].title}
               </h3>
@@ -128,7 +128,7 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
               </p>
 
               {/* Arrow */}
-              <div className="mt-6 flex items-center gap-2 text-yellow-400 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-[-10px] group-hover:translate-x-0">
+              <div className="mt-6 flex items-center gap-2 text-[#5489a0] opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-[-10px] group-hover:translate-x-0">
                 <span className="text-sm font-medium">{locale === 'es' ? 'Ver más' : locale === 'en' ? 'See more' : 'Voir plus'}</span>
                 <svg
                   className="w-4 h-4"

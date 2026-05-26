@@ -62,9 +62,9 @@ export default function TestimonialsSection({ locale }: TestimonialsSectionProps
       <BlobShape color="bg-blue-200" className="w-[400px] h-[400px] -bottom-40 -right-40" />
       
       {/* Étoiles décoratives */}
-      <div className="absolute top-20 right-20 text-yellow-400/40 text-6xl animate-pulse">✦</div>
-      <div className="absolute bottom-40 left-20 text-yellow-400/30 text-4xl animate-pulse" style={{ animationDelay: '1s' }}>✦</div>
-      <div className="absolute top-1/2 right-10 text-yellow-400/20 text-3xl animate-pulse" style={{ animationDelay: '2s' }}>✦</div>
+      <div className="absolute top-20 right-20 text-[#5489a0]/40 text-6xl animate-pulse">✦</div>
+      <div className="absolute bottom-40 left-20 text-[#5489a0]/30 text-4xl animate-pulse" style={{ animationDelay: '1s' }}>✦</div>
+      <div className="absolute top-1/2 right-10 text-[#5489a0]/20 text-3xl animate-pulse" style={{ animationDelay: '2s' }}>✦</div>
       
       {/* Accents jaunes */}
       <YellowAccentLeft className="opacity-30" />
@@ -81,7 +81,7 @@ export default function TestimonialsSection({ locale }: TestimonialsSectionProps
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-100 text-yellow-700 rounded-full text-sm font-medium mb-4">
+          <span className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-100 text-[#5489a0] rounded-full text-sm font-medium mb-4">
             <MessageCircle className="w-4 h-4" />
             Instagram
           </span>

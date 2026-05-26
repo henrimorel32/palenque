@@ -67,7 +67,7 @@ export default function FeaturesSection({ locale }: FeaturesSectionProps) {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1.5 bg-yellow-50 text-yellow-700 rounded-full text-sm font-medium mb-4 border border-yellow-100">
+          <span className="inline-block px-4 py-1.5 bg-yellow-50 text-[#5489a0] rounded-full text-sm font-medium mb-4 border border-yellow-100">
             {t.home.features.title}
           </span>
           <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-200 mx-auto rounded-full" />

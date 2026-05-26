@@ -96,7 +96,7 @@ const pageMetadata: Record<MetaPage, Record<Locale, { title: string; description
 export function generateMetadata(
   page: MetaPage,
   locale: Locale,
-  baseUrl: string = 'https://palenque.co'
+  baseUrl: string = 'https://palenquerincondelmar.co'
 ): Metadata {
   const meta = pageMetadata[page][locale]
   const t = getTranslations(locale)
@@ -145,7 +145,7 @@ export function generateMetadata(
       type: 'website',
       images: [
         {
-          url: `${baseUrl}/images/activites/couchesoleil.webp`,
+          url: `${baseUrl}/og-default.jpg`,
           width: 1200,
           height: 630,
           alt: t.meta.title,
@@ -156,7 +156,7 @@ export function generateMetadata(
       card: 'summary_large_image',
       title: meta.title,
       description: meta.description,
-      images: [`${baseUrl}/images/activites/couchesoleil.webp`],
+      images: [`${baseUrl}/og-default.jpg`],
     },
     robots: {
       index: true,
@@ -207,7 +207,7 @@ const toursData: Record<Locale, Array<{ name: string; description: string; price
 export function generateStructuredData(
   page: MetaPage,
   locale: Locale,
-  baseUrl: string = 'https://palenque.co'
+  baseUrl: string = 'https://palenquerincondelmar.co'
 ) {
   const url = generateLocalizedUrl(
     page === 'home' ? '/' : `/${page}`,
@@ -246,7 +246,7 @@ export function generateStructuredData(
     '@context': 'https://schema.org',
     '@type': 'Hotel',
     name: 'Palenque Eco Hotel',
-    image: `${baseUrl}/images/hotel-exterior.jpg`,
+    image: `${baseUrl}/og-default.jpg`,
     url: `${baseUrl}${url}`,
     telephone: '+57-5-123-4567',
     address: {

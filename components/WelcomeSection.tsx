@@ -30,9 +30,9 @@ export default function WelcomeSection({ locale }: WelcomeSectionProps) {
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
   const highlights = [
-    { icon: MapPin, text: 'Palenque, Bolívar' },
-    { icon: Award, text: 'Eco Hotel Certificado' },
-    { icon: Heart, text: '100% Sostenible' },
+    { icon: MapPin, text: t.home.welcomeHighlights.location },
+    { icon: Award, text: t.home.welcomeHighlights.ecoHotel },
+    { icon: Heart, text: t.home.welcomeHighlights.sustainability },
   ];
 
   return (
@@ -59,7 +59,7 @@ export default function WelcomeSection({ locale }: WelcomeSectionProps) {
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-100 text-yellow-700 rounded-full text-sm font-medium mb-6 border border-yellow-200">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-100 text-[#5489a0] rounded-full text-sm font-medium mb-6 border border-yellow-200">
               <Award className="w-4 h-4" />
               {locale === 'es' ? 'Sobre Nosotros' : locale === 'en' ? 'About Us' : 'À Propos'}
             </span>
@@ -78,7 +78,7 @@ export default function WelcomeSection({ locale }: WelcomeSectionProps) {
                   key={item.text}
                   className="flex items-center gap-2 px-4 py-2.5 bg-white/80 backdrop-blur-sm rounded-full shadow-sm border border-yellow-100 hover:border-yellow-300 transition-colors"
                 >
-                  <item.icon className="w-4 h-4 text-yellow-500" />
+                  <item.icon className="w-4 h-4 text-[#5489a0]" />
                   <span className="text-sm font-medium text-stone-700">{item.text}</span>
                 </div>
               ))}

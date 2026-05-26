@@ -1,9 +1,9 @@
 export default function PreloadHeroAssets() {
   const images = [
     '/images/plage.webp',
-    '/images/plageSoleil.webp',
-    '/images/hamacDansEau.webp',
-    '/images/vueAerienne1.webp',
+    '/images/plageSoleil_opt.webp',
+    '/images/hamacDansEau_opt.webp',
+    '/images/vueAerienne1_opt.webp',
   ];
 
   return (

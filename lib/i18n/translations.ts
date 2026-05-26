@@ -23,6 +23,11 @@ export const translations = {
     home: {
       welcomeTitle: 'Bienvenido al Paraíso',
       welcomeDescription: 'Estamos ubicados en el sector La Punta sin duda, un sector privilegiado por estar entre el mar y la ciénaga con sus hermosos manglares, con unas extensas playas de arena blanca en la que encontrarás espacios solitarios para disfrutar del sol, el suave oleaje del mar y la deliciosa brisa.',
+      welcomeHighlights: {
+        location: 'Rincón del mar, Sucre, Colombia',
+        ecoHotel: 'Eco Hotel',
+        sustainability: 'Filosofía de sostenibilidad',
+      },
       features: {
         title: '¿Por qué elegirnos?',
         beach: {
@@ -115,7 +120,7 @@ export const translations = {
     footer: {
       title: 'Palenque Eco Hotel',
       address: 'Rincón del mar',
-      city: 'Rincón dle mar, Sucre, Colombia',
+      city: 'Rincón del mar, Sucre, Colombia',
       contact: 'Contacto',
       quickLinks: 'Enlaces rápidos',
       terms: 'Términos y condiciones',
@@ -152,6 +157,11 @@ export const translations = {
     home: {
       welcomeTitle: 'Welcome to Paradise',
       welcomeDescription: 'We are located in the La Punta area, undoubtedly a privileged area for being between the sea and the lagoon with its beautiful mangroves, with extensive white sand beaches where you will find solitary spaces to enjoy the sun, the gentle waves of the sea and the delicious breeze.',
+      welcomeHighlights: {
+        location: 'Rincón del mar, Sucre, Colombia',
+        ecoHotel: 'Eco Hotel',
+        sustainability: 'Sustainability philosophy',
+      },
       features: {
         title: 'Why Choose Us?',
         beach: {
@@ -281,6 +291,11 @@ export const translations = {
     home: {
       welcomeTitle: 'Bienvenue au Paradis',
       welcomeDescription: 'Nous sommes situés dans le secteur de La Punta, sans doute un secteur privilégié pour être entre la mer et la lagune avec ses magnifiques mangroves, avec de vastes plages de sable blanc où vous trouverez des espaces solitaires pour profiter du soleil, des douces vagues de la mer et de la délicieuse brise.',
+      welcomeHighlights: {
+        location: 'Rincón del mar, Sucre, Colombie',
+        ecoHotel: 'Éco-Hôtel',
+        sustainability: 'Philosophie de durabilité',
+      },
       features: {
         title: 'Pourquoi nous choisir ?',
         beach: {

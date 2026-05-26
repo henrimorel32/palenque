@@ -45,8 +45,8 @@ const content = {
           ],
           color: 'from-amber-400 to-orange-500',
           bestFor: 'Luna de miel o escapada romántica',
-          images: ['/images/apu/apu1.webp', '/images/apu/apu2.webp', '/images/apu/apu3.webp', '/images/apu/apu4.webp', '/images/apu/apu5.webp', '/images/apu/apu6.webp'],
-          thumbnail: '/images/apu/apu1.webp'
+          images: ['/images/apu/apu1_opt.webp', '/images/apu/apu2.webp', '/images/apu/apu3.webp', '/images/apu/apu4.webp', '/images/apu/apu5.webp', '/images/apu/apu6.webp'],
+          thumbnail: '/images/apu/apu1_opt.webp'
         },
         {
           id: 2,
@@ -62,8 +62,8 @@ const content = {
           ],
           color: 'from-blue-400 to-cyan-500',
           bestFor: 'Estancias prolongadas',
-          images: ['/images/usukulu/usukulu1.webp', '/images/usukulu/usukulu2.webp'],
-          thumbnail: '/images/usukulu/usukulu1.webp'
+          images: ['/images/usukulu/usukulu1_opt.webp', '/images/usukulu/usukulu2.webp'],
+          thumbnail: '/images/usukulu/usukulu1_opt.webp'
         },
         {
           id: 3,
@@ -78,7 +78,9 @@ const content = {
             { icon: Bath, label: 'Baño compartido' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Viajeros conscientes'
+          bestFor: 'Viajeros conscientes',
+          images: ['/images/lumbulu/lit1.webp', '/images/lumbulu/lit2.webp', '/images/lumbulu/porte.webp', '/images/lumbulu/sdb.webp'],
+          thumbnail: '/images/lumbulu/lit1.webp'
         },
         {
           id: 4,
@@ -162,8 +164,8 @@ const content = {
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Viajeros conscientes',
-          images: ['/images/kolaso/kolaso1.webp', '/images/kolaso/kolaso2.webp', '/images/kolaso/kolaso3.webp', '/images/kolaso/kolaso4.webp', '/images/kolaso/kolaso5.webp', '/images/kolaso/kolaso6.webp'],
-          thumbnail: '/images/kolaso/kolaso1.webp'
+          images: ['/images/kolaso/kolaso1_opt.webp', '/images/kolaso/kolaso2.webp', '/images/kolaso/kolaso3.webp', '/images/kolaso/kolaso4.webp', '/images/kolaso/kolaso5.webp', '/images/kolaso/kolaso6.webp'],
+          thumbnail: '/images/kolaso/kolaso1_opt.webp'
         },
         {
           id: 9,
@@ -179,8 +181,8 @@ const content = {
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Viajeros conscientes',
-          images: ['/images/abalenga/abalenga1.webp', '/images/abalenga/abalenga2.webp', '/images/abalenga/abalenga3.webp', '/images/abalenga/abalenga4.webp'],
-          thumbnail: '/images/abalenga/abalenga1.webp'
+          images: ['/images/abalenga/abalenga1_opt.webp', '/images/abalenga/abalenga2.webp', '/images/abalenga/abalenga3.webp', '/images/abalenga/abalenga4.webp'],
+          thumbnail: '/images/abalenga/abalenga1_opt.webp'
         },
         {
           id: 10,
@@ -230,8 +232,8 @@ const content = {
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Viajeros conscientes',
-          images: ['/images/makano/makano1.webp', '/images/makano/makano2.webp', '/images/makano/makano3.webp', '/images/makano/makano4.webp'],
-          thumbnail: '/images/makano/makano1.webp'
+          images: ['/images/makano/makano1_opt.webp', '/images/makano/makano2.webp', '/images/makano/makano3.webp', '/images/makano/makano4.webp'],
+          thumbnail: '/images/makano/makano1_opt.webp'
         },
         {
           id: 13,
@@ -310,8 +312,8 @@ const content = {
           ],
           color: 'from-amber-400 to-orange-500',
           bestFor: 'Honeymoon or romantic getaway',
-          images: ['/images/apu/apu1.webp', '/images/apu/apu2.webp', '/images/apu/apu3.webp', '/images/apu/apu4.webp', '/images/apu/apu5.webp', '/images/apu/apu6.webp'],
-          thumbnail: '/images/apu/apu1.webp'
+          images: ['/images/apu/apu1_opt.webp', '/images/apu/apu2.webp', '/images/apu/apu3.webp', '/images/apu/apu4.webp', '/images/apu/apu5.webp', '/images/apu/apu6.webp'],
+          thumbnail: '/images/apu/apu1_opt.webp'
         },
         {
           id: 2,
@@ -327,8 +329,8 @@ const content = {
           ],
           color: 'from-blue-400 to-cyan-500',
           bestFor: 'Extended stays',
-          images: ['/images/usukulu/usukulu1.webp', '/images/usukulu/usukulu2.webp'],
-          thumbnail: '/images/usukulu/usukulu1.webp'
+          images: ['/images/usukulu/usukulu1_opt.webp', '/images/usukulu/usukulu2.webp'],
+          thumbnail: '/images/usukulu/usukulu1_opt.webp'
         },
         {
           id: 3,
@@ -343,7 +345,9 @@ const content = {
             { icon: Bath, label: 'Shared bathroom' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Conscious travelers'
+          bestFor: 'Conscious travelers',
+          images: ['/images/lumbulu/lit1.webp', '/images/lumbulu/lit2.webp', '/images/lumbulu/porte.webp', '/images/lumbulu/sdb.webp'],
+          thumbnail: '/images/lumbulu/lit1.webp'
         },
         {
           id: 4,
@@ -427,8 +431,8 @@ const content = {
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Conscious travelers',
-          images: ['/images/kolaso/kolaso1.webp', '/images/kolaso/kolaso2.webp', '/images/kolaso/kolaso3.webp', '/images/kolaso/kolaso4.webp', '/images/kolaso/kolaso5.webp', '/images/kolaso/kolaso6.webp'],
-          thumbnail: '/images/kolaso/kolaso1.webp'
+          images: ['/images/kolaso/kolaso1_opt.webp', '/images/kolaso/kolaso2.webp', '/images/kolaso/kolaso3.webp', '/images/kolaso/kolaso4.webp', '/images/kolaso/kolaso5.webp', '/images/kolaso/kolaso6.webp'],
+          thumbnail: '/images/kolaso/kolaso1_opt.webp'
         },
         {
           id: 9,
@@ -444,8 +448,8 @@ const content = {
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Conscious travelers',
-          images: ['/images/abalenga/abalenga1.webp', '/images/abalenga/abalenga2.webp', '/images/abalenga/abalenga3.webp', '/images/abalenga/abalenga4.webp'],
-          thumbnail: '/images/abalenga/abalenga1.webp'
+          images: ['/images/abalenga/abalenga1_opt.webp', '/images/abalenga/abalenga2.webp', '/images/abalenga/abalenga3.webp', '/images/abalenga/abalenga4.webp'],
+          thumbnail: '/images/abalenga/abalenga1_opt.webp'
         },
         {
           id: 10,
@@ -495,8 +499,8 @@ const content = {
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Conscious travelers',
-          images: ['/images/makano/makano1.webp', '/images/makano/makano2.webp', '/images/makano/makano3.webp', '/images/makano/makano4.webp'],
-          thumbnail: '/images/makano/makano1.webp'
+          images: ['/images/makano/makano1_opt.webp', '/images/makano/makano2.webp', '/images/makano/makano3.webp', '/images/makano/makano4.webp'],
+          thumbnail: '/images/makano/makano1_opt.webp'
         },
         {
           id: 13,
@@ -544,9 +548,9 @@ const content = {
         cta: 'See Babor rooms'
       },
       sectionEstribor: {
-        title: 'Estribor',
+        title: 'Starboard',
         subtitle: 'For those seeking deep rest and reconnection',
-        cta: 'See Estribor rooms'
+        cta: 'See Starboard rooms'
       }
     },
     fr: {
@@ -575,8 +579,8 @@ const content = {
           ],
           color: 'from-amber-400 to-orange-500',
           bestFor: 'Lune de miel ou escapade romantique',
-          images: ['/images/apu/apu1.webp', '/images/apu/apu2.webp', '/images/apu/apu3.webp', '/images/apu/apu4.webp', '/images/apu/apu5.webp', '/images/apu/apu6.webp'],
-          thumbnail: '/images/apu/apu1.webp'
+          images: ['/images/apu/apu1_opt.webp', '/images/apu/apu2.webp', '/images/apu/apu3.webp', '/images/apu/apu4.webp', '/images/apu/apu5.webp', '/images/apu/apu6.webp'],
+          thumbnail: '/images/apu/apu1_opt.webp'
         },
         {
           id: 2,
@@ -592,8 +596,8 @@ const content = {
           ],
           color: 'from-blue-400 to-cyan-500',
           bestFor: 'Séjours prolongés',
-          images: ['/images/usukulu/usukulu1.webp', '/images/usukulu/usukulu2.webp'],
-          thumbnail: '/images/usukulu/usukulu1.webp'
+          images: ['/images/usukulu/usukulu1_opt.webp', '/images/usukulu/usukulu2.webp'],
+          thumbnail: '/images/usukulu/usukulu1_opt.webp'
         },
         {
           id: 3,
@@ -608,7 +612,9 @@ const content = {
             { icon: Bath, label: 'Salle de bain partagée' }
           ],
           color: 'from-green-400 to-emerald-500',
-          bestFor: 'Voyageurs conscients'
+          bestFor: 'Voyageurs conscients',
+          images: ['/images/lumbulu/lit1.webp', '/images/lumbulu/lit2.webp', '/images/lumbulu/porte.webp', '/images/lumbulu/sdb.webp'],
+          thumbnail: '/images/lumbulu/lit1.webp'
         },
         {
           id: 4,
@@ -692,8 +698,8 @@ const content = {
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Voyageurs conscients',
-          images: ['/images/kolaso/kolaso1.webp', '/images/kolaso/kolaso2.webp', '/images/kolaso/kolaso3.webp', '/images/kolaso/kolaso4.webp', '/images/kolaso/kolaso5.webp', '/images/kolaso/kolaso6.webp'],
-          thumbnail: '/images/kolaso/kolaso1.webp'
+          images: ['/images/kolaso/kolaso1_opt.webp', '/images/kolaso/kolaso2.webp', '/images/kolaso/kolaso3.webp', '/images/kolaso/kolaso4.webp', '/images/kolaso/kolaso5.webp', '/images/kolaso/kolaso6.webp'],
+          thumbnail: '/images/kolaso/kolaso1_opt.webp'
         },
         {
           id: 9,
@@ -709,8 +715,8 @@ const content = {
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Voyageurs conscients',
-          images: ['/images/abalenga/abalenga1.webp', '/images/abalenga/abalenga2.webp', '/images/abalenga/abalenga3.webp', '/images/abalenga/abalenga4.webp'],
-          thumbnail: '/images/abalenga/abalenga1.webp'
+          images: ['/images/abalenga/abalenga1_opt.webp', '/images/abalenga/abalenga2.webp', '/images/abalenga/abalenga3.webp', '/images/abalenga/abalenga4.webp'],
+          thumbnail: '/images/abalenga/abalenga1_opt.webp'
         },
         {
           id: 10,
@@ -760,8 +766,8 @@ const content = {
           ],
           color: 'from-green-400 to-emerald-500',
           bestFor: 'Voyageurs conscients',
-          images: ['/images/makano/makano1.webp', '/images/makano/makano2.webp', '/images/makano/makano3.webp', '/images/makano/makano4.webp'],
-          thumbnail: '/images/makano/makano1.webp'
+          images: ['/images/makano/makano1_opt.webp', '/images/makano/makano2.webp', '/images/makano/makano3.webp', '/images/makano/makano4.webp'],
+          thumbnail: '/images/makano/makano1_opt.webp'
         },
         {
           id: 13,
@@ -809,9 +815,9 @@ const content = {
         cta: 'Voir les chambres Babor'
       },
       sectionEstribor: {
-        title: 'Estribor',
+        title: 'Tribord',
         subtitle: 'Pour qui cherche le repos profond et la reconnexion',
-        cta: 'Voir les chambres Estribor'
+        cta: 'Voir les chambres Tribord'
       }
     }
   };
@@ -1004,7 +1010,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             </div>
 
             {/* Vidéo - moitié droite */}
-            <div className="relative w-full aspect-video md:aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl order-1 md:order-2">
+            <div className="relative w-full aspect-video md:aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl order-1 md:order-2 z-0">
               {/* Desktop video */}
               <div className="hidden md:block absolute inset-0">
                 <VideoLoader 
@@ -1043,7 +1049,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
               {/* Mobile fallback image */}
               <div className="block md:hidden absolute inset-0">
                 <Image
-                  src="/images/hamacDansEau.webp"
+                  src="/images/hamacDansEau_opt.webp"
                   alt="Palenque"
                   fill
                   sizes="100vw"
@@ -1192,7 +1198,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             </div>
             {room.thumbnail ? (
               <div className="flex-1 relative">
-                <Image src={room.thumbnail} alt={room.name} fill className="object-cover" sizes="200px" />
+                <Image src={room.thumbnail} alt={room.name} fill className="object-cover" sizes="200px" unoptimized />
               </div>
             ) : (
               <div className={`flex-1 bg-gradient-to-br ${room.color} flex items-center justify-center`}>
@@ -1227,7 +1233,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             </div>
             {room.thumbnail ? (
               <div className="flex-1 relative">
-                <Image src={room.thumbnail} alt={room.name} fill className="object-cover" sizes="200px" />
+                <Image src={room.thumbnail} alt={room.name} fill className="object-cover" sizes="200px" unoptimized />
               </div>
             ) : (
               <div className={`flex-1 bg-gradient-to-br ${room.color} flex items-center justify-center`}>
@@ -1308,7 +1314,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                 } border border-white/60 p-8 lg:p-16`}
               >
                 <span className="absolute top-8 right-8 text-8xl lg:text-9xl font-bold text-stone-200/40 select-none pointer-events-none">
-                  {String(room.id).padStart(2, '0')}
+                  {String(index + 1).padStart(2, '0')}
                 </span>
 
                 <div className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
@@ -1333,7 +1339,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.2 }}
-                      className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-6 border border-stone-100"
+                      className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-6 border border-stone-100 z-20"
                     >
                       <p className="text-sm font-medium text-stone-900">{room.price}</p>
                       <p className="text-stone-500 text-sm">{room.period}</p>
@@ -1341,12 +1347,12 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                   </div>
 
                   <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                    <p className="text-yellow-600 font-medium mb-2">{room.tagline}</p>
+                    <p className="text-[#5489a0] font-medium mb-2">{room.tagline}</p>
                     <h3 className="text-4xl font-bold text-stone-900 mb-4">{room.name}</h3>
                     <p className="text-stone-600 text-lg mb-6 leading-relaxed">{room.description}</p>
                     
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 rounded-full text-sm text-stone-600 mb-8 border border-stone-100">
-                      <Heart className="w-4 h-4 text-yellow-500" />
+                      <Heart className="w-4 h-4 text-[#5489a0]" />
                       {room.bestFor}
                     </div>
 
@@ -1431,7 +1437,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                 } border border-white/60 p-8 lg:p-16`}
               >
                 <span className="absolute top-8 right-8 text-8xl lg:text-9xl font-bold text-stone-200/40 select-none pointer-events-none">
-                  {String(room.id).padStart(2, '0')}
+                  {String(index + 1).padStart(2, '0')}
                 </span>
 
                 <div className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
@@ -1464,12 +1470,12 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                   </div>
 
                   <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                    <p className="text-yellow-600 font-medium mb-2">{room.tagline}</p>
+                    <p className="text-[#5489a0] font-medium mb-2">{room.tagline}</p>
                     <h3 className="text-4xl font-bold text-stone-900 mb-4">{room.name}</h3>
                     <p className="text-stone-600 text-lg mb-6 leading-relaxed">{room.description}</p>
                     
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 rounded-full text-sm text-stone-600 mb-8 border border-stone-100">
-                      <Heart className="w-4 h-4 text-yellow-500" />
+                      <Heart className="w-4 h-4 text-[#5489a0]" />
                       {room.bestFor}
                     </div>
 
@@ -1528,7 +1534,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                 className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-yellow-400/30 transition-colors"
               >
                 <div className="w-12 h-12 bg-yellow-400/20 rounded-xl flex items-center justify-center mb-4">
-                  <item.icon className="w-6 h-6 text-yellow-400" />
+                  <item.icon className="w-6 h-6 text-[#5489a0]" />
                 </div>
                 <h4 className="font-bold text-lg mb-2">{item.title}</h4>
                 <p className="text-stone-400 text-sm">{item.desc}</p>
@@ -1546,7 +1552,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <Star className="w-12 h-12 text-yellow-400 mx-auto mb-8" />
+            <Star className="w-12 h-12 text-[#5489a0] mx-auto mb-8" />
             <h3 className="text-3xl font-bold text-stone-900 mb-8">{c.sleep.title}</h3>
             <blockquote className="text-xl md:text-2xl text-stone-600 italic leading-relaxed mb-6">
               &ldquo;{c.sleep.quote}&rdquo;

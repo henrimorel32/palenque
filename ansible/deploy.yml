@@ -63,6 +63,35 @@
       debug:
         msg: "Mode de déploiement : {% if use_git | bool %}Git{% else %}Rsync (fichiers locaux){% endif %}"
 
+    - name: Synchroniser les fichiers locaux vers le serveur (mode non-Git)
+      synchronize:
+        src: "../../"
+        dest: "{{ source_dir }}/"
+        delete: yes
+        checksum: yes
+        rsync_opts:
+          - "--exclude=node_modules"
+          - "--exclude=.next"
+          - "--exclude=.git"
+          - "--exclude=*.log"
+          - "--exclude=.env.local"
+          - "--exclude=.env.development"
+      when: not (use_git | bool)
+      delegate_to: localhost
+
+    - name: Avertissement si images modifiées non commitées (mode Git)
+      shell: |
+        cd {{ source_dir }} && git diff --name-only public/images/ 2>/dev/null | wc -l
+      register: modified_images
+      changed_when: false
+      ignore_errors: yes
+      when: use_git | bool
+
+    - name: Afficher l'avertissement images
+      debug:
+        msg: "⚠️  ATTENTION : {{ modified_images.stdout | trim }} image(s) modifiée(s) dans public/images/ mais non commitée(s). Faites 'git add public/images/ && git commit -m \"update images\" && git push' avant de déployer."
+      when: use_git | bool and (modified_images.stdout | trim | int) > 0
+
     - name: Sauvegarder la base de données avant déploiement
       shell: |
         cd {{ deploy_dir }} && \

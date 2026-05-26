@@ -445,10 +445,10 @@ export default function ActivitiesContent({ locale }: ActivitiesPageProps) {
         return {
           bg: 'bg-stone-900',
           border: 'border-white/10',
-          accent: 'text-yellow-400',
+          accent: 'text-[#5489a0]',
           accentBg: 'bg-yellow-500',
-          badge: 'bg-yellow-400/20 text-yellow-400',
-          price: 'text-yellow-400',
+          badge: 'bg-yellow-400/20 text-[#5489a0]',
+          price: 'text-[#5489a0]',
           icon: Star,
         };
     }
@@ -507,7 +507,7 @@ export default function ActivitiesContent({ locale }: ActivitiesPageProps) {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full text-yellow-400 text-sm font-medium mb-6 backdrop-blur-sm">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full text-[#5489a0] text-sm font-medium mb-6 backdrop-blur-sm">
               <Heart className="w-4 h-4 fill-yellow-400" />
               {c.badge}
             </span>
@@ -636,7 +636,7 @@ export default function ActivitiesContent({ locale }: ActivitiesPageProps) {
                 className="text-center"
               >
                 <div className="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center mx-auto mb-4">
-                  <item.icon className="w-8 h-8 text-yellow-500" />
+                  <item.icon className="w-8 h-8 text-[#5489a0]" />
                 </div>
                 <h4 className="font-bold text-stone-900 mb-2">{item.title}</h4>
                 <p className="text-stone-600 text-sm">{item.desc}</p>

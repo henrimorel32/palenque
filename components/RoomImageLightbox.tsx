@@ -148,7 +148,8 @@ export default function RoomImageLightbox({
               fill
               sizes="100vw"
               className={`object-contain transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
-              onLoadingComplete={() => setIsLoading(false)}
+              unoptimized
+              onLoad={() => setIsLoading(false)}
             />
           </motion.div>
         </motion.div>

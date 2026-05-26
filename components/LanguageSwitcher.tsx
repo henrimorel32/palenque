@@ -74,8 +74,8 @@ export default function LanguageSwitcher({ variant = 'navbar' }: LanguageSwitche
             onClick={() => switchLanguage(code as Locale)}
             className={`flex items-center gap-1.5 px-3 py-1.5 text-sm font-bold rounded-lg transition-all duration-200 border-2 ${
               currentLocale === code
-                ? 'bg-yellow-900 text-yellow-100 border-yellow-900 shadow-md'
-                : 'bg-transparent text-yellow-900 border-transparent hover:bg-yellow-500/50 hover:border-yellow-600'
+                ? 'bg-yellow-900 text-[#5489a0] border-yellow-900 shadow-md'
+                : 'bg-transparent text-[#5489a0] border-transparent hover:bg-yellow-500/50 hover:border-yellow-600'
             }`}
           >
             <span className="text-base">{flag}</span>
@@ -95,8 +95,8 @@ export default function LanguageSwitcher({ variant = 'navbar' }: LanguageSwitche
           onClick={() => switchLanguage(code as Locale)}
           className={`flex items-center gap-1 px-2 py-1 text-sm font-medium rounded transition-all duration-200 ${
             currentLocale === code
-              ? 'text-yellow-600 bg-yellow-100'
-              : 'text-gray-600 hover:text-yellow-600 hover:bg-gray-100'
+              ? 'text-[#5489a0] bg-yellow-100'
+              : 'text-gray-600 hover:text-[#5489a0] hover:bg-gray-100'
           }`}
         >
           <span>{flag}</span>

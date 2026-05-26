@@ -32,6 +32,12 @@ export default function RoomImageCarousel({
   const [current, setCurrent] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Ref pour accéder au current sans recréer les callbacks
+  const currentRef = useRef(current);
+  useEffect(() => {
+    currentRef.current = current;
+  }, [current]);
+
   // Stabilise onImageChange pour éviter les boucles infinies dans next/useEffect
   const onImageChangeRef = useRef(onImageChange);
   useEffect(() => {
@@ -39,19 +45,16 @@ export default function RoomImageCarousel({
   }, [onImageChange]);
 
   const next = useCallback(() => {
-    setCurrent((prev) => {
-      const nextIdx = (prev + 1) % images.length;
-      onImageChangeRef.current?.(nextIdx);
-      return nextIdx;
-    });
+    const nextIdx = (currentRef.current + 1) % images.length;
+    setCurrent(nextIdx);
+    onImageChangeRef.current?.(nextIdx);
   }, [images.length]);
 
   useEffect(() => {
     if (images.length <= 1) return;
     const timer = setInterval(next, interval);
     return () => clearInterval(timer);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [interval, images.length]);
+  }, [interval, images.length, next]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -78,7 +81,7 @@ export default function RoomImageCarousel({
       {isLoading && (
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-stone-800 z-10">
           <div className="w-12 h-12 rounded-full bg-stone-700 flex items-center justify-center mb-3 animate-pulse">
-            <Camera className="w-6 h-6 text-yellow-400" />
+            <Camera className="w-6 h-6 text-[#5489a0]" />
           </div>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
@@ -103,7 +106,8 @@ export default function RoomImageCarousel({
             className={`object-cover transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
             sizes="(max-width: 1024px) 100vw, 50vw"
             priority={current === 0}
-            onLoadingComplete={() => setIsLoading(false)}
+            unoptimized
+            onLoad={() => setIsLoading(false)}
           />
         </motion.div>
       </AnimatePresence>

@@ -14,9 +14,9 @@ interface HeroParallaxProps {
 
 const images = [
   { url: '/images/plage.webp', alt: 'Plage paradisiaque' },
-  { url: '/images/plageSoleil.webp', alt: 'Coucher de soleil océan' },
-  { url: '/images/hamacDansEau.webp', alt: 'Bungalow sur l\'eau' },
-  { url: '/images/vueAerienne1.webp', alt: 'Vue aérienne de la propriété' },
+  { url: '/images/plageSoleil_opt.webp', alt: 'Coucher de soleil océan' },
+  { url: '/images/hamacDansEau_opt.webp', alt: 'Bungalow sur l\'eau' },
+  { url: '/images/vueAerienne1_opt.webp', alt: 'Vue aérienne de la propriété' },
 ];
 
 export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) {
@@ -167,7 +167,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
     es: {
       badge: 'Palenque Eco Hotel',
       line1: 'Tu nueva historia comienza aquí',
-      line2Highlight: 'En Palenque - Rincón del Mar, frente al mar Colombiano.',
+      line2Highlight: 'En Palenque - Rincón del Mar, frente al mar Caribe.',
       subtitle: '',
       cta: 'Ver habitaciones',
       scroll: 'Scroll'
@@ -336,7 +336,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
                 className="group relative flex items-center justify-center w-8 h-8"
               >
                 <span className={`text-xs font-medium transition-all duration-300 ${
-                  currentImage === index ? 'text-yellow-400 scale-125' : 'text-white/50 group-hover:text-white/80'
+                  currentImage === index ? 'text-[#5489a0] scale-125' : 'text-white/50 group-hover:text-white/80'
                 }`}>
                   {String(index + 1).padStart(2, '0')}
                 </span>
@@ -373,7 +373,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-snug">
                 {c.line1}
                 <br />
-                <span className="text-yellow-300">
+                <span className="text-[#5489a0]">
                   {c.line2Highlight}
                 </span>
               </h1>
@@ -406,7 +406,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
           {/* Compteur */}
           {showImages && (
           <div className="absolute bottom-8 left-8 flex items-center gap-2 text-white/70 font-mono text-sm">
-            <span className="text-yellow-400 font-bold text-xl">
+            <span className="text-[#5489a0] font-bold text-xl">
               {String(currentImage + 1).padStart(2, '0')}
             </span>
             <span className="text-white/30">/</span>
@@ -426,7 +426,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
             transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <span className="text-yellow-600 font-semibold tracking-widest uppercase text-sm mb-4 block">
+            <span className="text-[#5489a0] font-semibold tracking-widest uppercase text-sm mb-4 block">
               {locale === 'es' ? 'Bienvenido' : locale === 'en' ? 'Welcome' : 'Bienvenue'}
             </span>
             <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">

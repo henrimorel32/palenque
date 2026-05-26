@@ -43,33 +43,6 @@ interface VideoHeroProps {
 }
 
 function VideoHero({ locale }: VideoHeroProps) {
-  const [videoLoaded, setVideoLoaded] = useState(false);
-  const [videoError, setVideoError] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Safari/iOS sometimes needs explicit play trigger
-    const playVideo = () => {
-      video.play().catch(() => {
-        // Autoplay blocked or error
-      });
-    };
-
-    if (video.readyState >= 3) {
-      setVideoLoaded(true);
-      playVideo();
-    }
-  }, []);
-
-  const loaderText = {
-    es: 'Cargando experiencia...',
-    en: 'Loading experience...',
-    fr: 'Chargement de l\'expérience...',
-  };
-
   const c = {
     es: {
       badge: 'Palenque Eco Hotel',
@@ -93,59 +66,32 @@ function VideoHero({ locale }: VideoHeroProps) {
 
   return (
     <div className="absolute inset-0 z-0">
-      {/* Video background - outputHero.mp4 full-bleed */}
-      {!videoError && (
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          onLoadedData={() => setVideoLoaded(true)}
-          onCanPlay={() => setVideoLoaded(true)}
-          onError={() => setVideoError(true)}
-          className={`absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover transition-opacity duration-1000 ${
-            videoLoaded ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <source src="/videos/restaurant/hero-output3.mp4" type="video/mp4" />
-        </video>
-      )}
+      {/* Image background */}
+      <Image
+        src="/images/Hero-Restaurant/bar.webp"
+        alt="Restaurant Palenque"
+        fill
+        className="object-cover"
+        sizes="100vw"
+        priority
+        unoptimized
+      />
 
-      {/* Fallback gradient when video fails */}
-      {videoError && (
-        <div className="absolute inset-0 bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900" />
-      )}
-
-      {/* Dark overlay for text readability - allégé pour laisser briller la vidéo */}
-      <div className="absolute inset-0 bg-gradient-to-br from-stone-900/40 via-stone-800/25 to-stone-900/40" />
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-stone-900/30 via-stone-900/40 to-stone-900/70" />
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent" />
       <div className="absolute top-1/4 left-0 w-px h-48 bg-gradient-to-b from-yellow-400/50 to-transparent" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-yellow-400/5 rounded-full blur-3xl" />
 
-      {/* Loader - même style que le loader de la homepage / DishImage */}
-      {!videoLoaded && !videoError && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-stone-900 z-30">
-          <div className="w-16 h-16 rounded-full bg-stone-800 flex items-center justify-center mb-4 animate-pulse">
-            <UtensilsCrossed className="w-8 h-8 text-yellow-400" />
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-stone-400">{loaderText[locale]}</span>
-          </div>
-        </div>
-      )}
-
       {/* Hero content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 min-h-screen flex items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[160px] pb-20 min-h-[70vh] flex items-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center max-w-3xl mx-auto"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full text-yellow-400 text-sm font-medium mb-6">
+          <span className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full text-[#5489a0] text-sm font-medium mb-6">
             <UtensilsCrossed className="w-4 h-4" />
             {c.badge}
           </span>
@@ -446,7 +392,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-screen bg-stone-900 overflow-hidden">
+      <section className="relative min-h-[70vh] bg-stone-900 overflow-hidden">
         {/* Video background */}
         <VideoHero locale={locale} />
 
@@ -522,7 +468,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
                 className="bg-white rounded-3xl p-8 border border-stone-100 shadow-sm hover:shadow-xl transition-shadow text-center"
               >
                 <div className="w-20 h-20 bg-gradient-to-br from-stone-900 to-stone-700 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <item.icon className="w-10 h-10 text-yellow-400" />
+                  <item.icon className="w-10 h-10 text-[#5489a0]" />
                 </div>
                 <h3 className="text-xl font-bold text-stone-900 mb-3">{item.title}</h3>
                 <p className="text-stone-600 leading-relaxed">{item.desc}</p>
@@ -563,7 +509,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
               </div>
               <div className="bg-gradient-to-br from-stone-700 to-stone-800 p-10 md:p-12 flex flex-col justify-center">
                 <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
-                  <CalendarCheck className="w-10 h-10 text-yellow-400 mb-4" />
+                  <CalendarCheck className="w-10 h-10 text-[#5489a0] mb-4" />
                   <p className="text-white text-lg font-medium mb-2">{c.hours.note}</p>
                   <p className="text-stone-400 text-sm">
                     {locale === 'es' ? 'También ofrecemos menús vegetarianos y veganos bajo solicitud.' :
@@ -592,7 +538,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
                 className="text-center"
               >
                 <div className="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center mx-auto mb-4">
-                  <item.icon className="w-8 h-8 text-yellow-500" />
+                  <item.icon className="w-8 h-8 text-[#5489a0]" />
                 </div>
                 <h4 className="font-bold text-stone-900 mb-2">{item.title}</h4>
                 <p className="text-stone-600 text-sm">{item.desc}</p>
@@ -636,7 +582,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
                   />
                 </div>
                 <div className="p-8">
-                  <Quote className="w-8 h-8 text-yellow-400 mb-3" />
+                  <Quote className="w-8 h-8 text-[#5489a0] mb-3" />
                   <p className="text-stone-700 italic text-lg leading-relaxed mb-6">
                     &ldquo;{item.quote}&rdquo;
                   </p>

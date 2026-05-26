@@ -13,6 +13,32 @@ export const metadata = {
     default: 'Palenque Eco Hotel - Paraíso en la Costa Caribe',
   },
   description: 'Descubre la magia de Palenque en nuestro Eco Hotel. Playas de arena blanca, aguas cristalinas y el mejor servicio.',
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+  openGraph: {
+    title: 'Palenque Eco Hotel - Paraíso en la Costa Caribe',
+    description: 'Descubre la magia de Palenque en nuestro Eco Hotel. Playas de arena blanca, aguas cristalinas y el mejor servicio.',
+    url: 'https://palenquerincondelmar.co',
+    siteName: 'Palenque Eco Hotel',
+    locale: 'es_CO',
+    type: 'website',
+    images: [
+      {
+        url: 'https://palenquerincondelmar.co/og-default.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Palenque Eco Hotel',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Palenque Eco Hotel - Paraíso en la Costa Caribe',
+    description: 'Descubre la magia de Palenque en nuestro Eco Hotel. Playas de arena blanca, aguas cristalinas y el mejor servicio.',
+    images: ['https://palenquerincondelmar.co/og-default.jpg'],
+  },
 }
 
 export default function RootLayout({

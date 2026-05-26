@@ -20,62 +20,62 @@ interface GallerySectionProps {
 
 const galleryImages = [
   {
-    src: '/images/apu/apu1.webp',
+    src: '/images/apu/apu1_opt.webp',
     alt: 'Cabaña APU',
     span: 'col-span-2 row-span-2',
   },
   {
-    src: '/images/plageChaises.webp',
+    src: '/images/plageChaises_opt.webp',
     alt: 'Plage',
     span: 'col-span-2 row-span-1',
   },
   {
-    src: '/images/paraiso/paraisso3.webp',
+    src: '/images/paraiso/paraisso3_opt.webp',
     alt: 'Paraíso',
     span: 'col-span-1 row-span-2',
   },
   {
-    src: '/images/usukulu/usukulu1.webp',
+    src: '/images/usukulu/usukulu1_opt.webp',
     alt: 'Usukulu',
     span: 'col-span-1 row-span-1',
   },
   {
-    src: '/images/cocktail.webp',
+    src: '/images/cocktail_opt.webp',
     alt: 'Cocktail',
     span: 'col-span-1 row-span-1',
   },
   {
-    src: '/images/vueAerienne1.webp',
+    src: '/images/vueAerienne1_opt.webp',
     alt: 'Vue aérienne',
     span: 'col-span-2 row-span-2',
   },
   {
-    src: '/images/kolaso/kolaso1.webp',
+    src: '/images/kolaso/kolaso1_opt.webp',
     alt: 'Kolaso',
     span: 'col-span-1 row-span-1',
   },
   {
-    src: '/images/hamacDansEau.webp',
+    src: '/images/hamacDansEau_opt.webp',
     alt: 'Hamac',
     span: 'col-span-1 row-span-1',
   },
   {
-    src: '/images/comida.webp',
+    src: '/images/comida_opt.webp',
     alt: 'Gastronomía',
     span: 'col-span-1 row-span-1',
   },
   {
-    src: '/images/makano/makano1.webp',
+    src: '/images/makano/makano1_opt.webp',
     alt: 'Makano',
     span: 'col-span-1 row-span-2',
   },
   {
-    src: '/images/plageSoleil.webp',
+    src: '/images/plageSoleil_opt.webp',
     alt: 'Plage au soleil',
     span: 'col-span-1 row-span-1',
   },
   {
-    src: '/images/abalenga/abalenga1.webp',
+    src: '/images/abalenga/abalenga1_opt.webp',
     alt: 'Abalenga',
     span: 'col-span-2 row-span-1',
   },
@@ -152,6 +152,8 @@ export default function GallerySection({ locale }: GallerySectionProps) {
                 fill
                 sizes={item.span.includes('col-span-2') ? '(max-width: 768px) 100vw, 50vw' : '(max-width: 768px) 50vw, 25vw'}
                 className="object-cover group-hover:scale-110 transition-transform duration-700"
+                unoptimized
+                priority={index < 4}
               />
 
               {/* Overlay */}
@@ -241,6 +243,7 @@ export default function GallerySection({ locale }: GallerySectionProps) {
                 fill
                 sizes="100vw"
                 className="object-contain"
+                unoptimized
               />
             </motion.div>
           </motion.div>
