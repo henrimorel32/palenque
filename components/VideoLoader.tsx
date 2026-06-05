@@ -27,20 +27,20 @@ export default function VideoLoader({ isLoading, locale, progress }: VideoLoader
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: 'easeInOut' }}
-          className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-stone-950/95 backdrop-blur-md"
+          className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-palenque-night/95 backdrop-blur-md"
         >
           {/* Spinner animation */}
           <div className="relative w-24 h-24 mb-8">
             <motion.div
-              className="absolute inset-0 rounded-full border-4 border-yellow-400/20"
+              className="absolute inset-0 rounded-full border-4 border-palenque-sand/20"
             />
             <motion.div
-              className="absolute inset-0 rounded-full border-4 border-transparent border-t-yellow-400"
+              className="absolute inset-0 rounded-full border-4 border-transparent border-t-palenque-sand"
               animate={{ rotate: 360 }}
               transition={{ repeat: Infinity, duration: 1.2, ease: 'linear' }}
             />
             <motion.div
-              className="absolute inset-2 rounded-full border-4 border-transparent border-b-yellow-300"
+              className="absolute inset-2 rounded-full border-4 border-transparent border-b-palenque-turquoise"
               animate={{ rotate: -360 }}
               transition={{ repeat: Infinity, duration: 1.8, ease: 'linear' }}
             />
@@ -49,12 +49,12 @@ export default function VideoLoader({ isLoading, locale, progress }: VideoLoader
               animate={{ scale: [1, 1.1, 1], opacity: [0.8, 1, 0.8] }}
               transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
             >
-              <div className="w-3 h-3 bg-yellow-400 rounded-full" />
+              <div className="w-3 h-3 bg-palenque-sand rounded-full" />
             </motion.div>
           </div>
 
           <motion.h3
-            className="text-white text-xl font-semibold mb-2 tracking-wide"
+            className="text-white text-xl font-semibold mb-2 font-display"
             animate={{ opacity: [0.7, 1, 0.7] }}
             transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
           >
@@ -66,7 +66,7 @@ export default function VideoLoader({ isLoading, locale, progress }: VideoLoader
           <div className="w-64 max-w-[80vw] mb-2">
             <div className="h-1.5 bg-stone-800 rounded-full overflow-hidden">
               <motion.div
-                className="h-full bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full"
+                className="h-full bg-gradient-to-r from-palenque-sand to-palenque-warm-sand rounded-full"
                 initial={{ width: 0 }}
                 animate={{ width: `${displayProgress}%` }}
                 transition={{ duration: 0.3, ease: 'easeOut' }}
@@ -83,7 +83,7 @@ export default function VideoLoader({ isLoading, locale, progress }: VideoLoader
             {[0, 1, 2].map((i) => (
               <motion.div
                 key={i}
-                className="w-2 h-2 bg-yellow-400 rounded-full"
+                className="w-2 h-2 bg-palenque-sand rounded-full"
                 animate={{ y: [0, -8, 0], opacity: [0.4, 1, 0.4] }}
                 transition={{ repeat: Infinity, duration: 1, delay: i * 0.2, ease: 'easeInOut' }}
               />

@@ -188,7 +188,7 @@ export default function GallerySection({ locale }: GallerySectionProps) {
             {/* Close */}
             <button
               onClick={closeLightbox}
-              className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+              className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/10 hover:bg-palenque-sand/30 transition-colors text-white"
               aria-label="Cerrar"
             >
               <X className="w-6 h-6" />
@@ -206,7 +206,7 @@ export default function GallerySection({ locale }: GallerySectionProps) {
                   e.stopPropagation();
                   goPrev();
                 }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-palenque-sand/30 transition-colors text-white"
                 aria-label="Anterior"
               >
                 <ChevronLeft className="w-6 h-6" />
@@ -220,7 +220,7 @@ export default function GallerySection({ locale }: GallerySectionProps) {
                   e.stopPropagation();
                   goNext();
                 }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-palenque-sand/30 transition-colors text-white"
                 aria-label="Siguiente"
               >
                 <ChevronRight className="w-6 h-6" />

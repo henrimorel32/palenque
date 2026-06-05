@@ -138,10 +138,10 @@ export default function RoomImageCarousel({
                 setCurrent(idx);
                 onImageChangeRef.current?.(idx);
               }}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              className={`h-2 rounded-full transition-all duration-300 ${
                 idx === current
-                  ? 'bg-white w-4'
-                  : 'bg-white/60 hover:bg-white/80'
+                  ? 'bg-gradient-to-r from-palenque-sand to-palenque-warm-sand w-4'
+                  : 'bg-white/60 hover:bg-palenque-sand/80 w-2'
               }`}
               aria-label={`Voir photo ${idx + 1}`}
             />

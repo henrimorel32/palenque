@@ -125,7 +125,7 @@ export default function ApuRoomPage({ locale }: ApuRoomPageProps) {
         <div className="absolute top-6 left-6 z-20">
           <a
             href={backHref}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md text-white rounded-full text-sm font-medium hover:bg-white/20 transition-colors border border-white/20"
+            className="btn-secondary text-sm px-4 py-2"
           >
             <ArrowLeft className="w-4 h-4" />
             {c.back}
@@ -186,7 +186,7 @@ export default function ApuRoomPage({ locale }: ApuRoomPageProps) {
                 href="https://wa.me/573105270542"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-stone-900 text-white rounded-full font-semibold hover:bg-stone-800 transition-colors shadow-lg shadow-stone-900/20"
+                className="btn-primary btn-primary-lg"
               >
                 {c.cta}
                 <ChevronRight className="w-4 h-4" />
@@ -221,7 +221,7 @@ export default function ApuRoomPage({ locale }: ApuRoomPageProps) {
                   href="https://wa.me/573105270542"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full text-center px-6 py-3.5 bg-stone-900 text-white rounded-full font-medium hover:bg-stone-800 transition-colors"
+                  className="btn-primary w-full"
                 >
                   {c.cta}
                 </a>

@@ -55,26 +55,26 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-gradient-to-b from-stone-900 via-stone-900 to-stone-950 text-stone-300">
+    <footer className="bg-gradient-to-b from-palenque-night via-stone-950 to-palenque-night text-palenque-sand-light/75">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Section avec bordure décorative */}
         <div className="relative pt-16 pb-12">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent rounded-full" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-transparent via-palenque-sand to-transparent rounded-full" />
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
             {/* Brand Column */}
             <div className="lg:col-span-1">
               <a href={generateLocalizedUrl('/', locale)} className="flex items-center gap-3 group mb-6">
-                <div className="p-2.5 rounded-xl bg-gradient-to-br from-yellow-400 to-yellow-500 shadow-lg shadow-yellow-400/20 group-hover:shadow-yellow-400/40 transition-shadow duration-300">
-                  <Waves className="w-7 h-7 text-stone-900" />
+                <div className="p-2.5 rounded-xl bg-gradient-to-br from-palenque-blue to-palenque-turquoise shadow-lg shadow-palenque-blue/20 group-hover:shadow-palenque-blue/35 transition-shadow duration-300">
+                  <Waves className="w-7 h-7 text-palenque-sand-light" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xl font-bold text-[#5489a0] tracking-tight">Palenque</span>
-                  <span className="text-xs uppercase tracking-[0.25em] text-[#5489a0] -mt-0.5">Eco Hotel</span>
+                  <span className="text-xl font-bold text-palenque-sand-light font-display">Palenque</span>
+                  <span className="text-xs uppercase text-palenque-sand -mt-0.5">Eco Hotel</span>
                 </div>
               </a>
-              <p className="text-stone-400 text-sm leading-relaxed mb-6">
+              <p className="text-palenque-sand-light/65 text-sm leading-relaxed mb-6">
                 {t.footer.about}
               </p>
               {/* Social Links */}
@@ -86,7 +86,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="p-2.5 rounded-lg bg-stone-800/50 text-stone-400 hover:text-[#5489a0] hover:bg-stone-800 transition-all duration-300"
+                    className="p-2.5 rounded-lg bg-white/5 text-palenque-sand-light/60 hover:text-palenque-sand-light hover:bg-palenque-blue/20 transition-all duration-300"
                   >
                     <social.icon className="w-5 h-5" />
                   </a>
@@ -97,7 +97,7 @@ export default function Footer() {
             {/* Quick Links */}
             <div>
               <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-5 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
+                <span className="w-1.5 h-1.5 rounded-full bg-palenque-sand" />
                 {t.footer.quickLinks}
               </h3>
               <ul className="space-y-3">
@@ -105,9 +105,9 @@ export default function Footer() {
                   <li key={link.name}>
                     <a
                       href={link.href}
-                      className="text-stone-400 hover:text-[#5489a0] text-sm transition-colors duration-200 flex items-center gap-2 group"
+                      className="text-palenque-sand-light/65 hover:text-palenque-sand text-sm transition-colors duration-200 flex items-center gap-2 group"
                     >
-                      <span className="w-0 group-hover:w-2 h-px bg-yellow-400 transition-all duration-200" />
+                      <span className="w-0 group-hover:w-2 h-px bg-palenque-sand transition-all duration-200" />
                       {link.name}
                     </a>
                   </li>
@@ -118,25 +118,25 @@ export default function Footer() {
             {/* Legal Links */}
             <div>
               <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-5 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
+                <span className="w-1.5 h-1.5 rounded-full bg-palenque-sand" />
                 Legal
               </h3>
               <ul className="space-y-3">
                 <li>
                   <a
                     href={generateLocalizedUrl('/terminos', locale)}
-                    className="text-stone-400 hover:text-[#5489a0] text-sm transition-colors duration-200 flex items-center gap-2 group"
+                    className="text-palenque-sand-light/65 hover:text-palenque-sand text-sm transition-colors duration-200 flex items-center gap-2 group"
                   >
-                    <span className="w-0 group-hover:w-2 h-px bg-yellow-400 transition-all duration-200" />
+                    <span className="w-0 group-hover:w-2 h-px bg-palenque-sand transition-all duration-200" />
                     {t.footer.terms}
                   </a>
                 </li>
                 <li>
                   <a
                     href={generateLocalizedUrl('/privacidad', locale)}
-                    className="text-stone-400 hover:text-[#5489a0] text-sm transition-colors duration-200 flex items-center gap-2 group"
+                    className="text-palenque-sand-light/65 hover:text-palenque-sand text-sm transition-colors duration-200 flex items-center gap-2 group"
                   >
-                    <span className="w-0 group-hover:w-2 h-px bg-yellow-400 transition-all duration-200" />
+                    <span className="w-0 group-hover:w-2 h-px bg-palenque-sand transition-all duration-200" />
                     {t.footer.privacy}
                   </a>
                 </li>
@@ -146,7 +146,7 @@ export default function Footer() {
             {/* Contact Info */}
             <div>
               <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-5 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
+                <span className="w-1.5 h-1.5 rounded-full bg-palenque-sand" />
                 {t.footer.contact}
               </h3>
               <ul className="space-y-4">
@@ -155,12 +155,12 @@ export default function Footer() {
                     href="https://maps.google.com/?q=9.773722,-75.645361"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-stone-400 hover:text-[#5489a0] text-sm transition-colors duration-200 flex items-start gap-3 group"
+                    className="text-palenque-sand-light/65 hover:text-palenque-sand text-sm transition-colors duration-200 flex items-start gap-3 group"
                   >
-                    <MapPin className="w-5 h-5 text-[#5489a0] shrink-0 mt-0.5" />
+                    <MapPin className="w-5 h-5 text-palenque-turquoise shrink-0 mt-0.5" />
                     <span>
                       {t.footer.address}<br />
-                      <span className="text-stone-500">{t.footer.city}</span>
+                      <span className="text-palenque-sand-light/45">{t.footer.city}</span>
                     </span>
                   </a>
                 </li>
@@ -169,18 +169,18 @@ export default function Footer() {
                     href="https://wa.me/573105270542"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-stone-400 hover:text-green-400 text-sm transition-colors duration-200 flex items-center gap-3 group"
+                    className="text-palenque-sand-light/65 hover:text-palenque-mangrove text-sm transition-colors duration-200 flex items-center gap-3 group"
                   >
-                    <MessageCircle className="w-5 h-5 text-green-400 shrink-0" />
+                    <MessageCircle className="w-5 h-5 text-palenque-mangrove shrink-0" />
                     WhatsApp +57 310 527 0542
                   </a>
                 </li>
                 <li>
                   <a
                     href="mailto:info@palenquerincondelmar.co"
-                    className="text-stone-400 hover:text-[#5489a0] text-sm transition-colors duration-200 flex items-center gap-3 group"
+                    className="text-palenque-sand-light/65 hover:text-palenque-sand text-sm transition-colors duration-200 flex items-center gap-3 group"
                   >
-                    <Mail className="w-5 h-5 text-[#5489a0] shrink-0" />
+                    <Mail className="w-5 h-5 text-palenque-turquoise shrink-0" />
                     info@palenquerincondelmar.co
                   </a>
                 </li>
@@ -190,28 +190,28 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-stone-800 py-6">
+        <div className="border-t border-palenque-sand/15 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             {/* Copyright */}
-            <p className="text-stone-500 text-xs">
+            <p className="text-palenque-sand-light/45 text-xs">
               © {currentYear} {t.footer.title}. {t.footer.rights}.
             </p>
             
             {/* Powered by - SEO Optimisé */}
             <div className="flex items-center gap-2">
-              <span className="text-stone-600 text-xs">{t.footer.poweredBy}</span>
+              <span className="text-palenque-sand-light/35 text-xs">{t.footer.poweredBy}</span>
               <a
                 href="https://henrimorel.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-stone-800/50 hover:bg-stone-800 transition-all duration-300"
+                className="group flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-palenque-sand to-palenque-warm-sand text-palenque-night hover:from-palenque-sand-light hover:to-palenque-sand transition-all duration-300"
                 aria-label={`${t.footer.webDeveloper} - ${t.footer.webDevDescription}`}
                 title={`${t.footer.webDeveloper} - ${t.footer.webDevDescription}`}
               >
-                <span className="text-[#5489a0] font-medium text-xs group-hover:text-[#5489a0] transition-colors">
+                <span className="font-medium text-xs">
                   henrimorel.com
                 </span>
-                <ExternalLink className="w-3 h-3 text-stone-500 group-hover:text-stone-400 transition-colors" />
+                <ExternalLink className="w-3 h-3" />
               </a>
             </div>
           </div>

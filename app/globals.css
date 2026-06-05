@@ -1,5 +1,33 @@
 @import "tailwindcss";
 
+@theme {
+  --color-palenque-blue: #5489a0;
+  --color-palenque-sand: #bcaa8e;
+  --color-palenque-sand-light: #e3d9c9;
+  --color-palenque-turquoise: #84b0aa;
+  --color-palenque-earth: #6e5128;
+  --color-palenque-night: #0a070a;
+  --color-palenque-sunset: #533576;
+  --color-palenque-coral: #ce6e5c;
+  --color-palenque-warm-sand: #e1a975;
+  --color-palenque-mangrove: #95b25c;
+  --font-sans: var(--font-body), "Proxima Nova", Arial, sans-serif;
+  --font-display: "Cunia", var(--font-body), "Proxima Nova", Arial, sans-serif;
+}
+
+:root {
+  --palenque-blue: #5489a0;
+  --palenque-sand: #bcaa8e;
+  --palenque-sand-light: #e3d9c9;
+  --palenque-turquoise: #84b0aa;
+  --palenque-earth: #6e5128;
+  --palenque-night: #0a070a;
+  --palenque-sunset: #533576;
+  --palenque-coral: #ce6e5c;
+  --palenque-warm-sand: #e1a975;
+  --palenque-mangrove: #95b25c;
+}
+
 /* Styles de base */
 html {
   scroll-behavior: smooth;
@@ -7,6 +35,17 @@ html {
 
 body {
   @apply antialiased;
+  background: var(--palenque-sand-light);
+  color: var(--palenque-night);
+  font-family: var(--font-body), "Proxima Nova", Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: "Cunia", var(--font-body), "Proxima Nova", Arial, sans-serif;
+  letter-spacing: 0;
 }
 
 /* Animations personnalisées */
@@ -21,6 +60,23 @@ body {
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+/* Boutons du thème Palenque */
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-palenque-sand to-palenque-warm-sand text-palenque-night rounded-full font-bold hover:from-palenque-sand-light hover:to-palenque-sand transition-all shadow-lg shadow-palenque-sand/25;
+}
+
+.btn-primary-lg {
+  @apply inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-palenque-sand to-palenque-warm-sand text-palenque-night rounded-full font-bold text-lg hover:from-palenque-sand-light hover:to-palenque-sand transition-all shadow-xl shadow-palenque-sand/25;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm text-white rounded-full font-semibold hover:bg-white/20 transition-all border border-palenque-sand/30;
+}
+
+.btn-icon {
+  @apply inline-flex items-center justify-center rounded-full bg-gradient-to-r from-palenque-sand to-palenque-warm-sand text-palenque-night hover:from-palenque-sand-light hover:to-palenque-sand transition-all shadow-lg;
 }
 
 /* Cacher scrollbar mais garder le scroll */

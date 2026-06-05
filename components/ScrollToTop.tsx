@@ -41,7 +41,7 @@ export default function ScrollToTop({ locale }: ScrollToTopProps) {
           transition={{ duration: 0.3, ease: 'easeOut' }}
           onClick={scrollToTop}
           aria-label={labels[locale]}
-          className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-12 h-12 rounded-full bg-stone-900 text-white shadow-lg shadow-stone-900/30 hover:bg-stone-800 hover:scale-110 transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2"
+          className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-12 h-12 btn-icon hover:scale-110 focus:outline-none focus:ring-2 focus:ring-palenque-sand focus:ring-offset-2"
         >
           <ArrowUp className="w-5 h-5" />
         </motion.button>

@@ -69,7 +69,7 @@ function CopyButton({ text, label, locale }: { text: string; label: string; loca
   return (
     <button 
       onClick={handleCopy}
-      className="inline-flex items-center gap-1.5 text-[#5489a0] hover:text-[#5489a0] font-medium text-sm transition-colors"
+      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-palenque-sand/20 text-palenque-earth hover:bg-palenque-sand/30 font-medium text-sm transition-colors"
     >
       <Copy className="w-3.5 h-3.5" />
       {copied ? copiedText : label}
@@ -382,7 +382,7 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
                     href="https://wa.me/573105270542"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 w-full px-6 py-4 bg-yellow-400 hover:bg-yellow-300 text-stone-900 rounded-xl font-bold transition-colors"
+                    className="btn-primary w-full"
                   >
                     {c.byPlane.cta}
                     <ArrowRight className="w-5 h-5" />
@@ -540,7 +540,7 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
               href="https://wa.me/573105270542"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-stone-900 text-white rounded-full font-bold hover:bg-stone-800 transition-colors shadow-xl"
+              className="btn-primary btn-primary-lg"
             >
               <Phone className="w-5 h-5" />
               {c.contact.cta}

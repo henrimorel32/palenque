@@ -618,7 +618,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
               href="https://wa.me/573105270542"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-stone-900 text-white rounded-full font-bold hover:bg-stone-800 transition-colors shadow-xl"
+              className="btn-primary btn-primary-lg"
             >
               <Phone className="w-5 h-5" />
               {c.cta.button}

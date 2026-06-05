@@ -1001,7 +1001,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 to-amber-500 text-stone-900 rounded-full font-bold text-lg shadow-xl shadow-yellow-500/20"
+                  className="btn-primary btn-primary-lg gap-3"
                 >
                   <Calendar className="w-5 h-5" />
                   {c.hero.cta}
@@ -1379,7 +1379,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                       href="https://wa.me/573105270542"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-stone-900 text-white rounded-full font-medium hover:bg-stone-800 transition-colors"
+                      className="btn-primary"
                     >
                       Reservar esta habitación
                       <ChevronRight className="w-4 h-4" />
@@ -1502,7 +1502,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                       href="https://wa.me/573105270542"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-stone-900 text-white rounded-full font-medium hover:bg-stone-800 transition-colors"
+                      className="btn-primary"
                     >
                       Reservar esta habitación
                       <ChevronRight className="w-4 h-4" />
@@ -1585,7 +1585,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             href="https://wa.me/573105270542"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-stone-900 text-white rounded-full font-bold text-lg hover:bg-stone-800 transition-colors shadow-xl mb-4"
+            className="btn-primary btn-primary-lg gap-3 mb-4"
           >
             <Phone className="w-5 h-5" />
             {c.cta.button}

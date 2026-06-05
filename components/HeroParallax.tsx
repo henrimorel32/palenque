@@ -336,7 +336,7 @@ export default function HeroParallax({ locale: propLocale }: HeroParallaxProps) 
                 className="group relative flex items-center justify-center w-8 h-8"
               >
                 <span className={`text-xs font-medium transition-all duration-300 ${
-                  currentImage === index ? 'text-[#5489a0] scale-125' : 'text-white/50 group-hover:text-white/80'
+                  currentImage === index ? 'text-palenque-sand scale-125' : 'text-white/50 group-hover:text-palenque-sand/80'
                 }`}>
                   {String(index + 1).padStart(2, '0')}
                 </span>

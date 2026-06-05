@@ -704,15 +704,13 @@ export default function ContactPage({ locale }: ContactPageProps) {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`inline-flex items-center justify-center gap-2 w-full px-6 py-4 rounded-xl font-bold transition-all duration-300 ${
-                    isSubmitting
-                      ? 'bg-stone-300 text-stone-500 cursor-not-allowed'
-                      : 'bg-yellow-400 hover:bg-yellow-300 text-stone-900 shadow-lg shadow-yellow-400/20'
+                  className={`btn-primary w-full ${
+                    isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
                   }`}
                 >
                   {isSubmitting ? (
                     <>
-                      <span className="w-5 h-5 border-2 border-stone-500 border-t-transparent rounded-full animate-spin" />
+                      <span className="w-5 h-5 border-2 border-palenque-night/50 border-t-transparent rounded-full animate-spin" />
                       {c.form.sending}
                     </>
                   ) : (
@@ -754,7 +752,7 @@ export default function ContactPage({ locale }: ContactPageProps) {
                   href="https://maps.google.com/?q=9.773722,-75.645361"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-flex items-center justify-center gap-2 px-6 py-3 bg-stone-900 text-white rounded-xl font-semibold hover:bg-stone-800 transition-colors"
+                  className="mt-4 btn-primary w-full"
                 >
                   <MapPin className="w-4 h-4" />
                   {c.cards.address.cta}
@@ -822,7 +820,7 @@ export default function ContactPage({ locale }: ContactPageProps) {
                 href="https://wa.me/573105270542"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-stone-900 text-white rounded-full font-bold hover:bg-stone-800 transition-colors shadow-xl"
+                className="btn-primary btn-primary-lg"
               >
                 <MessageCircle className="w-5 h-5" />
                 {c.cta.button}

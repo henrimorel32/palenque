@@ -608,7 +608,7 @@ export default function ActivitiesContent({ locale }: ActivitiesPageProps) {
                       href="https://wa.me/573105270542"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 w-full px-6 py-4 bg-yellow-400 hover:bg-yellow-300 text-stone-900 rounded-xl font-bold transition-colors"
+                      className="btn-primary w-full"
                     >
                       {activity.cta}
                       <ArrowRight className="w-5 h-5" />
@@ -660,7 +660,7 @@ export default function ActivitiesContent({ locale }: ActivitiesPageProps) {
               href="https://wa.me/573105270542"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-stone-900 text-white rounded-full font-bold hover:bg-stone-800 transition-colors shadow-xl"
+              className="btn-primary btn-primary-lg"
             >
               <Phone className="w-5 h-5" />
               {c.contact.cta}

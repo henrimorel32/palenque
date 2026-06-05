@@ -36,12 +36,12 @@ export default function WelcomeSection({ locale }: WelcomeSectionProps) {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-br from-stone-50 via-white to-stone-100 relative overflow-hidden">
+    <section className="py-24 bg-gradient-to-br from-palenque-sand-light via-white to-palenque-sand-light/70 relative overflow-hidden">
       {/* Décors de fond */}
       <DotsPattern className="text-stone-900" />
       <CirclesPattern />
-      <BlobShape color="bg-yellow-400" className="w-[600px] h-[600px] -top-40 -right-40 opacity-10" />
-      <BlobShape color="bg-blue-200" className="w-[400px] h-[400px] bottom-0 left-0" />
+      <BlobShape color="bg-palenque-sand" className="w-[600px] h-[600px] -top-40 -right-40 opacity-10" />
+      <BlobShape color="bg-palenque-turquoise" className="w-[400px] h-[400px] bottom-0 left-0" />
       
       {/* Accents jaunes subtils */}
       <YellowGradientTop />
@@ -59,27 +59,27 @@ export default function WelcomeSection({ locale }: WelcomeSectionProps) {
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-100 text-[#5489a0] rounded-full text-sm font-medium mb-6 border border-yellow-200">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/75 text-palenque-blue rounded-full text-sm font-medium mb-6 border border-palenque-sand/40">
               <Award className="w-4 h-4" />
               {locale === 'es' ? 'Sobre Nosotros' : locale === 'en' ? 'About Us' : 'À Propos'}
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-stone-900 mb-6 leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-palenque-night mb-6 leading-tight font-display">
               {t.home.welcomeTitle}
             </h2>
-            <p className="text-lg text-stone-700 leading-relaxed mb-6">
+            <p className="text-lg text-palenque-earth leading-relaxed mb-6">
               {t.home.welcomeDescription}
             </p>
-            <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-200 rounded-full mb-8" />
+            <div className="w-32 h-1 bg-gradient-to-r from-palenque-blue to-palenque-turquoise rounded-full mb-8" />
 
             {/* Highlights */}
             <div className="flex flex-wrap gap-3">
               {highlights.map((item) => (
                 <div
                   key={item.text}
-                  className="flex items-center gap-2 px-4 py-2.5 bg-white/80 backdrop-blur-sm rounded-full shadow-sm border border-yellow-100 hover:border-yellow-300 transition-colors"
+                  className="flex items-center gap-2 px-4 py-2.5 bg-white/85 backdrop-blur-sm rounded-full shadow-sm border border-palenque-sand/30 hover:border-palenque-blue/40 transition-colors"
                 >
-                  <item.icon className="w-4 h-4 text-[#5489a0]" />
-                  <span className="text-sm font-medium text-stone-700">{item.text}</span>
+                  <item.icon className="w-4 h-4 text-palenque-blue" />
+                  <span className="text-sm font-medium text-palenque-earth">{item.text}</span>
                 </div>
               ))}
             </div>
@@ -93,7 +93,7 @@ export default function WelcomeSection({ locale }: WelcomeSectionProps) {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl shadow-stone-200/50 border-2 border-yellow-100 relative">
+            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl shadow-palenque-earth/15 border-2 border-palenque-sand/35 relative">
               <RoomImageCarousel
                 images={paraisoImages}
                 alt={t.home.welcomeTitle}
@@ -110,14 +110,14 @@ export default function WelcomeSection({ locale }: WelcomeSectionProps) {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 border-2 border-yellow-400 z-10"
+              className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 border-2 border-palenque-sand z-10"
             >
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
+                <div className="w-12 h-12 bg-gradient-to-br from-palenque-sand to-palenque-warm-sand rounded-full flex items-center justify-center shadow-lg">
                   <span className="text-xl">⭐</span>
                 </div>
                 <div>
-                  <p className="font-bold text-stone-900">4.9/5</p>
+                  <p className="font-bold text-palenque-night">4.9/5</p>
                   <p className="text-xs text-stone-500">
                     {locale === 'es' ? 'Basado en 200+ reseñas' : locale === 'en' ? 'Based on 200+ reviews' : 'Basé sur 200+ avis'}
                   </p>
@@ -126,7 +126,7 @@ export default function WelcomeSection({ locale }: WelcomeSectionProps) {
             </motion.div>
 
             {/* Decorative element */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-yellow-400/20 rounded-full blur-2xl" />
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-palenque-sand/25 rounded-full blur-2xl" />
           </motion.div>
         </div>
       </div>

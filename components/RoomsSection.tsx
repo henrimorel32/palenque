@@ -329,7 +329,7 @@ export default function RoomsSection({ locale }: RoomsSectionProps) {
                   href="https://wa.me/573105270542"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-stone-900 text-white rounded-full text-sm font-semibold hover:bg-stone-800 transition-colors w-full"
+                  className="btn-primary text-sm w-full px-5 py-2.5"
                 >
                   {locale === 'es'
                     ? 'Reservar'

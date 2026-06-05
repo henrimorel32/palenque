@@ -5,7 +5,7 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
-const inter = Inter({ subsets: ['latin'], display: 'swap' })
+const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-body' })
 
 export const metadata = {
   title: {
@@ -48,7 +48,7 @@ export default function RootLayout({
 }) {
   return (
     <html className="scroll-smooth">
-      <body className={inter.className}>
+      <body className={inter.variable}>
         <Navbar />
         
         <main>

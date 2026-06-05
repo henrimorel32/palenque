@@ -83,7 +83,7 @@ export default function RoomImageLightbox({
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+            className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/10 hover:bg-palenque-sand/30 transition-colors text-white"
             aria-label="Cerrar galería"
           >
             <X className="w-6 h-6" />
@@ -106,7 +106,7 @@ export default function RoomImageLightbox({
                 e.stopPropagation();
                 onPrev();
               }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-palenque-sand/30 transition-colors text-white"
               aria-label="Foto anterior"
             >
               <ChevronLeft className="w-6 h-6" />
@@ -120,7 +120,7 @@ export default function RoomImageLightbox({
                 e.stopPropagation();
                 onNext();
               }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-palenque-sand/30 transition-colors text-white"
               aria-label="Foto siguiente"
             >
               <ChevronRight className="w-6 h-6" />
