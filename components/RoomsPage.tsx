@@ -880,10 +880,11 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
 
   const baborSectionRef = useRef<HTMLElement>(null);
   const estriborSectionRef = useRef<HTMLElement>(null);
+  const baborRoomRefs = useRef<Record<number, HTMLDivElement>>({});
+  const estriborRoomRefs = useRef<Record<number, HTMLDivElement>>({});
   const [activeBaborIndex, setActiveBaborIndex] = useState(0);
   const [activeEstriborIndex, setActiveEstriborIndex] = useState(0);
-  const [showBaborNav, setShowBaborNav] = useState(false);
-  const [showEstriborNav, setShowEstriborNav] = useState(false);
+  const [visibleSection, setVisibleSection] = useState<'estribor' | 'babor' | null>(null);
   const [isSafari, setIsSafari] = useState(false);
 
   useEffect(() => {
@@ -891,56 +892,66 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
     setIsSafari(safari);
   }, []);
 
+  // Track active section and room using IntersectionObserver
   useEffect(() => {
-    const handleScrollBabor = () => {
-      if (!baborSectionRef.current) return;
-      const sectionTop = baborSectionRef.current.offsetTop;
-      const sectionHeight = baborSectionRef.current.offsetHeight;
-      const scrollPos = window.scrollY - sectionTop;
-      const viewportHeight = window.innerHeight;
-      const index = Math.max(0, Math.min(
-        baborRooms.length - 1,
-        Math.floor(scrollPos / viewportHeight + 0.2)
-      ));
-      setActiveBaborIndex(index);
-      setShowBaborNav(scrollPos >= -viewportHeight * 0.5 && scrollPos < sectionHeight - viewportHeight * 0.5);
-    };
-    window.addEventListener('scroll', handleScrollBabor, { passive: true });
-    handleScrollBabor();
-    return () => window.removeEventListener('scroll', handleScrollBabor);
-  }, [baborRooms.length]);
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
 
-  useEffect(() => {
-    const handleScrollEstribor = () => {
-      if (!estriborSectionRef.current) return;
-      const sectionTop = estriborSectionRef.current.offsetTop;
-      const sectionHeight = estriborSectionRef.current.offsetHeight;
-      const scrollPos = window.scrollY - sectionTop;
-      const viewportHeight = window.innerHeight;
-      const index = Math.max(0, Math.min(
-        estriborRooms.length - 1,
-        Math.floor(scrollPos / viewportHeight + 0.2)
-      ));
-      setActiveEstriborIndex(index);
-      setShowEstriborNav(scrollPos >= -viewportHeight * 0.5 && scrollPos < sectionHeight - viewportHeight * 0.5);
-    };
-    window.addEventListener('scroll', handleScrollEstribor, { passive: true });
-    handleScrollEstribor();
-    return () => window.removeEventListener('scroll', handleScrollEstribor);
-  }, [estriborRooms.length]);
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const section = entry.target.getAttribute('data-section');
+          if (entry.isIntersecting) {
+            setVisibleSection(section as 'estribor' | 'babor');
+          }
+        });
+      },
+      { rootMargin: '-20% 0px -60% 0px', threshold: 0 }
+    );
 
-  const NAVBAR_OFFSET = 140;
+    const roomObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const section = entry.target.getAttribute('data-section');
+            const idx = Number(entry.target.getAttribute('data-index'));
+            if (section === 'babor') setActiveBaborIndex(idx);
+            else if (section === 'estribor') setActiveEstriborIndex(idx);
+          }
+        });
+      },
+      { rootMargin: '-40% 0px -40% 0px', threshold: 0 }
+    );
+
+    if (estriborSectionRef.current) {
+      estriborSectionRef.current.setAttribute('data-section', 'estribor');
+      sectionObserver.observe(estriborSectionRef.current);
+    }
+    if (baborSectionRef.current) {
+      baborSectionRef.current.setAttribute('data-section', 'babor');
+      sectionObserver.observe(baborSectionRef.current);
+    }
+
+    Object.values(estriborRoomRefs.current).forEach((el) => el && roomObserver.observe(el));
+    Object.values(baborRoomRefs.current).forEach((el) => el && roomObserver.observe(el));
+
+    return () => {
+      sectionObserver.disconnect();
+      roomObserver.disconnect();
+    };
+  }, [estriborRooms, baborRooms]);
 
   const scrollToBaborRoom = (index: number) => {
-    if (!baborSectionRef.current) return;
-    const targetY = baborSectionRef.current.offsetTop + index * window.innerHeight - NAVBAR_OFFSET;
-    window.scrollTo({ top: targetY, behavior: 'smooth' });
+    const room = baborRooms[index];
+    if (!room) return;
+    const el = baborRoomRefs.current[room.id];
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const scrollToEstriborRoom = (index: number) => {
-    if (!estriborSectionRef.current) return;
-    const targetY = estriborSectionRef.current.offsetTop + index * window.innerHeight - NAVBAR_OFFSET;
-    window.scrollTo({ top: targetY, behavior: 'smooth' });
+    const room = estriborRooms[index];
+    if (!room) return;
+    const el = estriborRoomRefs.current[room.id];
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   useEffect(() => {
@@ -1146,14 +1157,14 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                 <CloudMoon className="w-6 h-6 md:w-7 md:h-7 text-white" />
               </div>
               <div className="text-left">
-                <span className={`block transition-colors ${showEstriborNav ? 'text-lg md:text-xl font-bold text-stone-900' : 'text-sm font-medium text-stone-400'} group-hover:text-amber-700`}>
+                <span className={`block transition-colors ${visibleSection === 'estribor' ? 'text-lg md:text-xl font-bold text-stone-900' : 'text-sm font-medium text-stone-400 group-hover:text-amber-700'}`}>
                   {c.sectionEstribor.title}
                 </span>
                 <span className="hidden md:block text-sm text-stone-500">
                   {c.sectionEstribor.cta}
                 </span>
               </div>
-              <ChevronRight className="ml-auto w-5 h-5 text-stone-400 group-hover:text-amber-500 group-hover:translate-x-1 transition-all" />
+              <ChevronRight className={`ml-auto w-5 h-5 transition-all ${visibleSection === 'estribor' ? 'text-amber-500 translate-x-1' : 'text-stone-400 group-hover:text-amber-500 group-hover:translate-x-1'}`} />
             </button>
 
             <button
@@ -1164,29 +1175,29 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                 <Compass className="w-6 h-6 md:w-7 md:h-7 text-white" />
               </div>
               <div className="text-left">
-                <span className={`block transition-colors ${showBaborNav ? 'text-lg md:text-xl font-bold text-stone-900' : 'text-sm font-medium text-stone-400'} group-hover:text-cyan-700`}>
+                <span className={`block transition-colors ${visibleSection === 'babor' ? 'text-lg md:text-xl font-bold text-stone-900' : 'text-sm font-medium text-stone-400 group-hover:text-cyan-700'}`}>
                   {c.sectionBabor.title}
                 </span>
                 <span className="hidden md:block text-sm text-stone-500">
                   {c.sectionBabor.cta}
                 </span>
               </div>
-              <ChevronRight className="ml-auto w-5 h-5 text-stone-400 group-hover:text-cyan-500 group-hover:translate-x-1 transition-all" />
+              <ChevronRight className={`ml-auto w-5 h-5 transition-all ${visibleSection === 'babor' ? 'text-cyan-500 translate-x-1' : 'text-stone-400 group-hover:text-cyan-500 group-hover:translate-x-1'}`} />
             </button>
           </div>
         </div>
       </section>
 
       {/* Menu latéral de navigation Babor */}
-      <nav className={`fixed right-2 xl:right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-4 max-h-[88vh] overflow-y-visible no-scrollbar py-2 pr-2 transition-all duration-500 ${showBaborNav ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12 pointer-events-none'}`}>
+      <nav className={`fixed right-2 xl:right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-4 max-h-[88vh] overflow-y-visible no-scrollbar py-2 pr-2 transition-all duration-500 ${visibleSection === 'babor' ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12 pointer-events-none'}`}>
         {baborRooms.map((room: any, idx: number) => (
           <button
             key={room.id}
             onClick={() => scrollToBaborRoom(idx)}
             className={`
               group relative flex items-stretch w-[200px] h-[90px] rounded-2xl overflow-hidden transition-all duration-300 shadow-md bg-white
-              ${idx === activeBaborIndex 
-                ? 'ring-[3px] ring-cyan-400 scale-105 shadow-xl shadow-cyan-400/20' 
+              ${visibleSection === 'babor' && idx === activeBaborIndex
+                ? 'ring-[3px] ring-cyan-400 scale-105 shadow-xl shadow-cyan-400/20'
                 : 'ring-1 ring-stone-200 hover:ring-stone-300 hover:scale-105 hover:shadow-lg'}
             `}
             aria-label={`Ver ${room.name}`}
@@ -1213,15 +1224,15 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
       </nav>
 
       {/* Menu latéral de navigation Estribor */}
-      <nav className={`fixed right-2 xl:right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-4 max-h-[88vh] overflow-y-visible no-scrollbar py-2 pr-2 transition-all duration-500 ${showEstriborNav ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12 pointer-events-none'}`}>
+      <nav className={`fixed right-2 xl:right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-4 max-h-[88vh] overflow-y-visible no-scrollbar py-2 pr-2 transition-all duration-500 ${visibleSection === 'estribor' ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12 pointer-events-none'}`}>
         {estriborRooms.map((room: any, idx: number) => (
           <button
             key={room.id}
             onClick={() => scrollToEstriborRoom(idx)}
             className={`
               group relative flex items-stretch w-[200px] h-[90px] rounded-2xl overflow-hidden transition-all duration-300 shadow-md bg-white
-              ${idx === activeEstriborIndex 
-                ? 'ring-[3px] ring-amber-400 scale-105 shadow-xl shadow-amber-400/20' 
+              ${visibleSection === 'estribor' && idx === activeEstriborIndex
+                ? 'ring-[3px] ring-amber-400 scale-105 shadow-xl shadow-amber-400/20'
                 : 'ring-1 ring-stone-200 hover:ring-stone-300 hover:scale-105 hover:shadow-lg'}
             `}
             aria-label={`Ver ${room.name}`}
@@ -1248,8 +1259,8 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
       </nav>
 
       {/* Mobile bottom indicator */}
-      <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden flex items-center gap-2 bg-stone-900/80 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm shadow-xl transition-all duration-300 ${showBaborNav || showEstriborNav ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-        {showBaborNav ? (
+      <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden flex items-center gap-2 bg-stone-900/80 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm shadow-xl transition-all duration-300 ${visibleSection ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        {visibleSection === 'babor' ? (
           <>
             <span className="text-cyan-400 font-bold">{c.sectionBabor.title}</span>
             <span className="w-px h-4 bg-white/20" />
@@ -1257,7 +1268,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             <span className="w-px h-4 bg-white/20" />
             <span className="max-w-[140px] truncate">{baborRooms[activeBaborIndex]?.name}</span>
           </>
-        ) : showEstriborNav ? (
+        ) : visibleSection === 'estribor' ? (
           <>
             <span className="text-amber-400 font-bold">{c.sectionEstribor.title}</span>
             <span className="w-px h-4 bg-white/20" />
@@ -1296,15 +1307,18 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
         {estriborRooms.map((room: any, index: number) => (
           <div
             key={room.id}
-            className="sticky top-[140px] min-h-[calc(100vh-140px)] flex items-center justify-center py-12"
-            style={{ zIndex: index + 1 }}
+            ref={(el) => { if (el) estriborRoomRefs.current[room.id] = el; }}
+            data-room-id={room.id}
+            data-section="estribor"
+            data-index={index}
+            className="py-12 md:py-20 scroll-mt-[140px]"
           >
             <motion.div
-              initial={{ opacity: 0, y: 80 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className={`w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-72 ${index > 0 ? 'pt-8' : ''}`}
+              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
             >
               <div 
                 className={`relative rounded-[3rem] shadow-2xl overflow-hidden backdrop-blur-sm bg-gradient-to-br ${
@@ -1419,15 +1433,18 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
         {baborRooms.map((room: any, index: number) => (
           <div
             key={room.id}
-            className="sticky top-[140px] min-h-[calc(100vh-140px)] flex items-center justify-center py-12"
-            style={{ zIndex: index + 1 }}
+            ref={(el) => { if (el) baborRoomRefs.current[room.id] = el; }}
+            data-room-id={room.id}
+            data-section="babor"
+            data-index={index}
+            className="py-12 md:py-20 scroll-mt-[140px]"
           >
             <motion.div
-              initial={{ opacity: 0, y: 80 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className={`w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-72 ${index > 0 ? 'pt-8' : ''}`}
+              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
             >
               <div 
                 className={`relative rounded-[3rem] shadow-2xl overflow-hidden backdrop-blur-sm bg-gradient-to-br ${

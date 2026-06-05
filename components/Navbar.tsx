@@ -62,9 +62,9 @@ export default function Navbar() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-6 text-palenque-night">
-                <a href="https://wa.me/573105270542" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-palenque-blue transition-colors font-medium text-sm sm:text-base whitespace-nowrap">
-                  <Phone className="w-4 h-4" />
-                  <span>+57 310 527 05 42</span>
+                <a href="https://wa.me/573105270542" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-palenque-blue transition-colors font-medium text-xs sm:text-sm lg:text-base whitespace-nowrap shrink-0">
+                  <Phone className="w-4 h-4 shrink-0" />
+                  <span className="whitespace-nowrap">+57 310 527 05 42</span>
                 </a>
                 <a 
                   href="https://maps.google.com/?q=9.773722,-75.645361" 
