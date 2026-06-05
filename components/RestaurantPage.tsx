@@ -131,7 +131,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
           {
             icon: Flame,
             image: '/images/restaurant/plat2_optimized.webp',
-            name: 'Cazuela de Mariscos',
+            name: 'Pastas de Mariscos',
             desc: 'Langostinos, calamares, mejillones y pescado en una rica salsa caribeña con hierbas locales.',
             price: '$58.000 COP',
             tag: 'Para compartir',
@@ -139,7 +139,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
           {
             icon: Citrus,
             image: '/images/restaurant/plat3_optimized.webp',
-            name: 'Ceviche Palenquero',
+            name: 'Trucha de la Casa',
             desc: 'Ceviche tradicional con limón tahití, cilantro fresco, cebolla morada y maíz tostado.',
             price: '$32.000 COP',
             tag: 'Frescura',
@@ -147,7 +147,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
           {
             icon: Coffee,
             image: '/images/restaurant/cafe_optimized.webp',
-            name: 'Café de la Región',
+            name: 'Desayuno de la Casa',
             desc: 'Café recién preparado de los Andes colombianos, con notas de chocolate y caramelo.',
             price: '$8.000 COP',
             tag: 'Esencial',
@@ -160,7 +160,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
         items: [
           { icon: MapPin, title: 'Vista al Mar', desc: 'Disfruta tu cena con la brisa del Caribe y el sonido de las olas.' },
           { icon: Wine, title: 'Barra de Cocteles', desc: 'Cócteles artesanales con frutas tropicales y ron de la región.' },
-          { icon: ChefHat, title: 'Chef Local', desc: 'Nuestro chef rescata recetas ancestrales de la cocina palenquera.' },
+          { icon: ChefHat, title: 'Cocineras de la Región', desc: 'Nuestro chef rescata recetas ancestrales de la cocina palenquera.' },
         ],
       },
       hours: {
@@ -222,7 +222,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
           {
             icon: Flame,
             image: '/images/restaurant/plat2.webp',
-            name: 'Seafood Casserole',
+            name: 'Seafood Pasta',
             desc: 'Prawns, squid, mussels, and fish in a rich Caribbean sauce with local herbs.',
             price: '$58,000 COP',
             tag: 'For sharing',
@@ -230,7 +230,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
           {
             icon: Citrus,
             image: '/images/restaurant/plat3.webp',
-            name: 'Palenque Ceviche',
+            name: 'House Trout',
             desc: 'Traditional ceviche with tahitian lime, fresh cilantro, red onion, and toasted corn.',
             price: '$32,000 COP',
             tag: 'Fresh',
@@ -238,7 +238,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
           {
             icon: Coffee,
             image: '/images/restaurant/cafe1.webp',
-            name: 'Regional Coffee',
+            name: 'House Breakfast',
             desc: 'Freshly brewed coffee from the Colombian Andes, with notes of chocolate and caramel.',
             price: '$8,000 COP',
             tag: 'Essential',
@@ -251,7 +251,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
         items: [
           { icon: MapPin, title: 'Sea View', desc: 'Enjoy your dinner with the Caribbean breeze and the sound of the waves.' },
           { icon: Wine, title: 'Cocktail Bar', desc: 'Handcrafted cocktails with tropical fruits and local rum.' },
-          { icon: ChefHat, title: 'Local Chef', desc: 'Our chef rescues ancestral recipes from Palenque cuisine.' },
+          { icon: ChefHat, title: 'Regional Cooks', desc: 'Our chef rescues ancestral recipes from Palenque cuisine.' },
         ],
       },
       hours: {
@@ -313,7 +313,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
           {
             icon: Flame,
             image: '/images/restaurant/plat2.webp',
-            name: 'Casserole de Fruits de Mer',
+            name: 'Pâtes aux Fruits de Mer',
             desc: 'Crevettes, calamars, moules et poisson dans une riche sauce caraïbe aux herbes locales.',
             price: '58 000 COP',
             tag: 'À partager',
@@ -321,7 +321,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
           {
             icon: Citrus,
             image: '/images/restaurant/plat3.webp',
-            name: 'Ceviche Palenquero',
+            name: 'Truite de la Maison',
             desc: 'Ceviche traditionnel au citron tahitien, coriandre fraîche, oignon rouge et maïs grillé.',
             price: '32 000 COP',
             tag: 'Fraîcheur',
@@ -329,7 +329,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
           {
             icon: Coffee,
             image: '/images/restaurant/cafe1.webp',
-            name: 'Café Régional',
+            name: 'Petit-déjeuner de la Maison',
             desc: 'Café fraîchement préparé des Andes colombiennes, aux notes de chocolat et de caramel.',
             price: '8 000 COP',
             tag: 'Essentiel',
@@ -342,7 +342,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
         items: [
           { icon: MapPin, title: 'Vue sur la Mer', desc: 'Profitez de votre dîner avec la brise des Caraïbes et le bruit des vagues.' },
           { icon: Wine, title: 'Bar à Cocktails', desc: 'Cocktails artisanaux aux fruits tropicaux et au rhum local.' },
-          { icon: ChefHat, title: 'Chef Local', desc: 'Notre chef sauvegarde les recettes ancestrales de la cuisine palenquera.' },
+          { icon: ChefHat, title: 'Cuisinières de la Région', desc: 'Notre chef sauvegarde les recettes ancestrales de la cuisine palenquera.' },
         ],
       },
       hours: {

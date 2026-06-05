@@ -259,7 +259,7 @@ const content = {
           { icon: BedDouble, title: 'Ropa de cama egipcia', desc: '300 hilos de suavidad' },
           { icon: Droplets, title: 'Agua caliente solar', desc: 'Ecológica y abundante' },
           { icon: Wifi, title: 'WiFi gratuito', desc: 'Conexión estable' },
-          { icon: Coffee, title: 'Café de la región', desc: 'Recién molido cada mañana' },
+          { icon: Coffee, title: 'Desayuno de la Casa', desc: 'Recién molido cada mañana' },
           { icon: Sparkles, title: 'Limpieza diaria', desc: 'Productos biodegradables' },
           { icon: Heart, title: 'Atención personalizada', desc: '24/7 para ti' }
         ]
@@ -526,7 +526,7 @@ const content = {
           { icon: BedDouble, title: 'Egyptian cotton linens', desc: '300 thread count softness' },
           { icon: Droplets, title: 'Solar hot water', desc: 'Eco-friendly and abundant' },
           { icon: Wifi, title: 'Free WiFi', desc: 'Stable connection' },
-          { icon: Coffee, title: 'Regional coffee', desc: 'Freshly ground each morning' },
+          { icon: Coffee, title: 'House breakfast', desc: 'Freshly ground each morning' },
           { icon: Sparkles, title: 'Daily cleaning', desc: 'Biodegradable products' },
           { icon: Heart, title: 'Personalized attention', desc: '24/7 for you' }
         ]
@@ -793,7 +793,7 @@ const content = {
           { icon: BedDouble, title: 'Draps en coton égyptien', desc: 'Douceur 300 fils' },
           { icon: Droplets, title: 'Eau chaude solaire', desc: 'Écologique et abondante' },
           { icon: Wifi, title: 'WiFi gratuit', desc: 'Connexion stable' },
-          { icon: Coffee, title: 'Café régional', desc: 'Moulu frais chaque matin' },
+          { icon: Coffee, title: 'Petit-déjeuner de la Maison', desc: 'Moulu frais chaque matin' },
           { icon: Sparkles, title: 'Ménage quotidien', desc: 'Produits biodégradables' },
           { icon: Heart, title: 'Attention personnalisée', desc: '24/7 pour vous' }
         ]
