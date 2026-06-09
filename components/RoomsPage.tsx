@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { 
   Moon, Star, Wind, Waves, Wifi, Coffee, Droplets, Sun,
   BedDouble, Bath, Tv, Snowflake, ChevronRight, CheckCircle2,
-  Phone, Calendar, Sparkles, Heart, Compass, CloudMoon
+  Phone, Calendar, Sparkles, Heart, Compass
 } from 'lucide-react';
 import { Locale } from '@/lib/i18n/translations';
 import VideoLoader from '@/components/VideoLoader';
@@ -1146,7 +1146,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
       </section>
 
       {/* Quick Navigation Bar */}
-      <section className="sticky top-[140px] z-40 bg-white/90 backdrop-blur-md border-y border-stone-200 shadow-sm">
+      <section className="sticky top-[136px] z-40 bg-white/90 backdrop-blur-md border-y border-stone-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
             <button
@@ -1154,7 +1154,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
               className="group relative flex items-center gap-4 p-4 md:p-6 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-100 hover:border-amber-300 hover:shadow-lg hover:shadow-amber-500/10 transition-all duration-300"
             >
               <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
-                <CloudMoon className="w-6 h-6 md:w-7 md:h-7 text-white" />
+                <Compass className="w-6 h-6 md:w-7 md:h-7 text-white scale-x-[-1]" />
               </div>
               <div className="text-left">
                 <span className={`block transition-colors ${visibleSection === 'estribor' ? 'text-lg md:text-xl font-bold text-stone-900' : 'text-sm font-medium text-stone-400 group-hover:text-amber-700'}`}>
@@ -1290,7 +1290,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
             transition={{ duration: 0.8 }}
             className="inline-flex items-center justify-center w-28 h-28 mb-8 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl shadow-amber-500/20"
           >
-            <CloudMoon className="w-14 h-14 text-amber-300" />
+            <Compass className="w-14 h-14 text-amber-300 scale-x-[-1]" />
           </motion.div>
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight">
             {c.sectionEstribor.title}
@@ -1337,7 +1337,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                       whileInView={{ scale: [0.95, 1] }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.6 }}
-                      className={`aspect-[4/3] rounded-3xl bg-gradient-to-br ${room.color} flex items-center justify-center overflow-hidden shadow-2xl relative`}
+                      className="aspect-[4/3] rounded-3xl bg-stone-200 flex items-center justify-center overflow-hidden shadow-2xl relative"
                     >
                       {room.images && room.images.length > 0 ? (
                         <RoomImageCarousel images={room.images} alt={room.name} onClick={() => openLightbox(room.id)} locale={locale} />
@@ -1463,7 +1463,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                       whileInView={{ scale: [0.95, 1] }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.6 }}
-                      className={`aspect-[4/3] rounded-3xl bg-gradient-to-br ${room.color} flex items-center justify-center overflow-hidden shadow-2xl relative`}
+                      className="aspect-[4/3] rounded-3xl bg-stone-200 flex items-center justify-center overflow-hidden shadow-2xl relative"
                     >
                       {room.images && room.images.length > 0 ? (
                         <RoomImageCarousel images={room.images} alt={room.name} onClick={() => openLightbox(room.id)} locale={locale} />

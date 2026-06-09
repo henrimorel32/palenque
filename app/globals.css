@@ -6,11 +6,11 @@
   --color-palenque-sand-light: #e3d9c9;
   --color-palenque-turquoise: #84b0aa;
   --color-palenque-earth: #6e5128;
-  --color-palenque-night: #0a070a;
-  --color-palenque-sunset: #533576;
-  --color-palenque-coral: #ce6e5c;
-  --color-palenque-warm-sand: #e1a975;
-  --color-palenque-mangrove: #95b25c;
+  --color-palenque-night: #6e5128;
+  --color-palenque-sunset: #5489a0;
+  --color-palenque-coral: #bcaa8e;
+  --color-palenque-warm-sand: #e3d9c9;
+  --color-palenque-mangrove: #84b0aa;
   --font-sans: var(--font-body), "Proxima Nova", Arial, sans-serif;
   --font-display: "Cunia", var(--font-body), "Proxima Nova", Arial, sans-serif;
 }
@@ -21,11 +21,11 @@
   --palenque-sand-light: #e3d9c9;
   --palenque-turquoise: #84b0aa;
   --palenque-earth: #6e5128;
-  --palenque-night: #0a070a;
-  --palenque-sunset: #533576;
-  --palenque-coral: #ce6e5c;
-  --palenque-warm-sand: #e1a975;
-  --palenque-mangrove: #95b25c;
+  --palenque-night: #6e5128;
+  --palenque-sunset: #5489a0;
+  --palenque-coral: #bcaa8e;
+  --palenque-warm-sand: #e3d9c9;
+  --palenque-mangrove: #84b0aa;
 }
 
 /* Styles de base */
@@ -38,14 +38,40 @@ body {
   background: var(--palenque-sand-light);
   color: var(--palenque-night);
   font-family: var(--font-body), "Proxima Nova", Arial, sans-serif;
+  font-weight: 400;
 }
 
-h1,
-h2,
-h3,
+/* Main titles — Cunia Bold */
+h1 {
+  font-family: "Cunia", var(--font-body), "Proxima Nova", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+/* Subtitles — Proxima Nova Bold */
+h2 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+/* Third level headings — Proxima Nova Semibold */
+h3 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+/* Display / brand font utility — Cunia Bold */
 .font-display {
   font-family: "Cunia", var(--font-body), "Proxima Nova", Arial, sans-serif;
+  font-weight: 700;
   letter-spacing: 0;
+}
+
+/* Body text — Proxima Nova Regular with loose tracking */
+p {
+  letter-spacing: 0.05em;
 }
 
 /* Animations personnalisées */

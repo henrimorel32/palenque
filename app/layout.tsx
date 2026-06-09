@@ -4,6 +4,8 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import ThemeProvider from '@/components/ThemeProvider'
+import ThemePicker from '@/components/ThemePicker'
 
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-body' })
 
@@ -49,13 +51,16 @@ export default function RootLayout({
   return (
     <html className="scroll-smooth">
       <body className={inter.variable}>
-        <Navbar />
-        
-        <main>
-          {children}
-        </main>
+        <ThemeProvider>
+          <Navbar />
+          
+          <main>
+            {children}
+          </main>
 
-        <Footer />
+          <Footer />
+          <ThemePicker />
+        </ThemeProvider>
       </body>
     </html>
   )

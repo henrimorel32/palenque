@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { Camera } from 'lucide-react';
 import { Locale } from '@/lib/i18n/translations';
 
 interface RoomImageCarouselProps {
@@ -15,12 +14,6 @@ interface RoomImageCarouselProps {
   locale?: Locale;
 }
 
-const loadingText: Record<Locale, string> = {
-  es: 'Cargando imagen...',
-  en: 'Loading image...',
-  fr: 'Chargement de l\'image...',
-};
-
 export default function RoomImageCarousel({
   images,
   alt,
@@ -30,7 +23,6 @@ export default function RoomImageCarousel({
   locale = 'es',
 }: RoomImageCarouselProps) {
   const [current, setCurrent] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
 
   // Ref pour accéder au current sans recréer les callbacks
   const currentRef = useRef(current);
@@ -56,10 +48,6 @@ export default function RoomImageCarousel({
     return () => clearInterval(timer);
   }, [interval, images.length, next]);
 
-  useEffect(() => {
-    setIsLoading(true);
-  }, [current]);
-
   if (images.length === 0) return null;
 
   return (
@@ -77,37 +65,23 @@ export default function RoomImageCarousel({
           : undefined
       }
     >
-      {/* Loader style hero */}
-      {isLoading && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-stone-800 z-10">
-          <div className="w-12 h-12 rounded-full bg-stone-700 flex items-center justify-center mb-3 animate-pulse">
-            <Camera className="w-6 h-6 text-[#5489a0]" />
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
-            <span className="text-xs font-medium text-stone-400">{loadingText[locale] || loadingText.es}</span>
-          </div>
-        </div>
-      )}
-
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         <motion.div
           key={current}
-          initial={{ opacity: 0, filter: 'blur(12px)' }}
-          animate={{ opacity: 1, filter: 'blur(0px)' }}
-          exit={{ opacity: 0, filter: 'blur(12px)' }}
-          transition={{ duration: 0.8, ease: 'easeInOut' }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6, ease: 'easeInOut' }}
           className="absolute inset-0"
         >
           <Image
             src={images[current]}
             alt={`${alt} - ${current + 1}`}
             fill
-            className={`object-cover transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+            className="object-cover"
             sizes="(max-width: 1024px) 100vw, 50vw"
             priority={current === 0}
             unoptimized
-            onLoad={() => setIsLoading(false)}
           />
         </motion.div>
       </AnimatePresence>
