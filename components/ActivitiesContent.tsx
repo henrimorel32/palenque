@@ -138,8 +138,8 @@ export default function ActivitiesContent({ locale }: ActivitiesPageProps) {
       trust: {
         title: '¿Por qué reservar con nosotros?',
         items: [
-          { icon: Shield, title: '', desc: '' },
-          { icon: Star, title: 'Guía local experto', desc: '' },
+          { icon: Shield, title: 'Seguro incluido', desc: 'Todas nuestras excursiones incluyen seguro de viaje' },
+          { icon: Star, title: 'Guía local experto', desc: 'Conoce cada rincón con guías bilingües certificados' },
           { icon: Wallet, title: 'Mejor precio directo', desc: 'Sin intermediarios. Precio justo para viajeros' },
         ],
       },
@@ -148,7 +148,7 @@ export default function ActivitiesContent({ locale }: ActivitiesPageProps) {
         desc: 'Reserva tu excursión favorita con nosotros. Te ayudamos a planificar cada detalle de tu experiencia.',
         cta: 'Contactar por WhatsApp',
         or: 'o llámanos al',
-        phone: '#ERROR!',
+        phone: '+57 310 527 0542',
       },
     },
     en: {
