@@ -1,31 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-  --color-palenque-blue: #b85c44;
-  --color-palenque-sand: #d6a883;
-  --color-palenque-sand-light: #f9e4cc;
-  --color-palenque-turquoise: #e89f6b;
-  --color-palenque-earth: #7a3e2e;
-  --color-palenque-night: #1a0f0a;
-  --color-palenque-sunset: #8f3b3b;
-  --color-palenque-coral: #e87a5e;
-  --color-palenque-warm-sand: #f2c48a;
-  --color-palenque-mangrove: #c4a35a;
+  --color-palenque-blue: #5489a0;
+  --color-palenque-sand: #bcaa8e;
+  --color-palenque-sand-light: #e3d9c9;
+  --color-palenque-turquoise: #84b0aa;
+  --color-palenque-earth: #6e5128;
+  --color-palenque-night: #6e5128;
+  --color-palenque-sunset: #5489a0;
+  --color-palenque-coral: #bcaa8e;
+  --color-palenque-warm-sand: #e3d9c9;
+  --color-palenque-mangrove: #84b0aa;
   --font-sans: var(--font-body), "Proxima Nova", Arial, sans-serif;
   --font-display: "Cunia", var(--font-body), "Proxima Nova", Arial, sans-serif;
 }
 
 :root {
-  --palenque-blue: #b85c44;
-  --palenque-sand: #d6a883;
-  --palenque-sand-light: #f9e4cc;
-  --palenque-turquoise: #e89f6b;
-  --palenque-earth: #7a3e2e;
-  --palenque-night: #1a0f0a;
-  --palenque-sunset: #8f3b3b;
-  --palenque-coral: #e87a5e;
-  --palenque-warm-sand: #f2c48a;
-  --palenque-mangrove: #c4a35a;
+  --palenque-blue: #5489a0;
+  --palenque-sand: #bcaa8e;
+  --palenque-sand-light: #e3d9c9;
+  --palenque-turquoise: #84b0aa;
+  --palenque-earth: #6e5128;
+  --palenque-night: #6e5128;
+  --palenque-sunset: #5489a0;
+  --palenque-coral: #bcaa8e;
+  --palenque-warm-sand: #e3d9c9;
+  --palenque-mangrove: #84b0aa;
 }
 
 /* Styles de base */

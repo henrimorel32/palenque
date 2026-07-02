@@ -38,15 +38,15 @@ function applyThemeColors(colors: ThemeColors) {
 }
 
 function getInitialTheme(): ThemeName {
-  // Force sunset theme everywhere; ignore any previously stored theme.
-  if (typeof window === 'undefined') return 'sunset';
+  // Force Palenque Original (blue/turquoise) theme everywhere; ignore any previously stored theme.
+  if (typeof window === 'undefined') return 'palenque';
   try {
     localStorage.removeItem(STORAGE_KEY);
     localStorage.removeItem(CUSTOM_THEME_STORAGE_KEY);
   } catch {
     // ignore
   }
-  return 'sunset';
+  return 'palenque';
 }
 
 function getInitialCustomColors(): ThemeColors {
@@ -65,14 +65,14 @@ interface ThemeProviderProps {
 }
 
 export default function ThemeProvider({ children }: ThemeProviderProps) {
-  const [currentTheme, setCurrentTheme] = useState<ThemeName>('sunset');
+  const [currentTheme, setCurrentTheme] = useState<ThemeName>('palenque');
   const [customColors, setCustomColorsState] = useState<ThemeColors>({ ...defaultTheme });
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    // Always apply sunset theme on mount
-    const initial: ThemeName = 'sunset';
+    // Always apply Palenque Original theme on mount
+    const initial: ThemeName = 'palenque';
     getInitialTheme();
     setCurrentTheme(initial);
     const theme = themes.find((t) => t.id === initial) || themes[0];
@@ -121,7 +121,7 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
   }, []);
 
   const resetTheme = () => {
-    setTheme('sunset');
+    setTheme('palenque');
   };
 
   const colors =
@@ -145,7 +145,7 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
       {!mounted && (
         <style
           dangerouslySetInnerHTML={{
-            __html: `:root { ${Object.entries(themes.find((t) => t.id === 'sunset')?.colors ?? defaultTheme)
+            __html: `:root { ${Object.entries(themes.find((t) => t.id === 'palenque')?.colors ?? defaultTheme)
               .map(([k, v]) => `--color-${k}:${v};--${k}:${v}`)
               .join(';')} }`,
           }}
