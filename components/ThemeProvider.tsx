@@ -38,14 +38,15 @@ function applyThemeColors(colors: ThemeColors) {
 }
 
 function getInitialTheme(): ThemeName {
-  if (typeof window === 'undefined') return 'palenque';
+  // Force sunset theme everywhere; ignore any previously stored theme.
+  if (typeof window === 'undefined') return 'sunset';
   try {
-    const stored = localStorage.getItem(STORAGE_KEY) as ThemeName | null;
-    if (stored && (themes.some((t) => t.id === stored) || stored === 'custom')) return stored;
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(CUSTOM_THEME_STORAGE_KEY);
   } catch {
     // ignore
   }
-  return 'palenque';
+  return 'sunset';
 }
 
 function getInitialCustomColors(): ThemeColors {
@@ -64,23 +65,18 @@ interface ThemeProviderProps {
 }
 
 export default function ThemeProvider({ children }: ThemeProviderProps) {
-  const [currentTheme, setCurrentTheme] = useState<ThemeName>('palenque');
+  const [currentTheme, setCurrentTheme] = useState<ThemeName>('sunset');
   const [customColors, setCustomColorsState] = useState<ThemeColors>({ ...defaultTheme });
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const initial = getInitialTheme();
-    const custom = getInitialCustomColors();
-    setCustomColorsState(custom);
+    // Always apply sunset theme on mount
+    const initial: ThemeName = 'sunset';
+    getInitialTheme();
     setCurrentTheme(initial);
-
-    if (initial === 'custom') {
-      applyThemeColors(custom);
-    } else {
-      const theme = themes.find((t) => t.id === initial) || themes[0];
-      applyThemeColors(theme.colors);
-    }
+    const theme = themes.find((t) => t.id === initial) || themes[0];
+    applyThemeColors(theme.colors);
   }, []);
 
   const setTheme = useCallback((themeId: ThemeName) => {
@@ -125,7 +121,7 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
   }, []);
 
   const resetTheme = () => {
-    setTheme('palenque');
+    setTheme('sunset');
   };
 
   const colors =
@@ -149,7 +145,7 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
       {!mounted && (
         <style
           dangerouslySetInnerHTML={{
-            __html: `:root { ${Object.entries(defaultTheme)
+            __html: `:root { ${Object.entries(themes.find((t) => t.id === 'sunset')?.colors ?? defaultTheme)
               .map(([k, v]) => `--color-${k}:${v};--${k}:${v}`)
               .join(';')} }`,
           }}

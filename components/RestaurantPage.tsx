@@ -6,7 +6,7 @@ import Image from 'next/image';
 import {
   UtensilsCrossed, Wine, Clock, Phone, ChefHat, Leaf,
   Star, MapPin, CalendarCheck, Flame, Fish, Citrus, Coffee,
-  Quote
+  Quote, FileText
 } from 'lucide-react';
 import { Locale } from '@/lib/i18n/translations';
 
@@ -89,17 +89,17 @@ function VideoHero({ locale }: VideoHeroProps) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center max-w-3xl mx-auto"
+          className="text-center max-w-3xl mx-auto bg-black/20 backdrop-blur-xl rounded-3xl p-6 md:p-8 border border-white/10 shadow-2xl"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full text-[#5489a0] text-sm font-medium mb-6">
+          <span className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full text-palenque-warm-sand text-sm font-medium mb-6">
             <UtensilsCrossed className="w-4 h-4" />
             {c.badge}
           </span>
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg">
             {c.title}
           </h1>
-          <p className="text-xl md:text-2xl text-stone-200 mb-8">{c.subtitle}</p>
-          <p className="text-stone-200 leading-relaxed text-lg">{c.intro}</p>
+          <p className="text-xl md:text-2xl text-palenque-sand-light mb-8 drop-shadow-md">{c.subtitle}</p>
+          <p className="text-palenque-sand-light leading-relaxed text-lg drop-shadow-md">{c.intro}</p>
         </motion.div>
       </div>
     </div>
@@ -139,7 +139,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
           {
             icon: Citrus,
             image: '/images/restaurant/plat3_optimized.webp',
-            name: 'Trucha de la Casa',
+            name: 'Pescado de la casa',
             desc: 'Ceviche tradicional con limón tahití, cilantro fresco, cebolla morada y maíz tostado.',
             price: '$32.000 COP',
             tag: 'Frescura',
@@ -153,6 +153,13 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
             tag: 'Esencial',
           },
         ],
+      },
+      menuPdf: {
+        title: 'Nuestro Menú',
+        subtitle: 'Consulta nuestra carta completa en PDF',
+        webTitle: 'Versión web del menú',
+        webSubtitle: 'Una selección de nuestros platos favoritos',
+        download: 'Descargar menú PDF',
       },
       experience: {
         title: 'Una Experiencia Sensorial',
@@ -230,7 +237,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
           {
             icon: Citrus,
             image: '/images/restaurant/plat3.webp',
-            name: 'House Trout',
+            name: 'House Fish',
             desc: 'Traditional ceviche with tahitian lime, fresh cilantro, red onion, and toasted corn.',
             price: '$32,000 COP',
             tag: 'Fresh',
@@ -244,6 +251,13 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
             tag: 'Essential',
           },
         ],
+      },
+      menuPdf: {
+        title: 'Our Menu',
+        subtitle: 'View our full menu in PDF',
+        webTitle: 'Web version of the menu',
+        webSubtitle: 'A selection of our favorite dishes',
+        download: 'Download PDF menu',
       },
       experience: {
         title: 'A Sensory Experience',
@@ -321,7 +335,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
           {
             icon: Citrus,
             image: '/images/restaurant/plat3.webp',
-            name: 'Truite de la Maison',
+            name: 'Poisson de la Maison',
             desc: 'Ceviche traditionnel au citron tahitien, coriandre fraîche, oignon rouge et maïs grillé.',
             price: '32 000 COP',
             tag: 'Fraîcheur',
@@ -335,6 +349,13 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
             tag: 'Essentiel',
           },
         ],
+      },
+      menuPdf: {
+        title: 'Notre Menu',
+        subtitle: 'Consultez notre carte complète en PDF',
+        webTitle: 'Version web du menu',
+        webSubtitle: 'Une sélection de nos plats préférés',
+        download: 'Télécharger le menu PDF',
       },
       experience: {
         title: 'Une Expérience Sensorielle',
@@ -440,6 +461,47 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Menu PDF */}
+      <section className="py-20 bg-stone-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <h2 className="text-4xl font-bold text-stone-900 mb-4">{c.menuPdf.title}</h2>
+            <p className="text-xl text-stone-600">{c.menuPdf.subtitle}</p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="rounded-3xl overflow-hidden shadow-2xl border border-stone-200 bg-white"
+          >
+            <iframe
+              src="/medias/menu-palenque-2026.pdf"
+              className="w-full h-[85vh] md:h-[90vh]"
+              title={c.menuPdf.title}
+            />
+          </motion.div>
+
+          <div className="text-center mt-8">
+            <a
+              href="/medias/menu-palenque-2026.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary inline-flex items-center gap-2"
+            >
+              <FileText className="w-5 h-5" />
+              {c.menuPdf.download}
+            </a>
           </div>
         </div>
       </section>
@@ -605,7 +667,7 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-yellow-400 via-yellow-400 to-orange-400 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-palenque-sand via-palenque-warm-sand to-palenque-coral relative overflow-hidden">
         <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full translate-x-1/3 translate-y-1/3" />
 

@@ -38,8 +38,8 @@ export default function RoomsSection({ locale }: RoomsSectionProps) {
         locale === 'es'
           ? 'APU'
           : locale === 'en'
-          ? 'APU Cabin'
-          : 'Cabane APU',
+          ? 'APU'
+          : 'APU',
       tagline:
         locale === 'es'
           ? 'Frente al mar, donde las olas cantan tu sueño'

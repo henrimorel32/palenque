@@ -234,7 +234,7 @@ export default function ThemePicker({ locale: propLocale = 'es' }: ThemePickerPr
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(true)}
         aria-label={t.title}
-        className="fixed bottom-6 right-20 z-50 flex items-center justify-center w-12 h-12 rounded-full shadow-lg hover:scale-110 focus:outline-none focus:ring-2 focus:ring-palenque-sand focus:ring-offset-2 bg-gradient-to-r from-palenque-sand to-palenque-warm-sand text-palenque-night hover:from-palenque-sand-light hover:to-palenque-sand transition-all"
+        className="hidden fixed bottom-6 right-20 z-50 flex items-center justify-center w-12 h-12 rounded-full shadow-lg hover:scale-110 focus:outline-none focus:ring-2 focus:ring-palenque-sand focus:ring-offset-2 bg-gradient-to-r from-palenque-sand to-palenque-warm-sand text-palenque-night hover:from-palenque-sand-light hover:to-palenque-sand transition-all"
       >
         <Palette className="w-5 h-5" />
       </motion.button>

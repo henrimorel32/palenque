@@ -19,7 +19,7 @@ const content = {
   es: {
     back: 'Volver a habitaciones',
     badge: '',
-    title: 'Cabaña APU',
+    title: 'APU',
     tagline: 'Frente al mar, donde las olas cantan tu sueño',
     description:
       '',
@@ -39,7 +39,7 @@ const content = {
   en: {
     back: 'Back to rooms',
     badge: 'Our crown jewel',
-    title: 'APU Cabin',
+    title: 'APU',
     tagline: 'Beachfront, where the waves sing you to sleep',
     description:
       'Our crown jewel. A private cabin just meters from the ocean, with its own terrace and hammock under the stars. Wake up to the sound of the waves and the scent of the sea.',
@@ -59,7 +59,7 @@ const content = {
   fr: {
     back: 'Retour aux chambres',
     badge: 'Notre joyau',
-    title: 'Cabane APU',
+    title: 'APU',
     tagline: 'Front de mer, où les vagues chantent votre sommeil',
     description:
       'Notre joyau. Une cabane privée à quelques mètres de l\'océan, avec sa propre terrasse et son hamac sous les étoiles. Réveillez-vous au son des vagues et à l\'odeur de la mer.',

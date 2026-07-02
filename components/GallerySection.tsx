@@ -21,7 +21,7 @@ interface GallerySectionProps {
 const galleryImages = [
   {
     src: '/images/apu/apu1_opt.webp',
-    alt: 'Cabaña APU',
+    alt: 'APU',
     span: 'col-span-2 row-span-2',
   },
   {

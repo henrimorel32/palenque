@@ -431,16 +431,6 @@ export default function ContactPage({ locale }: ContactPageProps) {
       external: true,
     },
     {
-      key: 'email',
-      icon: Mail,
-      color: 'bg-blue-500',
-      lightColor: 'bg-blue-50',
-      textColor: 'text-blue-600',
-      borderColor: 'border-blue-100',
-      href: 'mailto:info@palenque.co',
-      external: false,
-    },
-    {
       key: 'phone',
       icon: Phone,
       color: 'bg-orange-500',
@@ -566,7 +556,8 @@ export default function ContactPage({ locale }: ContactPageProps) {
       <section className="py-20 bg-stone-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8">
-            {/* Form */}
+            {/* Form — hidden temporarily, kept in code for future re-enable */}
+            {/*
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -579,7 +570,6 @@ export default function ContactPage({ locale }: ContactPageProps) {
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-                {/* Name */}
                 <div>
                   <label htmlFor="name" className="block text-sm font-semibold text-stone-700 mb-2">
                     {c.form.name}
@@ -595,7 +585,6 @@ export default function ContactPage({ locale }: ContactPageProps) {
                   {fieldErrors.name && <p className="mt-1 text-sm text-red-500">{fieldErrors.name}</p>}
                 </div>
 
-                {/* Email */}
                 <div>
                   <label htmlFor="email" className="block text-sm font-semibold text-stone-700 mb-2">
                     {c.form.email}
@@ -611,7 +600,6 @@ export default function ContactPage({ locale }: ContactPageProps) {
                   {fieldErrors.email && <p className="mt-1 text-sm text-red-500">{fieldErrors.email}</p>}
                 </div>
 
-                {/* Subject */}
                 <div>
                   <label htmlFor="subject" className="block text-sm font-semibold text-stone-700 mb-2">
                     {c.form.subject}
@@ -635,7 +623,6 @@ export default function ContactPage({ locale }: ContactPageProps) {
                   {fieldErrors.subject && <p className="mt-1 text-sm text-red-500">{fieldErrors.subject}</p>}
                 </div>
 
-                {/* Message */}
                 <div>
                   <label htmlFor="message" className="block text-sm font-semibold text-stone-700 mb-2">
                     {c.form.message}
@@ -652,7 +639,6 @@ export default function ContactPage({ locale }: ContactPageProps) {
                   {fieldErrors.message && <p className="mt-1 text-sm text-red-500">{fieldErrors.message}</p>}
                 </div>
 
-                {/* Cloudflare Turnstile Widget */}
                 <div className="bg-stone-100 rounded-xl p-3 border border-stone-200">
                   {turnstileLoaded === false && (
                     <div className="rounded-lg px-3 py-2 text-sm font-medium bg-amber-50 text-amber-700 border border-amber-200 mb-2">
@@ -675,7 +661,6 @@ export default function ContactPage({ locale }: ContactPageProps) {
                   )}
                 </div>
 
-                {/* Status message */}
                 <AnimatePresence>
                   {submitStatus !== 'idle' && (
                     <motion.div
@@ -700,7 +685,6 @@ export default function ContactPage({ locale }: ContactPageProps) {
                   )}
                 </AnimatePresence>
 
-                {/* Submit */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -722,6 +706,7 @@ export default function ContactPage({ locale }: ContactPageProps) {
                 </button>
               </form>
             </motion.div>
+            */}
 
             {/* Map */}
             <motion.div

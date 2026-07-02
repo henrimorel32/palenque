@@ -33,7 +33,7 @@ const content = {
       rooms: [
         {
           id: 1,
-          name: 'Cabaña APU',
+          name: 'APU',
           tagline: 'Frente al mar, donde las olas cantan tu sueño',
           description: 'Nuestra joya de la corona. Una cabaña privada a solo metros del océano, con terraza propia y hamaca bajo las estrellas. Despierta con el sonido de las olas y el aroma del mar.',
           price: 'Desde $160.000',
@@ -276,13 +276,13 @@ const content = {
         subtext: 'Cancelación gratuita hasta 48h antes'
       },
       sectionBabor: {
-        title: 'Babor',
-        subtitle: 'Para el alma aventurera que busca experiencias únicas',
+        title: 'Cabaña 2',
+        subtitle: 'Babor',
         cta: 'Ver habitaciones Babor'
       },
       sectionEstribor: {
-        title: 'Estribor',
-        subtitle: 'Para quien busca descanso profundo y reconexión',
+        title: 'Cabaña 1',
+        subtitle: 'Estribor',
         cta: 'Ver habitaciones Estribor'
       }
     },
@@ -300,7 +300,7 @@ const content = {
       rooms: [
         {
           id: 1,
-          name: 'Cabaña APU',
+          name: 'APU',
           tagline: 'Oceanfront, where waves sing you to sleep',
           description: 'Our crown jewel. A private cabin just meters from the ocean, with its own terrace and hammock under the stars. Wake up to the sound of waves and the scent of the sea.',
           price: 'From $160,000',
@@ -543,13 +543,13 @@ const content = {
         subtext: 'Free cancellation up to 48h before'
       },
       sectionBabor: {
-        title: 'Babor',
-        subtitle: 'For the adventurous soul seeking unique experiences',
-        cta: 'See Babor rooms'
+        title: 'Cabin 2',
+        subtitle: 'Port',
+        cta: 'See Port rooms'
       },
       sectionEstribor: {
-        title: 'Starboard',
-        subtitle: 'For those seeking deep rest and reconnection',
+        title: 'Cabin 1',
+        subtitle: 'Starboard',
         cta: 'See Starboard rooms'
       }
     },
@@ -567,7 +567,7 @@ const content = {
       rooms: [
         {
           id: 1,
-          name: 'Cabaña APU',
+          name: 'APU',
           tagline: 'Face à la mer, où les vagues vous bercent',
           description: 'Notre joyau. Une cabane privée à quelques mètres de l\'océan, avec sa propre terrasse et hamac sous les étoiles. Réveillez-vous au son des vagues et à l\'odeur de la mer.',
           price: 'À partir de 160 000',
@@ -810,13 +810,13 @@ const content = {
         subtext: 'Annulation gratuite jusqu\'à 48h avant'
       },
       sectionBabor: {
-        title: 'Babor',
-        subtitle: 'Pour l\'âme aventurière en quête d\'expériences uniques',
-        cta: 'Voir les chambres Babor'
+        title: 'Cabane 2',
+        subtitle: 'Bâbord',
+        cta: 'Voir les chambres Bâbord'
       },
       sectionEstribor: {
-        title: 'Tribord',
-        subtitle: 'Pour qui cherche le repos profond et la reconnexion',
+        title: 'Cabane 1',
+        subtitle: 'Tribord',
         cta: 'Voir les chambres Tribord'
       }
     }
@@ -986,7 +986,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
   return (
     <>
       {/* Hero - Split vidéo / texte */}
-      <section className="relative min-h-[70vh] md:min-h-[80vh] bg-stone-950 flex items-center pt-[140px] md:pt-[160px]">
+      <section className="relative min-h-[70vh] md:min-h-[80vh] bg-gradient-to-br from-palenque-night via-palenque-earth to-palenque-sunset flex items-center pt-[140px] md:pt-[160px]">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
             
@@ -996,11 +996,12 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
+                className="bg-black/20 backdrop-blur-xl rounded-3xl p-6 md:p-8 border border-white/10 shadow-2xl"
               >
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-palenque-sand-light mb-6 tracking-tight drop-shadow-2xl">
                   {c.hero.title}
                 </h1>
-                <div className="text-base md:text-lg text-stone-300 max-w-2xl mb-8 drop-shadow-md space-y-4">
+                <div className="text-base md:text-lg text-palenque-sand-light max-w-2xl mb-8 drop-shadow-md space-y-4">
                   {c.hero.subtitle.split('\n\n').map((paragraph, i) => (
                     <p key={i}>{paragraph}</p>
                   ))}
@@ -1591,7 +1592,7 @@ export default function RoomsPage({ locale }: RoomsPageProps) {
       />
 
       {/* Final CTA */}
-      <section className="py-24 bg-gradient-to-br from-yellow-400 via-amber-400 to-orange-400 relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-palenque-sand via-palenque-warm-sand to-palenque-coral relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.1%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-30" />
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">

@@ -84,16 +84,16 @@ export default function Navbar() {
       </div>
 
       {/* Navigation principale - fixe et non dynamique */}
-      <nav className="fixed top-14 left-0 right-0 z-40 bg-palenque-sand-light/95 backdrop-blur-md shadow-xl shadow-palenque-earth/10">
+      <nav className="fixed top-14 left-0 right-0 z-40 bg-palenque-sand-light/95 backdrop-blur-md shadow-2xl shadow-palenque-earth/25 border-b border-palenque-sand/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
-            <a href={generateLocalizedUrl('/', locale)} className="flex items-center gap-3 group">
+            <a href={generateLocalizedUrl('/', locale)} className="flex items-center gap-3 group mr-8">
               <div className="p-3 rounded-2xl bg-palenque-blue shadow-lg shadow-palenque-blue/25">
                 <Waves className="w-8 h-8 text-palenque-sand-light" />
               </div>
               <div className="flex flex-col">
-                <span className="text-2xl font-bold text-palenque-blue font-display">
+                <span className="text-2xl font-bold text-palenque-night font-display">
                   Palenque
                 </span>
                 <span className="text-xs uppercase -mt-1 text-palenque-earth">
@@ -181,7 +181,7 @@ export default function Navbar() {
                   <Waves className="w-6 h-6 text-palenque-sand-light" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xl font-bold text-palenque-blue font-display">Palenque</span>
+                  <span className="text-xl font-bold text-palenque-night font-display">Palenque</span>
                   <span className="text-[10px] uppercase text-palenque-earth">Eco Hotel</span>
                 </div>
               </a>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { 
   MapPin, Plane, Car, Bus, Clock, Phone, Navigation,
@@ -14,43 +14,19 @@ interface DirectionsPageProps {
   locale: Locale;
 }
 
-const heroImages = [
-  '/images/vueAerienne.webp',
-  '/images/vueAerienne1_opt.webp',
-  '/images/vueAerienne2.webp',
-];
-
-function HeroCarousel() {
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
+function HeroVideo() {
   return (
-    <div className="absolute inset-0">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={current}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: 'easeInOut' }}
-          className="absolute inset-0"
-        >
-          <Image
-            src={heroImages[current]}
-            alt="Vue aérienne"
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority={current === 0}
-          />
-        </motion.div>
-      </AnimatePresence>
+    <div className="absolute inset-0 overflow-hidden">
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster="/images/vueAerienne1_opt.webp"
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/videos/como-llegar-hero-compressed.mp4" type="video/mp4" />
+      </video>
     </div>
   );
 }
@@ -90,12 +66,16 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
         route: 'Costa Caribe Colombiana'
       },
       byPlane: {
-        badge: 'Más cómodo',
+        badge: 'Tarifas',
         title: 'Transporte Privado',
-        subtitle: 'Te recogemos en el aeropuerto',
+        subtitle: 'Tarifas promedio',
         desc: '',
-        features: ['', 'Aire acondicionado', '', ''],
-        price: '$80.000 - $120.000 COP',
+        features: [
+          'Aeropuerto – terminal (Cartagena o Montería): taxi: $45.000',
+          'Terminal (Cartagena o Montería) – San Onofre: $32.000',
+          'San Onofre – Rincón del Mar: Vehículo privado: $45.000 o mototaxi: $15.000',
+        ],
+        price: '',
         cta: 'Reservar transporte',
       },
       byCar: {
@@ -137,6 +117,17 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
         coords: '9.773722, -75.645361',
         copy: 'Copiar coordenadas',
       },
+      detailedRoute: {
+        title: 'Ruta recomendada',
+        intro: 'Si vienes en carro, usa Google Maps o Waze para que te indiquen la ruta más conveniente. De igual manera, y para quienes viajan en avión, lo primero es ubicar uno de los dos puntos principales más cercanos: Cartagena o Montería. De allí puedes tomar un bus, taxi compartido o vehículo privado a San Onofre. Ya estás a 20 minutos de Rincón del Mar, y desde este municipio te podrás desplazar en vehículo privado o mototaxi.',
+        faresTitle: 'Tarifas promedio:',
+        fares: [
+          'Aeropuerto – terminal (Cartagena o Montería): taxi: $45.000',
+          'Terminal (Cartagena o Montería) – San Onofre: $32.000',
+          'San Onofre – Rincón del Mar: Vehículo privado: $45.000 o mototaxi: $15.000',
+        ],
+        finalNote: 'Recuerda que al llegar a Rincón, deberás seguir por la vía principal hasta su final, allí el punto de referencia es el restaurante Dubai, a su alrededor se encuentran varios parqueaderos y allí te estará esperando una persona de nuestro equipo para guiarte sobre la playa hasta PALENQUE ECO HOSTEL.',
+      },
 
     },
     en: {
@@ -150,12 +141,16 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
         route: 'Colombian Caribbean Coast'
       },
       byPlane: {
-        badge: 'Most comfortable',
+        badge: 'Fares',
         title: 'Private Transport',
-        subtitle: 'We pick you up at the airport',
-        desc: 'Door-to-door service with air-conditioned vehicle. The driver will wait at the exit with a sign with your name.',
-        features: ['WiFi on board', 'Air conditioning', 'Water included', 'No stops'],
-        price: '$80,000 - $120,000 COP',
+        subtitle: 'Average fares',
+        desc: '',
+        features: [
+          'Airport – terminal (Cartagena or Montería): taxi: $45,000',
+          'Terminal (Cartagena or Montería) – San Onofre: $32,000',
+          'San Onofre – Rincón del Mar: Private vehicle: $45,000 or moto-taxi: $15,000',
+        ],
+        price: '',
         cta: 'Book transport',
       },
       byCar: {
@@ -197,6 +192,17 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
         coords: '9.773722, -75.645361',
         copy: 'Copy coordinates',
       },
+      detailedRoute: {
+        title: 'Recommended Route',
+        intro: 'If you come by car, use Google Maps or Waze to find the most convenient route. Likewise, for those traveling by plane, the first thing is to locate one of the two closest main points: Cartagena or Montería. From there you can take a bus, shared taxi or private vehicle to San Onofre. You are already 20 minutes from Rincón del Mar, and from this municipality you can travel by private vehicle or moto-taxi.',
+        faresTitle: 'Average fares:',
+        fares: [
+          'Airport – terminal (Cartagena or Montería): taxi: $45,000',
+          'Terminal (Cartagena or Montería) – San Onofre: $32,000',
+          'San Onofre – Rincón del Mar: Private vehicle: $45,000 or moto-taxi: $15,000',
+        ],
+        finalNote: 'Remember that when you arrive in Rincón, you must follow the main road to its end; the reference point is the Dubai restaurant, around which there are several parking lots, and there a person from our team will be waiting for you to guide you along the beach to PALENQUE ECO HOSTEL.',
+      },
 
     },
     fr: {
@@ -210,12 +216,16 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
         route: 'Côte Caraïbe Colombienne'
       },
       byPlane: {
-        badge: 'Plus confortable',
+        badge: 'Tarifs',
         title: 'Transport Privé',
-        subtitle: 'Nous venons vous chercher',
-        desc: 'Service porte-à-porte avec véhicule climatisé. Le chauffeur vous attend à la sortie avec une pancarte à votre nom.',
-        features: ['WiFi à bord', 'Climatisation', 'Eau incluse', 'Sans arrêt'],
-        price: '80 000 - 120 000 COP',
+        subtitle: 'Tarifs moyens',
+        desc: '',
+        features: [
+          'Aéroport – terminal (Carthagène ou Montería) : taxi : 45 000 $',
+          'Terminal (Carthagène ou Montería) – San Onofre : 32 000 $',
+          'San Onofre – Rincón del Mar : Véhicule privé : 45 000 $ ou moto-taxi : 15 000 $',
+        ],
+        price: '',
         cta: 'Réserver transport',
       },
       byCar: {
@@ -257,6 +267,17 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
         coords: '9.773722, -75.645361',
         copy: 'Copier coordonnées',
       },
+      detailedRoute: {
+        title: 'Itinéraire recommandé',
+        intro: 'Si vous venez en voiture, utilisez Google Maps ou Waze pour trouver l\'itinéraire le plus pratique. De même, pour ceux qui voyagent en avion, la première étape consiste à se rendre à l\'un des deux points principaux les plus proches : Carthagène ou Montería. De là, vous pouvez prendre un bus, un taxi collectif ou un véhicule privé jusqu\'à San Onofre. Vous n\'êtes plus qu\'à 20 minutes de Rincón del Mar, et depuis cette municipalité vous pourrez vous déplacer en véhicule privé ou en moto-taxi.',
+        faresTitle: 'Tarifs moyens :',
+        fares: [
+          'Aéroport – terminal (Carthagène ou Montería) : taxi : 45 000 $',
+          'Terminal (Carthagène ou Montería) – San Onofre : 32 000 $',
+          'San Onofre – Rincón del Mar : Véhicule privé : 45 000 $ ou moto-taxi : 15 000 $',
+        ],
+        finalNote: 'N\'oubliez pas qu\'en arrivant à Rincón, vous devez suivre la route principale jusqu\'à son terminus. Le point de repère est le restaurant Dubai, autour duquel se trouvent plusieurs parkings, et c\'est là qu\'une personne de notre équipe vous attendra pour vous guider sur la plage jusqu\'à PALENQUE ECO HOSTEL.',
+      },
 
     },
   };
@@ -268,7 +289,7 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
       {/* Hero Section */}
       <section className="relative min-h-[70vh] bg-stone-900 overflow-hidden">
         {/* Background carousel */}
-        <HeroCarousel />
+        <HeroVideo />
         
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-stone-900/20 via-stone-900/30 to-stone-900/60" />
@@ -329,6 +350,46 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
         </div>
       </section>
 
+      {/* Route Map Image */}
+      <section className="py-16 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="rounded-3xl overflow-hidden shadow-2xl border border-stone-200"
+          >
+            <Image
+              src="/images/Palenque-como-llegar.png"
+              alt={locale === 'es' ? 'Cómo llegar a Palenque Eco Hotel' : locale === 'en' ? 'How to get to Palenque Eco Hotel' : 'Comment arriver à Palenque Eco Hotel'}
+              width={1200}
+              height={800}
+              className="w-full h-auto"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Detailed Route */}
+      <section className="py-16 bg-stone-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-stone-100"
+          >
+            <h2 className="text-3xl font-bold text-stone-900 mb-6">{c.detailedRoute.title}</h2>
+            <p className="text-stone-600 text-lg leading-relaxed mb-8">{c.detailedRoute.intro}</p>
+
+            <div className="bg-stone-900 rounded-2xl p-6 md:p-8 text-white">
+              <p className="text-lg leading-relaxed text-stone-100">{c.detailedRoute.finalNote}</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Transport Options */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -347,27 +408,23 @@ export default function DirectionsPage({ locale }: DirectionsPageProps) {
             <div className="grid md:grid-cols-2 gap-8 p-8 md:p-12">
               {/* Left content */}
               <div className="text-white">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-yellow-400/20 text-[#5489a0] rounded-full text-xs font-medium mb-4">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-palenque-sand/20 text-palenque-warm-sand rounded-full text-xs font-medium mb-4">
                   <Star className="w-3 h-3" />
                   {c.byPlane.badge}
                 </span>
                 <h2 className="text-3xl md:text-4xl font-bold mb-2">{c.byPlane.title}</h2>
-                <p className="text-xl text-[#5489a0] mb-4">{c.byPlane.subtitle}</p>
+                <p className="text-xl text-palenque-warm-sand mb-4">{c.byPlane.subtitle}</p>
                 <p className="text-stone-300 mb-6 leading-relaxed">{c.byPlane.desc}</p>
-                
-                {/* Features */}
-                <div className="grid grid-cols-2 gap-3 mb-8">
-                  {c.byPlane.features.map((feature, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm text-stone-300">
-                      <CheckCircle2 className="w-4 h-4 text-[#5489a0]" />
-                      {feature}
-                    </div>
-                  ))}
-                </div>
 
-                <div className="flex items-center gap-4">
-                  <span className="text-3xl font-bold text-white">{c.byPlane.price}</span>
-                </div>
+                {/* Fares */}
+                <ul className="space-y-3 mb-8">
+                  {c.byPlane.features.map((feature, i) => (
+                    <li key={i} className="flex items-start gap-3 text-stone-200">
+                      <CheckCircle2 className="w-5 h-5 text-palenque-sand shrink-0 mt-0.5" />
+                      <span className="text-base leading-relaxed">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
               {/* Right - CTA Card */}
