@@ -3,7 +3,8 @@
 
 import { useState, useMemo } from 'react'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Waves, Phone, MapPin, MessageCircle } from 'lucide-react'
+import { Menu, X, Phone, MapPin, MessageCircle } from 'lucide-react'
+import Image from 'next/image'
 import LanguageSwitcher from './LanguageSwitcher'
 import { Locale } from '@/lib/i18n/translations'
 import { getTranslations } from '@/lib/i18n/utils'
@@ -89,9 +90,14 @@ export default function Navbar() {
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <a href={generateLocalizedUrl('/', locale)} className="flex items-center gap-3 group mr-8">
-              <div className="p-3 rounded-2xl bg-palenque-blue shadow-lg shadow-palenque-blue/25">
-                <Waves className="w-8 h-8 text-palenque-sand-light" />
-              </div>
+              <Image
+                src="/logo/logo.webp"
+                alt="Palenque Eco Hotel"
+                width={56}
+                height={56}
+                className="rounded-2xl bg-palenque-blue shadow-lg shadow-palenque-blue/25 object-contain p-1.5"
+                priority
+              />
               <div className="flex flex-col">
                 <span className="text-2xl font-bold text-palenque-night font-display">
                   Palenque
@@ -177,9 +183,13 @@ export default function Navbar() {
             {/* Header avec sélecteur de langue intégré */}
             <div className="flex items-center justify-between p-6 bg-palenque-sand">
               <a href={generateLocalizedUrl('/', locale)} className="flex items-center gap-3">
-                <div className="p-2 rounded-xl bg-palenque-blue">
-                  <Waves className="w-6 h-6 text-palenque-sand-light" />
-                </div>
+                <Image
+                  src="/logo/logo.webp"
+                  alt="Palenque Eco Hotel"
+                  width={40}
+                  height={40}
+                  className="rounded-xl bg-palenque-blue object-contain p-1"
+                />
                 <div className="flex flex-col">
                   <span className="text-xl font-bold text-palenque-night font-display">Palenque</span>
                   <span className="text-[10px] uppercase text-palenque-earth">Eco Hotel</span>

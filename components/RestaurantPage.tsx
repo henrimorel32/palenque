@@ -486,15 +486,16 @@ export default function RestaurantPage({ locale }: RestaurantPageProps) {
             className="rounded-3xl overflow-hidden shadow-2xl border border-stone-200 bg-white"
           >
             <iframe
-              src="/medias/menu-palenque-2026.pdf"
+              src="https://drive.google.com/file/d/12v0iVMforeIHYpDtGgbOSFWZtpZpjSn-/preview"
               className="w-full h-[85vh] md:h-[90vh]"
               title={c.menuPdf.title}
+              allow="autoplay"
             />
           </motion.div>
 
           <div className="text-center mt-8">
             <a
-              href="/medias/menu-palenque-2026.pdf"
+              href="https://drive.google.com/file/d/12v0iVMforeIHYpDtGgbOSFWZtpZpjSn-/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary inline-flex items-center gap-2"

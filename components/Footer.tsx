@@ -2,11 +2,11 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
+import Image from 'next/image'
 import { 
   MapPin, 
   Mail, 
   MessageCircle,
-  Waves,
   ExternalLink,
   Globe,
   Share2
@@ -66,9 +66,13 @@ export default function Footer() {
             {/* Brand Column */}
             <div className="lg:col-span-1">
               <a href={generateLocalizedUrl('/', locale)} className="flex items-center gap-3 group mb-6">
-                <div className="p-2.5 rounded-xl bg-gradient-to-br from-palenque-blue to-palenque-turquoise shadow-lg shadow-palenque-blue/20 group-hover:shadow-palenque-blue/35 transition-shadow duration-300">
-                  <Waves className="w-7 h-7 text-palenque-sand-light" />
-                </div>
+                <Image
+                  src="/logo/logo.webp"
+                  alt="Palenque Eco Hotel"
+                  width={48}
+                  height={48}
+                  className="rounded-xl bg-gradient-to-br from-palenque-blue to-palenque-turquoise shadow-lg shadow-palenque-blue/20 group-hover:shadow-palenque-blue/35 transition-shadow duration-300 object-contain p-1"
+                />
                 <div className="flex flex-col">
                   <span className="text-xl font-bold text-palenque-sand-light font-display">Palenque</span>
                   <span className="text-xs uppercase text-palenque-sand -mt-0.5">Eco Hotel</span>
